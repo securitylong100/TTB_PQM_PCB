@@ -40,6 +40,26 @@ namespace SPI_PQM
         string judge;
         string status;
         string remark;
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                bool exists = System.IO.Directory.Exists(folderlog);
+                if (!exists) System.IO.Directory.CreateDirectory(folderlog);
+                readlogfileconfig(logconfig);
+                lbl_timer.Text = nud_timer.Value.ToString();
+                timer_auto.Interval = 1000;// int.Parse(nud_timer.Value.ToString());
+
+                //xoa log loi
+                exists = System.IO.File.Exists(logerror);
+                if (exists) System.IO.File.Delete(logerror);
+                txt_logerror.Text = "";
+            }
+            catch
+            {
+                MessageBox.Show("Folder cấu hình không thể khởi tạo", "Lỗi ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void btn_browser_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
@@ -66,7 +86,34 @@ namespace SPI_PQM
         }
         private void btn_autoget_Click(object sender, EventArgs e)
         {
+            if (btn_autoget.Text == "AutoRun")
+            {
+                lbl_timer.Text = nud_timer.Value.ToString();
+                btn_manualget_Click(sender, e);
+                timer_auto.Enabled = true;
+                btn_autoget.Text = "Running";
+                btn_autoget.BackColor = Color.Green;
+            }
+            else
+            {
+                timer_auto.Enabled = false;
+                btn_autoget.Text = "AutoRun";
+                 btn_autoget.BackColor = Color.Yellow;
+            }
 
+        }
+        private void timer_auto_Tick(object sender, EventArgs e)
+        {
+            lbl_timer.Text = (int.Parse(lbl_timer.Text) - 1).ToString();
+            lbl_status.Text = "Waiting upload";
+            lbl_status.BackColor = Color.Yellow;
+            if (lbl_timer.Text == "0")
+            {
+                btn_manualget_Click(sender, e);
+                lbl_timer.Text = nud_timer.Value.ToString();
+                lbl_status.Text = "Upload Data";
+                lbl_status.BackColor = Color.Green;
+            }
         }
         private void btn_manualget_Click(object sender, EventArgs e)
         {
@@ -107,6 +154,10 @@ namespace SPI_PQM
                     }
                     //xuất file csv 
                     writePQMformat(pathfolderout + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                    if (File.Exists(pathfolderbackup + "\\" + file))
+                    {
+                        File.Delete(pathfolderbackup + "\\" + file);
+                    }
                     File.Move(pathfolderin + "\\" + file, pathfolderbackup + "\\" + file);
                 }
                 catch (Exception ex)
@@ -142,25 +193,7 @@ namespace SPI_PQM
                 return dt2;
             }
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                bool exists = System.IO.Directory.Exists(folderlog);
-                if (!exists) System.IO.Directory.CreateDirectory(folderlog);
-                readlogfileconfig(logconfig);
-                lbl_timer.Text = nud_timer.Value.ToString();
 
-                //xoa log loi
-                exists = System.IO.File.Exists(logerror);
-                if (exists) System.IO.File.Delete(logerror);
-                txt_logerror.Text = "";
-            }
-            catch
-            {
-                MessageBox.Show("Folder cấu hình không thể khởi tạo", "Lỗi ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         void CheckExistsFolder(string linkfolder_)
         {
             try
@@ -210,7 +243,6 @@ namespace SPI_PQM
             }
             catch
             {
-
             }
         }
         private void readlogfileconfig(string logfileconfigtxt)
@@ -293,7 +325,7 @@ namespace SPI_PQM
                 sb.Append(@"""" + data + @"""" + ",");
                 sb.Append(@"""" + judge + @"""" + ",");
                 sb.Append(status + ",");
-                sb.Append(remark );
+                sb.Append(remark);
                 sb.Append("\n");
                 File.AppendAllText(filePQMformat, sb.ToString());
                 sb.Clear();
@@ -303,8 +335,5 @@ namespace SPI_PQM
                 writelogfile(" Writing PQM format file Error", ex.ToString(), logerror);
             }
         }
-
-
-
     }
 }

@@ -29,6 +29,7 @@ namespace SPI_PQM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txt_browserin = new System.Windows.Forms.TextBox();
             this.btn_browserin = new System.Windows.Forms.Button();
@@ -41,6 +42,8 @@ namespace SPI_PQM
             this.btn_manualget = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_timer = new System.Windows.Forms.Label();
+            this.timer_auto = new System.Windows.Forms.Timer(this.components);
+            this.lbl_status = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_timer)).BeginInit();
             this.SuspendLayout();
@@ -53,7 +56,7 @@ namespace SPI_PQM
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tableLayoutPanel1.Controls.Add(this.txt_browserin, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_browserin, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txt_logerror, 0, 2);
@@ -65,6 +68,7 @@ namespace SPI_PQM
             this.tableLayoutPanel1.Controls.Add(this.btn_manualget, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbl_timer, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_status, 3, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -84,7 +88,7 @@ namespace SPI_PQM
             this.txt_browserin.Multiline = true;
             this.txt_browserin.Name = "txt_browserin";
             this.txt_browserin.ReadOnly = true;
-            this.txt_browserin.Size = new System.Drawing.Size(424, 34);
+            this.txt_browserin.Size = new System.Drawing.Size(421, 34);
             this.txt_browserin.TabIndex = 7;
             // 
             // btn_browserin
@@ -115,7 +119,7 @@ namespace SPI_PQM
             // 
             this.btn_autoget.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_autoget.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_autoget.Location = new System.Drawing.Point(642, 6);
+            this.btn_autoget.Location = new System.Drawing.Point(639, 6);
             this.btn_autoget.Name = "btn_autoget";
             this.btn_autoget.Size = new System.Drawing.Size(144, 34);
             this.btn_autoget.TabIndex = 8;
@@ -143,7 +147,7 @@ namespace SPI_PQM
             this.txt_browserout.Multiline = true;
             this.txt_browserout.Name = "txt_browserout";
             this.txt_browserout.ReadOnly = true;
-            this.txt_browserout.Size = new System.Drawing.Size(424, 34);
+            this.txt_browserout.Size = new System.Drawing.Size(421, 34);
             this.txt_browserout.TabIndex = 10;
             // 
             // label1
@@ -151,7 +155,7 @@ namespace SPI_PQM
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(795, 3);
+            this.label1.Location = new System.Drawing.Point(792, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 40);
             this.label1.TabIndex = 12;
@@ -162,14 +166,14 @@ namespace SPI_PQM
             // 
             this.nud_timer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nud_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nud_timer.Location = new System.Drawing.Point(948, 6);
+            this.nud_timer.Location = new System.Drawing.Point(945, 6);
             this.nud_timer.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.nud_timer.Name = "nud_timer";
-            this.nud_timer.Size = new System.Drawing.Size(103, 31);
+            this.nud_timer.Size = new System.Drawing.Size(106, 31);
             this.nud_timer.TabIndex = 13;
             this.nud_timer.Value = new decimal(new int[] {
             60,
@@ -181,7 +185,7 @@ namespace SPI_PQM
             // 
             this.btn_manualget.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_manualget.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_manualget.Location = new System.Drawing.Point(642, 49);
+            this.btn_manualget.Location = new System.Drawing.Point(639, 49);
             this.btn_manualget.Name = "btn_manualget";
             this.btn_manualget.Size = new System.Drawing.Size(144, 34);
             this.btn_manualget.TabIndex = 14;
@@ -192,12 +196,12 @@ namespace SPI_PQM
             // label2
             // 
             this.label2.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label2, 4);
+            this.tableLayoutPanel1.SetColumnSpan(this.label2, 3);
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(6, 429);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(933, 30);
+            this.label2.Size = new System.Drawing.Size(777, 30);
             this.label2.TabIndex = 15;
             this.label2.Text = "Version: 0.1";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -207,12 +211,27 @@ namespace SPI_PQM
             this.lbl_timer.AutoSize = true;
             this.lbl_timer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbl_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timer.Location = new System.Drawing.Point(948, 429);
+            this.lbl_timer.Location = new System.Drawing.Point(945, 429);
             this.lbl_timer.Name = "lbl_timer";
-            this.lbl_timer.Size = new System.Drawing.Size(103, 30);
+            this.lbl_timer.Size = new System.Drawing.Size(106, 30);
             this.lbl_timer.TabIndex = 16;
             this.lbl_timer.Text = "60";
             this.lbl_timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer_auto
+            // 
+            this.timer_auto.Tick += new System.EventHandler(this.timer_auto_Tick);
+            // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_status.Location = new System.Drawing.Point(792, 429);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(144, 30);
+            this.lbl_status.TabIndex = 17;
+            this.lbl_status.Text = "waiting upload";
+            this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -244,6 +263,8 @@ namespace SPI_PQM
         private System.Windows.Forms.Button btn_manualget;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_timer;
+        private System.Windows.Forms.Timer timer_auto;
+        private System.Windows.Forms.Label lbl_status;
     }
 }
 
