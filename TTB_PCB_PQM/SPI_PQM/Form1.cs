@@ -60,6 +60,10 @@ namespace SPI_PQM
                 MessageBox.Show("Folder cấu hình không thể khởi tạo", "Lỗi ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btn_reload_Click(object sender, EventArgs e)
+        {
+            Form1_Load(sender, e);
+        }
         private void btn_browser_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
@@ -100,7 +104,6 @@ namespace SPI_PQM
                 btn_autoget.Text = "AutoRun";
                  btn_autoget.BackColor = Color.Yellow;
             }
-
         }
         private void timer_auto_Tick(object sender, EventArgs e)
         {
@@ -144,7 +147,7 @@ namespace SPI_PQM
                     {
                         if (row[0] != null)
                         {
-                            barcode = row[1].ToString();
+                            barcode = row[2].ToString();
                             lot = "_" + DateTime.Now.ToString("yyyyMMdd");
                             date = Convert.ToDateTime(row[0]).ToString("yyyy/MM/dd");
                             time = Convert.ToDateTime(row[0]).ToString("HH:mm:ss");
@@ -335,5 +338,7 @@ namespace SPI_PQM
                 writelogfile(" Writing PQM format file Error", ex.ToString(), logerror);
             }
         }
+
+      
     }
 }

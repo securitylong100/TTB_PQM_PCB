@@ -8,7 +8,6 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.csproj
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.exe
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.pdb
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.exe.licenses
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.csproj.AssemblyReference.cache
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\BouncyCastle.Crypto.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\Google.Protobuf.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\K4os.Compression.LZ4.dll
