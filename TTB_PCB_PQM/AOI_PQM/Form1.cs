@@ -16,5 +16,13 @@ namespace AOI_PQM
         {
             InitializeComponent();
         }
+        DataTable dt;
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            dt = new DataTable();
+            postgreSQLconnection con = new postgreSQLconnection();
+            string sql = "";
+            con.sqlDataAdapterFillDatatable(sql, ref dt);
+        }
     }
 }
