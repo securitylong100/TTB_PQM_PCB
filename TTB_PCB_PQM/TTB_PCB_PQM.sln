@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPI_PQM", "SPI_PQM\SPI_PQM.csproj", "{D57C2420-A7A3-44D9-ADED-9773287F3395}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOI_PQM", "AOI_PQM\AOI_PQM.csproj", "{E3CAE157-7AB6-4497-A8F6-7A874DF5BFBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D57C2420-A7A3-44D9-ADED-9773287F3395}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D57C2420-A7A3-44D9-ADED-9773287F3395}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D57C2420-A7A3-44D9-ADED-9773287F3395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3CAE157-7AB6-4497-A8F6-7A874DF5BFBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3CAE157-7AB6-4497-A8F6-7A874DF5BFBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3CAE157-7AB6-4497-A8F6-7A874DF5BFBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3CAE157-7AB6-4497-A8F6-7A874DF5BFBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
