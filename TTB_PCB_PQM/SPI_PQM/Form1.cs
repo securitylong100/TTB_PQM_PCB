@@ -22,9 +22,11 @@ namespace SPI_PQM
         string folderlog = @"C:\PQM\";
         string logconfig = @"C:\PQM\configuration.txt";
         string logerror = @"C:\PQM\log.txt";
-        DataTable dt = new DataTable();
+        string pqmformat = @"C:\PQM\pqmformat.txt";
+        DataTable dt;
+        DataTable dtout;
         //list convert data
-        string serno;
+        string barcode; //serno
         string lot;
         string model;
         string site;
@@ -62,51 +64,83 @@ namespace SPI_PQM
                 Environment.SpecialFolder root = folderDlg.RootFolder;
             }
         }
-        private void btn_manual_Click(object sender, EventArgs e)
+        private void btn_autoget_Click(object sender, EventArgs e)
         {
 
         }
         private void btn_manualget_Click(object sender, EventArgs e)
         {
-            writelogfileconfig(logconfig);
+            writelogfileconfig(logconfig); //save lại config đường dẫn
+            readPQMformat(pqmformat); // đọc giá trị PQM format
             folderBK = txt_browserin.Text + "\\Backup\\" + DateTime.Now.ToString("yyyyMMdd");
-            CheckExistsFolder(folderBK);
-            ConvertandMoveFile(txt_browserin.Text, txt_browserout.Text);
+            CheckExistsFolder(folderBK);  // tạo forder cho ngày hiện tại
+            CheckExistsFolder(txt_browserout.Text);  // tạo forder fptout
+            ConvertandMoveFile(txt_browserin.Text, txt_browserout.Text, folderBK); //conver và chuyển file đi,
+            readlogfile(logerror);
+
         }
-        void ConvertandMoveFile(string pathfolderin, string pathfolderout)
+        void ConvertandMoveFile(string pathfolderin, string pathfolderout, string pathfolderbackup)
         {
+
             DirectoryInfo d = new DirectoryInfo(pathfolderin);
             FileInfo[] Files = d.GetFiles("*.csv");
+            dtout = new DataTable();
             foreach (FileInfo file in Files)
             {
-
+                try
+                {
+                    string[] arrListStr = file.ToString().Split('_');
+                    model = arrListStr[1].ToString();
+                    dt = new DataTable();
+                    dt = ConvertCSVtoDataTable(pathfolderin + "\\" + file);
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (row[0] != null)
+                        {
+                            barcode = row[1].ToString();
+                            lot = "_" + DateTime.Now.ToString("yyyyMMdd");
+                            date = Convert.ToDateTime(row[0]).ToString("yyyy/MM/dd");
+                            time = Convert.ToDateTime(row[0]).ToString("HH:mm:ss");
+                            judge = row[3].ToString() == "Good" ? "0" : "1";
+                            data = judge;
+                        }
+                    }
+                    //xuất file csv 
+                    writePQMformat(pathfolderout + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                    File.Move(pathfolderin + "\\" + file, pathfolderbackup + "\\" + file);
+                }
+                catch (Exception ex)
+                {
+                    writelogfile(" Convert and Move File Error", ex.ToString(), logerror);
+                }
             }
+
         }
         public static DataTable ConvertCSVtoDataTable(string strFilePath)
         {
             DataTable dt2 = new DataTable();
-            using (StreamReader sr = new StreamReader(strFilePath))
+            //try
             {
-                string[] headers = sr.ReadLine().Split(',');
-                foreach (string header in headers)
+                using (StreamReader sr = new StreamReader(strFilePath))
                 {
-                    dt2.Columns.Add(header);
-                }
-                while (!sr.EndOfStream)
-                {
-                    string[] rows = sr.ReadLine().Split(',');
-                    DataRow dr = dt2.NewRow();
-                    for (int i = 0; i < headers.Length; i++)
+                    string[] headers = sr.ReadLine().Split(',');
+                    foreach (string header in headers)
                     {
-                        dr[i] = rows[i];
+                        dt2.Columns.Add(header);
                     }
-                    dt2.Rows.Add(dr);
+                    while (!sr.EndOfStream)
+                    {
+                        string[] rows = sr.ReadLine().Split(',');
+                        DataRow dr = dt2.NewRow();
+                        for (int i = 0; i < headers.Length; i++)
+                        {
+                            dr[i] = rows[i];
+                        }
+                        dt2.Rows.Add(dr);
+                    }
                 }
-
+                return dt2;
             }
-
-
-            return dt2;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -137,10 +171,10 @@ namespace SPI_PQM
             }
             catch (Exception ex)
             {
-                logfile(" Create Folder  Error", ex.ToString(), logerror);
+                writelogfile(" Create Folder  Error", ex.ToString(), logerror);
             }
         }
-        private void logfile(string header, string contents, string linklogfile)
+        private void writelogfile(string header, string contents, string linklogfile)
         {
             try
             {
@@ -160,6 +194,25 @@ namespace SPI_PQM
             {
             }
         }
+        private void readlogfile(string logfiletxt)
+        {
+            try
+            {
+                bool exists = System.IO.File.Exists(logfiletxt);
+                if (!exists) return;
+                string[] datarow = File.ReadAllLines(logfiletxt);
+                txt_logerror.Text = datarow[0];
+                //foreach (string s in datarow)
+                //{
+                //    txt_logerror.Text += s;
+                //    txt_logerror.Text += "\n";
+                //}
+            }
+            catch
+            {
+
+            }
+        }
         private void readlogfileconfig(string logfileconfigtxt)
         {
             try
@@ -171,8 +224,9 @@ namespace SPI_PQM
                 txt_browserout.Text = datarow[1];
                 nud_timer.Value = int.Parse(datarow[2]);
             }
-            catch
+            catch (Exception ex)
             {
+                writelogfile(" Reading config file error", ex.ToString(), logerror);
             }
         }
         private void writelogfileconfig(string linklogfileconfig)
@@ -192,9 +246,65 @@ namespace SPI_PQM
                 File.AppendAllText(linklogfileconfig, sb.ToString());
                 sb.Clear();
             }
-            catch
+            catch (Exception ex)
             {
+                writelogfile(" Writing config file error", ex.ToString(), logerror);
             }
         }
+        private void readPQMformat(string filePQMformat)
+        {
+            try
+            {
+                bool exists = System.IO.File.Exists(filePQMformat);
+                if (!exists) return;
+                string[] datarow = File.ReadAllLines(filePQMformat);
+                site = datarow[3];
+                factory = datarow[4];
+                line = datarow[5];
+                process = datarow[6];
+                inspect = datarow[7];
+                status = datarow[12];
+                remark = datarow[13];
+            }
+            catch (Exception ex)
+            {
+                writelogfile(" Reading PQM format file Error", ex.ToString(), logerror);
+            }
+        }
+        private void writePQMformat(string filePQMformat)
+        {
+            try
+            {
+                bool exists = System.IO.File.Exists(filePQMformat);
+                //if (exists)
+                //    System.IO.File.Delete(filePQMformat);
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"""" + barcode + @"""" + ", ");
+                sb.Append(@"""" + lot + @"""" + ",");
+                sb.Append(@"""" + model + @"""" + ",");
+                sb.Append(site + ",");
+                sb.Append(factory + ",");
+                sb.Append(line + ",");
+                sb.Append(process + ",");
+                sb.Append(inspect + ",");
+                sb.Append(@"""" + date + @"""" + ",");
+                sb.Append(@"""" + time + @"""" + ",");
+                sb.Append(@"""" + data + @"""" + ",");
+                sb.Append(@"""" + judge + @"""" + ",");
+                sb.Append(status + ",");
+                sb.Append(remark );
+                sb.Append("\n");
+                File.AppendAllText(filePQMformat, sb.ToString());
+                sb.Clear();
+            }
+            catch (Exception ex)
+            {
+                writelogfile(" Writing PQM format file Error", ex.ToString(), logerror);
+            }
+        }
+
+
+
     }
 }
