@@ -11,9 +11,11 @@ namespace AOI_PQM
 {
     class postgreSQLconnection
     {
-        public NpgsqlConnection connection;     
-        //public static string conStringIpqcDbP4 = @"server=112.213.89.73;uid=ifmsolut_admin;pwd=longifm@123;database=ifmsolut_erp;charset=utf8";
-        public static string conStringIpqcDbP4 = @"Server=127.0.0.1;Port=5432;User Id=postgres;Password=sinictek;Database=postges; CommandTimeout=100; Timeout=100;";
+        public NpgsqlConnection connection;
+        //server on aoi machine
+        // public static string conStringIpqcDbP4 = @"Server=127.0.0.1;Port=5432;User Id=postgres;Password=sinictek;Database=postges; CommandTimeout=100; Timeout=100;";
+        //server localhost on long pc
+        public static string conStringIpqcDbP4 = @"Server=localhost;Port=5432;User Id=postgres;Password=12345;Database=aoi_db; CommandTimeout=100; Timeout=100;";
         public string sqlExecuteScalarString_Autosystem(string sql)
         {
             string response;

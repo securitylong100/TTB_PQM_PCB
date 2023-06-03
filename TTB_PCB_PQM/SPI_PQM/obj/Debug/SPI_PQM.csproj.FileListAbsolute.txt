@@ -30,3 +30,4 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\System.Memory.
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.roletest.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.csproj.CopyComplete
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.csproj.AssemblyReference.cache
