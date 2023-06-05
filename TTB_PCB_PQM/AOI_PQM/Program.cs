@@ -16,7 +16,7 @@ namespace AOI_PQM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new AoIMainForm());
         }
     }
 }
