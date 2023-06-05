@@ -153,10 +153,11 @@ namespace SPI_PQM
                             time = Convert.ToDateTime(row[0]).ToString("HH:mm:ss");
                             judge = row[3].ToString() == "Good" ? "0" : "1";
                             data = judge;
+                            writePQMformat(pathfolderout + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
                         }
                     }
                     //xuất file csv 
-                    writePQMformat(pathfolderout + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                   
                     if (File.Exists(pathfolderbackup + "\\" + file))
                     {
                         File.Delete(pathfolderbackup + "\\" + file);

@@ -18,7 +18,7 @@ namespace AOI_PQM
         //server localhost on long pc
         // public static string conStringIpqcDbP4 = "Server=localhost;Port=5432;User Id=postgres;Password=12345;Database=aoi_db; CommandTimeout=100; Timeout=100;";
         public string conStringIpqcDbP4 = "";
-        public string connectstring()
+       public static string connectstring(int rowID)
         {
             try
             {
@@ -28,11 +28,40 @@ namespace AOI_PQM
                 bool exists = System.IO.File.Exists(fileName);
                 if (!exists) return String.Empty;
                 string[] datarow = File.ReadAllLines(fileName);
-                return cn = datarow[0];
+                return cn = datarow[rowID];
             }
             catch
             {
                 return String.Empty;
+            }
+        }
+        public void getComboBoxData(string sql, ref ComboBox cmb)
+        {
+            NpgsqlDataAdapter adapter = new NpgsqlDataAdapter();
+            NpgsqlCommand command;
+            DataSet ds = new DataSet();
+            try
+            {
+                conStringIpqcDbP4 = connectstring(0);
+                connection = new NpgsqlConnection(conStringIpqcDbP4);
+                connection.Open();
+                command = new NpgsqlCommand(sql, connection);
+                adapter.SelectCommand = command;
+                adapter.Fill(ds);
+                adapter.Dispose();
+                command.Dispose();
+
+                cmb.Items.Clear();
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    cmb.Items.Add(row[0].ToString());
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                connection.Close();
             }
         }
         public string sqlExecuteScalarString_Autosystem(string sql)
@@ -40,7 +69,7 @@ namespace AOI_PQM
             string response;
             try
             {
-                conStringIpqcDbP4 = connectstring();
+                conStringIpqcDbP4 = connectstring(0);
                 connection = new NpgsqlConnection(conStringIpqcDbP4);
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand(sql, connection);
@@ -57,7 +86,7 @@ namespace AOI_PQM
         {
             try
             {
-                conStringIpqcDbP4 = connectstring();
+                conStringIpqcDbP4 = connectstring(0);
                 connection = new NpgsqlConnection(conStringIpqcDbP4);
                 NpgsqlCommand command = new NpgsqlCommand();
 
