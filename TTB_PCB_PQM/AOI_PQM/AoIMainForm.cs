@@ -62,9 +62,16 @@ namespace AOI_PQM
         }
         void getmodel(ComboBox combo)
         {
-            string sql ="select " +postgreSQLconnection.connectstring(1);// "select schema_name from information_schema.schemata";
-            postgreSQLconnection con = new postgreSQLconnection();
-            con.getComboBoxData(sql, ref combo);
+            try
+            {
+                string sql = "select " + postgreSQLconnection.connectstring(1);// "select schema_name from information_schema.schemata";
+                postgreSQLconnection con = new postgreSQLconnection();
+                con.getComboBoxData(sql, ref combo);
+            }
+            catch (Exception ex)
+            {
+                writelogfile(" Getting model DB error", ex.ToString(), logerror);
+            }
         }
         private void btn_browserout_Click(object sender, EventArgs e)
         {
@@ -139,32 +146,43 @@ namespace AOI_PQM
 
             if (checkcondition())
             {
-                dt = new DataTable();
-                StringBuilder sql = new StringBuilder();
-                sql.Append(@"select a.boardbarcode, a.pcbstarttime, COALESCE(sum( b.result),0) as ResultNo  from """ + cbm_model.Text+@""".aoi_board a ");
-                sql.Append(@" left join  """+ cbm_model.Text +@""".aoi_component b ");
-                sql.Append(" on a.pcbstarttime = b.pcbstarttime where 1=1 ");
-                sql.Append(" and a.pcbstarttime > NOW() - interval '"+ nud_DBday.Value + "day'");
-                sql.Append(" group by a.boardbarcode, a.pcbstarttime order by a.pcbstarttime desc");
-                postgreSQLconnection con = new postgreSQLconnection();
-                con.sqlDataAdapterFillDatatable(sql.ToString(), ref dt);
-                maincontrol.DataSource = dt;
-                foreach (DataRow row in dt.Rows)
+                try
                 {
-                    if (row[0] != null)
+                    dt = new DataTable();
+                    StringBuilder sql = new StringBuilder();
+                    sql.Append(@"select  a.id, a.boardbarcode, a.pcbstarttime, COALESCE(sum( b.result),0) as resultno  from """ + cbm_model.Text + @""".aoi_board a ");
+                    sql.Append(@" left join  """ + cbm_model.Text + @""".aoi_component b ");
+                    sql.Append(" on a.pcbstarttime = b.pcbstarttime where 1=1 ");
+                    sql.Append(" and a.pcbstarttime > NOW() - interval '" + nud_DBday.Value + "day'");
+                    sql.Append(" group by a.boardbarcode, a.pcbstarttime , a.id order by a.pcbstarttime desc");
+                    postgreSQLconnection con = new postgreSQLconnection();
+                    con.sqlDataAdapterFillDatatable(sql.ToString(), ref dt);
+                    maincontrol.DataSource = dt;
+                    foreach (DataRow row in dt.Rows)
                     {
-                        barcode = row[0].ToString();
-                        lot = "_" + DateTime.Now.ToString("yyyyMMdd");
-                        date = Convert.ToDateTime(row[1]).ToString("yyyy/MM/dd");
-                        time = Convert.ToDateTime(row[1]).ToString("HH:mm:ss");
-                        judge = row[2].ToString() == "0" ? "0" : "1";
-                        data = judge;
-                        writePQMformat(pathfolderout + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                        if (row[0] != null)
+                        {
+                            barcode = row[0].ToString(); //khi chinh thức sửa lại 1
+                            lot = "_" + DateTime.Now.ToString("yyyyMMdd");
+                            date = Convert.ToDateTime(row[2]).ToString("yyyy/MM/dd");
+                            time = Convert.ToDateTime(row[2]).ToString("HH:mm:ss");
+                            judge = row[3].ToString() == "0" ? "0" : "1";
+                            data = judge;
+                            //insert barcode to localDB
+                            string sqlinsert = @"INSERT INTO public.barcodeupload(board_id, barcode_cd,pcbstarttime,resultno,datetimeup)  
+                            VALUES('" + row[0].ToString() + "','" + barcode + "','" + Convert.ToDateTime(row[2]).ToString("yyyyMMdd HH:mm:ss") +"',"+judge+",now())";
+                            con.sqlExecuteScalarString_Autosystem(sqlinsert);
+                            writePQMformat(pathfolderout + "\\AOI_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                        }
                     }
                 }
-               
+                catch (Exception ex)
+                {
+                    writelogfile(" Convert File Error", ex.ToString(), logerror);
+                }
             }
         }
+        
         bool checkcondition()
         {
             if (txt_browserout.Text == "" || nud_DBday.Value < 1 || nud_timer.Value < 10 || nud_ServerDay.Value < 1 || cbm_model.Text == "") return false;
@@ -256,7 +274,7 @@ namespace AOI_PQM
                 //    System.IO.File.Delete(filePQMformat);
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append(@"""" + barcode + @"""" + ", ");
+                sb.Append(@"""" + barcode + @"""" + ",");
                 sb.Append(@"""" + lot + @"""" + ",");
                 sb.Append(@"""" + model + @"""" + ",");
                 sb.Append(site + ",");

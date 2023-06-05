@@ -153,7 +153,7 @@ namespace SPI_PQM
                             time = Convert.ToDateTime(row[0]).ToString("HH:mm:ss");
                             judge = row[3].ToString() == "Good" ? "0" : "1";
                             data = judge;
-                            writePQMformat(pathfolderout + "\\" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                            writePQMformat(pathfolderout + "\\SPI_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
                         }
                     }
                     //xuất file csv 
@@ -316,7 +316,7 @@ namespace SPI_PQM
                 //    System.IO.File.Delete(filePQMformat);
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append(@"""" + barcode + @"""" + ", ");
+                sb.Append(@"""" + barcode + @"""" + ",");
                 sb.Append(@"""" + lot + @"""" + ",");
                 sb.Append(@"""" + model + @"""" + ",");
                 sb.Append(site + ",");
