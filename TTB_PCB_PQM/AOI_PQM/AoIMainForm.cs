@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.IO;
+using System.Threading;
 
 namespace AOI_PQM
 {
@@ -150,11 +151,16 @@ namespace AOI_PQM
                 {
                     dt = new DataTable();
                     StringBuilder sql = new StringBuilder();
-                    sql.Append(@"select  a.id, a.boardbarcode, a.pcbstarttime, COALESCE(sum( b.result),0) as resultno  from """ + cbm_model.Text + @""".aoi_board a ");
-                    sql.Append(@" left join  """ + cbm_model.Text + @""".aoi_component b ");
-                    sql.Append(" on a.pcbstarttime = b.pcbstarttime where 1=1 ");
-                    sql.Append(" and a.pcbstarttime > NOW() - interval '" + nud_DBday.Value + "day'");
-                    sql.Append(" group by a.boardbarcode, a.pcbstarttime , a.id order by a.pcbstarttime desc");
+                    sql.Append(@"select  a.id, a.boardbarcode, a.pcbstarttime, COALESCE(sum( b.result),0) as resultno from ( ");
+                    sql.Append(@" select id, boardbarcode, pcbstarttime from  """ + cbm_model.Text + @""".aoi_board where 1=1 ");
+                    sql.Append(@" and pcbstarttime >= NOW() - interval '" + nud_DBday.Value + "day' ");
+                    sql.Append(@" and id not in ");
+                    sql.Append(@" (select distinct(board_id) from public.barcodeupload where 1=1 ");
+                    sql.Append(@" and datetimeup >= NOW() - interval '" + nud_ServerDay.Value + "day' )) a");
+                    sql.Append(@" left join   """ + cbm_model.Text + @""".aoi_component b ");
+                    sql.Append(@" on a.pcbstarttime = b.pcbstarttime where 1=1 ");
+                    sql.Append(@"  group by a.boardbarcode, a.pcbstarttime , a.id order by a.pcbstarttime desc ");
+
                     postgreSQLconnection con = new postgreSQLconnection();
                     con.sqlDataAdapterFillDatatable(sql.ToString(), ref dt);
                     maincontrol.DataSource = dt;
@@ -170,7 +176,7 @@ namespace AOI_PQM
                             data = judge;
                             //insert barcode to localDB
                             string sqlinsert = @"INSERT INTO public.barcodeupload(board_id, barcode_cd,pcbstarttime,resultno,datetimeup)  
-                            VALUES('" + row[0].ToString() + "','" + barcode + "','" + Convert.ToDateTime(row[2]).ToString("yyyyMMdd HH:mm:ss") +"',"+judge+",now())";
+                            VALUES('" + row[0].ToString() + "','" + barcode + "','" + Convert.ToDateTime(row[2]).ToString("yyyyMMdd HH:mm:ss") + "'," + judge + ",now())";
                             con.sqlExecuteScalarString_Autosystem(sqlinsert);
                             writePQMformat(pathfolderout + "\\AOI_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
                         }
@@ -182,7 +188,7 @@ namespace AOI_PQM
                 }
             }
         }
-        
+
         bool checkcondition()
         {
             if (txt_browserout.Text == "" || nud_DBday.Value < 1 || nud_timer.Value < 10 || nud_ServerDay.Value < 1 || cbm_model.Text == "") return false;
@@ -298,5 +304,40 @@ namespace AOI_PQM
             }
         }
 
+        private void btn_autoget_Click(object sender, EventArgs e)
+        {
+            if (btn_autoget.Text == "AutoRun")
+            {
+                lbl_timer.Text = nud_timer.Value.ToString();
+                btn_manualget_Click(sender, e);
+                timer_auto.Enabled = true;
+                btn_autoget.Text = "Running";
+                btn_autoget.BackColor = Color.Green;
+                cbm_model.Enabled = false;
+            }
+            else
+            {
+                timer_auto.Enabled = false;
+                btn_autoget.Text = "AutoRun";
+                cbm_model.Enabled = true;
+                btn_autoget.BackColor = Color.Yellow;
+            }
+        }
+
+        private void timer_auto_Tick(object sender, EventArgs e)
+        {
+            lbl_timer.Text = (int.Parse(lbl_timer.Text) - 1).ToString();
+            lbl_status.Text = "Waiting upload";
+            lbl_status.BackColor = Color.Yellow;
+            if (lbl_timer.Text == "-1")
+            {
+                lbl_status.BackColor = Color.Green;
+                btn_manualget_Click(sender, e);
+                Thread.Sleep(2000);
+                lbl_timer.Text = nud_timer.Value.ToString();
+                lbl_status.Text = "Upload Data";
+
+            }
+        }
     }
 }

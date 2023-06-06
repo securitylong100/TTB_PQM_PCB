@@ -1,0 +1,27 @@
+Error:  Convert and Move File Error
+Detail: System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.Convert.ToDateTime(String value, IFormatProvider provider)
+   at System.String.System.IConvertible.ToDateTime(IFormatProvider provider)
+   at System.Convert.ToDateTime(Object value)
+   at SPI_PQM.Form1.ConvertandMoveFile(String pathfolderin, String pathfolderout, String pathfolderbackup) in E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\Form1.cs:line 152
+DateTime: 20230605 160552
+--------------------------------------------------------
+Error:  Convert and Move File Error
+Detail: System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.Convert.ToDateTime(String value, IFormatProvider provider)
+   at System.String.System.IConvertible.ToDateTime(IFormatProvider provider)
+   at System.Convert.ToDateTime(Object value)
+   at SPI_PQM.Form1.ConvertandMoveFile(String pathfolderin, String pathfolderout, String pathfolderbackup) in E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\Form1.cs:line 152
+DateTime: 20230605 160635
+--------------------------------------------------------
+Error:  Convert and Move File Error
+Detail: System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   at System.Convert.ToDateTime(String value, IFormatProvider provider)
+   at System.String.System.IConvertible.ToDateTime(IFormatProvider provider)
+   at System.Convert.ToDateTime(Object value)
+   at SPI_PQM.Form1.ConvertandMoveFile(String pathfolderin, String pathfolderout, String pathfolderbackup) in E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\Form1.cs:line 152
+DateTime: 20230605 160636
+--------------------------------------------------------
