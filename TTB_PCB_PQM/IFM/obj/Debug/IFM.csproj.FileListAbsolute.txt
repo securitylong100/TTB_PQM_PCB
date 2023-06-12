@@ -1,0 +1,175 @@
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.csproj.AssemblyReference.cache
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.csproj.SuggestedBindingRedirects.cache
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Common.Views.DkWaitForm.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Properties.Resources.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Common.Views.frm_dashboard.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Common.Views.frm_login.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.csproj.GenerateResource.cache
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.exe.licenses
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\IFM.exe.config
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\IFM.exe.manifest
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\IFM.application
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\IFM.exe
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\IFM.pdb
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.Data.Desktop.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.Data.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.Office.v22.2.Core.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.Pdf.v22.2.Core.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.Pdf.v22.2.Drawing.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.Printing.v22.2.Core.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.RichEdit.v22.2.Core.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.Sparkline.v22.2.Core.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.Utils.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.XtraBars.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.XtraEditors.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.XtraGrid.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.XtraLayout.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.XtraPrinting.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\DevExpress.XtraTreeList.v22.2.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\Newtonsoft.Json.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.csproj.CoreCompileInputs.cache
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.csproj.Fody.CopyLocal.cache
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.csproj.Fody.RuntimeCopyLocal.cache
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.exe.manifest
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.application
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.csproj.CopyComplete
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.exe
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.pdb
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_003.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_002.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_001.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_004.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_005.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Views.SYS.view_SYS_01_001.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Views.SYS.view_sys_assign.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\obj\Debug\IFM.Views.SYS.view_sys_roles.resources
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\Npgsql.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\System.Memory.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\System.ValueTuple.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM\bin\Debug\System.Buffers.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\IFM.exe.config
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\IFM.exe.manifest
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\IFM.application
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\IFM.exe
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\IFM.pdb
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Data.Desktop.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Data.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Office.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Pdf.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Pdf.v22.2.Drawing.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Printing.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.RichEdit.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Sparkline.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Utils.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraBars.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraEditors.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraGrid.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraLayout.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraPrinting.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraTreeList.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\Newtonsoft.Json.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\Npgsql.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Xpo.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraRichEdit.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Utils.v22.2.UI.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraDiagram.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Diagram.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraCharts.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.Charts.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.PivotGrid.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraGauges.v22.2.Core.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraVerticalGrid.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraNavBar.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraCharts.v22.2.Wizard.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\DevExpress.XtraPivotGrid.v22.2.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\System.ValueTuple.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\C#\Git\onlytest\IFM\IFM\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.csproj.AssemblyReference.cache
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.exe.config
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Common.Views.DkWaitForm.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Views.SYS.view_sys_roles.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_003.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_002.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_001.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_004.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_005.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Views.SYS.view_SYS_01_001.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Properties.Resources.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Common.Views.frm_dashboard.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Common.Views.frm_login.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.Views.SYS.view_sys_assign.resources
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.csproj.GenerateResource.cache
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.exe.licenses
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.csproj.CoreCompileInputs.cache
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.csproj.Fody.CopyLocal.cache
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.csproj.Fody.RuntimeCopyLocal.cache
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.exe.manifest
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.application
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.csproj.CopyComplete
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.exe
+E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.exe.config
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.exe.manifest
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.application
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.exe
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Data.Desktop.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Data.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Office.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Pdf.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Pdf.v22.2.Drawing.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Printing.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.RichEdit.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Sparkline.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Utils.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraBars.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraEditors.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraGrid.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraLayout.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraPrinting.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraTreeList.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\Newtonsoft.Json.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Xpo.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraRichEdit.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Utils.v22.2.UI.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraDiagram.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Diagram.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraCharts.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Charts.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.PivotGrid.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraGauges.v22.2.Core.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraVerticalGrid.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraNavBar.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraCharts.v22.2.Wizard.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.XtraPivotGrid.v22.2.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\System.ValueTuple.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.AssemblyReference.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.exe.config
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Common.Views.DkWaitForm.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.SYS.view_sys_roles.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_003.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_002.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_001.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_004.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_005.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.SYS.view_SYS_01_001.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Properties.Resources.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Common.Views.frm_dashboard.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Common.Views.frm_login.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.SYS.view_sys_assign.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.GenerateResource.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.exe.licenses
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.CoreCompileInputs.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.Fody.CopyLocal.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.Fody.RuntimeCopyLocal.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.exe.manifest
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.application
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.CopyComplete
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.exe
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\Npgsql.xml

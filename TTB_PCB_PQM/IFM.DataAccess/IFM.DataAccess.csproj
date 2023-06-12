@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4B2F539-10E5-470A-8C28-5B2D35B7FC14}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IFM.DataAccess</RootNamespace>
+    <AssemblyName>IFM.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.DataAccess.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CQRS\Commands\SystemUpdateUserRolesCommand.cs" />
+    <Compile Include="CQRS\Commands\SystemUpdateViewsCommand.cs" />
+    <Compile Include="CQRS\Commands\SystemDeleteViewCommand.cs" />
+    <Compile Include="CQRS\Dispatchers\SystemDispatcher.cs" />
+    <Compile Include="CQRS\DkDispatcher.cs" />
+    <Compile Include="CQRS\Queries\SystemGetUserRolesQuery.cs" />
+    <Compile Include="Extensions\De_Encrypt.cs" />
+    <Compile Include="Extensions\DataHelper.cs" />
+    <Compile Include="Interfaces\DkCommandHandler.cs" />
+    <Compile Include="Interfaces\DkQueryHandler.cs" />
+    <Compile Include="Interfaces\IDkCommand.cs" />
+    <Compile Include="Interfaces\IDkDispatcher.cs" />
+    <Compile Include="Interfaces\IDkConnection.cs" />
+    <Compile Include="Interfaces\IDkHandler.cs" />
+    <Compile Include="Interfaces\IDkSession.cs" />
+    <Compile Include="Interfaces\IDkQuery.cs" />
+    <Compile Include="Models\ClsSettings.cs" />
+    <Compile Include="Models\DbModel.cs" />
+    <Compile Include="Models\GlobalEnums.cs" />
+    <Compile Include="Models\IDbModel.cs" />
+    <Compile Include="Models\SYS\m_assignment.cs" />
+    <Compile Include="Models\SYS\m_user_role.cs" />
+    <Compile Include="Models\SYS\sp_user_login.cs" />
+    <Compile Include="Models\SYS\tbl_document.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CQRS\Queries\SystemGetViewsQuery.cs" />
+    <Compile Include="CQRS\Queries\SystemLoginQuery.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

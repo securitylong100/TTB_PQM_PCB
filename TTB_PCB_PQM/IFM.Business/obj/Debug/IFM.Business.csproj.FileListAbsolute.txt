@@ -1,0 +1,69 @@
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\IFM.Business.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\IFM.Business.pdb
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\IFM.DataAccess.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\MySql.Data.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\IFM.DataAccess.pdb
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\obj\Debug\IFM.Business.csproj.AssemblyReference.cache
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\obj\Debug\IFM.Business.csproj.CoreCompileInputs.cache
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\obj\Debug\IFM.Business.csproj.CopyComplete
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\obj\Debug\IFM.Business.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\obj\Debug\IFM.Business.pdb
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\Npgsql.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.Buffers.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.Memory.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.ValueTuple.dll
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\Npgsql.pdb
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\Npgsql.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.Buffers.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.Memory.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\01.GitHub\02.IFM\IFM\IFM\IFM.Business\bin\Debug\System.ValueTuple.xml
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\IFM.Business.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\IFM.Business.pdb
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\IFM.DataAccess.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\MySql.Data.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\Npgsql.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.Buffers.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.Memory.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.ValueTuple.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\IFM.DataAccess.pdb
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\Npgsql.pdb
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\Npgsql.xml
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.Buffers.xml
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.Memory.xml
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\C#\Git\onlytest\IFM\IFM.Business\bin\Debug\System.ValueTuple.xml
+E:\C#\Git\onlytest\IFM\IFM.Business\obj\Debug\IFM.Business.csproj.AssemblyReference.cache
+E:\C#\Git\onlytest\IFM\IFM.Business\obj\Debug\IFM.Business.csproj.CoreCompileInputs.cache
+E:\C#\Git\onlytest\IFM\IFM.Business\obj\Debug\IFM.Business.csproj.CopyComplete
+E:\C#\Git\onlytest\IFM\IFM.Business\obj\Debug\IFM.Business.dll
+E:\C#\Git\onlytest\IFM\IFM.Business\obj\Debug\IFM.Business.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\IFM.Business.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\IFM.Business.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\IFM.DataAccess.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\MySql.Data.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\Npgsql.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.Buffers.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.Memory.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.ValueTuple.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\IFM.DataAccess.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\Npgsql.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\Npgsql.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.Buffers.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.Memory.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\bin\Debug\System.ValueTuple.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\obj\Debug\IFM.Business.csproj.AssemblyReference.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\obj\Debug\IFM.Business.csproj.CoreCompileInputs.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\obj\Debug\IFM.Business.csproj.CopyComplete
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\obj\Debug\IFM.Business.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.Business\obj\Debug\IFM.Business.pdb

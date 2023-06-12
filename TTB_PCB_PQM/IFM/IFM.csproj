@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{261E34F7-BEFD-4E09-8630-1D6E286BA78C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>IFM</RootNamespace>
+    <AssemblyName>IFM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>Z:\IFM\4. IT\1. HỆ THỐNG VẬN HÀNH\IFM soft\</PublishUrl>
+    <Install>false</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>7CCB4B73933003F86D3F6ED8BE645EC62E0A507C</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>IFM_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\ifm_vertical.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="Costura, Version=5.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.5.7.0\lib\netstandard1.0\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.Desktop.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Data.Desktop.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Data.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.DataAccess.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v22.2.UI">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.DataAccess.v22.2.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataVisualization.v22.2.Core">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.DataVisualization.v22.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Drawing.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Drawing.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Images.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Images.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Office.v22.2.Core">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Office.v22.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v22.2.Core">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Pdf.v22.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v22.2.Drawing">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Pdf.v22.2.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v22.2.Core">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Printing.v22.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v22.2.Core">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.RichEdit.v22.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v22.2.Core">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Sparkline.v22.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.Utils.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraBars.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraEditors.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraGrid.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraLayout.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPdfViewer.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraPdfViewer.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraPrinting.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraReports.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraReports.v22.2.Extensions">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraReports.v22.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v22.2">
+      <HintPath>..\..\..\IFM-20230608\IFM\IFM\Dlls\DevExpress.XtraTreeList.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.30.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\AOI_PQM\bin\Debug\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClsSession.cs" />
+    <Compile Include="Common\DkGridView.cs" />
+    <Compile Include="Common\mysqlconnection.cs" />
+    <Compile Include="Common\OnGrid\DeleteRow.cs" />
+    <Compile Include="Common\OnGrid\Functions.cs" />
+    <Compile Include="Common\Views\DkWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\Views\DkWaitForm.Designer.cs">
+      <DependentUpon>DkWaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SYS\view_sys_roles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SYS\view_sys_roles.Designer.cs">
+      <DependentUpon>view_sys_roles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_003.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_003.Designer.cs">
+      <DependentUpon>view_CRM_01_003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_002.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_002.Designer.cs">
+      <DependentUpon>view_CRM_01_002.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_001.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_001.Designer.cs">
+      <DependentUpon>view_CRM_01_001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_004.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_004.Designer.cs">
+      <DependentUpon>view_CRM_01_004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_005.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CRM\view_CRM_01_005.Designer.cs">
+      <DependentUpon>view_CRM_01_005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SYS\view_SYS_01_001.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SYS\view_SYS_01_001.Designer.cs">
+      <DependentUpon>view_SYS_01_001.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Views\frm_dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\Views\frm_dashboard.Designer.cs">
+      <DependentUpon>frm_dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Views\frm_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\Views\frm_login.Designer.cs">
+      <DependentUpon>frm_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SYS\view_sys_assign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SYS\view_sys_assign.Designer.cs">
+      <DependentUpon>view_sys_assign.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Common\Views\DkWaitForm.resx">
+      <DependentUpon>DkWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SYS\view_sys_roles.resx">
+      <DependentUpon>view_sys_roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CRM\view_CRM_01_003.resx">
+      <DependentUpon>view_CRM_01_003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CRM\view_CRM_01_002.resx">
+      <DependentUpon>view_CRM_01_002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CRM\view_CRM_01_001.resx">
+      <DependentUpon>view_CRM_01_001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CRM\view_CRM_01_004.resx">
+      <DependentUpon>view_CRM_01_004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CRM\view_CRM_01_005.resx">
+      <DependentUpon>view_CRM_01_005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SYS\view_SYS_01_001.resx">
+      <DependentUpon>view_SYS_01_001.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Views\frm_dashboard.resx">
+      <DependentUpon>frm_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Views\frm_login.resx">
+      <DependentUpon>frm_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SYS\view_sys_assign.resx">
+      <DependentUpon>view_sys_assign.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRM.CPO.tbl_cpo.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRM.Invoices.tbl_invoice.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRM.Invoices.tbl_invoice_doc.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRM.Invoices.tbl_payment.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRM.Invoices.v_invoice_details.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_customer.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_customer_contact.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_customer_state.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_invoice.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_invoice_doc.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_order.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_order_doc.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_order_dtl.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_quote.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_quote_doc.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.CRMs.tbl_quote_price.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.MRPs.tbl_item.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.MRPs.tbl_item_discount.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.MRPs.tbl_item_doc.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.MRPs.tbl_item_price.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.MRPs.tbl_mpo.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.MRPs.tbl_mpo_doc.datasource" />
+    <None Include="Properties\DataSources\IFM.DataAccess.Models.SYS.tbl_document.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ifm.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ifm_horizontal.png" />
+    <None Include="Resources\ifm_title.png" />
+    <None Include="Resources\ifm_vertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Common\Queries\sp_get_invoice_details.sql" />
+    <Content Include="Common\Queries\sp_user_login.sql" />
+    <Content Include="Common\Queries\sp_user_login_2.sql" />
+    <Content Include="Dlls\DevExpress.Data.Desktop.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.Data.Desktop.v22.2.xml" />
+    <Content Include="Dlls\DevExpress.Data.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.Data.v22.2.xml" />
+    <Content Include="Dlls\DevExpress.DataAccess.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.DataAccess.v22.2.UI.dll" />
+    <Content Include="Dlls\DevExpress.DataVisualization.v22.2.Core.dll" />
+    <Content Include="Dlls\DevExpress.Drawing.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.Images.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.Office.v22.2.Core.dll" />
+    <Content Include="Dlls\DevExpress.Office.v22.2.Core.xml" />
+    <Content Include="Dlls\DevExpress.Pdf.v22.2.Core.dll" />
+    <Content Include="Dlls\DevExpress.Pdf.v22.2.Core.xml" />
+    <Content Include="Dlls\DevExpress.Pdf.v22.2.Drawing.dll" />
+    <Content Include="Dlls\DevExpress.Pdf.v22.2.Drawing.xml" />
+    <Content Include="Dlls\DevExpress.Printing.v22.2.Core.dll" />
+    <Content Include="Dlls\DevExpress.Printing.v22.2.Core.xml" />
+    <Content Include="Dlls\DevExpress.RichEdit.v22.2.Core.dll" />
+    <Content Include="Dlls\DevExpress.RichEdit.v22.2.Core.xml" />
+    <Content Include="Dlls\DevExpress.Sparkline.v22.2.Core.dll" />
+    <Content Include="Dlls\DevExpress.Sparkline.v22.2.Core.xml" />
+    <Content Include="Dlls\DevExpress.Utils.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.Utils.v22.2.xml" />
+    <Content Include="Dlls\DevExpress.XtraBars.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.XtraBars.v22.2.xml" />
+    <Content Include="Dlls\DevExpress.XtraEditors.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.XtraEditors.v22.2.xml" />
+    <Content Include="Dlls\DevExpress.XtraGrid.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.XtraGrid.v22.2.xml" />
+    <Content Include="Dlls\DevExpress.XtraLayout.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.XtraLayout.v22.2.xml" />
+    <Content Include="Dlls\DevExpress.XtraPdfViewer.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.XtraPrinting.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.XtraPrinting.v22.2.xml" />
+    <Content Include="Dlls\DevExpress.XtraReports.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.XtraReports.v22.2.Extensions.dll" />
+    <Content Include="Dlls\DevExpress.XtraTreeList.v22.2.dll" />
+    <Content Include="Dlls\DevExpress.XtraTreeList.v22.2.xml" />
+    <Content Include="Dlls\DkFramework.dll" />
+    <Content Include="Dlls\MySql.Data.dll" />
+    <Content Include="Resources\close.ico" />
+    <Content Include="Resources\Excel.png" />
+    <Content Include="Resources\ifm_vertical.ico" />
+    <Content Include="Resources\Load.png" />
+    <Content Include="Resources\New.png" />
+    <Content Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\IFM.Business\IFM.Business.csproj">
+      <Project>{3dd14b56-d9ab-4309-bbf2-bac6518e51fa}</Project>
+      <Name>IFM.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IFM.DataAccess\IFM.DataAccess.csproj">
+      <Project>{c4b2f539-10e5-470a-8c28-5b2d35b7fc14}</Project>
+      <Name>IFM.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.6.4\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.4\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.6.4\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.6.4\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
+  </Target>
+  <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
+</Project>
