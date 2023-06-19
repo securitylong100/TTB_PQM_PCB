@@ -157,7 +157,6 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_001.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_004.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.CRM.view_CRM_01_005.resources
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.SYS.view_SYS_01_001.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Properties.Resources.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Common.Views.frm_dashboard.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Common.Views.frm_login.resources
@@ -173,3 +172,4 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.CopyCom
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.exe
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.pdb
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\Npgsql.xml
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.SYS.view_sys_user.resources

@@ -44,12 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CQRS\Commands\SystemDeleteUserCommand .cs" />
     <Compile Include="CQRS\Commands\SystemUpdateUserRolesCommand.cs" />
+    <Compile Include="CQRS\Commands\SystemUpdateUserCommand.cs" />
     <Compile Include="CQRS\Commands\SystemUpdateViewsCommand.cs" />
     <Compile Include="CQRS\Commands\SystemDeleteViewCommand.cs" />
     <Compile Include="CQRS\Dispatchers\SystemDispatcher.cs" />
     <Compile Include="CQRS\DkDispatcher.cs" />
     <Compile Include="CQRS\Queries\SystemGetUserRolesQuery.cs" />
+    <Compile Include="CQRS\Queries\SystemGetUserQuery.cs" />
     <Compile Include="Extensions\De_Encrypt.cs" />
     <Compile Include="Extensions\DataHelper.cs" />
     <Compile Include="Interfaces\DkCommandHandler.cs" />

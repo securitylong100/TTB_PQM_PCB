@@ -10,11 +10,8 @@ namespace IFM.Class
     class mysqlconnection
     {
         public MySqlConnection connection;
-        //server IFM domain
-        //public static string conStringIpqcDbP4 = @"server=112.213.89.73;uid=ifmsolut_admin;pwd=longifm@123;database=ifmsolut_erp;charset=utf8";
-        //server Tuyến
-        // public static string conStringIpqcDbP4 = @"server=149.28.148.99;port= 6033;uid=root;pwd=my_secret_password;database=app_db;charset=utf8";
-        public static string conectionEncrypt = "9AgtUBuXjBZ1Fb6cyM3CVJby7cko39v1Tg4fyXhizf0ZSEEWPxUseN2bPo3roixa4/T4UFJCbAQdjybXB3/xa5+8urIX1Es8F7SseLdtZJuHiVvFaaRWYIzBacN8NBBi";
+        
+        public static string conectionEncrypt = "9hjG0KiHa226YXSkj3T6kuFdTTP6wctzKNbXuuw3DXMEufU2GBMiq0GpO6sE4LxyrrIGzQMNovF9C29hGWbjUBGh/LRCigCjyPJCQrT/wi0OcWHEt3gmv3g1tmzt+/loGrvrqIlV046OBJrMJJ26Bg==";
         public static string conStringIpqcDbP4 = De_Encrypt.Decrypt(conectionEncrypt);
         public void getComboBoxData(string sql, ref System.Windows.Forms.ComboBox cmb)
         {
