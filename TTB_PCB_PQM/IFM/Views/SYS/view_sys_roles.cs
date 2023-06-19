@@ -7,6 +7,8 @@ using IFM.DataAccess.CQRS.Queries;
 using IFM.DataAccess.Models;
 using IFM.DataAccess.Models.SYS;
 using System;
+using DevExpress.XtraEditors.Repository;
+using System.Drawing;
 
 namespace IFM.Views.SYS
 {
@@ -14,6 +16,7 @@ namespace IFM.Views.SYS
     {
         private readonly DkGridView<m_user_role> _gridData;
         private readonly SystemGetUserRolesQuery _refreshQuery = new SystemGetUserRolesQuery();
+        private readonly SystemGetDistinctUserQuery _getUser = new SystemGetDistinctUserQuery();
 
         public view_sys_roles()
         {
@@ -37,6 +40,38 @@ namespace IFM.Views.SYS
                 item.enum_status = ModelStatus.FakeDelete;
                 gv_data.RefreshRow(e);
             };
+            gridcontrolview();
+        }
+        private void gridcontrolview()
+        {
+            //RepositoryItemComboBox riComboBox = new RepositoryItemComboBox();
+            //riComboBox.Items.Add(IfmLanguage.En);
+            //riComboBox.Items.Add(IfmLanguage.Vi);
+            //gc_data.RepositoryItems.Add(riComboBox);
+            //gv_data.Columns["user_lang"].ColumnEdit = riComboBox;
+            gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
+        }
+        private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            var item = gv_data.GetRow(e.RowHandle) as m_user_role;
+            switch (item.enum_status)
+            {
+                case ModelStatus.New:
+                case ModelStatus.Modified:
+                case ModelStatus.Deleted:
+                    break;
+                case ModelStatus.FakeAdd:
+                    e.Appearance.BackColor = Color.Green;
+                    break;
+                case ModelStatus.FakeEdit:
+                    e.Appearance.BackColor = Color.Yellow;
+                    break;
+                case ModelStatus.FakeDelete:
+                    e.Appearance.BackColor = Color.Red;
+                    break;
+                default:
+                    break;
+            }
         }
         void BbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {

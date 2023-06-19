@@ -33,7 +33,7 @@ namespace IFM.DataAccess.CQRS.Commands
                                        {nameof(m_assignment.assign_view)}=@{nameof(m_assignment.assign_view)},
                                        {nameof(m_assignment.parent_code)}=@{nameof(m_assignment.parent_code)},
                                        {nameof(m_assignment.priority)}=@{nameof(m_assignment.priority)},
-                                       {nameof(m_assignment.status)}='1',
+                                       {nameof(m_assignment.status)}= @{nameof(m_assignment.status)},
                                        {nameof(m_assignment.comments)}=@{nameof(m_assignment.comments)},
                                        {nameof(m_assignment.updater)}=@{nameof(m_assignment.updater)}
                                  WHERE {nameof(m_assignment.assign_code)}=@{nameof(m_assignment.assign_code)};

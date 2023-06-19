@@ -33,7 +33,7 @@ namespace IFM.DataAccess.Models
         [Display(Name = "Create Time", AutoGenerateField = false, Order = 999)]
         public DateTime create_time { get; set; }
 
-        public DbModel() { }
+        public DbModel() {}
 
         public T Clone<T>() where T : DbModel
         {

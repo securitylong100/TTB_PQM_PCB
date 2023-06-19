@@ -61,7 +61,19 @@ namespace IFM.DataAccess.CQRS.Commands
                     Session.DbCommand.CommandType = CommandType.Text;
                     Session.DbCommand.CommandText = sql;
                     Session.DbCommand.Parameters.Clear();
-                    Session.AddParameter(item);
+                   // Session.AddParameter(item);
+                    Session.AddParameter(new
+                    {
+                        item.user_cd,
+                        item.assign_code,
+                        item.comments,
+                        item.status,
+                        item.priority,
+                        item.creator,
+                        item.create_time,
+                        item.updater,
+                        item.update_time
+                    });
                     result += Session.DbCommand.ExecuteNonQuery();
                 }
                 Session.SaveChanged();
