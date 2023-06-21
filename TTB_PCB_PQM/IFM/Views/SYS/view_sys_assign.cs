@@ -7,6 +7,9 @@ using IFM.DataAccess.CQRS.Queries;
 using IFM.DataAccess.Models;
 using IFM.DataAccess.Models.SYS;
 using System;
+using System.Windows.Forms;
+using DevExpress.XtraEditors.Repository;
+using System.Drawing;
 
 namespace IFM.Views.SYS
 {
@@ -37,8 +40,36 @@ namespace IFM.Views.SYS
                 item.enum_status = ModelStatus.FakeDelete;
                 gv_data.RefreshRow(e);
             };
+            gridcontrolview();
+            IFM.Common.OnGrid.Functions fn = new Common.OnGrid.Functions();
+            fn.getcombox(gv_data, gc_data);
         }
-
+        private void gridcontrolview()
+        {
+            gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
+        }
+        private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            var item = gv_data.GetRow(e.RowHandle) as m_assignment;
+            switch (item.enum_status)
+            {
+                case ModelStatus.New:
+                case ModelStatus.Modified:
+                case ModelStatus.Deleted:
+                    break;
+                case ModelStatus.FakeAdd:
+                    e.Appearance.BackColor = Color.Green;
+                    break;
+                case ModelStatus.FakeEdit:
+                    e.Appearance.BackColor = Color.Yellow;
+                    break;
+                case ModelStatus.FakeDelete:
+                    e.Appearance.BackColor = Color.Red;
+                    break;
+                default:
+                    break;
+            }
+        }
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -82,7 +113,15 @@ namespace IFM.Views.SYS
                 }
                 item.updater = ClsSession.App.UserName;
             }
-            _gridData.UpdateDB(new SystemUpdateViewsCommand(_gridData.LstModifired.ToArray()));
+            DialogResult dialogResult = MessageBox.Show("Are you sure to change the data ?", "Save Data", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                _gridData.UpdateDB(new SystemUpdateViewsCommand(_gridData.LstModifired.ToArray()));
+            }
+            else if (dialogResult == DialogResult.No)
+            {           
+            }
+            _gridData.RefreshData(_refreshQuery);
         }
 
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)

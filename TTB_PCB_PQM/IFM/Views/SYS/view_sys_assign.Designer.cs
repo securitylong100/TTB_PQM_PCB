@@ -37,6 +37,7 @@
             this.colassign_view = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colparent_code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colpriority = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -75,7 +76,8 @@
             this.colassign_name_vn,
             this.colassign_view,
             this.colparent_code,
-            this.colpriority});
+            this.colpriority,
+            this.status});
             this.gv_data.GridControl = this.gc_data;
             this.gv_data.Name = "gv_data";
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
@@ -114,14 +116,22 @@
             this.colparent_code.FieldName = "parent_code";
             this.colparent_code.Name = "colparent_code";
             this.colparent_code.Visible = true;
-            this.colparent_code.VisibleIndex = 4;
+            this.colparent_code.VisibleIndex = 5;
             // 
             // colpriority
             // 
             this.colpriority.FieldName = "priority";
             this.colpriority.Name = "colpriority";
             this.colpriority.Visible = true;
-            this.colpriority.VisibleIndex = 5;
+            this.colpriority.VisibleIndex = 6;
+            // 
+            // status
+            // 
+            this.status.Caption = "status";
+            this.status.FieldName = "status";
+            this.status.Name = "status";
+            this.status.Visible = true;
+            this.status.VisibleIndex = 4;
             // 
             // ribbonControl
             // 
@@ -290,5 +300,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colassign_view;
         private DevExpress.XtraGrid.Columns.GridColumn colparent_code;
         private DevExpress.XtraGrid.Columns.GridColumn colpriority;
+        private DevExpress.XtraGrid.Columns.GridColumn status;
     }
 }

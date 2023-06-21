@@ -42,20 +42,33 @@ namespace IFM.Views.SYS
                 gv_data.RefreshRow(e);
             };
             gridcontrolview();
+            IFM.Common.OnGrid.Functions fn = new Common.OnGrid.Functions();
+            fn.getcombox(gv_data, gc_data);
         }
         private void gridcontrolview()
         {
+            RepositoryItemComboBox riComboBox;
             var users = ClsSession.App.DbServices.Query(new SystemGetDistinctUserQuery());
-            RepositoryItemComboBox riComboBox = new RepositoryItemComboBox();
+            var assign_code = ClsSession.App.DbServices.Query(new SystemGetDistinctViewsQuery());
+            riComboBox = new RepositoryItemComboBox();
+            foreach (var assign in assign_code)
+            {
+                riComboBox.Items.Add(assign.assign_code);
+            }
+            gc_data.RepositoryItems.Add(riComboBox);
+            gv_data.Columns["assign_code"].ColumnEdit = riComboBox;
+
+            riComboBox = new RepositoryItemComboBox();
             foreach (var user in users)
             {
                 riComboBox.Items.Add(user.user_cd);
             }
             gc_data.RepositoryItems.Add(riComboBox);
             gv_data.Columns["user_cd"].ColumnEdit = riComboBox;
-            gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
-            
+
+            gv_data.CustomDrawCell += Gv_data_CustomDrawCell;           
         }
+
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             var item = gv_data.GetRow(e.RowHandle) as m_user_role;
@@ -132,10 +145,9 @@ namespace IFM.Views.SYS
                 _gridData.UpdateDB(new SystemUpdateUserRolesCommand(_gridData.LstModifired.ToArray()));
             }
             else if (dialogResult == DialogResult.No)
-            {
-                _gridData.RefreshData(_refreshQuery);
+            {              
             }
-          //  _gridData.UpdateDB(new SystemUpdateUserRolesCommand(_gridData.LstModifired.ToArray()));
+            _gridData.RefreshData(_refreshQuery);
         }
 
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)

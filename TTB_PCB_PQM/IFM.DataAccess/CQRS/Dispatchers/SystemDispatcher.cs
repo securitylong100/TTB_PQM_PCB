@@ -11,7 +11,7 @@ namespace IFM.Business.Dispatchers.SYS
         {
             //m_login
             Register(new SystemLoginHandler(session));
-            
+
             //m_assignment
             Register(new SystemGetViewsHandler(session));
             Register(new SystemDeleteViewHandler(session));
@@ -26,6 +26,7 @@ namespace IFM.Business.Dispatchers.SYS
             Register(new SystemGetUserRolesHandler(session));
             Register(new SystemUpdateUserRolesHandler(session));
             Register(new SystemGetDistinctUserHandler(session));
+            Register(new SystemGetDistinctViewsHandler(session));
 
         }
     }

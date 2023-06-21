@@ -43,6 +43,7 @@ namespace IFM.DataAccess.CQRS.Queries
             {
                 sql += $" WHERE {query.Filter}";
             }
+            sql += $" WHERE 1=1 and  {nameof(m_user_role.status)} <3 ";
             sql += $" ORDER BY {nameof(m_user_role.priority)};";
             try
             {

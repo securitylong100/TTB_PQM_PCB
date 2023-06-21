@@ -194,12 +194,12 @@
             this.gridColumn7,
             this.gridColumn1,
             this.gridColumn2,
+            this.gridColumn6,
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn9,
-            this.gridColumn8,
-            this.gridColumn6});
+            this.gridColumn8});
             this.gv_data.GridControl = this.gc_data;
             this.gv_data.Name = "gv_data";
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
@@ -276,7 +276,6 @@
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "status";
             this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 3;
             // 

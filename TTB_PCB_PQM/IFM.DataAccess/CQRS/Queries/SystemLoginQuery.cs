@@ -36,6 +36,8 @@ namespace IFM.DataAccess.CQRS.Queries
 	                            JOIN m_user_roles AS r
 	                            ON u.user_cd=r.user_cd
 	                            WHERE 1=1
+                                and u.status < 2
+                                and r.status <2
 	                            AND u.user_cd=@UserCode
 	                            AND u.user_pass=@Password;";
                 Session.DbCommand.CommandText = sql;

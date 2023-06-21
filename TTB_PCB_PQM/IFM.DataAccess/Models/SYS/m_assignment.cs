@@ -23,18 +23,24 @@ namespace IFM.DataAccess.Models.SYS
         public m_assignment()
         {
             ID = 0;
-            assign_code = string.Empty;
-            assign_name = string.Empty;
-            assign_name_vn = string.Empty;
-            assign_view = string.Empty;
-            parent_code = string.Empty;
+            assign_code = string.Empty == "" ? "Null" : comments;
+            assign_name = string.Empty == "" ? "Null" : comments;
+            assign_name_vn = string.Empty == "" ? "Null" : comments;
+            assign_view = string.Empty == "" ? "Null" : comments;
+            parent_code = string.Empty == "" ? "Null" : comments;
             priority = 0;
             status = 3;
-            comments = string.Empty;
+            comments = string.Empty == "" ? "Null" : comments;
             updater = string.Empty;
             update_time = DateTime.Now;
             creator = string.Empty;
             create_time = DateTime.Now;
+            //ID = 0;
+            //comments = string.Empty == "" ? "Null" : comments;
+            //updater = string.Empty;
+            //update_time = DateTime.Now;
+            //creator = string.Empty;
+            //create_time = DateTime.Now;
         }
     }
 }

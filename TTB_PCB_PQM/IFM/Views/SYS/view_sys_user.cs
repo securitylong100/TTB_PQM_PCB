@@ -10,6 +10,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using DevExpress.XtraEditors.Repository;
+//using IFM.Common.OnGrid;
 
 namespace IFM.Views.SYS
 {
@@ -41,6 +42,8 @@ namespace IFM.Views.SYS
                 gv_data.RefreshRow(e);
             };
             gridcontrolview();
+            IFM.Common.OnGrid.Functions fn = new Common.OnGrid.Functions();
+            fn.getcombox(gv_data, gc_data);
         }
         private void gridcontrolview()
         {
@@ -51,6 +54,7 @@ namespace IFM.Views.SYS
             gv_data.Columns["user_lang"].ColumnEdit = riComboBox;
             gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
         }
+        
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             var item = gv_data.GetRow(e.RowHandle) as m_user;
@@ -113,7 +117,15 @@ namespace IFM.Views.SYS
                     }
                     item.updater = ClsSession.App.UserName;
                 }
-                _gridData.UpdateDB(new SystemUpdateUserCommand(_gridData.LstModifired.ToArray()));
+                DialogResult dialogResult = MessageBox.Show("Are you sure to change the data ?", "Save Data", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    _gridData.UpdateDB(new SystemUpdateUserCommand(_gridData.LstModifired.ToArray()));
+                }
+                else if (dialogResult == DialogResult.No)
+                { 
+                }
+                _gridData.RefreshData(_refreshQuery);
             }
             catch (Exception ex)
             {

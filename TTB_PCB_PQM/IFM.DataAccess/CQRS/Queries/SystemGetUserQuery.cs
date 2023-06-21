@@ -11,8 +11,8 @@ namespace IFM.DataAccess.CQRS.Queries
     {
         public Guid Guid { get; }
         public string Filter { get; }
-
-        public SystemGetUserQuery() : this(string.Empty) { }
+        
+        public SystemGetUserQuery() : this(string.Empty) {}
 
         public SystemGetUserQuery(string filter)
         {
@@ -41,8 +41,9 @@ namespace IFM.DataAccess.CQRS.Queries
                                   FROM m_user ";
             if (!string.IsNullOrWhiteSpace(query.Filter))
             {
-                sql += $" WHERE {query.Filter}";
+                sql += $" WHERE {query.Filter}";             
             }
+           // sql += $" WHERE 1=1 and  {nameof(m_user.status)} <> '2' ";
             sql += $" ORDER BY {nameof(m_user.user_role)};";
             try
             {

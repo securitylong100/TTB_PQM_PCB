@@ -27,7 +27,7 @@ namespace IFM.DataAccess.CQRS.Commands
         {
             try
             {
-                string sql = $@"UPDATE app_db.m_assignments SET 
+                string sql = $@"UPDATE m_assignments SET 
                                        {nameof(m_assignment.assign_name)}=@{nameof(m_assignment.assign_name)},
                                        {nameof(m_assignment.assign_name_vn)}=@{nameof(m_assignment.assign_name_vn)},
                                        {nameof(m_assignment.assign_view)}=@{nameof(m_assignment.assign_view)},
@@ -37,7 +37,7 @@ namespace IFM.DataAccess.CQRS.Commands
                                        {nameof(m_assignment.comments)}=@{nameof(m_assignment.comments)},
                                        {nameof(m_assignment.updater)}=@{nameof(m_assignment.updater)}
                                  WHERE {nameof(m_assignment.assign_code)}=@{nameof(m_assignment.assign_code)};
-                                 INSERT INTO app_db.m_assignments(
+                                 INSERT INTO m_assignments(
                                              {nameof(m_assignment.assign_code)},
                                              {nameof(m_assignment.assign_name)},
                                              {nameof(m_assignment.assign_name_vn)},
@@ -59,7 +59,7 @@ namespace IFM.DataAccess.CQRS.Commands
                                             ,@{nameof(m_assignment.updater)}
                                             ,@{nameof(m_assignment.creator)}
                                       WHERE NOT EXISTS(
-                                         SELECT 1 FROM app_db.m_assignments
+                                         SELECT 1 FROM m_assignments
                                          WHERE {nameof(m_assignment.assign_code)}=@{nameof(m_assignment.assign_code)}
                                       );";
                 int result = 0;
@@ -69,7 +69,20 @@ namespace IFM.DataAccess.CQRS.Commands
                     Session.DbCommand.CommandType = CommandType.Text;
                     Session.DbCommand.CommandText = sql;
                     Session.DbCommand.Parameters.Clear();
-                    Session.AddParameter(item);
+                    Session.AddParameter(new { 
+                    item.assign_code,
+                    item.assign_name,
+                    item.assign_name_vn,
+                    item.assign_view,
+                    item.parent_code,
+                    item.priority,
+                    item.status,
+                    item.comments,
+                    item.updater,
+                    item.creator,
+                    item.create_time,
+                    item.update_time
+                    });
                     result += Session.DbCommand.ExecuteNonQuery();
                 }
                 Session.SaveChanged();

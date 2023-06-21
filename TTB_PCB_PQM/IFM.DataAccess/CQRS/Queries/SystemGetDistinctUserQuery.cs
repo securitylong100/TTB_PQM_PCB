@@ -29,7 +29,7 @@ namespace IFM.DataAccess.CQRS.Queries
         public override IEnumerable<m_user> Handle(SystemGetDistinctUserQuery query)
         {
             string sql = $@"SELECT distinct user_cd
-                                  FROM m_user ";
+                                  FROM m_user where status <2 ";
             if (!string.IsNullOrWhiteSpace(query.Filter))
             {
                 sql += $" WHERE {query.Filter}";
