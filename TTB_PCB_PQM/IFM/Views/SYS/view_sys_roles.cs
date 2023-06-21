@@ -9,6 +9,7 @@ using IFM.DataAccess.Models.SYS;
 using System;
 using DevExpress.XtraEditors.Repository;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace IFM.Views.SYS
 {
@@ -53,10 +54,7 @@ namespace IFM.Views.SYS
             gc_data.RepositoryItems.Add(riComboBox);
             gv_data.Columns["user_cd"].ColumnEdit = riComboBox;
             gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
-            //RepositoryItemComboBox riComboBox = new RepositoryItemComboBox();
-            //gc_data.RepositoryItems.Add("");
-            //gv_data.Columns["user_cd"].ColumnEdit = riComboBox;
-            //gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
+            
         }
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
@@ -128,14 +126,22 @@ namespace IFM.Views.SYS
                 }
                 item.updater = ClsSession.App.UserName;
             }
-            _gridData.UpdateDB(new SystemUpdateUserRolesCommand(_gridData.LstModifired.ToArray()));
+            DialogResult dialogResult = MessageBox.Show("Are you sure to change the data ?", "Save Data", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                _gridData.UpdateDB(new SystemUpdateUserRolesCommand(_gridData.LstModifired.ToArray()));
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                _gridData.RefreshData(_refreshQuery);
+            }
+          //  _gridData.UpdateDB(new SystemUpdateUserRolesCommand(_gridData.LstModifired.ToArray()));
         }
 
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
             _gridData.Delete();
         }
-
         private void BbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
             _gridData.RefreshData(_refreshQuery);

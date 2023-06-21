@@ -30,15 +30,6 @@ namespace IFM.DataAccess.CQRS.Commands
         {
             try
             {
-                // user_cd,
-                //user_name,
-                //user_pass,
-                //user_status,
-                //user_comments,
-                //user_role,
-                //user_email,
-                //user_permision,
-                //user_lang
                 string sql = $@"UPDATE m_user SET 
                                        {nameof(m_user.user_name)}=@{nameof(m_user.user_name)},
                                        {nameof(m_user.user_pass)}=@{nameof(m_user.user_pass)},
