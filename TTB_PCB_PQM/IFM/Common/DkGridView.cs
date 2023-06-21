@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using DevExpress.XtraEditors.Repository;
 
 namespace IFM.Common
 {
@@ -98,6 +99,8 @@ namespace IFM.Common
                 _gvData.BestFitColumns();
             }
         }
+
+       
 
         public enum DataState
         {

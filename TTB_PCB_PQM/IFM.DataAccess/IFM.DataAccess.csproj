@@ -51,6 +51,7 @@
     <Compile Include="CQRS\Commands\SystemDeleteViewCommand.cs" />
     <Compile Include="CQRS\Dispatchers\SystemDispatcher.cs" />
     <Compile Include="CQRS\DkDispatcher.cs" />
+    <Compile Include="CQRS\Queries\SystemGetDistinctUserQuery.cs" />
     <Compile Include="CQRS\Queries\SystemGetUserRolesQuery.cs" />
     <Compile Include="CQRS\Queries\SystemGetUserQuery.cs" />
     <Compile Include="Extensions\De_Encrypt.cs" />

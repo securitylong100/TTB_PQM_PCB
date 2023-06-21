@@ -16,7 +16,7 @@ namespace IFM.Views.SYS
     {
         private readonly DkGridView<m_user_role> _gridData;
         private readonly SystemGetUserRolesQuery _refreshQuery = new SystemGetUserRolesQuery();
-        private readonly SystemGetDistinctUserQuery _getUser = new SystemGetDistinctUserQuery();
+      //  private readonly SystemGetDistinctUserQuery _getUser = new SystemGetDistinctUserQuery();
 
         public view_sys_roles()
         {
@@ -44,12 +44,19 @@ namespace IFM.Views.SYS
         }
         private void gridcontrolview()
         {
-            //RepositoryItemComboBox riComboBox = new RepositoryItemComboBox();
-            //riComboBox.Items.Add(IfmLanguage.En);
-            //riComboBox.Items.Add(IfmLanguage.Vi);
-            //gc_data.RepositoryItems.Add(riComboBox);
-            //gv_data.Columns["user_lang"].ColumnEdit = riComboBox;
+            var users = ClsSession.App.DbServices.Query(new SystemGetDistinctUserQuery());
+            RepositoryItemComboBox riComboBox = new RepositoryItemComboBox();
+            foreach (var user in users)
+            {
+                riComboBox.Items.Add(user.user_cd);
+            }
+            gc_data.RepositoryItems.Add(riComboBox);
+            gv_data.Columns["user_cd"].ColumnEdit = riComboBox;
             gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
+            //RepositoryItemComboBox riComboBox = new RepositoryItemComboBox();
+            //gc_data.RepositoryItems.Add("");
+            //gv_data.Columns["user_cd"].ColumnEdit = riComboBox;
+            //gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
         }
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
