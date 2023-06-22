@@ -49,9 +49,14 @@
             this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.comments = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+         
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+           
             this.SuspendLayout();
             // 
             // ribbonPage1
@@ -157,17 +162,17 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(781, 79);
+            this.ribbonControl.Size = new System.Drawing.Size(1056, 79);
             this.ribbonControl.StatusBar = this.bar_status;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bar_status
             // 
             this.bar_status.ItemLinks.Add(this.bsiRecordsCount);
-            this.bar_status.Location = new System.Drawing.Point(0, 447);
+            this.bar_status.Location = new System.Drawing.Point(0, 494);
             this.bar_status.Name = "bar_status";
             this.bar_status.Ribbon = this.ribbonControl;
-            this.bar_status.Size = new System.Drawing.Size(781, 31);
+            this.bar_status.Size = new System.Drawing.Size(1056, 31);
             // 
             // bsiRecordsCount
             // 
@@ -234,29 +239,61 @@
             // gc_data
             // 
             this.gc_data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gc_data.Location = new System.Drawing.Point(0, 79);
+            this.gc_data.Location = new System.Drawing.Point(3, 119);
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(781, 368);
+            this.gc_data.Size = new System.Drawing.Size(1050, 293);
             this.gc_data.TabIndex = 2;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
             // 
-            // view_sys_roles
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.gc_data, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 79);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.98913F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.01087F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1056, 415);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+           
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1050, 110);
+            this.panel1.TabIndex = 3;
+            // 
+            // textEdit1
+            // 
+         
+            // 
+            // View_Tool_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 478);
-            this.Controls.Add(this.gc_data);
+            this.ClientSize = new System.Drawing.Size(1056, 525);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bar_status);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "view_sys_roles";
+            this.Name = "View_Tool_Management";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.bar_status;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+         
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +321,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn Status;
         private DevExpress.XtraGrid.Columns.GridColumn comments;
         private DevExpress.XtraGrid.GridControl gc_data;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+       
     }
 }

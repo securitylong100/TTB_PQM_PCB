@@ -16,7 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>Z:\IFM\4. IT\1. HỆ THỐNG VẬN HÀNH\IFM soft\</PublishUrl>
+    <PublishUrl>Z:\IFM\4. IT\1. HỆ THỐNG VẬN HÀNH\</PublishUrl>
     <Install>false</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -197,11 +197,24 @@
     <Compile Include="Common\mysqlconnection.cs" />
     <Compile Include="Common\OnGrid\DeleteRow.cs" />
     <Compile Include="Common\OnGrid\Functions.cs" />
+    <Compile Include="Common\OnGrid\OnGrid_CQRS.cs" />
     <Compile Include="Common\Views\DkWaitForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Common\Views\DkWaitForm.Designer.cs">
       <DependentUpon>DkWaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Tool_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Tool_Master.Designer.cs">
+      <DependentUpon>View_STM_Tool_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_Tool_Management.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_Tool_Management.Designer.cs">
+      <DependentUpon>View_Tool_Management.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SYS\view_sys_user.cs">
       <SubType>Form</SubType>
@@ -272,6 +285,12 @@
     </Compile>
     <EmbeddedResource Include="Common\Views\DkWaitForm.resx">
       <DependentUpon>DkWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Tool_Master.resx">
+      <DependentUpon>View_STM_Tool_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_Tool_Management.resx">
+      <DependentUpon>View_Tool_Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SYS\view_sys_user.resx">
       <DependentUpon>view_sys_user.cs</DependentUpon>

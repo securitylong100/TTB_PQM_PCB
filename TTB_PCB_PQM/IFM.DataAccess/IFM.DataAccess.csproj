@@ -44,13 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CQRS\Commands\NIDEC\SMT\SMTTool_UpdateMasterCommand.cs" />
+    <Compile Include="CQRS\Commands\NIDEC\SMT\SMTTool_DeleteMasterCommand.cs" />
     <Compile Include="CQRS\Commands\SystemDeleteUserCommand .cs" />
     <Compile Include="CQRS\Commands\SystemUpdateUserRolesCommand.cs" />
     <Compile Include="CQRS\Commands\SystemUpdateUserCommand.cs" />
     <Compile Include="CQRS\Commands\SystemUpdateViewsCommand.cs" />
     <Compile Include="CQRS\Commands\SystemDeleteViewCommand.cs" />
+    <Compile Include="CQRS\Dispatchers\SMTDispatcher.cs" />
     <Compile Include="CQRS\Dispatchers\SystemDispatcher.cs" />
     <Compile Include="CQRS\DkDispatcher.cs" />
+    <Compile Include="CQRS\Queries\NIDEC\SMT\SMTTool_GetMasterQuery.cs" />
     <Compile Include="CQRS\Queries\SystemGetDistinctViewsQuery.cs" />
     <Compile Include="CQRS\Queries\SystemGetDistinctUserQuery.cs" />
     <Compile Include="CQRS\Queries\SystemGetUserRolesQuery.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="Models\DbModel.cs" />
     <Compile Include="Models\GlobalEnums.cs" />
     <Compile Include="Models\IDbModel.cs" />
+    <Compile Include="Models\NIDEC\m_smt_tool.cs" />
     <Compile Include="Models\SYS\m_assignment.cs" />
     <Compile Include="Models\SYS\m_user_role.cs" />
     <Compile Include="Models\SYS\sp_user_login.cs" />
