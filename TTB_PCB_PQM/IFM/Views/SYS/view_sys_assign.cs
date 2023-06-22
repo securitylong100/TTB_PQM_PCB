@@ -51,23 +51,26 @@ namespace IFM.Views.SYS
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
             var item = gv_data.GetRow(e.RowHandle) as m_assignment;
-            switch (item.enum_status)
+            if (item.enum_status >= 0)
             {
-                case ModelStatus.New:
-                case ModelStatus.Modified:
-                case ModelStatus.Deleted:
-                    break;
-                case ModelStatus.FakeAdd:
-                    e.Appearance.BackColor = Color.Green;
-                    break;
-                case ModelStatus.FakeEdit:
-                    e.Appearance.BackColor = Color.Yellow;
-                    break;
-                case ModelStatus.FakeDelete:
-                    e.Appearance.BackColor = Color.Red;
-                    break;
-                default:
-                    break;
+                switch (item.enum_status)
+                {
+                    case ModelStatus.New:
+                    case ModelStatus.Modified:
+                    case ModelStatus.Deleted:
+                        break;
+                    case ModelStatus.FakeAdd:
+                        e.Appearance.BackColor = Color.Green;
+                        break;
+                    case ModelStatus.FakeEdit:
+                        e.Appearance.BackColor = Color.Yellow;
+                        break;
+                    case ModelStatus.FakeDelete:
+                        e.Appearance.BackColor = Color.Red;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         protected override void OnLoad(EventArgs e)
@@ -88,40 +91,51 @@ namespace IFM.Views.SYS
 
         private void BbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
-            foreach (var item in _gridData.LstModifired)
+            try
             {
-                switch (item.enum_status)
+
+                foreach (var item in _gridData.LstModifired)
                 {
-                    case ModelStatus.FakeAdd:
-                        item.enum_status = ModelStatus.New;
-                        break;
-                    case ModelStatus.FakeEdit:
-                        item.enum_status = ModelStatus.Modified;
-                        break;
-                    case ModelStatus.FakeDelete:
-                        item.enum_status = ModelStatus.Deleted;
-                        break;
-                    case ModelStatus.New:
-                    case ModelStatus.Modified:
-                    case ModelStatus.Deleted:
-                    default:
-                        break;
+                    if (item.enum_status >= 0)
+                    {
+                        switch (item.enum_status)
+                        {
+                            case ModelStatus.FakeAdd:
+                                item.enum_status = ModelStatus.New;
+                                break;
+                            case ModelStatus.FakeEdit:
+                                item.enum_status = ModelStatus.Modified;
+                                break;
+                            case ModelStatus.FakeDelete:
+                                item.enum_status = ModelStatus.Deleted;
+                                break;
+                            case ModelStatus.New:
+                            case ModelStatus.Modified:
+                            case ModelStatus.Deleted:
+                            default:
+                                break;
+                        }
+                    }
+                    if (string.IsNullOrWhiteSpace(item.creator))
+                    {
+                        item.creator = ClsSession.App.UserName;
+                    }
+                    item.updater = ClsSession.App.UserName;
                 }
-                if (string.IsNullOrWhiteSpace(item.creator))
+                DialogResult dialogResult = MessageBox.Show("Are you sure to change the data ?", "Save Data", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    item.creator = ClsSession.App.UserName;
+                    _gridData.UpdateDB(new SystemUpdateViewsCommand(_gridData.LstModifired.ToArray()));
                 }
-                item.updater = ClsSession.App.UserName;
+                else if (dialogResult == DialogResult.No)
+                {
+                }
+                _gridData.RefreshData(_refreshQuery);
             }
-            DialogResult dialogResult = MessageBox.Show("Are you sure to change the data ?", "Save Data", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            catch (Exception ex)
             {
-                _gridData.UpdateDB(new SystemUpdateViewsCommand(_gridData.LstModifired.ToArray()));
+                MessageBox.Show("Error :" + ex.Message);
             }
-            else if (dialogResult == DialogResult.No)
-            {           
-            }
-            _gridData.RefreshData(_refreshQuery);
         }
 
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)

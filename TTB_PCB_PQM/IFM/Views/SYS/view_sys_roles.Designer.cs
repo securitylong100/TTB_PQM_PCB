@@ -186,7 +186,6 @@
             this.comments});
             this.gv_data.GridControl = this.gc_data;
             this.gv_data.Name = "gv_data";
-            this.gv_data.OptionsBehavior.Editable = false;
             this.gv_data.OptionsBehavior.ReadOnly = true;
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;

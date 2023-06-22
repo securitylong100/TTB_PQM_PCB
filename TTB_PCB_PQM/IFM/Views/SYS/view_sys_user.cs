@@ -54,27 +54,37 @@ namespace IFM.Views.SYS
             gv_data.Columns["user_lang"].ColumnEdit = riComboBox;
             gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
         }
-        
+
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
-            var item = gv_data.GetRow(e.RowHandle) as m_user;
-            switch (item.enum_status)
+            try
             {
-                case ModelStatus.New:
-                case ModelStatus.Modified:
-                case ModelStatus.Deleted:
-                    break;
-                case ModelStatus.FakeAdd:
-                    e.Appearance.BackColor = Color.Green;
-                    break;
-                case ModelStatus.FakeEdit:
-                    e.Appearance.BackColor = Color.Yellow;
-                    break;
-                case ModelStatus.FakeDelete:
-                    e.Appearance.BackColor = Color.Red;
-                    break;
-                default:
-                    break;
+                var item = gv_data.GetRow(e.RowHandle) as m_user;
+                if (item.enum_status >= 0)
+                {
+                    switch (item.enum_status)
+                    {
+                        case ModelStatus.New:
+                        case ModelStatus.Modified:
+                        case ModelStatus.Deleted:
+                            break;
+                        case ModelStatus.FakeAdd:
+                            e.Appearance.BackColor = Color.Green;
+                            break;
+                        case ModelStatus.FakeEdit:
+                            e.Appearance.BackColor = Color.Yellow;
+                            break;
+                        case ModelStatus.FakeDelete:
+                            e.Appearance.BackColor = Color.Red;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
             }
         }
         protected override void OnLoad(EventArgs e)
@@ -94,22 +104,25 @@ namespace IFM.Views.SYS
             {
                 foreach (var item in _gridData.LstModifired)
                 {
-                    switch (item.enum_status)
+                    if (item.enum_status >= 0)
                     {
-                        case ModelStatus.FakeAdd:
-                            item.enum_status = ModelStatus.New;
-                            break;
-                        case ModelStatus.FakeEdit:
-                            item.enum_status = ModelStatus.Modified;
-                            break;
-                        case ModelStatus.FakeDelete:
-                            item.enum_status = ModelStatus.Deleted;
-                            break;
-                        case ModelStatus.New:
-                        case ModelStatus.Modified:
-                        case ModelStatus.Deleted:
-                        default:
-                            break;
+                        switch (item.enum_status)
+                        {
+                            case ModelStatus.FakeAdd:
+                                item.enum_status = ModelStatus.New;
+                                break;
+                            case ModelStatus.FakeEdit:
+                                item.enum_status = ModelStatus.Modified;
+                                break;
+                            case ModelStatus.FakeDelete:
+                                item.enum_status = ModelStatus.Deleted;
+                                break;
+                            case ModelStatus.New:
+                            case ModelStatus.Modified:
+                            case ModelStatus.Deleted:
+                            default:
+                                break;
+                        }
                     }
                     if (string.IsNullOrWhiteSpace(item.creator))
                     {
@@ -123,7 +136,7 @@ namespace IFM.Views.SYS
                     _gridData.UpdateDB(new SystemUpdateUserCommand(_gridData.LstModifired.ToArray()));
                 }
                 else if (dialogResult == DialogResult.No)
-                { 
+                {
                 }
                 _gridData.RefreshData(_refreshQuery);
             }
