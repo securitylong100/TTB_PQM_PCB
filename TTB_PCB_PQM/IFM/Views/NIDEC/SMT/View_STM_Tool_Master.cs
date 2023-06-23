@@ -83,23 +83,19 @@ namespace IFM.Views.NIDEC.SMT
         {
             gc_data.ShowRibbonPrintPreview();
         }
-
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             _gridData.RefreshData(_refreshQuery);
         }
-
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
             _gridData.Add();
         }
-
         private void BbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
             _gridData.Edit();
         }
-
         private void BbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
             try
@@ -146,9 +142,7 @@ namespace IFM.Views.NIDEC.SMT
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-
         }
-
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
             _gridData.Delete();
@@ -157,18 +151,15 @@ namespace IFM.Views.NIDEC.SMT
         {
             _gridData.RefreshData(_refreshQuery);
         }
-
         private void gv_data_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             GridView view = sender as GridView;
             OnGrid_CQRS.ID_ = (int)view.GetRowCellValue(view.FocusedRowHandle, "ID");
             OnGrid_CQRS.command_ = new SMTTool_DeleteMasterCommand(OnGrid_CQRS.ID_);
             OnGrid_CQRS CallDeleteRow = new OnGrid_CQRS();
-            CallDeleteRow.MouseRight(sender,e);
+            CallDeleteRow.MouseRight(sender, e);
             _gridData.RefreshData(_refreshQuery);
-           
         }
-
         internal class UserRolesGridViewT : DkGridView<m_smt_tool>
         {
             public UserRolesGridViewT(GridView gridView) : base(gridView, ClsSession.App.DbServices)

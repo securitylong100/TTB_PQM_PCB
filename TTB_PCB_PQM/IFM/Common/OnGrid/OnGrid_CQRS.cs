@@ -57,14 +57,9 @@ namespace IFM.Common.OnGrid
                     if (XtraMessageBox.Show(message + " ?", "Confirm operation", MessageBoxButtons.YesNo) != DialogResult.Yes)
                         return;
                     //key delete
-                    if (ID_ >0)
+                    if (ID_ > 0)
                     {
-                   
                         ClsSession.App.DbServices.Execute(command_);
-                    }
-                    else
-                    {
-                        ri.View.DeleteRow(ri.RowHandle);
                     }
                 }
             }

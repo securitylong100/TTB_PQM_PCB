@@ -161,7 +161,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(781, 79);
+            this.ribbonControl.Size = new System.Drawing.Size(917, 79);
             this.ribbonControl.StatusBar = this.bar_status;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -171,7 +171,7 @@
             this.bar_status.Location = new System.Drawing.Point(0, 447);
             this.bar_status.Name = "bar_status";
             this.bar_status.Ribbon = this.ribbonControl;
-            this.bar_status.Size = new System.Drawing.Size(781, 31);
+            this.bar_status.Size = new System.Drawing.Size(917, 31);
             // 
             // bsiRecordsCount
             // 
@@ -277,7 +277,7 @@
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(781, 368);
+            this.gc_data.Size = new System.Drawing.Size(917, 368);
             this.gc_data.TabIndex = 2;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
@@ -286,7 +286,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 478);
+            this.ClientSize = new System.Drawing.Size(917, 478);
             this.Controls.Add(this.gc_data);
             this.Controls.Add(this.bar_status);
             this.Controls.Add(this.ribbonControl);
