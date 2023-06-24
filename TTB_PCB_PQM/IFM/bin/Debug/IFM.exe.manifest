@@ -223,14 +223,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IFM.exe" size="53303776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IFM.exe" size="53311456">
       <assemblyIdentity name="IFM" version="23.3.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dkVQMKAduqwmtqBeM55pZCtYZcW9VF1XYaGOUVflzkI=</dsig:DigestValue>
+        <dsig:DigestValue>zS/4asMNdUYQO3J0j/h9ZkWVwOXc3Ky7AxkZaqJVozk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

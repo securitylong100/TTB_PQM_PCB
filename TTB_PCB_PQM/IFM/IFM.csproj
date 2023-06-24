@@ -194,6 +194,7 @@
   <ItemGroup>
     <Compile Include="ClsSession.cs" />
     <Compile Include="Common\DkGridView.cs" />
+    <Compile Include="Common\pgsqlconnection.cs" />
     <Compile Include="Common\mysqlconnection.cs" />
     <Compile Include="Common\OnGrid\DeleteRow.cs" />
     <Compile Include="Common\OnGrid\Functions.cs" />
@@ -210,11 +211,11 @@
     <Compile Include="Views\NIDEC\SMT\View_STM_Tool_Master.Designer.cs">
       <DependentUpon>View_STM_Tool_Master.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\NIDEC\SMT\View_Tool_Management.cs">
+    <Compile Include="Views\NIDEC\SMT\View_STM_Tool_History.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\NIDEC\SMT\View_Tool_Management.Designer.cs">
-      <DependentUpon>View_Tool_Management.cs</DependentUpon>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Tool_History.Designer.cs">
+      <DependentUpon>View_STM_Tool_History.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SYS\view_sys_user.cs">
       <SubType>Form</SubType>
@@ -289,8 +290,8 @@
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Tool_Master.resx">
       <DependentUpon>View_STM_Tool_Master.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\NIDEC\SMT\View_Tool_Management.resx">
-      <DependentUpon>View_Tool_Management.cs</DependentUpon>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Tool_History.resx">
+      <DependentUpon>View_STM_Tool_History.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SYS\view_sys_user.resx">
       <DependentUpon>view_sys_user.cs</DependentUpon>

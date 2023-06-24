@@ -20,7 +20,7 @@ namespace IFM.DataAccess.Models.NIDEC
         public m_smt_tool()
         {
             ID = 0;
-            tool_station = string.Empty == "" ? "SMT" : tool_station;
+            tool_station = string.Empty == "" ? "" : tool_station;
             tool_project = string.Empty == "" ? "SMT Frame" : tool_project;
             comments = string.Empty ==""?"Null":comments;
             updater = string.Empty;

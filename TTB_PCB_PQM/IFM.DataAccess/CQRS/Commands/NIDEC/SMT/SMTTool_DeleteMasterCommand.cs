@@ -17,7 +17,6 @@ namespace IFM.DataAccess.CQRS.Commands
             Guid = Guid.NewGuid();
         }
     }
-
     internal class SMTTool_DeleteMasterHandler : DkCommandHandler<SMTTool_DeleteMasterCommand>
     {
         public SMTTool_DeleteMasterHandler(IDkSession session) : base(session)
