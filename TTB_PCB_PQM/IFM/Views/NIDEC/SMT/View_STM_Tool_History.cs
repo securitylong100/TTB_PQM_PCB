@@ -164,8 +164,8 @@ namespace IFM.Views.NIDEC.SMT
                                     VALUES("
                                      );
                     sqlinsert.Append("'" + txt_barcode.Text + "',");
-                    sqlinsert.Append("'" + cbm_station.SelectedItem + "',");
-                    sqlinsert.Append("'" + cbm_status.SelectedItem + "',");
+                    sqlinsert.Append("'" + cbm_station.Text + "',");
+                    sqlinsert.Append("'" + cbm_status.Text + "',");
                     sqlinsert.Append("'" + ClsSession.App.UserName + "',");
                     sqlinsert.Append("CURRENT_TIMESTAMP");
                     sqlinsert.Append(")");
