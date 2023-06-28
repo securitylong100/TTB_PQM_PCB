@@ -14,6 +14,11 @@ namespace IFM.Class
         public NpgsqlConnection connection;
 
         // public static string conectionEncrypt = "9hjG0KiHa226YXSkj3T6kuFdTTP6wctzKNbXuuw3DXMEufU2GBMiq0GpO6sE4LxyrrIGzQMNovF9C29hGWbjUBGh/LRCigCjyPJCQrT/wi0OcWHEt3gmv3g1tmzt+/loGrvrqIlV046OBJrMJJ26Bg==";
+        //nidec connection
+        //b4+ZqSnqCtCIesf1t8pV0OKl4Q3rvy0ArDpRgTNwnCbNkXx2FAoJXEyO0y1yL/95eBZzv6k+TdokLWkPGm8rbZu42k801TZiSqE6V7C9hswOcWHEt3gmv3g1tmzt+/loGrvrqIlV046OBJrMJJ26Bg==
+
+        //pqm connection
+        //9hjG0KiHa226YXSkj3T6kuFdTTP6wctzKNbXuuw3DXMEufU2GBMiq0GpO6sE4LxyrrIGzQMNovF9C29hGWbjUH7apSlbiNY5+v1dxdcS9tkOcWHEt3gmv3g1tmzt+/loGrvrqIlV046OBJrMJJ26Bg==
         public static string conectionEncrypt = System.Configuration.ConfigurationManager.ConnectionStrings["Server"].ConnectionString;
         public static string conStringIpqcDbP4 = De_Encrypt.Decrypt(conectionEncrypt);
         public void getComboBoxData(string sql, ref System.Windows.Forms.ComboBox cmb)
