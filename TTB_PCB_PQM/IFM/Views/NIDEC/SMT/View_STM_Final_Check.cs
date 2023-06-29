@@ -15,19 +15,23 @@ using System.Data;
 using System.Text;
 using DevExpress.XtraGrid.Columns;
 using System.Windows.Controls;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace IFM.Views.NIDEC.SMT
 {
     public partial class View_STM_Final_Check : RibbonForm
     {
         DataTable dt;
-
+        string model_;
+        string datetimeCur_;
+        string datetimePrevious_;
         public View_STM_Final_Check()
         {
             InitializeComponent();
             dtp_from.Value = DateTime.Now.AddDays(-2);
             dtp_to.Value = DateTime.Now.AddDays(+1);
             AcceptButton = btn_enter;
+
         }
 
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
@@ -42,7 +46,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-                //design layout main for other model
+                getsizelayout();
                 createlayout();
             }
             catch (Exception ex)
@@ -50,14 +54,28 @@ namespace IFM.Views.NIDEC.SMT
                 MessageBox.Show("Error :" + ex.Message);
             }
         }
+        void getsizelayout()
+        {
+
+            string sql_model = "select distinct(model_cd)   from smt_m_model smm  order by model_cd";
+            string sql_cl = "select model_columns  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
+            string sql_row = "select model_rows  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
+            pgsqlconnection con = new pgsqlconnection();
+            con.getComboBoxData(sql_model, ref cbm_modelcd);
+            if (cbm_modelcd.Text != "")
+            {
+                nm_column.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_cl));
+                nm_row.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_row));
+            }
+        }
         void createlayout()
         {
-            // Alignment = DataGridViewContentAlignment.MiddleCenter,
             gv_layout.DataSource = null;
             gv_layout.Rows.Clear();
             gv_layout.Refresh();
-            int col_ = int.Parse(nm_column.Text);
-            int row_ = int.Parse(nm_row.Text);
+
+            int col_ = int.Parse(nm_column.Value.ToString());
+            int row_ = int.Parse(nm_row.Value.ToString());
             gv_layout.ColumnCount = col_ + 1;
             for (int i = 1; i <= col_ + 1; i++)
             {
@@ -79,6 +97,12 @@ namespace IFM.Views.NIDEC.SMT
                 }
             }
             gv_layout.Refresh();
+
+        }
+
+        private void cbm_modelcd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // OnLoad(e);
         }
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -102,35 +126,64 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void btn_enter_Click(object sender, EventArgs e)
         {
-            if(checkcondition())
+            OnLoad(e);
+            if (checkcondition())
             {
-                getPQM();
-            }    
+                model_ = cbm_modelcd.Text;
+                datetimeCur_ = DateTime.Now.ToString("yyyyMM");
+                datetimePrevious_ = DateTime.Now.AddMonths(-1).ToString("yyyyMM");
+                getPQM(model_ + datetimeCur_);
+                if (gv_data.RowCount < 1)
+                {
+                    getPQM(model_ + datetimePrevious_);
+                }
+                txt_barcode.Text = "";
+            }
         }
-        void getPQM()
+
+        void getPQM(string table)
         {
-            string sqlgetPQM = @"select a.site ,a.factory ,a.serno ,a.process , max(a.result),max(a.inspectdate) from 
+            dt = new DataTable();
+            string sqlgetPQM = @"select a.site ,a.factory ,a.serno ,a.process , max(a.result) as result,max(a.inspectdate) as inspectdate  from 
                                     (
-                                    select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from ld20202101 l 
-                                    left join ld20202101data ld 
+                                    select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
+                                    left join " + table + @"data ld 
                                     on l.serno  = ld.serno 
                                     where 1=1
                                     and l.inspectdate  = ld.inspectdate 
-                                    and l.serno = '"+txt_barcode.Text+@"'
+                                    and l.serno = '" + txt_barcode.Text + @"'
                                     group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
                                     )a 
                                     group  by a.site ,a.factory ,a.serno ,a.process ";
-
-
+            pgsqlconnection_NewDB conPQM = new pgsqlconnection_NewDB();
+            conPQM.sqlDataAdapterFillDatatable(sqlgetPQM, ref dt);
+            gc_data.DataSource = dt;
         }
         bool checkcondition()
         {
-            if (txt_barcode.Text.Length < 5 )
+            if (txt_barcode.Text.Length < 5||cbm_modelcd.Text =="")
             {
                 MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
+        }
+
+        private void gv_data_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result"));
+
+            if (result > 0)
+            {
+                e.Appearance.BackColor = Color.Red;
+            }
+            else
+            {
+                e.Appearance.BackColor = Color.LightGreen;
+            }
+
+            //Override any other formatting  
+            e.HighPriority = true;
         }
     }
 }
