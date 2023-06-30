@@ -155,7 +155,7 @@ namespace IFM.Views.NIDEC.SMT
                                     and l.serno = '" + txt_barcode.Text + @"'
                                     group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
                                     )a 
-                                    group  by a.site ,a.factory ,a.serno ,a.process";
+                                    group  by a.site ,a.factory ,a.serno ,a.process order by max(a.result) asc";
             pgsqlconnection_NewDB conPQM = new pgsqlconnection_NewDB();
             conPQM.sqlDataAdapterFillDatatable(sqlgetPQM, ref dt);
             gc_data.DataSource = dt;
@@ -177,12 +177,12 @@ namespace IFM.Views.NIDEC.SMT
             if (result > 0)
             {
                 e.Appearance.BackColor = Color.Red;
-                createlayout("OK");
+                createlayout("NG");
             }
             else
             {
                 e.Appearance.BackColor = Color.LightGreen;
-                createlayout("NG");
+                createlayout("OK");
             }
             e.HighPriority = true;
         }
