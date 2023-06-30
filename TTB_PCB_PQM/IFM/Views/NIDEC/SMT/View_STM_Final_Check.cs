@@ -47,7 +47,7 @@ namespace IFM.Views.NIDEC.SMT
             try
             {
                 getsizelayout();
-                createlayout();
+                createlayout("Null");
             }
             catch (Exception ex)
             {
@@ -56,7 +56,6 @@ namespace IFM.Views.NIDEC.SMT
         }
         void getsizelayout()
         {
-
             string sql_model = "select distinct(model_cd)   from smt_m_model smm  order by model_cd";
             string sql_cl = "select model_columns  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
             string sql_row = "select model_rows  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
@@ -68,7 +67,7 @@ namespace IFM.Views.NIDEC.SMT
                 nm_row.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_row));
             }
         }
-        void createlayout()
+        void createlayout(string strtxt)
         {
             gv_layout.DataSource = null;
             gv_layout.Rows.Clear();
@@ -93,7 +92,7 @@ namespace IFM.Views.NIDEC.SMT
             {
                 for (int rw = 0; rw < gv_layout.RowCount; rw++)
                 {
-                    gv_layout.Rows[rw].Cells[cl].Value = "Null";
+                    gv_layout.Rows[rw].Cells[cl].Value = strtxt;
                 }
             }
             gv_layout.Refresh();
@@ -144,6 +143,8 @@ namespace IFM.Views.NIDEC.SMT
         void getPQM(string table)
         {
             dt = new DataTable();
+            gc_data.DataSource = null;
+            gv_data.Columns.Clear();
             string sqlgetPQM = @"select a.site ,a.factory ,a.serno ,a.process , max(a.result) as result,max(a.inspectdate) as inspectdate  from 
                                     (
                                     select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
@@ -154,7 +155,7 @@ namespace IFM.Views.NIDEC.SMT
                                     and l.serno = '" + txt_barcode.Text + @"'
                                     group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
                                     )a 
-                                    group  by a.site ,a.factory ,a.serno ,a.process ";
+                                    group  by a.site ,a.factory ,a.serno ,a.process";
             pgsqlconnection_NewDB conPQM = new pgsqlconnection_NewDB();
             conPQM.sqlDataAdapterFillDatatable(sqlgetPQM, ref dt);
             gc_data.DataSource = dt;
@@ -176,13 +177,13 @@ namespace IFM.Views.NIDEC.SMT
             if (result > 0)
             {
                 e.Appearance.BackColor = Color.Red;
+                createlayout("OK");
             }
             else
             {
                 e.Appearance.BackColor = Color.LightGreen;
+                createlayout("NG");
             }
-
-            //Override any other formatting  
             e.HighPriority = true;
         }
     }
