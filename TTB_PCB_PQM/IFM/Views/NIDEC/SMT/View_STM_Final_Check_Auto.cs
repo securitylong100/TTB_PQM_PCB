@@ -19,13 +19,13 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace IFM.Views.NIDEC.SMT
 {
-    public partial class View_STM_Final_Check : RibbonForm
+    public partial class View_STM_Final_Check_Auto : RibbonForm
     {
         DataTable dt;
         string model_;
         string datetimeCur_;
         string datetimePrevious_;
-        public View_STM_Final_Check()
+        public View_STM_Final_Check_Auto()
         {
             InitializeComponent();
 
