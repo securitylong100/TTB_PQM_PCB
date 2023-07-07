@@ -58,19 +58,17 @@
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.txt_barcode = new System.Windows.Forms.TextBox();
             this.tlp_showdata = new System.Windows.Forms.TableLayoutPanel();
-            this.tlp_layout = new System.Windows.Forms.TableLayoutPanel();
-            this.gv_layout = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.rd_ok = new System.Windows.Forms.RadioButton();
+            this.rd_NG = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nm_row)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nm_column)).BeginInit();
             this.tlp_showdata.SuspendLayout();
-            this.tlp_layout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_layout)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
@@ -138,7 +136,7 @@
             // 
             // bbiRefresh
             // 
-            this.bbiRefresh.Caption = "Refresh";
+            this.bbiRefresh.Caption = "Refresh Layout";
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
@@ -179,7 +177,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1006, 79);
+            this.ribbonControl.Size = new System.Drawing.Size(1134, 79);
             this.ribbonControl.StatusBar = this.bar_status;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -189,7 +187,7 @@
             this.bar_status.Location = new System.Drawing.Point(0, 477);
             this.bar_status.Name = "bar_status";
             this.bar_status.Ribbon = this.ribbonControl;
-            this.bar_status.Size = new System.Drawing.Size(1006, 31);
+            this.bar_status.Size = new System.Drawing.Size(1134, 31);
             // 
             // bsiRecordsCount
             // 
@@ -209,12 +207,14 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1006, 398);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1134, 398);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.rd_NG);
+            this.pn_background.Controls.Add(this.rd_ok);
             this.pn_background.Controls.Add(this.cbm_modelcd);
             this.pn_background.Controls.Add(this.label6);
             this.pn_background.Controls.Add(this.nm_row);
@@ -231,7 +231,7 @@
             this.pn_background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_background.Location = new System.Drawing.Point(3, 3);
             this.pn_background.Name = "pn_background";
-            this.pn_background.Size = new System.Drawing.Size(1000, 85);
+            this.pn_background.Size = new System.Drawing.Size(1128, 85);
             this.pn_background.TabIndex = 3;
             // 
             // cbm_modelcd
@@ -254,7 +254,7 @@
             // 
             // nm_row
             // 
-            this.nm_row.Location = new System.Drawing.Point(628, 50);
+            this.nm_row.Location = new System.Drawing.Point(735, 50);
             this.nm_row.Name = "nm_row";
             this.nm_row.Size = new System.Drawing.Size(64, 21);
             this.nm_row.TabIndex = 16;
@@ -266,7 +266,7 @@
             // 
             // nm_column
             // 
-            this.nm_column.Location = new System.Drawing.Point(628, 12);
+            this.nm_column.Location = new System.Drawing.Point(735, 12);
             this.nm_column.Name = "nm_column";
             this.nm_column.Size = new System.Drawing.Size(64, 21);
             this.nm_column.TabIndex = 15;
@@ -279,7 +279,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(555, 53);
+            this.label5.Location = new System.Drawing.Point(662, 53);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 14;
@@ -288,7 +288,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(555, 15);
+            this.label2.Location = new System.Drawing.Point(662, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 12;
@@ -296,7 +296,8 @@
             // 
             // btn_enter
             // 
-            this.btn_enter.Location = new System.Drawing.Point(371, 31);
+            this.btn_enter.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_enter.Location = new System.Drawing.Point(355, 32);
             this.btn_enter.Name = "btn_enter";
             this.btn_enter.Size = new System.Drawing.Size(113, 23);
             this.btn_enter.TabIndex = 10;
@@ -307,7 +308,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(762, 55);
+            this.label4.Location = new System.Drawing.Point(873, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 7;
@@ -316,7 +317,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(762, 18);
+            this.label3.Location = new System.Drawing.Point(873, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 6;
@@ -335,7 +336,7 @@
             // 
             this.dtp_to.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_to.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_to.Location = new System.Drawing.Point(822, 49);
+            this.dtp_to.Location = new System.Drawing.Point(933, 50);
             this.dtp_to.Name = "dtp_to";
             this.dtp_to.Size = new System.Drawing.Size(146, 21);
             this.dtp_to.TabIndex = 3;
@@ -344,7 +345,7 @@
             // 
             this.dtp_from.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_from.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_from.Location = new System.Drawing.Point(822, 12);
+            this.dtp_from.Location = new System.Drawing.Point(933, 13);
             this.dtp_from.Name = "dtp_from";
             this.dtp_from.Size = new System.Drawing.Size(146, 21);
             this.dtp_from.TabIndex = 2;
@@ -360,42 +361,16 @@
             // 
             this.tlp_showdata.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
             this.tlp_showdata.ColumnCount = 2;
-            this.tlp_showdata.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tlp_showdata.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tlp_showdata.Controls.Add(this.tlp_layout, 1, 0);
+            this.tlp_showdata.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tlp_showdata.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tlp_showdata.Controls.Add(this.panel1, 0, 0);
             this.tlp_showdata.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlp_showdata.Location = new System.Drawing.Point(3, 94);
             this.tlp_showdata.Name = "tlp_showdata";
             this.tlp_showdata.RowCount = 1;
             this.tlp_showdata.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_showdata.Size = new System.Drawing.Size(1000, 301);
+            this.tlp_showdata.Size = new System.Drawing.Size(1128, 301);
             this.tlp_showdata.TabIndex = 4;
-            // 
-            // tlp_layout
-            // 
-            this.tlp_layout.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tlp_layout.ColumnCount = 1;
-            this.tlp_layout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_layout.Controls.Add(this.gv_layout, 0, 0);
-            this.tlp_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlp_layout.Location = new System.Drawing.Point(603, 6);
-            this.tlp_layout.Name = "tlp_layout";
-            this.tlp_layout.RowCount = 1;
-            this.tlp_layout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_layout.Size = new System.Drawing.Size(391, 289);
-            this.tlp_layout.TabIndex = 0;
-            // 
-            // gv_layout
-            // 
-            this.gv_layout.AllowUserToAddRows = false;
-            this.gv_layout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gv_layout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gv_layout.Location = new System.Drawing.Point(5, 5);
-            this.gv_layout.Name = "gv_layout";
-            this.gv_layout.RowTemplate.Height = 50;
-            this.gv_layout.Size = new System.Drawing.Size(381, 279);
-            this.gv_layout.TabIndex = 0;
             // 
             // panel1
             // 
@@ -403,7 +378,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(588, 289);
+            this.panel1.Size = new System.Drawing.Size(777, 289);
             this.panel1.TabIndex = 1;
             // 
             // gc_data
@@ -413,7 +388,7 @@
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(588, 289);
+            this.gc_data.Size = new System.Drawing.Size(777, 289);
             this.gc_data.TabIndex = 3;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
@@ -429,11 +404,35 @@
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
+            // rd_ok
+            // 
+            this.rd_ok.AutoSize = true;
+            this.rd_ok.Location = new System.Drawing.Point(534, 18);
+            this.rd_ok.Name = "rd_ok";
+            this.rd_ok.Size = new System.Drawing.Size(59, 17);
+            this.rd_ok.TabIndex = 19;
+            this.rd_ok.TabStop = true;
+            this.rd_ok.Text = "OK ALL";
+            this.rd_ok.UseVisualStyleBackColor = true;
+            this.rd_ok.CheckedChanged += new System.EventHandler(this.rd_ok_CheckedChanged);
+            // 
+            // rd_NG
+            // 
+            this.rd_NG.AutoSize = true;
+            this.rd_NG.Location = new System.Drawing.Point(534, 53);
+            this.rd_NG.Name = "rd_NG";
+            this.rd_NG.Size = new System.Drawing.Size(59, 17);
+            this.rd_NG.TabIndex = 20;
+            this.rd_NG.TabStop = true;
+            this.rd_NG.Text = "NG ALL";
+            this.rd_NG.UseVisualStyleBackColor = true;
+            this.rd_NG.CheckedChanged += new System.EventHandler(this.rd_NG_CheckedChanged);
+            // 
             // View_STM_Final_Check
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 508);
+            this.ClientSize = new System.Drawing.Size(1134, 508);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bar_status);
             this.Controls.Add(this.ribbonControl);
@@ -447,8 +446,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nm_row)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nm_column)).EndInit();
             this.tlp_showdata.ResumeLayout(false);
-            this.tlp_layout.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gv_layout)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).EndInit();
@@ -483,8 +480,6 @@
         private System.Windows.Forms.Button btn_enter;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tlp_showdata;
-        private System.Windows.Forms.TableLayoutPanel tlp_layout;
-        private System.Windows.Forms.DataGridView gv_layout;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown nm_row;
         private System.Windows.Forms.NumericUpDown nm_column;
@@ -493,5 +488,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gv_data;
         private System.Windows.Forms.ComboBox cbm_modelcd;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton rd_NG;
+        private System.Windows.Forms.RadioButton rd_ok;
     }
 }
