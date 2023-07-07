@@ -170,7 +170,7 @@ namespace IFM.Views.NIDEC.SMT
                         con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
                     }
                 }
-                MessageBox.Show("Not successful!", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Save successful!", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             catch (Exception ex)

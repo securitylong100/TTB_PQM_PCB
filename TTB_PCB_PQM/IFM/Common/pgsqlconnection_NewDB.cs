@@ -309,6 +309,27 @@ namespace IFM.Class
             }
 
         }
+        public void sqlDataAdapterFillDatatableAuto(string sql, ref DataTable dt)
+        {
+            try
+            {
+                connection = new NpgsqlConnection(conStringIpqcDbP4);
+                NpgsqlCommand command = new NpgsqlCommand();
+
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter())
+                {
+                    command.CommandText = sql;
+                    command.Connection = connection;
+                    adapter.SelectCommand = command;
+                    adapter.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+            }
+
+        }
         public void SP_DataAdapterFillDatatable(string SP, ref DataTable dt)
         {
             try
