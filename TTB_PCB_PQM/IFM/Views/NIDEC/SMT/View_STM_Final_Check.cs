@@ -23,9 +23,7 @@ namespace IFM.Views.NIDEC.SMT
         public View_STM_Final_Check()
         {
             InitializeComponent();
-
             AcceptButton = btn_enter;
-
         }
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
@@ -47,44 +45,57 @@ namespace IFM.Views.NIDEC.SMT
         }
         void getsizelayout()
         {
-            string sql_model = "select distinct(model_cd)   from smt_m_model smm  order by model_cd";
-            string sql_cl = "select model_columns  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
-            string sql_row = "select model_rows  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
-            pgsqlconnection con = new pgsqlconnection();
-            con.getComboBoxData(sql_model, ref cbm_modelcd);
-            if (cbm_modelcd.Text != "")
+            try
             {
-                nm_column.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_cl));
-                nm_row.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_row));
+                string sql_model = "select distinct(model_cd)   from smt_m_model smm  order by model_cd";
+                string sql_cl = "select model_columns  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
+                string sql_row = "select model_rows  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
+                pgsqlconnection con = new pgsqlconnection();
+                con.getComboBoxData(sql_model, ref cbm_modelcd);
+                if (cbm_modelcd.Text != "")
+                {
+                    nm_column.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_cl));
+                    nm_row.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_row));
+                }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
         void createdynamiclayout()
         {
-            dynamicTableLayoutPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
-            dynamicTableLayoutPanel.BackColor = Color.White;
-            dynamicTableLayoutPanel.Location = new System.Drawing.Point(603, 6);
-            dynamicTableLayoutPanel.Name = "TableLayoutPanel1";
-            dynamicTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            dynamicTableLayoutPanel.Size = new System.Drawing.Size(189, 138);
-            dynamicTableLayoutPanel.TabIndex = 0;
-            dynamicTableLayoutPanel.ColumnCount = int.Parse(nm_column.Value.ToString());
-            dynamicTableLayoutPanel.RowCount = int.Parse(nm_row.Value.ToString());
-            for (int i = 0; i < int.Parse(nm_row.Value.ToString()); i++)
+            try
             {
-                dynamicTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            }
-            int k = 0;
-            for (int i = 0; i < int.Parse(nm_column.Value.ToString()); i++)
-            {
-                dynamicTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-                for (int j = 0; j < int.Parse(nm_row.Value.ToString()); j++)
+                dynamicTableLayoutPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
+                dynamicTableLayoutPanel.BackColor = Color.White;
+                dynamicTableLayoutPanel.Location = new System.Drawing.Point(603, 6);
+                dynamicTableLayoutPanel.Name = "TableLayoutPanel1";
+                dynamicTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+                dynamicTableLayoutPanel.Size = new System.Drawing.Size(189, 138);
+                dynamicTableLayoutPanel.TabIndex = 0;
+                dynamicTableLayoutPanel.ColumnCount = int.Parse(nm_column.Value.ToString());
+                dynamicTableLayoutPanel.RowCount = int.Parse(nm_row.Value.ToString());
+                for (int i = 0; i < int.Parse(nm_row.Value.ToString()); i++)
                 {
-                    dynamicTableLayoutPanel.Controls.Add(buttonlayout("btn_layout" + k.ToString()), i, j);
-                    k = k + 1;
+                    dynamicTableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
                 }
+                int k = 0;
+                for (int i = 0; i < int.Parse(nm_column.Value.ToString()); i++)
+                {
+                    dynamicTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+                    for (int j = 0; j < int.Parse(nm_row.Value.ToString()); j++)
+                    {
+                        dynamicTableLayoutPanel.Controls.Add(buttonlayout("btn_layout" + k.ToString()), i, j);
+                        k = k + 1;
+                    }
+                }
+                tlp_showdata.Controls.Add(dynamicTableLayoutPanel, 1, 0);
             }
-            tlp_showdata.Controls.Add(dynamicTableLayoutPanel, 1, 0);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
         // void createDymanicButton(string name)
         /// <summary>
@@ -110,36 +121,37 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void btn_layout_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.Button btn_layout = sender as System.Windows.Forms.Button;
-            if (btn_layout.Text == "NG")
+            try
             {
-                btn_layout.Image = global::IFM.Properties.Resources.OK;
-                btn_layout.Text = "OK";
+                System.Windows.Forms.Button btn_layout = sender as System.Windows.Forms.Button;
+                if (btn_layout.Text == "NG")
+                {
+                    btn_layout.Image = global::IFM.Properties.Resources.OK;
+                    btn_layout.Text = "OK";
+                }
+                else
+                {
+                    btn_layout.Image = global::IFM.Properties.Resources.NG;
+                    btn_layout.Text = "NG";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                btn_layout.Image = global::IFM.Properties.Resources.NG;
-                btn_layout.Text = "NG";
+                MessageBox.Show("Error :" + ex.Message);
             }
         }
 
         private void cbm_modelcd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //createdynamiclayout();
-            //  OnLoad(e);
         }
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
-            btn_enter_Click(sender, e);
         }
         private void BbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
-
         }
         private void BbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
-            /// cái này là danh sách các item được lưu lên db nha anh
-            /// anh thay object = cái model tương ứng bảng anh lưu á
             try
             {
                 List<object> lstItems = new List<object>();
@@ -177,11 +189,9 @@ namespace IFM.Views.NIDEC.SMT
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-            /// anh thực hiện lưu db cái list trên là xong
         }
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-
         }
         private void BbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -194,26 +204,35 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void btn_enter_Click(object sender, EventArgs e)
         {
-            if (checkcondition())
+            try
             {
-                model_ = cbm_modelcd.Text;
-                datetimeCur_ = DateTime.Now.ToString("yyyyMM");
-                datetimePrevious_ = DateTime.Now.AddMonths(-1).ToString("yyyyMM");
-                getPQM(model_ + datetimeCur_);
-                if (gv_data.RowCount < 1)
+                if (checkcondition())
                 {
-                    getPQM(model_ + datetimePrevious_);
+                    model_ = cbm_modelcd.Text;
+                    datetimeCur_ = DateTime.Now.ToString("yyyyMM");
+                    datetimePrevious_ = DateTime.Now.AddMonths(-1).ToString("yyyyMM");
+                    getPQM(model_ + datetimeCur_);
+                    if (gv_data.RowCount < 1)
+                    {
+                        getPQM(model_ + datetimePrevious_);
+                    }
+                    barcode_ = txt_barcode.Text;
+                    txt_barcode.Text = "";
                 }
-                barcode_ = txt_barcode.Text;
-                txt_barcode.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
             }
         }
         void getPQM(string table)
         {
-            dt = new DataTable();
-            gc_data.DataSource = null;
-            gv_data.Columns.Clear();
-            string sqlgetPQM = @"select a.site ,a.factory ,a.serno ,a.process , max(a.result) as result,max(a.inspectdate) as inspectdate  from 
+            try
+            {
+                dt = new DataTable();
+                gc_data.DataSource = null;
+                gv_data.Columns.Clear();
+                string sqlgetPQM = @"select a.site ,a.factory ,a.serno ,a.process , max(a.result) as result,max(a.inspectdate) as inspectdate  from 
                                     (
                                     select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
                                     left join " + table + @"data ld 
@@ -224,9 +243,14 @@ namespace IFM.Views.NIDEC.SMT
                                     group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
                                     )a 
                                     group  by a.site ,a.factory ,a.serno ,a.process order by max(a.result) asc";
-            pgsqlconnection_NewDB conPQM = new pgsqlconnection_NewDB();
-            conPQM.sqlDataAdapterFillDatatableAuto(sqlgetPQM, ref dt);
-            gc_data.DataSource = dt;
+                pgsqlconnection_NewDB conPQM = new pgsqlconnection_NewDB();
+                conPQM.sqlDataAdapterFillDatatableAuto(sqlgetPQM, ref dt);
+                gc_data.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
         bool checkcondition()
         {
@@ -239,24 +263,52 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void gv_data_RowStyle(object sender, RowStyleEventArgs e)
         {
-            int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result"));
+            try
+            {
+                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result"));
 
-            if (result > 0)
-            {
-                e.Appearance.BackColor = Color.Red;
-                foreach (var control in dynamicTableLayoutPanel.Controls)
+                if (result > 0)
                 {
-                    if (control is System.Windows.Forms.Button btn)
+                    e.Appearance.BackColor = Color.Red;
+                    foreach (var control in dynamicTableLayoutPanel.Controls)
                     {
-                        btn.Image = global::IFM.Properties.Resources.NG;
-                        btn.Text = "NG";
+                        if (control is System.Windows.Forms.Button btn)
+                        {
+                            btn.Image = global::IFM.Properties.Resources.NG;
+                            btn.Text = "NG";
+                        }
                     }
+                    //if đỏ bên này thì cho NG hết
                 }
-                //if đỏ bên này thì cho NG hết
+                else if (result == 0)
+                {
+                    e.Appearance.BackColor = Color.LightGreen;
+                    foreach (var control in dynamicTableLayoutPanel.Controls)
+                    {
+                        if (control is System.Windows.Forms.Button btn)
+                        {
+                            btn.Image = global::IFM.Properties.Resources.OK;
+                            btn.Text = "OK";
+                        }
+                    }
+
+                    // if xanh bên này thì cho OK hết
+                }
+                else
+                {
+                    e.Appearance.BackColor = Color.White;
+                }
+                e.HighPriority = true;
             }
-            else if (result == 0)
+            catch (Exception ex)
             {
-                e.Appearance.BackColor = Color.LightGreen;
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+        private void rd_ok_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
                 foreach (var control in dynamicTableLayoutPanel.Controls)
                 {
                     if (control is System.Windows.Forms.Button btn)
@@ -265,38 +317,30 @@ namespace IFM.Views.NIDEC.SMT
                         btn.Text = "OK";
                     }
                 }
-
-                // if xanh bên này thì cho OK hết
             }
-            else
+            catch (Exception ex)
             {
-                e.Appearance.BackColor = Color.White;
-            }
-            e.HighPriority = true;
-        }
-
-        private void rd_ok_CheckedChanged(object sender, EventArgs e)
-        {
-            foreach (var control in dynamicTableLayoutPanel.Controls)
-            {
-                if (control is System.Windows.Forms.Button btn)
-                {
-                    btn.Image = global::IFM.Properties.Resources.OK;
-                    btn.Text = "OK";
-                }
+                MessageBox.Show("Error :" + ex.Message);
             }
 
         }
 
         private void rd_NG_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (var control in dynamicTableLayoutPanel.Controls)
+            try
             {
-                if (control is System.Windows.Forms.Button btn)
+                foreach (var control in dynamicTableLayoutPanel.Controls)
                 {
-                    btn.Image = global::IFM.Properties.Resources.NG;
-                    btn.Text = "NG";
+                    if (control is System.Windows.Forms.Button btn)
+                    {
+                        btn.Image = global::IFM.Properties.Resources.NG;
+                        btn.Text = "NG";
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
             }
         }
     }
