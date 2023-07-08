@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace IFM.Views.NIDEC.SMT
 {
@@ -38,7 +39,6 @@ namespace IFM.Views.NIDEC.SMT
             try
             {
                 getsizelayout();
-
             }
             catch (Exception ex)
             {
@@ -57,7 +57,6 @@ namespace IFM.Views.NIDEC.SMT
                 nm_column.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_cl));
                 nm_row.Value = int.Parse(con.sqlExecuteScalarString_Autosystem(sql_row));
             }
-
         }
         void createdynamiclayout()
         {
@@ -80,7 +79,7 @@ namespace IFM.Views.NIDEC.SMT
                 dynamicTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
                 for (int j = 0; j < int.Parse(nm_row.Value.ToString()); j++)
                 {
-                    dynamicTableLayoutPanel.Controls.Add(buttonlayout("btn_layout" + k.ToString()), i, j);
+                    dynamicTableLayoutPanel.Controls.Add(buttonlayout("btn_layout" + k.ToString(),"OK"), i, j);
                     k = k + 1;
                 }
             }
@@ -93,7 +92,7 @@ namespace IFM.Views.NIDEC.SMT
         /// <param name="name"></param>
         /// <param name="result">cái này là giá trị ban đầu (nếu có load từ db)</param>
         /// <returns></returns>
-        public System.Windows.Forms.Button buttonlayout(string name, string result = "OK")
+        public System.Windows.Forms.Button buttonlayout(string name, string result)
         {
             System.Windows.Forms.Button btn_layout = new System.Windows.Forms.Button();
             btn_layout.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -190,17 +189,39 @@ namespace IFM.Views.NIDEC.SMT
             gc_data.DataSource = dt;
 
             dt = new DataTable();
-            string sqlget = @"select* from smt_m_app_history smah where 1 = 1
+            string sqlget = @"select barcode, x_layout ,y_layout ,barcode_status from smt_m_app_history  where 1 = 1
                             and create_time >=
                             (
-                            select max(create_time) from smt_m_app_history smah
+                            select max(create_time) from smt_m_app_history 
                             where 1 = 1
                             and x_layout = 0
                             and y_layout = 0
-                            and barcode = '"+txt_barcode.Text+@"'
-                            )";
+                            and barcode = '" + txt_barcode.Text+ @"'
+                             ) order by x_layout ,y_layout";
             pgsqlconnection con = new pgsqlconnection();
             con.sqlDataAdapterFillDatatable(sqlget, ref dt);
+            if (dt.Rows.Count < 1) return;
+            var x = (from r in dt.AsEnumerable()
+                     select r["barcode_status"]).ToList();
+            int i = 0;
+            foreach (var control in dynamicTableLayoutPanel.Controls)
+            {
+                if (control is System.Windows.Forms.Button btn)
+                {
+                  
+                    
+                    btn.Text = x[i].ToString();
+                    if(x[i].ToString() =="OK")
+                    {
+                        btn.Image = global::IFM.Properties.Resources.OK;
+                    }  
+                    else
+                    {
+                        btn.Image = global::IFM.Properties.Resources.NG;
+                    }    
+                    i = i + 1;
+                }
+            }
         }
         bool checkcondition()
         {
