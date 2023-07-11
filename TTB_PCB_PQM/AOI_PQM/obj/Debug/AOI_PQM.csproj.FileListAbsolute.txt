@@ -1,7 +1,6 @@
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\AOI_PQM.exe.config
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\AOI_PQM.exe
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\AOI_PQM.pdb
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\obj\Debug\AOI_PQM.csproj.AssemblyReference.cache
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\obj\Debug\AOI_PQM.Properties.Resources.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\obj\Debug\AOI_PQM.csproj.GenerateResource.cache
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\obj\Debug\AOI_PQM.csproj.CoreCompileInputs.cache
@@ -105,3 +104,4 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\es\DevExpress.
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\ja\DevExpress.Office.v20.1.Core.resources.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\ru\DevExpress.Office.v20.1.Core.resources.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\obj\Debug\AOI_PQM.exe.licenses
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\obj\Debug\AOI_PQM.csproj.AssemblyReference.cache

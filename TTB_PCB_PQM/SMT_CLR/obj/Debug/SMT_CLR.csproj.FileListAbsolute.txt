@@ -1,0 +1,10 @@
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\obj\Debug\SMT_CLR.csproj.AssemblyReference.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\obj\Debug\SMT_CLR.Form1.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\obj\Debug\SMT_CLR.Properties.Resources.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\obj\Debug\SMT_CLR.csproj.GenerateResource.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\obj\Debug\SMT_CLR.csproj.CoreCompileInputs.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\bin\Debug\SMT_CLR.exe
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\bin\Debug\SMT_CLR.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\obj\Debug\SMT_CLR.csproj.CopyComplete
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\obj\Debug\SMT_CLR.exe
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SMT_CLR\obj\Debug\SMT_CLR.pdb

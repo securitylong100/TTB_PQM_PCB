@@ -98,7 +98,7 @@ namespace IFM.Views.NIDEC.SMT
                 MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (exitsBarcode(txt_barcode.Text) != 1)
+            if (exitsBarcode(txt_barcode.Text) == 0)
             {
                 MessageBox.Show("Barcode này chưa được đăng ký ở master", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -129,7 +129,7 @@ namespace IFM.Views.NIDEC.SMT
             try
             {
                 pgsqlconnection con = new pgsqlconnection();
-                string sql = "select count(*)  from smt_m_tool_master where tool_cd  ='" + barcode + "'";
+                string sql = "select count(*)  from smt_m_tool_history where tool_cd  ='" + barcode + "'"; //updaed new version
                 return con.sqlExecuteNonQueryInt(sql);
             }
             catch (Exception ex)

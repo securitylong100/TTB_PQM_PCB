@@ -172,6 +172,7 @@ namespace AOI_PQM
                             lot = "_" + DateTime.Now.ToString("yyyyMMdd");
                             date = Convert.ToDateTime(row[2]).ToString("yyyy/MM/dd");
                             time = Convert.ToDateTime(row[2]).ToString("HH:mm:ss");
+                            model = cbm_model.Text;
                             judge = row[3].ToString() == "0" ? "0" : "1";
                             data = judge;
                             //insert barcode to localDB
