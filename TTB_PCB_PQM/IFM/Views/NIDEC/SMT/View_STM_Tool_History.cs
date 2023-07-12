@@ -103,16 +103,7 @@ namespace IFM.Views.NIDEC.SMT
                 MessageBox.Show("Barcode này chưa được đăng ký ở master", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (currentstatus() == "SMT_CLR_IN")
-            {
-                return true;
-            }
-            else if (currentstatus() == "SMT_CLR_OUT" && beforestatus(txt_barcode.Text) != "SMT_CLR_IN")
-            {
-                MessageBox.Show("Barcode Chưa được Check IN mà đã Check OUT", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            else if (currentstatus() == "SMT_SDR_IN" && beforestatus(txt_barcode.Text) != "SMT_CLR_OUT")
+            if (currentstatus() == "SMT_SDR_IN" && beforestatus(txt_barcode.Text) != "SMT_CLR_OUT")
             {
                 MessageBox.Show("Barcode Chưa được vệ sinh !", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -141,7 +132,7 @@ namespace IFM.Views.NIDEC.SMT
         string beforestatus(string barcode)
         {
             pgsqlconnection con = new pgsqlconnection();
-            string sql = @"select concat(tool_station,'_',tool_check)  from smt_m_tool_history smth  where 1=1
+            string sql = @"select  tool_station||'_'||tool_check  from smt_m_tool_history smth  where 1=1
                             and tool_cd  = '" + barcode + @"'
                             order by id desc limit 1";
             return con.sqlExecuteScalarString_Autosystem(sql);
