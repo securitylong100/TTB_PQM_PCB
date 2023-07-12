@@ -149,6 +149,8 @@ namespace AOI_PQM
             {
                 try
                 {
+
+                  
                     dt = new DataTable();
                     StringBuilder sql = new StringBuilder();
                     sql.Append(@"select  a.id, a.boardbarcode, a.pcbstarttime, COALESCE(sum( b.result),0) as resultno from ( ");
@@ -164,6 +166,7 @@ namespace AOI_PQM
                     postgreSQLconnection con = new postgreSQLconnection();
                     con.sqlDataAdapterFillDatatable(sql.ToString(), ref dt);
                     maincontrol.DataSource = dt;
+                    maincontrol.Refresh();
                     foreach (DataRow row in dt.Rows)
                     {
                         if (row[0] != null)

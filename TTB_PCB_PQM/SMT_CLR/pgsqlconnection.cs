@@ -19,7 +19,7 @@ namespace SMT_CLR
         //pqm connection
         //9hjG0KiHa226YXSkj3T6kuFdTTP6wctzKNbXuuw3DXMEufU2GBMiq0GpO6sE4LxyrrIGzQMNovF9C29hGWbjUH7apSlbiNY5+v1dxdcS9tkOcWHEt3gmv3g1tmzt+/loGrvrqIlV046OBJrMJJ26Bg==
         //public static string conectionEncrypt = System.Configuration.ConfigurationManager.ConnectionStrings["Server"].ConnectionString;
-        public static string conStringIpqcDbP4 = "Server=localhost;Port=5432;User Id=postgres;Password=12345;Database=DB_SMT; CommandTimeout=100; Timeout=100;";
+        public static string conStringIpqcDbP4 = "Server=192.168.193.4;Port=5432;User Id=pqm;Password=dbuser;Database=ERP_DB; CommandTimeout=100; Timeout=100;";
         public void getComboBoxData(string sql, ref System.Windows.Forms.ComboBox cmb)
         {
             NpgsqlDataAdapter adapter = new NpgsqlDataAdapter();
