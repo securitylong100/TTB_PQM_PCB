@@ -40,6 +40,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
+                txt_barcode.Text = "";
                 dt = new DataTable();
                 pgsqlconnection con = new pgsqlconnection();
                 string sql = "select * from smt_m_tool_history where create_time <= '" + dtp_to.Value + "' and create_time >='" + dtp_from.Value + "' order by id desc";
@@ -160,7 +161,7 @@ namespace IFM.Views.NIDEC.SMT
                     sqlinsert.Append("'" + ClsSession.App.UserName + "',");
                     sqlinsert.Append("CURRENT_TIMESTAMP");
                     sqlinsert.Append(")");
-                    con.sqlExecuteNonQuery(sqlinsert.ToString());
+                    con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
                 }
                 catch (Exception ex)
                 {

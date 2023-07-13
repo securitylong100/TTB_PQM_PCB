@@ -171,7 +171,7 @@ namespace AOI_PQM
                     {
                         if (row[0] != null)
                         {
-                            barcode = row[0].ToString(); //khi chinh thức sửa lại 1
+                            barcode = row[1].ToString(); //khi chinh thức sửa lại 1. thử nghiệm là 0
                             lot = "_" + DateTime.Now.ToString("yyyyMMdd");
                             date = Convert.ToDateTime(row[2]).ToString("yyyy/MM/dd");
                             time = Convert.ToDateTime(row[2]).ToString("HH:mm:ss");

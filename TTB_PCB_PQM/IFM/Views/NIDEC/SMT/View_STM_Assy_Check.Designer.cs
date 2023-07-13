@@ -1,6 +1,6 @@
 ﻿namespace IFM.Views.NIDEC.SMT
 {
-    partial class View_STM_Tool_History
+    partial class View_STM_Assy_Check
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View_STM_Tool_History));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View_STM_Assy_Check));
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
@@ -53,16 +53,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
             this.btn_enter = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbm_status = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.txt_barcode = new System.Windows.Forms.TextBox();
-            this.cbm_station = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -251,8 +247,6 @@
             // create_time
             // 
             this.create_time.Caption = "Create Time";
-            this.create_time.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
-            this.create_time.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.create_time.FieldName = "create_time";
             this.create_time.Name = "create_time";
             this.create_time.Visible = true;
@@ -289,16 +283,12 @@
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
             this.pn_background.Controls.Add(this.btn_enter);
-            this.pn_background.Controls.Add(this.label5);
-            this.pn_background.Controls.Add(this.cbm_status);
             this.pn_background.Controls.Add(this.label4);
             this.pn_background.Controls.Add(this.label3);
-            this.pn_background.Controls.Add(this.label2);
             this.pn_background.Controls.Add(this.label1);
             this.pn_background.Controls.Add(this.dtp_to);
             this.pn_background.Controls.Add(this.dtp_from);
             this.pn_background.Controls.Add(this.txt_barcode);
-            this.pn_background.Controls.Add(this.cbm_station);
             this.pn_background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_background.Location = new System.Drawing.Point(3, 3);
             this.pn_background.Name = "pn_background";
@@ -307,34 +297,13 @@
             // 
             // btn_enter
             // 
-            this.btn_enter.Location = new System.Drawing.Point(78, 49);
+            this.btn_enter.Location = new System.Drawing.Point(394, 11);
             this.btn_enter.Name = "btn_enter";
             this.btn_enter.Size = new System.Drawing.Size(211, 23);
             this.btn_enter.TabIndex = 10;
             this.btn_enter.Text = "Enter";
             this.btn_enter.UseVisualStyleBackColor = true;
             this.btn_enter.Click += new System.EventHandler(this.btn_enter_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(357, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Status:";
-            // 
-            // cbm_status
-            // 
-            this.cbm_status.FormattingEnabled = true;
-            this.cbm_status.Items.AddRange(new object[] {
-            "IN",
-            "OUT"});
-            this.cbm_status.Location = new System.Drawing.Point(408, 51);
-            this.cbm_status.Name = "cbm_status";
-            this.cbm_status.Size = new System.Drawing.Size(173, 21);
-            this.cbm_status.TabIndex = 8;
-            this.cbm_status.SelectedIndexChanged += new System.EventHandler(this.cbm_status_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -354,23 +323,14 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Date from:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(357, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Station:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(22, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Barcode:";
+            this.label1.Text = "Barcode PCB:";
             // 
             // dtp_to
             // 
@@ -392,20 +352,12 @@
             // 
             // txt_barcode
             // 
-            this.txt_barcode.Location = new System.Drawing.Point(78, 11);
+            this.txt_barcode.Location = new System.Drawing.Point(121, 11);
             this.txt_barcode.Name = "txt_barcode";
             this.txt_barcode.Size = new System.Drawing.Size(211, 21);
             this.txt_barcode.TabIndex = 1;
             // 
-            // cbm_station
-            // 
-            this.cbm_station.FormattingEnabled = true;
-            this.cbm_station.Location = new System.Drawing.Point(408, 11);
-            this.cbm_station.Name = "cbm_station";
-            this.cbm_station.Size = new System.Drawing.Size(173, 21);
-            this.cbm_station.TabIndex = 0;
-            // 
-            // View_STM_Tool_History
+            // View_STM_Assy_Check
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -413,7 +365,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bar_status);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "View_STM_Tool_History";
+            this.Name = "View_STM_Assy_Check";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.bar_status;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
@@ -448,14 +400,10 @@
         private System.Windows.Forms.Panel pn_background;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtp_to;
         private System.Windows.Forms.DateTimePicker dtp_from;
         private System.Windows.Forms.TextBox txt_barcode;
-        private System.Windows.Forms.ComboBox cbm_station;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbm_status;
         private System.Windows.Forms.Button btn_enter;
         private DevExpress.XtraGrid.Columns.GridColumn ID;
         private DevExpress.XtraGrid.Columns.GridColumn tool_cd;
