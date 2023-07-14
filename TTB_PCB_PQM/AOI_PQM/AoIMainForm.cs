@@ -153,16 +153,19 @@ namespace AOI_PQM
                   
                     dt = new DataTable();
                     StringBuilder sql = new StringBuilder();
-                    sql.Append(@"select  a.id, a.boardbarcode, a.pcbstarttime, COALESCE(sum( b.result),0) as resultno from ( ");
-                    sql.Append(@" select id, boardbarcode, pcbstarttime from  """ + cbm_model.Text + @""".aoi_board where 1=1 ");
-                    sql.Append(@" and pcbstarttime >= NOW() - interval '" + nud_DBday.Value + "day' ");
-                    sql.Append(@" and id not in ");
-                    sql.Append(@" (select distinct(board_id) from public.barcodeupload where 1=1 ");
-                    sql.Append(@" and datetimeup >= NOW() - interval '" + nud_ServerDay.Value + "day' )) a");
-                    sql.Append(@" left join   """ + cbm_model.Text + @""".aoi_component b ");
-                    sql.Append(@" on a.pcbstarttime = b.pcbstarttime where 1=1 ");
-                    sql.Append(@"  group by a.boardbarcode, a.pcbstarttime , a.id order by a.pcbstarttime desc ");
-
+                    //sql.Append(@"select  a.id, a.boardbarcode, a.pcbstarttime, COALESCE(sum( b.result),0) as resultno from ( ");
+                    //sql.Append(@" select id, boardbarcode, pcbstarttime from  """ + cbm_model.Text + @""".aoi_board where 1=1 ");
+                    //sql.Append(@" and pcbstarttime >= NOW() - interval '" + nud_DBday.Value + "day' ");
+                    //sql.Append(@" and id not in ");
+                    //sql.Append(@" (select distinct(board_id) from public.barcodeupload where 1=1 ");
+                    //sql.Append(@" and datetimeup >= NOW() - interval '" + nud_ServerDay.Value + "day' )) a");
+                    //sql.Append(@" left join   """ + cbm_model.Text + @""".aoi_component b ");
+                    //sql.Append(@" on a.pcbstarttime = b.pcbstarttime where 1=1 ");
+                    //sql.Append(@"  group by a.boardbarcode, a.pcbstarttime , a.id order by a.pcbstarttime desc ");
+                    sql.Append(@" select boardindex , pcbbarcode ,pcbstarttime , result  from """ + cbm_model.Text + @""".aoi_panel ");
+                    sql.Append(@" where 1=1  and pcbstarttime >=  NOW() - interval '" + nud_DBday.Value + "day' ");
+                    sql.Append(@" and boardindex not in  (select distinct(board_id) from public.barcodeupload ");
+                    sql.Append(@" where 1=1  and datetimeup >=  NOW() - interval '" + nud_ServerDay.Value + "day' )");
                     postgreSQLconnection con = new postgreSQLconnection();
                     con.sqlDataAdapterFillDatatable(sql.ToString(), ref dt);
                     maincontrol.DataSource = dt;
