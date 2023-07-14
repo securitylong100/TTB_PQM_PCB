@@ -52,6 +52,8 @@
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.cbm_model = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btn_enter = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cbm_status = new System.Windows.Forms.ComboBox();
@@ -63,8 +65,6 @@
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.txt_barcode = new System.Windows.Forms.TextBox();
             this.cbm_station = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbm_model = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -309,6 +309,26 @@
             this.pn_background.Size = new System.Drawing.Size(1000, 85);
             this.pn_background.TabIndex = 3;
             // 
+            // cbm_model
+            // 
+            this.cbm_model.FormattingEnabled = true;
+            this.cbm_model.Items.AddRange(new object[] {
+            "IN",
+            "OUT"});
+            this.cbm_model.Location = new System.Drawing.Point(78, 51);
+            this.cbm_model.Name = "cbm_model";
+            this.cbm_model.Size = new System.Drawing.Size(173, 21);
+            this.cbm_model.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 57);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Model Cd:";
+            // 
             // btn_enter
             // 
             this.btn_enter.Location = new System.Drawing.Point(257, 49);
@@ -409,26 +429,6 @@
             this.cbm_station.Size = new System.Drawing.Size(173, 21);
             this.cbm_station.TabIndex = 0;
             this.cbm_station.Text = "SMT_SDR";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(22, 57);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Barcode:";
-            // 
-            // cbm_model
-            // 
-            this.cbm_model.FormattingEnabled = true;
-            this.cbm_model.Items.AddRange(new object[] {
-            "IN",
-            "OUT"});
-            this.cbm_model.Location = new System.Drawing.Point(78, 51);
-            this.cbm_model.Name = "cbm_model";
-            this.cbm_model.Size = new System.Drawing.Size(173, 21);
-            this.cbm_model.TabIndex = 13;
             // 
             // View_STM_Tool_History
             // 

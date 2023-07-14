@@ -24,6 +24,7 @@ namespace SMT_CLR
         string tool_check = "";
         string creator = "";
         string create_time = "";
+        string model = "";
         private void btn_autoget_Click(object sender, EventArgs e)
         {
 
@@ -54,16 +55,18 @@ namespace SMT_CLR
                 {
                     string[] datarow = File.ReadAllLines(pathfolderin + "\\" + file);
                     string[] arrListStr = datarow[0].ToString().Split(',');
-                    barcode = arrListStr[0].ToString();
-                    tool_station = arrListStr[1].ToString();
-                    tool_check = arrListStr[2].ToString();
-                    creator = arrListStr[3].ToString();
+                    model = arrListStr[0].ToString();
+                    barcode = arrListStr[1].ToString();
+                    tool_station = arrListStr[2].ToString();
+                    tool_check = arrListStr[3].ToString();
+                    creator = arrListStr[4].ToString();
                     create_time = DateTime.Now.ToString("yyyyMMdd HHmmss");
                     pgsqlconnection con = new pgsqlconnection();
                     StringBuilder sqlinsert = new StringBuilder();
                     sqlinsert.Append(@"INSERT INTO smt_m_tool_history
-                                    (tool_cd , tool_station , tool_check ,creator,create_time )
+                                    (model_cd, tool_cd , tool_station , tool_check ,creator,create_time )
                                     VALUES(");
+                    sqlinsert.Append("'" + model + "',");
                     sqlinsert.Append("'" + barcode + "',");
                     sqlinsert.Append("'" + tool_station + "',");
                     sqlinsert.Append("'" + tool_check + "',");
