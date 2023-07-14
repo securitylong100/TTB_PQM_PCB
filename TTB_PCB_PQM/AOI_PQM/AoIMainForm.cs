@@ -180,7 +180,7 @@ namespace AOI_PQM
                             time = Convert.ToDateTime(row[2]).ToString("HH:mm:ss");
                             model = cbm_model.Text;
                             judge = row[3].ToString() == "0" ? "0" : "1";
-                            data = judge;
+                            data = row[3].ToString();
                             //insert barcode to localDB
                             string sqlinsert = @"INSERT INTO public.barcodeupload(board_id, barcode_cd,pcbstarttime,resultno,datetimeup)  
                             VALUES('" + row[0].ToString() + "','" + barcode + "','" + Convert.ToDateTime(row[2]).ToString("yyyyMMdd HH:mm:ss") + "'," + judge + ",now())";
