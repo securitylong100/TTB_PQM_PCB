@@ -63,6 +63,8 @@
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.txt_barcode = new System.Windows.Forms.TextBox();
             this.cbm_station = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbm_model = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -288,6 +290,8 @@
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.cbm_model);
+            this.pn_background.Controls.Add(this.label7);
             this.pn_background.Controls.Add(this.btn_enter);
             this.pn_background.Controls.Add(this.label5);
             this.pn_background.Controls.Add(this.cbm_status);
@@ -307,9 +311,9 @@
             // 
             // btn_enter
             // 
-            this.btn_enter.Location = new System.Drawing.Point(78, 49);
+            this.btn_enter.Location = new System.Drawing.Point(257, 49);
             this.btn_enter.Name = "btn_enter";
-            this.btn_enter.Size = new System.Drawing.Size(211, 23);
+            this.btn_enter.Size = new System.Drawing.Size(47, 23);
             this.btn_enter.TabIndex = 10;
             this.btn_enter.Text = "Enter";
             this.btn_enter.UseVisualStyleBackColor = true;
@@ -394,7 +398,7 @@
             // 
             this.txt_barcode.Location = new System.Drawing.Point(78, 11);
             this.txt_barcode.Name = "txt_barcode";
-            this.txt_barcode.Size = new System.Drawing.Size(211, 21);
+            this.txt_barcode.Size = new System.Drawing.Size(226, 21);
             this.txt_barcode.TabIndex = 1;
             // 
             // cbm_station
@@ -404,6 +408,27 @@
             this.cbm_station.Name = "cbm_station";
             this.cbm_station.Size = new System.Drawing.Size(173, 21);
             this.cbm_station.TabIndex = 0;
+            this.cbm_station.Text = "SMT_SDR";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 57);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(50, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Barcode:";
+            // 
+            // cbm_model
+            // 
+            this.cbm_model.FormattingEnabled = true;
+            this.cbm_model.Items.AddRange(new object[] {
+            "IN",
+            "OUT"});
+            this.cbm_model.Location = new System.Drawing.Point(78, 51);
+            this.cbm_model.Name = "cbm_model";
+            this.cbm_model.Size = new System.Drawing.Size(173, 21);
+            this.cbm_model.TabIndex = 13;
             // 
             // View_STM_Tool_History
             // 
@@ -463,5 +488,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn tool_check;
         private DevExpress.XtraGrid.Columns.GridColumn creator;
         private DevExpress.XtraGrid.Columns.GridColumn create_time;
+        private System.Windows.Forms.ComboBox cbm_model;
+        private System.Windows.Forms.Label label7;
     }
 }

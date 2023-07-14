@@ -33,7 +33,7 @@ namespace IFM.DataAccess.CQRS.Queries.NIDEC.SMT
                                   tool_cd,
                                   tool_name,
                                   tool_station,
-                                  tool_project,
+                                  model_cd,
                                   tool_active,
                                   priority,
                                   status,

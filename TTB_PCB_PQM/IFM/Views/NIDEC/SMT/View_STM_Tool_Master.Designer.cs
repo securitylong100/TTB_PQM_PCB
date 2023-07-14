@@ -45,7 +45,7 @@
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tool_cd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tool_name = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tool_project = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.model_cd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tool_station = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tool_active = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colpriority = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -185,7 +185,7 @@
             this.gv_data.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.tool_cd,
             this.tool_name,
-            this.tool_project,
+            this.model_cd,
             this.tool_station,
             this.tool_active,
             this.colpriority,
@@ -214,13 +214,13 @@
             this.tool_name.Visible = true;
             this.tool_name.VisibleIndex = 1;
             // 
-            // tool_project
+            // model_cd
             // 
-            this.tool_project.Caption = "Tool Project";
-            this.tool_project.FieldName = "tool_project";
-            this.tool_project.Name = "tool_project";
-            this.tool_project.Visible = true;
-            this.tool_project.VisibleIndex = 3;
+            this.model_cd.Caption = "Model Code";
+            this.model_cd.FieldName = "model_cd";
+            this.model_cd.Name = "model_cd";
+            this.model_cd.Visible = true;
+            this.model_cd.VisibleIndex = 3;
             // 
             // tool_station
             // 
@@ -323,7 +323,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn Status;
         private DevExpress.XtraGrid.Columns.GridColumn comments;
         private DevExpress.XtraGrid.GridControl gc_data;
-        private DevExpress.XtraGrid.Columns.GridColumn tool_project;
+        private DevExpress.XtraGrid.Columns.GridColumn model_cd;
         private DevExpress.XtraGrid.Columns.GridColumn tool_station;
         private DevExpress.XtraGrid.Columns.GridColumn tool_active;
         private DevExpress.XtraGrid.Columns.GridColumn ID;

@@ -198,7 +198,7 @@ namespace IFM.Class
                 int response = command.ExecuteNonQuery();
                 if (response >= 1)
                 {
-                    { MessageBox.Show("Successful!", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information); }                    
+                    { MessageBox.Show("Successful!", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information); }
                     connection.Close();
                     return true;
                 }
@@ -225,12 +225,14 @@ namespace IFM.Class
                 connection.Open();
                 NpgsqlCommand command = new NpgsqlCommand(sql, connection);
                 int response = command.ExecuteNonQuery();
-                    connection.Close();
-                    return true;
+                connection.Close();
+                return true;
             }
             catch (Exception ex)
-            { 
+            {
                 connection.Close();
+                MessageBox.Show("Not successful!" + System.Environment.NewLine + ex.Message
+                                 , "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }

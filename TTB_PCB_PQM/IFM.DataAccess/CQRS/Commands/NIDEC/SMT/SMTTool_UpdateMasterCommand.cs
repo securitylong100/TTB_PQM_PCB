@@ -31,7 +31,7 @@ namespace IFM.DataAccess.CQRS.Commands
                 string sql = $@"UPDATE smt_m_tool_master SET 
                                        {nameof(m_smt_tool.tool_name)}=@{nameof(m_smt_tool.tool_name)}
                                       ,{nameof(m_smt_tool.tool_station)}=@{nameof(m_smt_tool.tool_station)}
-                                      ,{nameof(m_smt_tool.tool_project)}=@{nameof(m_smt_tool.tool_project)}
+                                      ,{nameof(m_smt_tool.model_cd)}=@{nameof(m_smt_tool.model_cd)}
                                       ,{nameof(m_smt_tool.tool_active)}=@{nameof(m_smt_tool.tool_active)}
                                       ,{nameof(m_smt_tool.priority)}=@{nameof(m_smt_tool.priority)}
                                       ,{nameof(m_smt_tool.status)}=@{nameof(m_smt_tool.status)}
@@ -42,7 +42,7 @@ namespace IFM.DataAccess.CQRS.Commands
                                              {nameof(m_smt_tool.tool_cd)},
                                              {nameof(m_smt_tool.tool_name)},
                                              {nameof(m_smt_tool.tool_station)},
-                                             {nameof(m_smt_tool.tool_project)},
+                                             {nameof(m_smt_tool.model_cd)},
                                              {nameof(m_smt_tool.tool_active)},
                                              {nameof(m_smt_tool.priority)},
                                              {nameof(m_smt_tool.status)},
@@ -52,7 +52,7 @@ namespace IFM.DataAccess.CQRS.Commands
                                       SELECT  @{nameof(m_smt_tool.tool_cd)}
                                              ,@{nameof(m_smt_tool.tool_name)}
                                              ,@{nameof(m_smt_tool.tool_station)}
-                                             ,@{nameof(m_smt_tool.tool_project)}
+                                             ,@{nameof(m_smt_tool.model_cd)}
                                              ,@{nameof(m_smt_tool.tool_active)}
                                              ,@{nameof(m_smt_tool.priority)}
                                              ,@{nameof(m_smt_tool.status)}
@@ -76,7 +76,7 @@ namespace IFM.DataAccess.CQRS.Commands
                         item.tool_cd,
                         item.tool_name,
                         item.tool_station,
-                        item.tool_project,
+                        item.model_cd,
                         item.tool_active,
                         item.comments,
                         item.status,

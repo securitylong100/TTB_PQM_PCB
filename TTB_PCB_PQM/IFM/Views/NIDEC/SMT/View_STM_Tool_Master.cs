@@ -43,9 +43,24 @@ namespace IFM.Views.NIDEC.SMT
                 item.enum_status = ModelStatus.FakeDelete;
                 gv_data.RefreshRow(e);
             };
+            gridcontrolview();
             gv_data.CustomDrawCell += Gv_data_CustomDrawCell;
             Functions fn = new Functions();
             fn.getcombox(gv_data, gc_data);
+        }
+        private void gridcontrolview()
+        {
+            RepositoryItemComboBox riComboBox;
+       
+            var model_code = ClsSession.App.DbServices.Query(new SMTToolGetDistinctModelQuery());
+            riComboBox = new RepositoryItemComboBox();
+            foreach (var model_ in model_code)
+            {
+                riComboBox.Items.Add(model_.model_cd);
+            }
+            gc_data.RepositoryItems.Add(riComboBox);
+            gv_data.Columns["model_cd"].ColumnEdit = riComboBox;
+
         }
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         {
