@@ -51,6 +51,8 @@ namespace IFM.Views.NIDEC.SMT
                 //get station
                 string sql_cbm = "select distinct tool_station from smt_m_tool_master smtm ";
                 con.getComboBoxData(sql_cbm, ref cbm_station);
+                string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
+                con.getComboBoxData(sql_model, ref cbm_model);
             }
             catch (Exception ex)
             {
@@ -94,34 +96,50 @@ namespace IFM.Views.NIDEC.SMT
         }
         bool checkcondition()
         {
-            if (txt_barcode.Text.Length < 5 || cbm_station.SelectedIndex == null || cbm_status.SelectedIndex == null)
+            if (txt_barcode.Text.Length < 5 || cbm_station.Text =="" || cbm_status.SelectedItem == null || cbm_model.SelectedIndex == null)
             {
-                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Mã Lỗi: 101", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (exitsBarcode(txt_barcode.Text) == 0)
+            if (exitsBarcode(txt_barcode.Text, cbm_model.Text) == 0)
             {
-                MessageBox.Show("Barcode này chưa được đăng ký ở master", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Barcode này chưa được đăng ký ở master cho model này", "Mã Lỗi: 102", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (currentstatus() == "SMT_SDR_IN" && beforestatus(txt_barcode.Text) != "SMT_CLR_OUT")
+            if (currentstatus() == "SMT_SDR_IN" && beforestatus(txt_barcode.Text) == "SMT_SDR_IN")
             {
-                MessageBox.Show("Barcode Chưa được vệ sinh !", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Barcode đã được check In trước đó !", "Mã Lỗi: 103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (currentstatus() == "SMT_SDR_IN" && beforestatus(txt_barcode.Text) != "SMT_CLR_OUT")
+            {
+                MessageBox.Show("Barcode Chưa được vệ sinh !", "Mã Lỗi: 104", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             else if (currentstatus() == "SMT_SDR_OUT" && beforestatus(txt_barcode.Text) != "SMT_SDR_IN")
             {
-                MessageBox.Show("Barcode Chưa được Check IN !", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Barcode Chưa được Check IN !", "Mã Lỗi: 105", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            //if (currentstatus() == "SMT_SDR_IN" && beforestatus(txt_barcode.Text) != "SMT_CLR_OUT")
+            //{
+            //    MessageBox.Show("Lỗi 103: Barcode Chưa được vệ sinh !", "Mã Lỗi: 103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
+            //else if (currentstatus() == "SMT_SDR_OUT" && beforestatus(txt_barcode.Text) != "SMT_SDR_IN")
+            //{
+            //    MessageBox.Show("Barcode Chưa được Check IN !", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
             return true;
         }
-        int exitsBarcode(string barcode)
+        int exitsBarcode(string barcode,string model)
         {
             try
             {
                 pgsqlconnection con = new pgsqlconnection();
-                string sql = "select count(*)  from smt_m_tool_history where tool_cd  ='" + barcode + "'"; //updaed new version
+                string sql = "select count(*)  from smt_m_tool_master where tool_cd  ='" + barcode + "' and model_cd ='"+model+"'"; //updaed new version
                 return con.sqlExecuteNonQueryInt(sql);
             }
             catch (Exception ex)
@@ -152,9 +170,10 @@ namespace IFM.Views.NIDEC.SMT
                     pgsqlconnection con = new pgsqlconnection();
                     StringBuilder sqlinsert = new StringBuilder();
                     sqlinsert.Append(@"INSERT INTO smt_m_tool_history
-                                    (tool_cd , tool_station , tool_check , creator ,create_time )
+                                    (model_cd, tool_cd , tool_station , tool_check , creator ,create_time )
                                     VALUES("
                                      );
+                    sqlinsert.Append("'" + cbm_model.Text + "',");
                     sqlinsert.Append("'" + txt_barcode.Text + "',");
                     sqlinsert.Append("'" + cbm_station.Text + "',");
                     sqlinsert.Append("'" + cbm_status.Text + "',");
@@ -170,5 +189,7 @@ namespace IFM.Views.NIDEC.SMT
             }
             OnLoad(e);
         }
+
+      
     }
 }
