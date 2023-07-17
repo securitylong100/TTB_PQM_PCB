@@ -139,8 +139,23 @@ namespace SPI_PQM
             {
                 try
                 {
-                    string[] arrListStr = file.ToString().Split('_');
-                    model = arrListStr[1].ToString();
+                    //string[] arrListStr = file.ToString().Split('_');
+                    //string model_ = "";
+                    //if(arrListStr.Length>0)
+                    //{
+                    //    string sub = arrListStr[arrListStr.Length - 2];
+                    //    int a = file.ToString().IndexOf(sub);
+                    //    //for(int i = 1; i < arrListStr.Length-2;i++)
+                    //    //{
+                    //    //    model = arrListStr[i].ToString() + "_"+arrListStr[i+1].ToString();
+                    //    //}                    
+                    //}
+                    int ps = file.ToString().IndexOf(DateTime.Now.ToString("yyyyMMdd"));
+                    if (file.ToString().Length > 33)
+                    {
+                        model = file.ToString().Substring(17, file.ToString().Length - ps - 1);
+                    }
+                    
                     dt = new DataTable();
                     dt = ConvertCSVtoDataTable(pathfolderin + "\\" + file);
                     foreach (DataRow row in dt.Rows)

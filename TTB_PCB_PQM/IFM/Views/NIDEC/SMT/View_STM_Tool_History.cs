@@ -19,7 +19,7 @@ namespace IFM.Views.NIDEC.SMT
     public partial class View_STM_Tool_History : RibbonForm
     {
         DataTable dt;
-       
+
         public View_STM_Tool_History()
         {
             InitializeComponent();
@@ -40,25 +40,31 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-                txt_barcode.Text = "";
+
                 dt = new DataTable();
                 pgsqlconnection con = new pgsqlconnection();
-                string sql = "select * from smt_m_tool_history where create_time <= '" + dtp_to.Value + "' and create_time >='" + dtp_from.Value + "' order by id desc";
-
+                string sql = @"select a.id,b.model_cd , a.tool_cd, a.tool_station, a.tool_check, b.tool_name ,a.creator, a.create_time  from smt_m_tool_history a 
+                            left join smt_m_tool_master b  
+                            on a.tool_cd  = b.tool_cd 
+                            where a.create_time <= '" + dtp_to.Value + @"'
+                            and a.create_time >='" + dtp_from.Value + @"'
+                            and a.tool_cd = '" + txt_barcode.Text + @"'
+                            order by a.id desc";
+                   
                 con.sqlDataAdapterFillDatatable(sql, ref dt);
                 gc_data.DataSource = dt;
 
                 //get station
                 string sql_cbm = "select distinct tool_station from smt_m_tool_master smtm ";
                 con.getComboBoxData(sql_cbm, ref cbm_station);
-                string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
-                con.getComboBoxData(sql_model, ref cbm_model);
+                //string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
+                //con.getComboBoxData(sql_model, ref cbm_model);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-
+            txt_barcode.Text = "";
         }
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -96,12 +102,12 @@ namespace IFM.Views.NIDEC.SMT
         }
         bool checkcondition()
         {
-            if (txt_barcode.Text.Length < 5 || cbm_station.Text =="" || cbm_status.SelectedItem == null || cbm_model.SelectedIndex == null)
+            if (txt_barcode.Text.Length < 5 || cbm_station.Text == "" || cbm_status.SelectedItem == null)
             {
                 MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Mã Lỗi: 101", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (exitsBarcode(txt_barcode.Text, cbm_model.Text) == 0)
+            if (exitsBarcode(txt_barcode.Text) == 0)
             {
                 MessageBox.Show("Barcode này chưa được đăng ký ở master cho model này", "Mã Lỗi: 102", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -134,12 +140,12 @@ namespace IFM.Views.NIDEC.SMT
             //}
             return true;
         }
-        int exitsBarcode(string barcode,string model)
+        int exitsBarcode(string barcode)
         {
             try
             {
                 pgsqlconnection con = new pgsqlconnection();
-                string sql = "select count(*)  from smt_m_tool_master where tool_cd  ='" + barcode + "' and model_cd ='"+model+"'"; //updaed new version
+                string sql = "select count(*)  from smt_m_tool_master where tool_cd  ='" + barcode + "'"; //updaed new version
                 return con.sqlExecuteNonQueryInt(sql);
             }
             catch (Exception ex)
@@ -170,10 +176,9 @@ namespace IFM.Views.NIDEC.SMT
                     pgsqlconnection con = new pgsqlconnection();
                     StringBuilder sqlinsert = new StringBuilder();
                     sqlinsert.Append(@"INSERT INTO smt_m_tool_history
-                                    (model_cd, tool_cd , tool_station , tool_check , creator ,create_time )
+                                    ( tool_cd , tool_station , tool_check , creator ,create_time )
                                     VALUES("
                                      );
-                    sqlinsert.Append("'" + cbm_model.Text + "',");
                     sqlinsert.Append("'" + txt_barcode.Text + "',");
                     sqlinsert.Append("'" + cbm_station.Text + "',");
                     sqlinsert.Append("'" + cbm_status.Text + "',");
@@ -190,6 +195,6 @@ namespace IFM.Views.NIDEC.SMT
             OnLoad(e);
         }
 
-      
+
     }
 }
