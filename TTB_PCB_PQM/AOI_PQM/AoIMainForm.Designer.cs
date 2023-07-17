@@ -70,7 +70,7 @@ namespace AOI_PQM
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 148F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 151F));
             this.tableLayoutPanel1.Controls.Add(this.txt_browserout, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btn_browserout, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
@@ -108,7 +108,7 @@ namespace AOI_PQM
             this.txt_browserout.Multiline = true;
             this.txt_browserout.Name = "txt_browserout";
             this.txt_browserout.ReadOnly = true;
-            this.txt_browserout.Size = new System.Drawing.Size(363, 34);
+            this.txt_browserout.Size = new System.Drawing.Size(360, 34);
             this.txt_browserout.TabIndex = 7;
             // 
             // btn_browserout
@@ -137,7 +137,7 @@ namespace AOI_PQM
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(363, 44);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(360, 44);
             this.tableLayoutPanel2.TabIndex = 19;
             // 
             // btn_manualget
@@ -146,7 +146,7 @@ namespace AOI_PQM
             this.btn_manualget.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_manualget.Location = new System.Drawing.Point(6, 6);
             this.btn_manualget.Name = "btn_manualget";
-            this.btn_manualget.Size = new System.Drawing.Size(171, 32);
+            this.btn_manualget.Size = new System.Drawing.Size(169, 32);
             this.btn_manualget.TabIndex = 0;
             this.btn_manualget.Text = "Manual Get";
             this.btn_manualget.UseVisualStyleBackColor = true;
@@ -156,9 +156,9 @@ namespace AOI_PQM
             // 
             this.btn_reload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_reload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reload.Location = new System.Drawing.Point(186, 6);
+            this.btn_reload.Location = new System.Drawing.Point(184, 6);
             this.btn_reload.Name = "btn_reload";
-            this.btn_reload.Size = new System.Drawing.Size(171, 32);
+            this.btn_reload.Size = new System.Drawing.Size(170, 32);
             this.btn_reload.TabIndex = 1;
             this.btn_reload.Text = "Reload";
             this.btn_reload.UseVisualStyleBackColor = true;
@@ -181,7 +181,7 @@ namespace AOI_PQM
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(581, 3);
+            this.label1.Location = new System.Drawing.Point(578, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(144, 40);
             this.label1.TabIndex = 21;
@@ -193,7 +193,7 @@ namespace AOI_PQM
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(734, 3);
+            this.label3.Location = new System.Drawing.Point(731, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 40);
             this.label3.TabIndex = 22;
@@ -205,9 +205,9 @@ namespace AOI_PQM
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(887, 3);
+            this.label4.Location = new System.Drawing.Point(884, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(142, 40);
+            this.label4.Size = new System.Drawing.Size(145, 40);
             this.label4.TabIndex = 23;
             this.label4.Text = "Server check NoDay";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -216,7 +216,7 @@ namespace AOI_PQM
             // 
             this.nud_timer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nud_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nud_timer.Location = new System.Drawing.Point(581, 49);
+            this.nud_timer.Location = new System.Drawing.Point(578, 49);
             this.nud_timer.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -239,7 +239,7 @@ namespace AOI_PQM
             // nud_DBday
             // 
             this.nud_DBday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nud_DBday.Location = new System.Drawing.Point(734, 49);
+            this.nud_DBday.Location = new System.Drawing.Point(731, 49);
             this.nud_DBday.Name = "nud_DBday";
             this.nud_DBday.Size = new System.Drawing.Size(120, 26);
             this.nud_DBday.TabIndex = 25;
@@ -252,7 +252,7 @@ namespace AOI_PQM
             // nud_ServerDay
             // 
             this.nud_ServerDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nud_ServerDay.Location = new System.Drawing.Point(887, 49);
+            this.nud_ServerDay.Location = new System.Drawing.Point(884, 49);
             this.nud_ServerDay.Maximum = new decimal(new int[] {
             30,
             0,
@@ -274,7 +274,7 @@ namespace AOI_PQM
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(6, 333);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(719, 30);
+            this.label5.Size = new System.Drawing.Size(716, 30);
             this.label5.TabIndex = 27;
             this.label5.Text = "Version 0.2";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -283,7 +283,7 @@ namespace AOI_PQM
             // 
             this.lbl_status.AutoSize = true;
             this.lbl_status.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_status.Location = new System.Drawing.Point(734, 333);
+            this.lbl_status.Location = new System.Drawing.Point(731, 333);
             this.lbl_status.Name = "lbl_status";
             this.lbl_status.Size = new System.Drawing.Size(144, 30);
             this.lbl_status.TabIndex = 28;
@@ -294,9 +294,9 @@ namespace AOI_PQM
             // 
             this.lbl_timer.AutoSize = true;
             this.lbl_timer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbl_timer.Location = new System.Drawing.Point(887, 333);
+            this.lbl_timer.Location = new System.Drawing.Point(884, 333);
             this.lbl_timer.Name = "lbl_timer";
-            this.lbl_timer.Size = new System.Drawing.Size(142, 30);
+            this.lbl_timer.Size = new System.Drawing.Size(145, 30);
             this.lbl_timer.TabIndex = 29;
             this.lbl_timer.Text = "60";
             this.lbl_timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -310,7 +310,7 @@ namespace AOI_PQM
             this.txt_logerror.Location = new System.Drawing.Point(6, 145);
             this.txt_logerror.Multiline = true;
             this.txt_logerror.Name = "txt_logerror";
-            this.txt_logerror.Size = new System.Drawing.Size(566, 182);
+            this.txt_logerror.Size = new System.Drawing.Size(563, 182);
             this.txt_logerror.TabIndex = 30;
             // 
             // label2
@@ -332,17 +332,17 @@ namespace AOI_PQM
             this.cbm_model.FormattingEnabled = true;
             this.cbm_model.Location = new System.Drawing.Point(209, 102);
             this.cbm_model.Name = "cbm_model";
-            this.cbm_model.Size = new System.Drawing.Size(363, 28);
+            this.cbm_model.Size = new System.Drawing.Size(360, 28);
             this.cbm_model.TabIndex = 32;
             // 
             // maincontrol
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.maincontrol, 3);
             this.maincontrol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.maincontrol.Location = new System.Drawing.Point(581, 145);
+            this.maincontrol.Location = new System.Drawing.Point(578, 145);
             this.maincontrol.MainView = this.maingrid;
             this.maincontrol.Name = "maincontrol";
-            this.maincontrol.Size = new System.Drawing.Size(448, 182);
+            this.maincontrol.Size = new System.Drawing.Size(451, 182);
             this.maincontrol.TabIndex = 33;
             this.maincontrol.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.maingrid});

@@ -152,6 +152,8 @@ namespace AOI_PQM
 
                   
                     dt = new DataTable();
+                    maincontrol.DataSource = null;
+                    maincontrol.Refresh();
                     StringBuilder sql = new StringBuilder();
                     //sql.Append(@"select  a.id, a.boardbarcode, a.pcbstarttime, COALESCE(sum( b.result),0) as resultno from ( ");
                     //sql.Append(@" select id, boardbarcode, pcbstarttime from  """ + cbm_model.Text + @""".aoi_board where 1=1 ");
@@ -179,7 +181,7 @@ namespace AOI_PQM
                             date = Convert.ToDateTime(row[2]).ToString("yyyy/MM/dd");
                             time = Convert.ToDateTime(row[2]).ToString("HH:mm:ss");
                             model = cbm_model.Text;
-                            judge = row[3].ToString() == "0" ? "0" : "1";
+                            judge = row[3].ToString() == "1" ? "1" : "0";
                             data = row[3].ToString();
                             //insert barcode to localDB
                             string sqlinsert = @"INSERT INTO public.barcodeupload(board_id, barcode_cd,pcbstarttime,resultno,datetimeup)  
