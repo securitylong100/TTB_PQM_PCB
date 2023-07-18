@@ -19,7 +19,7 @@ namespace IFM.Views.NIDEC.SMT
     public partial class View_STM_Assy_Check : RibbonForm
     {
         DataTable dt;
-       
+
         public View_STM_Assy_Check()
         {
             InitializeComponent();
@@ -38,12 +38,29 @@ namespace IFM.Views.NIDEC.SMT
         }
         protected override void OnLoad(EventArgs e)
         {
-            
+            try
+            {
+
+                dt = new DataTable();
+                pgsqlconnection con = new pgsqlconnection();
+                string sql = @"select id, assy_code, model_cd  ,creator, create_time  from smt_m_assy_code                            
+                            where create_time <= '" + dtp_to.Value + @"'
+                            and create_time >='" + dtp_from.Value + @"'                          
+                            order by id desc limit 100";
+                con.sqlDataAdapterFillDatatable(sql, ref dt);
+                gc_data.DataSource = dt;
+                string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
+                con.getComboBoxData(sql_model, ref cbm_modelcd);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+            txt_barcode.Text = "";
 
         }
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
-            btn_enter_Click(sender, e);
         }
         private void BbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -51,7 +68,7 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void BbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
-            btn_enter_Click(sender, e);
+
         }
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -63,34 +80,43 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void cbm_status_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-        }
-     
-        int exitsBarcode(string barcode)
-        {
-            try
-            {
-                pgsqlconnection con = new pgsqlconnection();
-                string sql = "select count(*)  from smt_m_tool_history where tool_cd  ='" + barcode + "'"; //updaed new version
-                return con.sqlExecuteNonQueryInt(sql);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-                return 0;
-            }
-        }
-        string beforestatus(string barcode)
-        {
-            pgsqlconnection con = new pgsqlconnection();
-            string sql = @"select  tool_station||'_'||tool_check  from smt_m_tool_history smth  where 1=1
-                            and tool_cd  = '" + barcode + @"'
-                            order by id desc limit 1";
-            return con.sqlExecuteScalarString_Autosystem(sql);
+
         }
 
+        bool checkcondition()
+        {
+            if (txt_barcode.Text.Length < 5 || cbm_modelcd.Text == "")
+            {
+                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Mã Lỗi: 101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
         private void btn_enter_Click(object sender, EventArgs e)
         {
+            if (checkcondition())
+            {
+                try
+                {
+                    pgsqlconnection con = new pgsqlconnection();
+                    StringBuilder sqlinsert = new StringBuilder();
+                    sqlinsert.Append(@"INSERT INTO smt_m_assy_code
+                                    ( assy_code , model_cd , creator ,create_time )
+                                    VALUES("
+                                     );
+                    sqlinsert.Append("'" + txt_barcode.Text + "',");
+                    sqlinsert.Append("'" + cbm_modelcd.Text + "',");
+                    sqlinsert.Append("'" + ClsSession.App.UserName + "',");
+                    sqlinsert.Append("CURRENT_TIMESTAMP");
+                    sqlinsert.Append(")");
+                    con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error :" + ex.Message);
+                }
+            }
+            OnLoad(e);
         }
     }
 }

@@ -44,14 +44,15 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tool_cd = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tool_station = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tool_check = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.assy_code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.model_cd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.creator = new DevExpress.XtraGrid.Columns.GridColumn();
             this.create_time = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.cbm_modelcd = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.btn_enter = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -192,9 +193,8 @@
             this.gv_data.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gv_data.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.ID,
-            this.tool_cd,
-            this.tool_station,
-            this.tool_check,
+            this.assy_code,
+            this.model_cd,
             this.creator,
             this.create_time});
             this.gv_data.GridControl = this.gc_data;
@@ -203,6 +203,7 @@
             this.gv_data.OptionsBehavior.ReadOnly = true;
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
+            this.gv_data.OptionsView.ShowFooter = true;
             // 
             // ID
             // 
@@ -212,29 +213,21 @@
             this.ID.Visible = true;
             this.ID.VisibleIndex = 0;
             // 
-            // tool_cd
+            // assy_code
             // 
-            this.tool_cd.Caption = "Tool Code";
-            this.tool_cd.FieldName = "tool_cd";
-            this.tool_cd.Name = "tool_cd";
-            this.tool_cd.Visible = true;
-            this.tool_cd.VisibleIndex = 1;
+            this.assy_code.Caption = "Assy Barcode";
+            this.assy_code.FieldName = "assy_code";
+            this.assy_code.Name = "assy_code";
+            this.assy_code.Visible = true;
+            this.assy_code.VisibleIndex = 1;
             // 
-            // tool_station
+            // model_cd
             // 
-            this.tool_station.Caption = "Tool Station";
-            this.tool_station.FieldName = "tool_station";
-            this.tool_station.Name = "tool_station";
-            this.tool_station.Visible = true;
-            this.tool_station.VisibleIndex = 2;
-            // 
-            // tool_check
-            // 
-            this.tool_check.Caption = "Tool Check";
-            this.tool_check.FieldName = "tool_check";
-            this.tool_check.Name = "tool_check";
-            this.tool_check.Visible = true;
-            this.tool_check.VisibleIndex = 3;
+            this.model_cd.Caption = "Model Code";
+            this.model_cd.FieldName = "model_cd";
+            this.model_cd.Name = "model_cd";
+            this.model_cd.Visible = true;
+            this.model_cd.VisibleIndex = 2;
             // 
             // creator
             // 
@@ -242,15 +235,16 @@
             this.creator.FieldName = "creator";
             this.creator.Name = "creator";
             this.creator.Visible = true;
-            this.creator.VisibleIndex = 4;
+            this.creator.VisibleIndex = 3;
             // 
             // create_time
             // 
             this.create_time.Caption = "Create Time";
+            this.create_time.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
             this.create_time.FieldName = "create_time";
             this.create_time.Name = "create_time";
             this.create_time.Visible = true;
-            this.create_time.VisibleIndex = 5;
+            this.create_time.VisibleIndex = 4;
             // 
             // gc_data
             // 
@@ -282,6 +276,8 @@
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.cbm_modelcd);
+            this.pn_background.Controls.Add(this.label6);
             this.pn_background.Controls.Add(this.btn_enter);
             this.pn_background.Controls.Add(this.label4);
             this.pn_background.Controls.Add(this.label3);
@@ -295,11 +291,28 @@
             this.pn_background.Size = new System.Drawing.Size(1000, 85);
             this.pn_background.TabIndex = 3;
             // 
+            // cbm_modelcd
+            // 
+            this.cbm_modelcd.FormattingEnabled = true;
+            this.cbm_modelcd.Location = new System.Drawing.Point(121, 47);
+            this.cbm_modelcd.Name = "cbm_modelcd";
+            this.cbm_modelcd.Size = new System.Drawing.Size(160, 21);
+            this.cbm_modelcd.TabIndex = 21;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Model Code:";
+            // 
             // btn_enter
             // 
-            this.btn_enter.Location = new System.Drawing.Point(394, 11);
+            this.btn_enter.Location = new System.Drawing.Point(282, 47);
             this.btn_enter.Name = "btn_enter";
-            this.btn_enter.Size = new System.Drawing.Size(211, 23);
+            this.btn_enter.Size = new System.Drawing.Size(50, 23);
             this.btn_enter.TabIndex = 10;
             this.btn_enter.Text = "Enter";
             this.btn_enter.UseVisualStyleBackColor = true;
@@ -326,7 +339,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 14);
+            this.label1.Location = new System.Drawing.Point(32, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 4;
@@ -406,10 +419,11 @@
         private System.Windows.Forms.TextBox txt_barcode;
         private System.Windows.Forms.Button btn_enter;
         private DevExpress.XtraGrid.Columns.GridColumn ID;
-        private DevExpress.XtraGrid.Columns.GridColumn tool_cd;
-        private DevExpress.XtraGrid.Columns.GridColumn tool_station;
-        private DevExpress.XtraGrid.Columns.GridColumn tool_check;
+        private DevExpress.XtraGrid.Columns.GridColumn assy_code;
+        private DevExpress.XtraGrid.Columns.GridColumn model_cd;
         private DevExpress.XtraGrid.Columns.GridColumn creator;
         private DevExpress.XtraGrid.Columns.GridColumn create_time;
+        private System.Windows.Forms.ComboBox cbm_modelcd;
+        private System.Windows.Forms.Label label6;
     }
 }
