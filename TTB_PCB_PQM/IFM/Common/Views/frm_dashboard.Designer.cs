@@ -36,8 +36,10 @@
             this.skinDropDownButtonItem = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.btnNavigation = new DevExpress.XtraBars.BarButtonItem();
             this.bsiVersion = new DevExpress.XtraBars.BarStaticItem();
+            this.bsiUserName = new DevExpress.XtraBars.BarStaticItem();
             this.rb_home_page = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupNavigation = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rb_status = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.mng_panels = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.pnl_sidebar = new DevExpress.XtraBars.Docking.DockPanel();
@@ -46,8 +48,6 @@
             this.accg_sidebar = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.tabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
             this.mng_documents = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bsiUserName = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.rbc_top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mng_panels)).BeginInit();
             this.pnl_sidebar.SuspendLayout();
@@ -113,6 +113,19 @@
             this.bsiVersion.Id = 50;
             this.bsiVersion.Name = "bsiVersion";
             // 
+            // bsiUserName
+            // 
+            this.bsiUserName.Caption = "Username";
+            this.bsiUserName.Id = 52;
+            this.bsiUserName.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiUserName.ImageOptions.Image")));
+            this.bsiUserName.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiUserName.ImageOptions.LargeImage")));
+            this.bsiUserName.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bsiUserName.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Blue;
+            this.bsiUserName.ItemAppearance.Normal.Options.UseFont = true;
+            this.bsiUserName.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.bsiUserName.Name = "bsiUserName";
+            this.bsiUserName.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // rb_home_page
             // 
             this.rb_home_page.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -126,6 +139,13 @@
             this.ribbonPageGroupNavigation.ItemLinks.Add(this.btnNavigation);
             this.ribbonPageGroupNavigation.Name = "ribbonPageGroupNavigation";
             this.ribbonPageGroupNavigation.Text = "Module";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
+            this.ribbonPageGroup1.ItemLinks.Add(this.bsiUserName);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // rb_status
             // 
@@ -197,43 +217,21 @@
             this.mng_documents.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView});
             // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
-            this.ribbonPageGroup1.ItemLinks.Add(this.bsiUserName);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
-            // 
-            // bsiUserName
-            // 
-            this.bsiUserName.Caption = "Username";
-            this.bsiUserName.Id = 52;
-            this.bsiUserName.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bsiUserName.ImageOptions.Image")));
-            this.bsiUserName.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bsiUserName.ImageOptions.LargeImage")));
-            this.bsiUserName.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bsiUserName.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Blue;
-            this.bsiUserName.ItemAppearance.Normal.Options.UseFont = true;
-            this.bsiUserName.ItemAppearance.Normal.Options.UseForeColor = true;
-            this.bsiUserName.Name = "bsiUserName";
-            this.bsiUserName.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // frm_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Zoom;
-            this.BackgroundImageStore = global::IFM.Properties.Resources.ifm_horizontal;
             this.ClientSize = new System.Drawing.Size(782, 481);
             this.Controls.Add(this.pnl_sidebar);
             this.Controls.Add(this.rb_status);
             this.Controls.Add(this.rbc_top);
-            this.IconOptions.Image = global::IFM.Properties.Resources.ifm_vertical;
+            this.IconOptions.Image = global::IFM.Properties.Resources.ifm_vertical1;
             this.IsMdiContainer = true;
             this.Name = "frm_dashboard";
             this.Ribbon = this.rbc_top;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.rb_status;
-            this.Text = "IFM Technology Solutions Company Limited";
+            this.Text = "Nidec Corporation ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.rbc_top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mng_panels)).EndInit();

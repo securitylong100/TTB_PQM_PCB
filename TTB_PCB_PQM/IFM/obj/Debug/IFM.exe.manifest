@@ -223,14 +223,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IFM.exe" size="53369312">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IFM.exe" size="53031904">
       <assemblyIdentity name="IFM" version="23.3.1.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>y8thpYqzMcDlJhdqWkORt/WyVh34+nDtBB6KLIhkeUc=</dsig:DigestValue>
+        <dsig:DigestValue>4fH6iEpqn+vzWLsqMZefJfn40t203+qvpuUcDr/0UD4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -696,13 +696,13 @@
       <dsig:DigestValue>3cECAzE0/faDngfyVMU1KNIG6tsNJqWVeCMpSb2n/Nw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Resources\ifm_vertical.ico" size="209982">
+  <file name="Resources\ifm_vertical.ico" size="318">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>n9iJvRuPeYRkjYfm1lHW/MbgVdF9eHxtREKDYQzwSmc=</dsig:DigestValue>
+      <dsig:DigestValue>1bozODijbR99h2r7iFf2ShubS9FFPjOE9iSBaHy8pQw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\Load.png" size="355">

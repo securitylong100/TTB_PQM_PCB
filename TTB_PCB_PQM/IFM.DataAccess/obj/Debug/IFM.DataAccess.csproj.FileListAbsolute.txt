@@ -28,6 +28,7 @@ E:\C#\Git\onlytest\IFM\IFM.DataAccess\obj\Debug\IFM.DataAccess.csproj.CoreCompil
 E:\C#\Git\onlytest\IFM\IFM.DataAccess\obj\Debug\IFM.DataAccess.csproj.CopyComplete
 E:\C#\Git\onlytest\IFM\IFM.DataAccess\obj\Debug\IFM.DataAccess.dll
 E:\C#\Git\onlytest\IFM\IFM.DataAccess\obj\Debug\IFM.DataAccess.pdb
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.Pdf.v22.2.Drawing.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\IFM.DataAccess.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\IFM.DataAccess.pdb
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.DataAccess.v22.2.dll
@@ -39,7 +40,6 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpr
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.Office.v22.2.Core.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.Drawing.v22.2.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.Pdf.v22.2.Core.dll
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.Pdf.v22.2.Drawing.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.DataAccess.v22.2.xml
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.Xpo.v22.2.xml
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\bin\Debug\DevExpress.Data.v22.2.xml
@@ -52,4 +52,3 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.Dat
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.DataAccess.csproj.CopyComplete
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.DataAccess.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.DataAccess.pdb
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.DataAccess.csproj.AssemblyReference.cache

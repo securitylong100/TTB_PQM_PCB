@@ -152,6 +152,10 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\System.Runtime.Com
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.AssemblyReference.cache
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.exe.config
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Common.Views.DkWaitForm.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Cutting.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Final_Check_Auto.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Final_Check.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Master_Tool.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Tool_Master.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Tool_History.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.SYS.view_sys_user.resources
@@ -175,7 +179,3 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.application
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.CopyComplete
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.exe
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.pdb
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Final_Check.resources
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Final_Check_Auto.resources
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Master_Tool.resources
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Cutting.resources

@@ -32,13 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_login));
             this.bm_main = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
-            this.cbo_skins = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.bsi_status = new DevExpress.XtraBars.BarStaticItem();
-            this.bsi_version = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.cbo_skins = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            this.bsi_status = new DevExpress.XtraBars.BarStaticItem();
+            this.bsi_version = new DevExpress.XtraBars.BarStaticItem();
             this.tbl_main = new DevExpress.Utils.Layout.TablePanel();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
             this.btn_confirm = new DevExpress.XtraEditors.SimpleButton();
@@ -83,14 +83,46 @@
             this.bar3.DockCol = 0;
             this.bar3.DockRow = 0;
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.cbo_skins),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsi_status),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bsi_version)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.bm_main;
+            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.barDockControlTop.Size = new System.Drawing.Size(440, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 265);
+            this.barDockControlBottom.Manager = this.bm_main;
+            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.barDockControlBottom.Size = new System.Drawing.Size(440, 23);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.bm_main;
+            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 265);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(440, 0);
+            this.barDockControlRight.Manager = this.bm_main;
+            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 265);
             // 
             // cbo_skins
             // 
@@ -114,44 +146,10 @@
             this.bsi_version.Id = 2;
             this.bsi_version.Name = "bsi_version";
             // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.bm_main;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.barDockControlTop.Size = new System.Drawing.Size(440, 0);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 261);
-            this.barDockControlBottom.Manager = this.bm_main;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.barDockControlBottom.Size = new System.Drawing.Size(440, 27);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlLeft.Manager = this.bm_main;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 261);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(440, 0);
-            this.barDockControlRight.Manager = this.bm_main;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 261);
-            // 
             // tbl_main
             // 
+            this.tbl_main.Appearance.BackColor = System.Drawing.Color.White;
+            this.tbl_main.Appearance.Options.UseBackColor = true;
             this.tbl_main.Columns.AddRange(new DevExpress.Utils.Layout.TablePanelColumn[] {
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 20F),
             new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F)});
@@ -165,7 +163,7 @@
             this.tbl_main.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 64F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 26F)});
-            this.tbl_main.Size = new System.Drawing.Size(440, 261);
+            this.tbl_main.Size = new System.Drawing.Size(440, 265);
             this.tbl_main.TabIndex = 5;
             this.tbl_main.UseSkinIndents = true;
             // 
@@ -192,7 +190,7 @@
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.AutoSize, 26F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 48F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
-            this.tablePanel1.Size = new System.Drawing.Size(414, 172);
+            this.tablePanel1.Size = new System.Drawing.Size(414, 176);
             this.tablePanel1.TabIndex = 2;
             this.tablePanel1.UseSkinIndents = true;
             // 
@@ -279,7 +277,7 @@
             // lblTitle
             // 
             this.lblTitle.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.lblTitle.Appearance.ForeColor = System.Drawing.Color.Green;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;
             this.lblTitle.Appearance.Options.UseTextOptions = true;
@@ -294,7 +292,7 @@
             this.tbl_main.SetRow(this.lblTitle, 0);
             this.lblTitle.Size = new System.Drawing.Size(287, 54);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "IFM Technology Solutions\r\nCompany Limited";
+            this.lblTitle.Text = "Nidec Corporation ";
             // 
             // pictureEdit1
             // 
@@ -327,7 +325,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.IconOptions.Image = global::IFM.Properties.Resources.ifm_vertical;
+            this.IconOptions.Image = global::IFM.Properties.Resources.ifm_vertical1;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

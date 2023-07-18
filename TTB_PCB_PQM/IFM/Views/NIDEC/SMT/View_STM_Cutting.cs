@@ -21,6 +21,8 @@ namespace IFM.Views.NIDEC.SMT
         string datetimeCur_;
         string datetimePrevious_;
         string barcode_;
+        bool cutting = false;
+        bool layout =true;
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
         public View_STM_Cutting()
@@ -42,6 +44,7 @@ namespace IFM.Views.NIDEC.SMT
             {
                 getsizelayout();
                 cmbSeriport.DataSource = SerialPort.GetPortNames();
+                chk_cut.Checked = true;
             }
             catch (Exception ex)
             {
@@ -96,11 +99,13 @@ namespace IFM.Views.NIDEC.SMT
                     }
                 }
                 tlp_showdata.Controls.Add(dynamicTableLayoutPanel, 1, 0);
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
+            layout = false;
         }
         // void createDymanicButton(string name)
         /// <summary>
@@ -147,19 +152,19 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void cbm_modelcd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
-          
+
         }
         private void BbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+
         }
         private void BbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+
         }
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -167,7 +172,7 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void BbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (cbm_modelcd.Text != "")
+            if (cbm_modelcd.Text != "" && layout ==true)
             {
                 getsizelayout();
                 createdynamiclayout();
@@ -176,6 +181,7 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void btn_enter_Click(object sender, EventArgs e)
         {
+
             try
             {
                 if (checkcondition())
@@ -199,6 +205,7 @@ namespace IFM.Views.NIDEC.SMT
         }
         void getPQM(string table)
         {
+            cutting = true;
             try
             {
                 dt = new DataTable();
@@ -247,10 +254,12 @@ namespace IFM.Views.NIDEC.SMT
                         else
                         {
                             btn.Image = global::IFM.Properties.Resources.NG;
+                            cutting = false;
                         }
                         i = i + 1;
                     }
                 }
+                if (cutting == true) cut(500);
             }
             catch (Exception ex)
             {
@@ -297,7 +306,7 @@ namespace IFM.Views.NIDEC.SMT
             }
         }
 
-      
+
 
         private void btn_serial_Click(object sender, EventArgs e)
         {
@@ -307,7 +316,7 @@ namespace IFM.Views.NIDEC.SMT
                 serialCom.Open();
                 btn_serial.Text = "Connected Serial";
                 cmbSeriport.Enabled = false;
-                btn_serial.BackColor = Color.Green;                  
+                btn_serial.BackColor = Color.Green;
             }
             else
             {
@@ -315,7 +324,7 @@ namespace IFM.Views.NIDEC.SMT
                 btn_serial.Text = "Connect Serial";
                 cmbSeriport.Enabled = true;
                 btn_serial.BackColor = Color.Silver;
-            }    
+            }
         }
 
         private void View_STM_Cutting_FormClosed(object sender, FormClosedEventArgs e)
@@ -327,14 +336,14 @@ namespace IFM.Views.NIDEC.SMT
         {
             cut(500);
         }
-        bool cut (int sleeptime)
+        bool cut(int sleeptime)
         {
-            if  (btn_serial.Text == "Connected Serial")
+            if (btn_serial.Text == "Connected Serial"&&chk_cut.Checked == true)
             {
                 serialCom.Write("a");//1on 5off
                 Thread.Sleep(sleeptime);
                 serialCom.Write("b");//1on 5off
-            }    
+            }
             return false;
         }
     }

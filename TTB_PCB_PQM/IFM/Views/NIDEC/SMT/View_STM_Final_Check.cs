@@ -18,6 +18,7 @@ namespace IFM.Views.NIDEC.SMT
         string datetimeCur_;
         string datetimePrevious_;
         string barcode_;
+        bool layout = true;
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
         public View_STM_Final_Check()
@@ -96,6 +97,7 @@ namespace IFM.Views.NIDEC.SMT
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
+            layout = false;
         }
         // void createDymanicButton(string name)
         /// <summary>
@@ -195,7 +197,7 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void BbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (cbm_modelcd.Text != "")
+            if (cbm_modelcd.Text != "" && layout == true)
             {
                 getsizelayout();
                 createdynamiclayout();

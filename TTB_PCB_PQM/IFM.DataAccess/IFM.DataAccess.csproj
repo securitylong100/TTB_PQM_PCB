@@ -54,6 +54,7 @@
     <Compile Include="CQRS\Dispatchers\SMTDispatcher.cs" />
     <Compile Include="CQRS\Dispatchers\SystemDispatcher.cs" />
     <Compile Include="CQRS\DkDispatcher.cs" />
+    <Compile Include="CQRS\Queries\NIDEC\SMT\SMTToolGetDistinctModelQuery.cs" />
     <Compile Include="CQRS\Queries\NIDEC\SMT\SMTTool_GetMasterQuery.cs" />
     <Compile Include="CQRS\Queries\SystemGetDistinctViewsQuery.cs" />
     <Compile Include="CQRS\Queries\SystemGetDistinctUserQuery.cs" />

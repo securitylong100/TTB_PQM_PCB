@@ -45,6 +45,7 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.btn_cut = new System.Windows.Forms.Button();
             this.btn_serial = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbSeriport = new System.Windows.Forms.ComboBox();
@@ -62,7 +63,7 @@
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.serialCom = new System.IO.Ports.SerialPort(this.components);
-            this.btn_cut = new System.Windows.Forms.Button();
+            this.chk_cut = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -213,6 +214,7 @@
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.chk_cut);
             this.pn_background.Controls.Add(this.btn_cut);
             this.pn_background.Controls.Add(this.btn_serial);
             this.pn_background.Controls.Add(this.label3);
@@ -232,12 +234,23 @@
             this.pn_background.Size = new System.Drawing.Size(1128, 85);
             this.pn_background.TabIndex = 3;
             // 
+            // btn_cut
+            // 
+            this.btn_cut.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cut.Location = new System.Drawing.Point(688, 15);
+            this.btn_cut.Name = "btn_cut";
+            this.btn_cut.Size = new System.Drawing.Size(121, 59);
+            this.btn_cut.TabIndex = 22;
+            this.btn_cut.Text = "CUT";
+            this.btn_cut.UseVisualStyleBackColor = true;
+            this.btn_cut.Click += new System.EventHandler(this.btn_cut_Click);
+            // 
             // btn_serial
             // 
             this.btn_serial.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_serial.Location = new System.Drawing.Point(506, 51);
             this.btn_serial.Name = "btn_serial";
-            this.btn_serial.Size = new System.Drawing.Size(121, 23);
+            this.btn_serial.Size = new System.Drawing.Size(100, 23);
             this.btn_serial.TabIndex = 21;
             this.btn_serial.Text = "Connect Serial";
             this.btn_serial.UseVisualStyleBackColor = true;
@@ -394,16 +407,14 @@
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
-            // btn_cut
+            // chk_cut
             // 
-            this.btn_cut.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cut.Location = new System.Drawing.Point(688, 15);
-            this.btn_cut.Name = "btn_cut";
-            this.btn_cut.Size = new System.Drawing.Size(121, 59);
-            this.btn_cut.TabIndex = 22;
-            this.btn_cut.Text = "CUT";
-            this.btn_cut.UseVisualStyleBackColor = true;
-            this.btn_cut.Click += new System.EventHandler(this.btn_cut_Click);
+            this.chk_cut.AutoSize = true;
+            this.chk_cut.Location = new System.Drawing.Point(612, 57);
+            this.chk_cut.Name = "chk_cut";
+            this.chk_cut.Size = new System.Drawing.Size(15, 14);
+            this.chk_cut.TabIndex = 23;
+            this.chk_cut.UseVisualStyleBackColor = true;
             // 
             // View_STM_Cutting
             // 
@@ -467,5 +478,6 @@
         private System.IO.Ports.SerialPort serialCom;
         private System.Windows.Forms.Button btn_serial;
         private System.Windows.Forms.Button btn_cut;
+        private System.Windows.Forms.CheckBox chk_cut;
     }
 }
