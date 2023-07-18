@@ -276,7 +276,7 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Appearance.ForeColor = System.Drawing.Color.Green;
             this.lblTitle.Appearance.Options.UseFont = true;
             this.lblTitle.Appearance.Options.UseForeColor = true;

@@ -207,6 +207,18 @@
     <Compile Include="Common\Views\DkWaitForm.Designer.cs">
       <DependentUpon>DkWaitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Assy_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Assy_Viewer.Designer.cs">
+      <DependentUpon>View_STM_Assy_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Assy_Check.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Assy_Check.Designer.cs">
+      <DependentUpon>View_STM_Assy_Check.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\NIDEC\SMT\View_STM_Cutting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +324,12 @@
     </Compile>
     <EmbeddedResource Include="Common\Views\DkWaitForm.resx">
       <DependentUpon>DkWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Assy_Viewer.resx">
+      <DependentUpon>View_STM_Assy_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Assy_Check.resx">
+      <DependentUpon>View_STM_Assy_Check.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Cutting.resx">
       <DependentUpon>View_STM_Cutting.cs</DependentUpon>
