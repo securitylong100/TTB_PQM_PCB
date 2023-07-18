@@ -23,8 +23,8 @@ namespace IFM.Views.NIDEC.SMT
         public View_STM_Assy_Viewer()
         {
             InitializeComponent();
-            dtp_from.Value = DateTime.Now.AddDays(-2);
-            dtp_to.Value = DateTime.Now.AddDays(+1);
+            dtp_from.Value = DateTime.Now.AddDays(-0).Date;
+            dtp_to.Value = DateTime.Now.AddDays(+1).Date;
             AcceptButton = btn_enter;
         }
 
@@ -34,7 +34,7 @@ namespace IFM.Views.NIDEC.SMT
         }
         void BbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
-            gc_data.ShowRibbonPrintPreview();
+            gc_barcodepcb.ShowRibbonPrintPreview();
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -48,7 +48,7 @@ namespace IFM.Views.NIDEC.SMT
                             and create_time >='" + dtp_from.Value + @"'                          
                             order by id desc limit 100";
                 con.sqlDataAdapterFillDatatable(sql, ref dt);
-                gc_data.DataSource = dt;
+                gc_barcodeassy.DataSource = dt;
                 string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
                 con.getComboBoxData(sql_model, ref cbm_modelcd);
             }
@@ -98,18 +98,7 @@ namespace IFM.Views.NIDEC.SMT
             {
                 try
                 {
-                    pgsqlconnection con = new pgsqlconnection();
-                    StringBuilder sqlinsert = new StringBuilder();
-                    sqlinsert.Append(@"INSERT INTO smt_m_assy_code
-                                    ( assy_code , model_cd , creator ,create_time )
-                                    VALUES("
-                                     );
-                    sqlinsert.Append("'" + txt_barcode.Text + "',");
-                    sqlinsert.Append("'" + cbm_modelcd.Text + "',");
-                    sqlinsert.Append("'" + ClsSession.App.UserName + "',");
-                    sqlinsert.Append("CURRENT_TIMESTAMP");
-                    sqlinsert.Append(")");
-                    con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
+                    OnLoad(e);
                 }
                 catch (Exception ex)
                 {
