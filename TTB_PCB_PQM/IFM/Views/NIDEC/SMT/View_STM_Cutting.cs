@@ -9,6 +9,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Linq;
+using System.IO.Ports;
+using System.Threading;
 
 namespace IFM.Views.NIDEC.SMT
 {
@@ -39,6 +41,7 @@ namespace IFM.Views.NIDEC.SMT
             try
             {
                 getsizelayout();
+                cmbSeriport.DataSource = SerialPort.GetPortNames();
             }
             catch (Exception ex)
             {
@@ -152,11 +155,11 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void BbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            
         }
         private void BbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            
         }
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -292,6 +295,47 @@ namespace IFM.Views.NIDEC.SMT
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
+        }
+
+      
+
+        private void btn_serial_Click(object sender, EventArgs e)
+        {
+            if (!serialCom.IsOpen && btn_serial.Text == "Connect Serial")
+            {
+                serialCom.PortName = cmbSeriport.Text;
+                serialCom.Open();
+                btn_serial.Text = "Connected Serial";
+                cmbSeriport.Enabled = false;
+                btn_serial.BackColor = Color.Green;                  
+            }
+            else
+            {
+                serialCom.Close();
+                btn_serial.Text = "Connect Serial";
+                cmbSeriport.Enabled = true;
+                btn_serial.BackColor = Color.Silver;
+            }    
+        }
+
+        private void View_STM_Cutting_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            serialCom.Close();
+        }
+
+        private void btn_cut_Click(object sender, EventArgs e)
+        {
+            cut(500);
+        }
+        bool cut (int sleeptime)
+        {
+            if  (btn_serial.Text == "Connected Serial")
+            {
+                serialCom.Write("a");//1on 5off
+                Thread.Sleep(sleeptime);
+                serialCom.Write("b");//1on 5off
+            }    
+            return false;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View_STM_Cutting));
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -44,6 +45,9 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.btn_serial = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbSeriport = new System.Windows.Forms.ComboBox();
             this.cbm_modelcd = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.nm_row = new System.Windows.Forms.NumericUpDown();
@@ -57,6 +61,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.serialCom = new System.IO.Ports.SerialPort(this.components);
+            this.btn_cut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -207,6 +213,10 @@
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.btn_cut);
+            this.pn_background.Controls.Add(this.btn_serial);
+            this.pn_background.Controls.Add(this.label3);
+            this.pn_background.Controls.Add(this.cmbSeriport);
             this.pn_background.Controls.Add(this.cbm_modelcd);
             this.pn_background.Controls.Add(this.label6);
             this.pn_background.Controls.Add(this.nm_row);
@@ -222,12 +232,40 @@
             this.pn_background.Size = new System.Drawing.Size(1128, 85);
             this.pn_background.TabIndex = 3;
             // 
+            // btn_serial
+            // 
+            this.btn_serial.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_serial.Location = new System.Drawing.Point(506, 51);
+            this.btn_serial.Name = "btn_serial";
+            this.btn_serial.Size = new System.Drawing.Size(121, 23);
+            this.btn_serial.TabIndex = 21;
+            this.btn_serial.Text = "Connect Serial";
+            this.btn_serial.UseVisualStyleBackColor = true;
+            this.btn_serial.Click += new System.EventHandler(this.btn_serial_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(440, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Com Port";
+            // 
+            // cmbSeriport
+            // 
+            this.cmbSeriport.FormattingEnabled = true;
+            this.cmbSeriport.Location = new System.Drawing.Point(506, 15);
+            this.cmbSeriport.Name = "cmbSeriport";
+            this.cmbSeriport.Size = new System.Drawing.Size(121, 21);
+            this.cmbSeriport.TabIndex = 19;
+            // 
             // cbm_modelcd
             // 
             this.cbm_modelcd.FormattingEnabled = true;
             this.cbm_modelcd.Location = new System.Drawing.Point(98, 53);
             this.cbm_modelcd.Name = "cbm_modelcd";
-            this.cbm_modelcd.Size = new System.Drawing.Size(211, 21);
+            this.cbm_modelcd.Size = new System.Drawing.Size(160, 21);
             this.cbm_modelcd.TabIndex = 18;
             this.cbm_modelcd.SelectedIndexChanged += new System.EventHandler(this.cbm_modelcd_SelectedIndexChanged);
             // 
@@ -242,7 +280,7 @@
             // 
             // nm_row
             // 
-            this.nm_row.Location = new System.Drawing.Point(735, 50);
+            this.nm_row.Location = new System.Drawing.Point(932, 48);
             this.nm_row.Name = "nm_row";
             this.nm_row.Size = new System.Drawing.Size(64, 21);
             this.nm_row.TabIndex = 16;
@@ -254,7 +292,7 @@
             // 
             // nm_column
             // 
-            this.nm_column.Location = new System.Drawing.Point(735, 12);
+            this.nm_column.Location = new System.Drawing.Point(932, 10);
             this.nm_column.Name = "nm_column";
             this.nm_column.Size = new System.Drawing.Size(64, 21);
             this.nm_column.TabIndex = 15;
@@ -267,7 +305,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(662, 53);
+            this.label5.Location = new System.Drawing.Point(859, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 14;
@@ -276,7 +314,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(662, 15);
+            this.label2.Location = new System.Drawing.Point(859, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 12;
@@ -285,9 +323,9 @@
             // btn_enter
             // 
             this.btn_enter.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_enter.Location = new System.Drawing.Point(355, 32);
+            this.btn_enter.Location = new System.Drawing.Point(264, 53);
             this.btn_enter.Name = "btn_enter";
-            this.btn_enter.Size = new System.Drawing.Size(113, 23);
+            this.btn_enter.Size = new System.Drawing.Size(46, 23);
             this.btn_enter.TabIndex = 10;
             this.btn_enter.Text = "Enter";
             this.btn_enter.UseVisualStyleBackColor = true;
@@ -306,7 +344,7 @@
             // 
             this.txt_barcode.Location = new System.Drawing.Point(98, 15);
             this.txt_barcode.Name = "txt_barcode";
-            this.txt_barcode.Size = new System.Drawing.Size(211, 21);
+            this.txt_barcode.Size = new System.Drawing.Size(212, 21);
             this.txt_barcode.TabIndex = 1;
             // 
             // tlp_showdata
@@ -356,6 +394,17 @@
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
+            // btn_cut
+            // 
+            this.btn_cut.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cut.Location = new System.Drawing.Point(688, 15);
+            this.btn_cut.Name = "btn_cut";
+            this.btn_cut.Size = new System.Drawing.Size(121, 59);
+            this.btn_cut.TabIndex = 22;
+            this.btn_cut.Text = "CUT";
+            this.btn_cut.UseVisualStyleBackColor = true;
+            this.btn_cut.Click += new System.EventHandler(this.btn_cut_Click);
+            // 
             // View_STM_Cutting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,6 +416,7 @@
             this.Name = "View_STM_Cutting";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.bar_status;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.View_STM_Cutting_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pn_background.ResumeLayout(false);
@@ -412,5 +462,10 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gv_data;
         private System.Windows.Forms.ComboBox cbm_modelcd;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmbSeriport;
+        private System.IO.Ports.SerialPort serialCom;
+        private System.Windows.Forms.Button btn_serial;
+        private System.Windows.Forms.Button btn_cut;
     }
 }
