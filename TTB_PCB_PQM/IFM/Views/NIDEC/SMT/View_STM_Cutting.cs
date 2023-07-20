@@ -197,8 +197,6 @@ namespace IFM.Views.NIDEC.SMT
                         getPQM(model_ + datetimePrevious_);
                     }
                     barcode_ = txt_barcode.Text;
-
-
                 }
             }
             catch (Exception ex)
@@ -208,8 +206,7 @@ namespace IFM.Views.NIDEC.SMT
             txt_barcode.Text = "";
             if (cutting == true && gv_data.DataRowCount > 0)
             { 
-                timerdelay.Enabled = true;
-            
+                timerdelay.Enabled = true;           
             }
             else
             {
