@@ -46,7 +46,7 @@ namespace IFM.Views.NIDEC.SMT
                 getsizelayout();
                 cmbSeriport.DataSource = SerialPort.GetPortNames();
                 chk_cut.Checked = true;
-                int timer_ = int.Parse(nud_timerdelay.Value.ToString());
+                 timer_ = int.Parse(nud_timerdelay.Value.ToString());
             }
             catch (Exception ex)
             {
@@ -96,7 +96,7 @@ namespace IFM.Views.NIDEC.SMT
                     dynamicTableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
                     for (int j = 0; j < int.Parse(nm_row.Value.ToString()); j++)
                     {
-                        dynamicTableLayoutPanel.Controls.Add(buttonlayout("btn_layout" + k.ToString(), "OK"), i, j);
+                        dynamicTableLayoutPanel.Controls.Add(buttonlayout("btn_layout" + k.ToString(), "NA"), i, j);
                         k = k + 1;
                     }
                 }
@@ -126,7 +126,7 @@ namespace IFM.Views.NIDEC.SMT
             btn_layout.TabIndex = 0;
             btn_layout.Text = result;
             btn_layout.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btn_layout.Image = global::IFM.Properties.Resources.OK;
+            btn_layout.Image = global::IFM.Properties.Resources.Waiting;
             btn_layout.UseVisualStyleBackColor = true;
             //  btn_layout.Click += new System.EventHandler(btn_layout_Click);
             return btn_layout;
@@ -188,6 +188,7 @@ namespace IFM.Views.NIDEC.SMT
             {
                 if (checkcondition())
                 {
+                     timer_ = int.Parse(nud_timerdelay.Value.ToString());
                     model_ = cbm_modelcd.Text;
                     datetimeCur_ = DateTime.Now.ToString("yyyyMM");
                     datetimePrevious_ = DateTime.Now.AddMonths(-1).ToString("yyyyMM");
@@ -203,15 +204,20 @@ namespace IFM.Views.NIDEC.SMT
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-            txt_barcode.Text = "";
+         
             if (cutting == true && gv_data.DataRowCount > 0)
             { 
                 timerdelay.Enabled = true;           
             }
-            else
+            else if (cutting == false && gv_data.DataRowCount > 0)
             {
                 MessageBox.Show("Sản Phẩm có PCB bị NG", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }    
+            else 
+            {
+                MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            txt_barcode.Text = "";
         }
         void getPQM(string table)
         {
@@ -327,7 +333,7 @@ namespace IFM.Views.NIDEC.SMT
                 btn_serial.Text = "Connected Serial";
                 cmbSeriport.Enabled = false;
                 btn_serial.BackColor = Color.Green;
-                int timer_ = int.Parse(nud_timerdelay.Value.ToString());
+              
             }
             else
             {
@@ -374,6 +380,14 @@ namespace IFM.Views.NIDEC.SMT
                 serialCom.Write("d");//1on 5off
                 timer_ = int.Parse(nud_timerdelay.Value.ToString());
                 timerdelay.Enabled = false;
+                foreach (var control in dynamicTableLayoutPanel.Controls)
+                {
+                    if (control is System.Windows.Forms.Button btn)
+                    {
+                        btn.Image = global::IFM.Properties.Resources.Waiting;
+                        btn.Text = "NA";
+                    }
+                }
 
             }
             else

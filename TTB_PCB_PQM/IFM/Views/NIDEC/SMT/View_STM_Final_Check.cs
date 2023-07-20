@@ -106,7 +106,7 @@ namespace IFM.Views.NIDEC.SMT
         /// <param name="name"></param>
         /// <param name="result">cái này là giá trị ban đầu (nếu có load từ db)</param>
         /// <returns></returns>
-        public System.Windows.Forms.Button buttonlayout(string name, string result = "OK")
+        public System.Windows.Forms.Button buttonlayout(string name, string result = "NA")
         {
             System.Windows.Forms.Button btn_layout = new System.Windows.Forms.Button();
             btn_layout.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -116,7 +116,7 @@ namespace IFM.Views.NIDEC.SMT
             btn_layout.TabIndex = 0;
             btn_layout.Text = result;
             btn_layout.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btn_layout.Image = global::IFM.Properties.Resources.OK;
+            btn_layout.Image = global::IFM.Properties.Resources.Waiting;
             btn_layout.UseVisualStyleBackColor = true;
             btn_layout.Click += new System.EventHandler(btn_layout_Click);
             return btn_layout;
@@ -269,7 +269,7 @@ namespace IFM.Views.NIDEC.SMT
             {
                 int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result"));
 
-                if (result > 0)
+                if (result > 0 && gv_data.RowCount>0)
                 {
                     e.Appearance.BackColor = Color.Red;
                     foreach (var control in dynamicTableLayoutPanel.Controls)
@@ -282,7 +282,7 @@ namespace IFM.Views.NIDEC.SMT
                     }
                     //if đỏ bên này thì cho NG hết
                 }
-                else if (result == 0)
+                else if (result == 0 && gv_data.RowCount > 0)
                 {
                     e.Appearance.BackColor = Color.LightGreen;
                     foreach (var control in dynamicTableLayoutPanel.Controls)
@@ -299,6 +299,14 @@ namespace IFM.Views.NIDEC.SMT
                 else
                 {
                     e.Appearance.BackColor = Color.White;
+                    foreach (var control in dynamicTableLayoutPanel.Controls)
+                    {
+                        if (control is System.Windows.Forms.Button btn)
+                        {
+                            btn.Image = global::IFM.Properties.Resources.Waiting;
+                            btn.Text = "NA";
+                        }
+                    }
                 }
                 e.HighPriority = true;
             }

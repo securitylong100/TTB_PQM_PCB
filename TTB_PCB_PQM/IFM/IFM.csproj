@@ -491,6 +491,7 @@
     <Content Include="Resources\ifm_vertical.ico" />
     <Content Include="Resources\Load.png" />
     <Content Include="Resources\New.png" />
+    <None Include="Resources\Waiting.png" />
     <None Include="Resources\OK.png" />
     <None Include="Resources\NG.png" />
     <Content Include="Resources\Save.png" />
