@@ -65,6 +65,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.site = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.serno = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.process = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.result = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.serialCom = new System.IO.Ports.SerialPort(this.components);
             this.timerdelay = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -445,6 +451,13 @@
             // gv_data
             // 
             this.gv_data.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gv_data.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.site,
+            this.factory,
+            this.serno,
+            this.process,
+            this.result,
+            this.inspectdate});
             this.gv_data.GridControl = this.gc_data;
             this.gv_data.Name = "gv_data";
             this.gv_data.OptionsBehavior.Editable = false;
@@ -452,6 +465,54 @@
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
+            // 
+            // site
+            // 
+            this.site.Caption = "Site";
+            this.site.FieldName = "site";
+            this.site.Name = "site";
+            this.site.Visible = true;
+            this.site.VisibleIndex = 0;
+            // 
+            // factory
+            // 
+            this.factory.Caption = "Factory";
+            this.factory.FieldName = "factory";
+            this.factory.Name = "factory";
+            this.factory.Visible = true;
+            this.factory.VisibleIndex = 1;
+            // 
+            // serno
+            // 
+            this.serno.Caption = "Serno";
+            this.serno.FieldName = "serno";
+            this.serno.Name = "serno";
+            this.serno.Visible = true;
+            this.serno.VisibleIndex = 2;
+            // 
+            // process
+            // 
+            this.process.Caption = "Process";
+            this.process.FieldName = "process";
+            this.process.Name = "process";
+            this.process.Visible = true;
+            this.process.VisibleIndex = 3;
+            // 
+            // result
+            // 
+            this.result.Caption = "Result";
+            this.result.FieldName = "result_";
+            this.result.Name = "result";
+            this.result.Visible = true;
+            this.result.VisibleIndex = 4;
+            // 
+            // inspectdate
+            // 
+            this.inspectdate.Caption = "Inspectdate";
+            this.inspectdate.FieldName = "inspectdate";
+            this.inspectdate.Name = "inspectdate";
+            this.inspectdate.Visible = true;
+            this.inspectdate.VisibleIndex = 5;
             // 
             // timerdelay
             // 
@@ -525,5 +586,11 @@
         private System.Windows.Forms.NumericUpDown nud_timerdelay;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timerdelay;
+        private DevExpress.XtraGrid.Columns.GridColumn site;
+        private DevExpress.XtraGrid.Columns.GridColumn factory;
+        private DevExpress.XtraGrid.Columns.GridColumn serno;
+        private DevExpress.XtraGrid.Columns.GridColumn process;
+        private DevExpress.XtraGrid.Columns.GridColumn result;
+        private DevExpress.XtraGrid.Columns.GridColumn inspectdate;
     }
 }

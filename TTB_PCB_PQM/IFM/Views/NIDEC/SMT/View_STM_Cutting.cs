@@ -227,17 +227,22 @@ namespace IFM.Views.NIDEC.SMT
                 dt = new DataTable();
                 gc_data.DataSource = null;
                 gv_data.Columns.Clear();
-                string sqlgetPQM = @"select a.site ,a.factory ,a.serno ,a.process , max(a.result) as result,max(a.inspectdate) as inspectdate  from 
-                                    (
-                                    select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
-                                    left join " + table + @"data ld 
+                string sqlgetPQM = @" select  a.site as site , a.factory as factory,a.serno as serno, a.process as process, a.result as result_, a.inspectdate as inspectdate from (
+                                     select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
+                                     left join " + table + @"data ld 
                                     on l.serno  = ld.serno 
-                                    where 1=1
+                                     where 1=1
                                     and l.inspectdate  = ld.inspectdate 
-                                    and l.serno = '" + txt_barcode.Text + @"'
-                                    group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
-                                    )a 
-                                    group  by a.site ,a.factory ,a.serno ,a.process order by max(a.result) asc";
+                                     and l.serno = '" + txt_barcode.Text + @"'
+                                     group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
+                                     ) a where a.inspectdate in 
+                                     (
+                                     select b.date_  from 
+                                     (
+                                     select max(inspectdate) as date_, inspect  from  " + table + @"data ld 
+                                    where ld.serno = '" + txt_barcode.Text + @"'
+                                    group  by inspect ) b
+                                    ) order by a.result asc";
                 pgsqlconnection_NewDB conPQM = new pgsqlconnection_NewDB();
                 conPQM.sqlDataAdapterFillDatatableAuto(sqlgetPQM, ref dt);
                 gc_data.DataSource = dt;
@@ -388,7 +393,6 @@ namespace IFM.Views.NIDEC.SMT
                         btn.Text = "NA";
                     }
                 }
-
             }
             else
             {

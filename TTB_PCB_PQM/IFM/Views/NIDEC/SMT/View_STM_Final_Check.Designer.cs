@@ -44,6 +44,8 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.rd_NG = new System.Windows.Forms.RadioButton();
+            this.rd_ok = new System.Windows.Forms.RadioButton();
             this.cbm_modelcd = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.nm_row = new System.Windows.Forms.NumericUpDown();
@@ -61,8 +63,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.rd_ok = new System.Windows.Forms.RadioButton();
-            this.rd_NG = new System.Windows.Forms.RadioButton();
+            this.site = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.serno = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.process = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.result = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -234,6 +240,30 @@
             this.pn_background.Size = new System.Drawing.Size(1128, 85);
             this.pn_background.TabIndex = 3;
             // 
+            // rd_NG
+            // 
+            this.rd_NG.AutoSize = true;
+            this.rd_NG.Location = new System.Drawing.Point(534, 53);
+            this.rd_NG.Name = "rd_NG";
+            this.rd_NG.Size = new System.Drawing.Size(59, 17);
+            this.rd_NG.TabIndex = 20;
+            this.rd_NG.TabStop = true;
+            this.rd_NG.Text = "NG ALL";
+            this.rd_NG.UseVisualStyleBackColor = true;
+            this.rd_NG.CheckedChanged += new System.EventHandler(this.rd_NG_CheckedChanged);
+            // 
+            // rd_ok
+            // 
+            this.rd_ok.AutoSize = true;
+            this.rd_ok.Location = new System.Drawing.Point(534, 18);
+            this.rd_ok.Name = "rd_ok";
+            this.rd_ok.Size = new System.Drawing.Size(59, 17);
+            this.rd_ok.TabIndex = 19;
+            this.rd_ok.TabStop = true;
+            this.rd_ok.Text = "OK ALL";
+            this.rd_ok.UseVisualStyleBackColor = true;
+            this.rd_ok.CheckedChanged += new System.EventHandler(this.rd_ok_CheckedChanged);
+            // 
             // cbm_modelcd
             // 
             this.cbm_modelcd.FormattingEnabled = true;
@@ -396,6 +426,13 @@
             // gv_data
             // 
             this.gv_data.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gv_data.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.site,
+            this.factory,
+            this.serno,
+            this.process,
+            this.result,
+            this.inspectdate});
             this.gv_data.GridControl = this.gc_data;
             this.gv_data.Name = "gv_data";
             this.gv_data.OptionsBehavior.Editable = false;
@@ -404,29 +441,54 @@
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
-            // rd_ok
+            // site
             // 
-            this.rd_ok.AutoSize = true;
-            this.rd_ok.Location = new System.Drawing.Point(534, 18);
-            this.rd_ok.Name = "rd_ok";
-            this.rd_ok.Size = new System.Drawing.Size(59, 17);
-            this.rd_ok.TabIndex = 19;
-            this.rd_ok.TabStop = true;
-            this.rd_ok.Text = "OK ALL";
-            this.rd_ok.UseVisualStyleBackColor = true;
-            this.rd_ok.CheckedChanged += new System.EventHandler(this.rd_ok_CheckedChanged);
+            this.site.Caption = "Site";
+            this.site.FieldName = "site";
+            this.site.Name = "site";
+            this.site.Visible = true;
+            this.site.VisibleIndex = 0;
             // 
-            // rd_NG
+            // factory
             // 
-            this.rd_NG.AutoSize = true;
-            this.rd_NG.Location = new System.Drawing.Point(534, 53);
-            this.rd_NG.Name = "rd_NG";
-            this.rd_NG.Size = new System.Drawing.Size(59, 17);
-            this.rd_NG.TabIndex = 20;
-            this.rd_NG.TabStop = true;
-            this.rd_NG.Text = "NG ALL";
-            this.rd_NG.UseVisualStyleBackColor = true;
-            this.rd_NG.CheckedChanged += new System.EventHandler(this.rd_NG_CheckedChanged);
+            this.factory.Caption = "Factory";
+            this.factory.FieldName = "factory";
+            this.factory.Name = "factory";
+            this.factory.Visible = true;
+            this.factory.VisibleIndex = 1;
+            // 
+            // serno
+            // 
+            this.serno.Caption = "Serno";
+            this.serno.FieldName = "serno";
+            this.serno.Name = "serno";
+            this.serno.Visible = true;
+            this.serno.VisibleIndex = 2;
+            // 
+            // process
+            // 
+            this.process.Caption = "Process";
+            this.process.FieldName = "process";
+            this.process.Name = "process";
+            this.process.Visible = true;
+            this.process.VisibleIndex = 3;
+            // 
+            // result
+            // 
+            this.result.Caption = "Result";
+            this.result.FieldName = "result_";
+            this.result.Name = "result";
+            this.result.Visible = true;
+            this.result.VisibleIndex = 4;
+            // 
+            // inspectdate
+            // 
+            this.inspectdate.Caption = "Inspectdate";
+            this.inspectdate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.inspectdate.FieldName = "inspectdate";
+            this.inspectdate.Name = "inspectdate";
+            this.inspectdate.Visible = true;
+            this.inspectdate.VisibleIndex = 5;
             // 
             // View_STM_Final_Check
             // 
@@ -490,5 +552,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton rd_NG;
         private System.Windows.Forms.RadioButton rd_ok;
+        private DevExpress.XtraGrid.Columns.GridColumn site;
+        private DevExpress.XtraGrid.Columns.GridColumn factory;
+        private DevExpress.XtraGrid.Columns.GridColumn serno;
+        private DevExpress.XtraGrid.Columns.GridColumn process;
+        private DevExpress.XtraGrid.Columns.GridColumn result;
+        private DevExpress.XtraGrid.Columns.GridColumn inspectdate;
     }
 }
