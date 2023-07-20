@@ -65,14 +65,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.serialCom = new System.IO.Ports.SerialPort(this.components);
             this.timerdelay = new System.Windows.Forms.Timer(this.components);
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.site = new DevExpress.XtraGrid.Columns.GridColumn();
             this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.serno = new DevExpress.XtraGrid.Columns.GridColumn();
             this.process = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.result = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.result_ = new DevExpress.XtraGrid.Columns.GridColumn();
             this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -81,8 +83,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nm_column)).BeginInit();
             this.tlp_showdata.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage1
@@ -429,7 +433,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.gc_data);
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
@@ -441,15 +445,34 @@
             this.timerdelay.Interval = 1000;
             this.timerdelay.Tick += new System.EventHandler(this.timerdelay_Tick);
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.gc_data, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 289);
+            this.tableLayoutPanel2.TabIndex = 5;
+            // 
             // gc_data
             // 
+            this.tableLayoutPanel2.SetColumnSpan(this.gc_data, 3);
             this.gc_data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gc_data.Location = new System.Drawing.Point(0, 0);
+            this.gc_data.Location = new System.Drawing.Point(3, 3);
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(777, 289);
-            this.gc_data.TabIndex = 4;
+            this.gc_data.Size = new System.Drawing.Size(771, 21);
+            this.gc_data.TabIndex = 3;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
             this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
@@ -462,7 +485,7 @@
             this.factory,
             this.serno,
             this.process,
-            this.result,
+            this.result_,
             this.inspectdate});
             this.gv_data.GridControl = this.gc_data;
             this.gv_data.Name = "gv_data";
@@ -470,12 +493,15 @@
             this.gv_data.OptionsBehavior.ReadOnly = true;
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
+            this.gv_data.OptionsView.ShowFooter = true;
             // 
             // site
             // 
             this.site.Caption = "Site";
             this.site.FieldName = "site";
             this.site.Name = "site";
+            this.site.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "site", "SUM={0:0.##}")});
             this.site.Visible = true;
             this.site.VisibleIndex = 0;
             // 
@@ -503,13 +529,13 @@
             this.process.Visible = true;
             this.process.VisibleIndex = 3;
             // 
-            // result
+            // result_
             // 
-            this.result.Caption = "Result";
-            this.result.FieldName = "result_";
-            this.result.Name = "result";
-            this.result.Visible = true;
-            this.result.VisibleIndex = 4;
+            this.result_.Caption = "Result";
+            this.result_.FieldName = "result_";
+            this.result_.Name = "result_";
+            this.result_.Visible = true;
+            this.result_.VisibleIndex = 4;
             // 
             // inspectdate
             // 
@@ -519,6 +545,16 @@
             this.inspectdate.Name = "inspectdate";
             this.inspectdate.Visible = true;
             this.inspectdate.VisibleIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(91, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(594, 244);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // View_STM_Cutting
             // 
@@ -541,8 +577,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nm_column)).EndInit();
             this.tlp_showdata.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -585,13 +623,15 @@
         private System.Windows.Forms.NumericUpDown nud_timerdelay;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timerdelay;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private DevExpress.XtraGrid.GridControl gc_data;
         private DevExpress.XtraGrid.Views.Grid.GridView gv_data;
         private DevExpress.XtraGrid.Columns.GridColumn site;
         private DevExpress.XtraGrid.Columns.GridColumn factory;
         private DevExpress.XtraGrid.Columns.GridColumn serno;
         private DevExpress.XtraGrid.Columns.GridColumn process;
-        private DevExpress.XtraGrid.Columns.GridColumn result;
+        private DevExpress.XtraGrid.Columns.GridColumn result_;
         private DevExpress.XtraGrid.Columns.GridColumn inspectdate;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

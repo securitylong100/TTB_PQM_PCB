@@ -205,18 +205,23 @@ namespace IFM.Views.NIDEC.SMT
             }
          
             if (cutting == true && gv_data.DataRowCount > 0)
-            { 
+            {
+                pictureBox1.Image = global::IFM.Properties.Resources.OK_LB;
                 timerdelay.Enabled = true;
                 Thread.Sleep(500);
                 System.Media.SystemSounds.Hand.Play();
             }
             else if (cutting == false && gv_data.DataRowCount > 0)
             {
+                pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                 MessageBox.Show("Sản Phẩm có PCB bị NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
             }    
             else 
             {
+                pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                 MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
             }
             txt_barcode.Text = "";
         }
@@ -382,6 +387,7 @@ namespace IFM.Views.NIDEC.SMT
             }
             else if(btn_serial.Text == "Connected Serial" && chk_cut.Checked == true && timer_ ==0)
             {
+                pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                 serialCom.Write("b");//1on 5off
                 serialCom.Write("d");//1on 5off
                 timer_ = int.Parse(nud_timerdelay.Value.ToString());
