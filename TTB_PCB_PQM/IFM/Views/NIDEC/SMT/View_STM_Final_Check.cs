@@ -157,6 +157,10 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void BbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
+            savedataonlayout();
+        }
+        void savedataonlayout()
+        {
             try
             {
                 List<object> lstItems = new List<object>();
@@ -254,6 +258,7 @@ namespace IFM.Views.NIDEC.SMT
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.OK_LB;
                         System.Media.SystemSounds.Hand.Play();
+                        savedataonlayout();
                         Timer_colorchange.Enabled = true;
 
                     }
