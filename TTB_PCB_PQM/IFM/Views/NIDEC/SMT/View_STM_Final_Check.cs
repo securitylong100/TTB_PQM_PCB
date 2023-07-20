@@ -228,28 +228,40 @@ namespace IFM.Views.NIDEC.SMT
                     ok_ng = int.Parse(gv_data.Columns["result_"].SummaryItem.SummaryValue.ToString());
                     if (ok_ng == 0 && gv_data.RowCount == 0)
                     {
+                        pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
                     else if (ok_ng == 1 && gv_data.RowCount == 2)
                     {
+                        pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
                     else if (ok_ng == 2 && gv_data.RowCount == 2)
                     {
+                        pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         MessageBox.Show("Sản Phẩm có 2 công đoạn trước đó NG", "Lỗi 04", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
                     else if (gv_data.RowCount == 1)
                     {
+                        pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó chưa được test", "Lỗi 05", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
                     else if (ok_ng == 0 && gv_data.RowCount == 2)
                     {
-                        Thread.Sleep(500);
+                        pictureBox1.Image = global::IFM.Properties.Resources.OK_LB;
                         System.Media.SystemSounds.Hand.Play();
+                        Timer_colorchange.Enabled = true;
+
                     }
                     else
                     {
+                        pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         MessageBox.Show("Chưa xác nhận lỗi", "Lỗi 06", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
                 }
             }
@@ -257,8 +269,13 @@ namespace IFM.Views.NIDEC.SMT
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
+            //  
         }
-       
+        private void Timer_colorchange_Tick(object sender, EventArgs e)
+        {
+            pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
+            Timer_colorchange.Enabled = false;
+        }
         void getPQM(string table)
         {
             try
@@ -399,5 +416,7 @@ namespace IFM.Views.NIDEC.SMT
                 MessageBox.Show("Error :" + ex.Message);
             }
         }
+
+
     }
 }

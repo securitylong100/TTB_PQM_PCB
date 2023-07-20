@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View_STM_Final_Check));
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -61,6 +62,7 @@
             this.txt_barcode = new System.Windows.Forms.TextBox();
             this.tlp_showdata = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.site = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -69,6 +71,8 @@
             this.process = new DevExpress.XtraGrid.Columns.GridColumn();
             this.result_ = new DevExpress.XtraGrid.Columns.GridColumn();
             this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Timer_colorchange = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -76,8 +80,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nm_column)).BeginInit();
             this.tlp_showdata.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage1
@@ -404,21 +410,40 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.gc_data);
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(777, 289);
             this.panel1.TabIndex = 1;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.gc_data, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 1, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 289);
+            this.tableLayoutPanel2.TabIndex = 4;
+            // 
             // gc_data
             // 
+            this.tableLayoutPanel2.SetColumnSpan(this.gc_data, 3);
             this.gc_data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gc_data.Location = new System.Drawing.Point(0, 0);
+            this.gc_data.Location = new System.Drawing.Point(3, 3);
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(777, 289);
+            this.gc_data.Size = new System.Drawing.Size(771, 21);
             this.gc_data.TabIndex = 3;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
@@ -493,6 +518,21 @@
             this.inspectdate.Visible = true;
             this.inspectdate.VisibleIndex = 5;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(91, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(594, 244);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // Timer_colorchange
+            // 
+            this.Timer_colorchange.Interval = 4000;
+            this.Timer_colorchange.Tick += new System.EventHandler(this.Timer_colorchange_Tick);
+            // 
             // View_STM_Final_Check
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -512,8 +552,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nm_column)).EndInit();
             this.tlp_showdata.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -561,5 +603,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn process;
         private DevExpress.XtraGrid.Columns.GridColumn result_;
         private DevExpress.XtraGrid.Columns.GridColumn inspectdate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer Timer_colorchange;
     }
 }

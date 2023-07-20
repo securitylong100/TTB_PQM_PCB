@@ -232,11 +232,11 @@
     <Compile Include="Views\NIDEC\SMT\View_STM_Cutting.Designer.cs">
       <DependentUpon>View_STM_Cutting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\NIDEC\SMT\View_STM_Final_Check_Auto.cs">
+    <Compile Include="Views\NIDEC\SMT\View_STM_Final_Check_BK.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\NIDEC\SMT\View_STM_Final_Check_Auto.Designer.cs">
-      <DependentUpon>View_STM_Final_Check_Auto.cs</DependentUpon>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Final_Check_BK.Designer.cs">
+      <DependentUpon>View_STM_Final_Check_BK.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NIDEC\SMT\View_STM_Final_Check.cs">
       <SubType>Form</SubType>
@@ -341,8 +341,8 @@
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Cutting.resx">
       <DependentUpon>View_STM_Cutting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Final_Check_Auto.resx">
-      <DependentUpon>View_STM_Final_Check_Auto.cs</DependentUpon>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Final_Check_BK.resx">
+      <DependentUpon>View_STM_Final_Check_BK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Final_Check.resx">
       <DependentUpon>View_STM_Final_Check.cs</DependentUpon>
@@ -498,9 +498,12 @@
     <Content Include="Resources\ifm_vertical.ico" />
     <Content Include="Resources\Load.png" />
     <Content Include="Resources\New.png" />
+    <None Include="Resources\Waiting_LB.PNG" />
     <None Include="Resources\Waiting.png" />
     <None Include="Resources\OK.png" />
     <None Include="Resources\NG.png" />
+    <None Include="Resources\NG_LB.PNG" />
+    <None Include="Resources\OK_LB.PNG" />
     <Content Include="Resources\Save.png" />
   </ItemGroup>
   <ItemGroup />

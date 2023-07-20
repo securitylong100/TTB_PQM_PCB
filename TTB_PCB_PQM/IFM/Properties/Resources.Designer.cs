@@ -153,9 +153,29 @@ namespace IFM.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NG_LB {
+            get {
+                object obj = ResourceManager.GetObject("NG_LB", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OK {
             get {
                 object obj = ResourceManager.GetObject("OK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OK_LB {
+            get {
+                object obj = ResourceManager.GetObject("OK_LB", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +196,16 @@ namespace IFM.Properties {
         internal static System.Drawing.Bitmap Waiting {
             get {
                 object obj = ResourceManager.GetObject("Waiting", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Waiting_LB {
+            get {
+                object obj = ResourceManager.GetObject("Waiting_LB", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
