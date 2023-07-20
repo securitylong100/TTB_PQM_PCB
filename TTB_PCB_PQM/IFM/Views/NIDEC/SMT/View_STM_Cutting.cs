@@ -183,7 +183,6 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void btn_enter_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (checkcondition())
@@ -207,7 +206,9 @@ namespace IFM.Views.NIDEC.SMT
          
             if (cutting == true && gv_data.DataRowCount > 0)
             { 
-                timerdelay.Enabled = true;           
+                timerdelay.Enabled = true;
+                Thread.Sleep(500);
+                System.Media.SystemSounds.Hand.Play();
             }
             else if (cutting == false && gv_data.DataRowCount > 0)
             {

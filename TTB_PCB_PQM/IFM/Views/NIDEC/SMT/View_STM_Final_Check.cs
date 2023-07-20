@@ -8,6 +8,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WMPLib;
+using System.Threading;
 
 namespace IFM.Views.NIDEC.SMT
 {
@@ -224,26 +226,31 @@ namespace IFM.Views.NIDEC.SMT
                     txt_barcode.Text = "";
                     gv_data.Columns["result_"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
                     ok_ng = int.Parse(gv_data.Columns["result_"].SummaryItem.SummaryValue.ToString());
-                    if(ok_ng ==0 && gv_data.RowCount ==0)
+                    if (ok_ng == 0 && gv_data.RowCount == 0)
                     {
                         MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }   
-                    else if (ok_ng ==1 && gv_data.RowCount == 2)
+                    }
+                    else if (ok_ng == 1 && gv_data.RowCount == 2)
                     {
                         MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }   
-                    else if (ok_ng ==2 && gv_data.RowCount == 2)
+                    }
+                    else if (ok_ng == 2 && gv_data.RowCount == 2)
                     {
                         MessageBox.Show("Sản Phẩm có 2 công đoạn trước đó NG", "Lỗi 04", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if ( gv_data.RowCount == 1)
+                    else if (gv_data.RowCount == 1)
                     {
                         MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó chưa được test", "Lỗi 05", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (ok_ng == 0 && gv_data.RowCount == 2)
+                    {
+                        Thread.Sleep(500);
+                        System.Media.SystemSounds.Hand.Play();
                     }
                     else
                     {
                         MessageBox.Show("Chưa xác nhận lỗi", "Lỗi 06", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }    
+                    }
                 }
             }
             catch (Exception ex)
@@ -251,6 +258,7 @@ namespace IFM.Views.NIDEC.SMT
                 MessageBox.Show("Error :" + ex.Message);
             }
         }
+       
         void getPQM(string table)
         {
             try
