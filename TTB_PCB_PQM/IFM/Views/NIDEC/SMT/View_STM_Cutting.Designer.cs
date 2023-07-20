@@ -45,6 +45,9 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.nud_timerdelay = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.chk_cut = new System.Windows.Forms.CheckBox();
             this.btn_cut = new System.Windows.Forms.Button();
             this.btn_serial = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,10 +66,11 @@
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.serialCom = new System.IO.Ports.SerialPort(this.components);
-            this.chk_cut = new System.Windows.Forms.CheckBox();
+            this.timerdelay = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_timerdelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nm_row)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nm_column)).BeginInit();
             this.tlp_showdata.SuspendLayout();
@@ -214,6 +218,8 @@
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.nud_timerdelay);
+            this.pn_background.Controls.Add(this.label4);
             this.pn_background.Controls.Add(this.chk_cut);
             this.pn_background.Controls.Add(this.btn_cut);
             this.pn_background.Controls.Add(this.btn_serial);
@@ -234,12 +240,52 @@
             this.pn_background.Size = new System.Drawing.Size(1128, 85);
             this.pn_background.TabIndex = 3;
             // 
+            // nud_timerdelay
+            // 
+            this.nud_timerdelay.Location = new System.Drawing.Point(764, 15);
+            this.nud_timerdelay.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.nud_timerdelay.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.nud_timerdelay.Name = "nud_timerdelay";
+            this.nud_timerdelay.Size = new System.Drawing.Size(80, 21);
+            this.nud_timerdelay.TabIndex = 25;
+            this.nud_timerdelay.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(691, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Dealy Timer:";
+            // 
+            // chk_cut
+            // 
+            this.chk_cut.AutoSize = true;
+            this.chk_cut.Location = new System.Drawing.Point(612, 57);
+            this.chk_cut.Name = "chk_cut";
+            this.chk_cut.Size = new System.Drawing.Size(15, 14);
+            this.chk_cut.TabIndex = 23;
+            this.chk_cut.UseVisualStyleBackColor = true;
+            // 
             // btn_cut
             // 
             this.btn_cut.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cut.Location = new System.Drawing.Point(688, 15);
+            this.btn_cut.Location = new System.Drawing.Point(694, 51);
             this.btn_cut.Name = "btn_cut";
-            this.btn_cut.Size = new System.Drawing.Size(121, 59);
+            this.btn_cut.Size = new System.Drawing.Size(150, 23);
             this.btn_cut.TabIndex = 22;
             this.btn_cut.Text = "CUT";
             this.btn_cut.UseVisualStyleBackColor = true;
@@ -293,7 +339,7 @@
             // 
             // nm_row
             // 
-            this.nm_row.Location = new System.Drawing.Point(932, 48);
+            this.nm_row.Location = new System.Drawing.Point(991, 48);
             this.nm_row.Name = "nm_row";
             this.nm_row.Size = new System.Drawing.Size(64, 21);
             this.nm_row.TabIndex = 16;
@@ -305,7 +351,7 @@
             // 
             // nm_column
             // 
-            this.nm_column.Location = new System.Drawing.Point(932, 10);
+            this.nm_column.Location = new System.Drawing.Point(991, 10);
             this.nm_column.Name = "nm_column";
             this.nm_column.Size = new System.Drawing.Size(64, 21);
             this.nm_column.TabIndex = 15;
@@ -318,7 +364,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(859, 51);
+            this.label5.Location = new System.Drawing.Point(918, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 14;
@@ -327,7 +373,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(859, 13);
+            this.label2.Location = new System.Drawing.Point(918, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 12;
@@ -407,14 +453,10 @@
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
-            // chk_cut
+            // timerdelay
             // 
-            this.chk_cut.AutoSize = true;
-            this.chk_cut.Location = new System.Drawing.Point(612, 57);
-            this.chk_cut.Name = "chk_cut";
-            this.chk_cut.Size = new System.Drawing.Size(15, 14);
-            this.chk_cut.TabIndex = 23;
-            this.chk_cut.UseVisualStyleBackColor = true;
+            this.timerdelay.Interval = 1000;
+            this.timerdelay.Tick += new System.EventHandler(this.timerdelay_Tick);
             // 
             // View_STM_Cutting
             // 
@@ -432,6 +474,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pn_background.ResumeLayout(false);
             this.pn_background.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_timerdelay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nm_row)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nm_column)).EndInit();
             this.tlp_showdata.ResumeLayout(false);
@@ -479,5 +522,8 @@
         private System.Windows.Forms.Button btn_serial;
         private System.Windows.Forms.Button btn_cut;
         private System.Windows.Forms.CheckBox chk_cut;
+        private System.Windows.Forms.NumericUpDown nud_timerdelay;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Timer timerdelay;
     }
 }

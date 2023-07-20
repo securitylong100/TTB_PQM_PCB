@@ -22,7 +22,8 @@ namespace IFM.Views.NIDEC.SMT
         string datetimePrevious_;
         string barcode_;
         bool cutting = false;
-        bool layout =true;
+        bool layout = true;
+        int timer_ = 0;
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
         public View_STM_Cutting()
@@ -45,6 +46,7 @@ namespace IFM.Views.NIDEC.SMT
                 getsizelayout();
                 cmbSeriport.DataSource = SerialPort.GetPortNames();
                 chk_cut.Checked = true;
+                int timer_ = int.Parse(nud_timerdelay.Value.ToString());
             }
             catch (Exception ex)
             {
@@ -99,7 +101,7 @@ namespace IFM.Views.NIDEC.SMT
                     }
                 }
                 tlp_showdata.Controls.Add(dynamicTableLayoutPanel, 1, 0);
-               
+
             }
             catch (Exception ex)
             {
@@ -172,7 +174,7 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void BbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (cbm_modelcd.Text != "" && layout ==true)
+            if (cbm_modelcd.Text != "" && layout == true)
             {
                 getsizelayout();
                 createdynamiclayout();
@@ -195,13 +197,24 @@ namespace IFM.Views.NIDEC.SMT
                         getPQM(model_ + datetimePrevious_);
                     }
                     barcode_ = txt_barcode.Text;
-                    txt_barcode.Text = "";
+
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
+            txt_barcode.Text = "";
+            if (cutting == true && gv_data.DataRowCount > 0)
+            { 
+                timerdelay.Enabled = true;
+            
+            }
+            else
+            {
+                MessageBox.Show("Sản Phẩm có PCB bị NG", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }    
         }
         void getPQM(string table)
         {
@@ -259,7 +272,7 @@ namespace IFM.Views.NIDEC.SMT
                         i = i + 1;
                     }
                 }
-                if (cutting == true) cut(500);
+
             }
             catch (Exception ex)
             {
@@ -270,7 +283,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             if (txt_barcode.Text.Length < 5 || cbm_modelcd.Text == "")
             {
-                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Lỗi 01", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -317,6 +330,7 @@ namespace IFM.Views.NIDEC.SMT
                 btn_serial.Text = "Connected Serial";
                 cmbSeriport.Enabled = false;
                 btn_serial.BackColor = Color.Green;
+                int timer_ = int.Parse(nud_timerdelay.Value.ToString());
             }
             else
             {
@@ -334,17 +348,42 @@ namespace IFM.Views.NIDEC.SMT
 
         private void btn_cut_Click(object sender, EventArgs e)
         {
-            cut(500);
+            // cut(int.Parse(nud_timerdelay.Value.ToString()));
+            if (cutting == true &&gv_data.DataRowCount >0) timerdelay.Enabled = true;
         }
-        bool cut(int sleeptime)
+        //bool cut(int sleeptime)
+        //{
+        //    if (btn_serial.Text == "Connected Serial" &&chk_cut.Checked == true)
+        //    {
+        //        serialCom.Write("a");//1on 5off
+        //        Thread.Sleep(sleeptime*1000);
+        //        serialCom.Write("b");//1on 5off
+        //    }
+        //    return false;
+        //}
+
+        private void timerdelay_Tick(object sender, EventArgs e)
         {
-            if (btn_serial.Text == "Connected Serial"&&chk_cut.Checked == true)
+            //gia trị 5    
+            if (btn_serial.Text == "Connected Serial" && chk_cut.Checked == true && timer_ == int.Parse(nud_timerdelay.Value.ToString()))
             {
                 serialCom.Write("a");//1on 5off
-                Thread.Sleep(sleeptime);
-                serialCom.Write("b");//1on 5off
+                serialCom.Write("c");//1on 5off
+                timer_ = int.Parse(nud_timerdelay.Value.ToString()) - 1;
             }
-            return false;
+            else if(btn_serial.Text == "Connected Serial" && chk_cut.Checked == true && timer_ ==0)
+            {
+                serialCom.Write("b");//1on 5off
+                serialCom.Write("d");//1on 5off
+                timer_ = int.Parse(nud_timerdelay.Value.ToString());
+                timerdelay.Enabled = false;
+
+            }
+            else
+            {
+                timer_ = timer_-1;
+            }    
+
         }
     }
 }
