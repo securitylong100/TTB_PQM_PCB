@@ -63,6 +63,8 @@
             this.txt_barcode = new System.Windows.Forms.TextBox();
             this.tlp_showdata = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.serialCom = new System.IO.Ports.SerialPort(this.components);
+            this.timerdelay = new System.Windows.Forms.Timer(this.components);
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.site = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,8 +73,6 @@
             this.process = new DevExpress.XtraGrid.Columns.GridColumn();
             this.result = new DevExpress.XtraGrid.Columns.GridColumn();
             this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.serialCom = new System.IO.Ports.SerialPort(this.components);
-            this.timerdelay = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -436,6 +436,11 @@
             this.panel1.Size = new System.Drawing.Size(777, 289);
             this.panel1.TabIndex = 1;
             // 
+            // timerdelay
+            // 
+            this.timerdelay.Interval = 1000;
+            this.timerdelay.Tick += new System.EventHandler(this.timerdelay_Tick);
+            // 
             // gc_data
             // 
             this.gc_data.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -444,9 +449,10 @@
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
             this.gc_data.Size = new System.Drawing.Size(777, 289);
-            this.gc_data.TabIndex = 3;
+            this.gc_data.TabIndex = 4;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
+            this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
             // gv_data
             // 
@@ -464,7 +470,6 @@
             this.gv_data.OptionsBehavior.ReadOnly = true;
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
-            this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
             // site
             // 
@@ -509,15 +514,11 @@
             // inspectdate
             // 
             this.inspectdate.Caption = "Inspectdate";
+            this.inspectdate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
             this.inspectdate.FieldName = "inspectdate";
             this.inspectdate.Name = "inspectdate";
             this.inspectdate.Visible = true;
             this.inspectdate.VisibleIndex = 5;
-            // 
-            // timerdelay
-            // 
-            this.timerdelay.Interval = 1000;
-            this.timerdelay.Tick += new System.EventHandler(this.timerdelay_Tick);
             // 
             // View_STM_Cutting
             // 
@@ -573,8 +574,6 @@
         private System.Windows.Forms.NumericUpDown nm_row;
         private System.Windows.Forms.NumericUpDown nm_column;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraGrid.GridControl gc_data;
-        private DevExpress.XtraGrid.Views.Grid.GridView gv_data;
         private System.Windows.Forms.ComboBox cbm_modelcd;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
@@ -586,6 +585,8 @@
         private System.Windows.Forms.NumericUpDown nud_timerdelay;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timerdelay;
+        private DevExpress.XtraGrid.GridControl gc_data;
+        private DevExpress.XtraGrid.Views.Grid.GridView gv_data;
         private DevExpress.XtraGrid.Columns.GridColumn site;
         private DevExpress.XtraGrid.Columns.GridColumn factory;
         private DevExpress.XtraGrid.Columns.GridColumn serno;

@@ -211,11 +211,11 @@ namespace IFM.Views.NIDEC.SMT
             }
             else if (cutting == false && gv_data.DataRowCount > 0)
             {
-                MessageBox.Show("Sản Phẩm có PCB bị NG", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sản Phẩm có PCB bị NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }    
             else 
             {
-                MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             txt_barcode.Text = "";
         }
@@ -225,9 +225,9 @@ namespace IFM.Views.NIDEC.SMT
             try
             {
                 dt = new DataTable();
-                gc_data.DataSource = null;
-                gv_data.Columns.Clear();
-                string sqlgetPQM = @" select  a.site as site , a.factory as factory,a.serno as serno, a.process as process, a.result as result_, a.inspectdate as inspectdate from (
+               // gc_data.DataSource = null;
+               // gv_data.Columns.Clear();
+                string sqlgetPQM = @" select  a.site as site , a.factory as factory,a.serno as serno, a.process as process, a.result as result_, a.inspectdate as inspectdate  from (
                                      select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
                                      left join " + table + @"data ld 
                                     on l.serno  = ld.serno 
@@ -300,7 +300,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result"));
+                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result_"));
 
                 if (result > 0)
                 {

@@ -67,7 +67,7 @@
             this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.serno = new DevExpress.XtraGrid.Columns.GridColumn();
             this.process = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.result = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.result_ = new DevExpress.XtraGrid.Columns.GridColumn();
             this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -431,7 +431,7 @@
             this.factory,
             this.serno,
             this.process,
-            this.result,
+            this.result_,
             this.inspectdate});
             this.gv_data.GridControl = this.gc_data;
             this.gv_data.Name = "gv_data";
@@ -439,6 +439,7 @@
             this.gv_data.OptionsBehavior.ReadOnly = true;
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
+            this.gv_data.OptionsView.ShowFooter = true;
             this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
             // site
@@ -446,6 +447,8 @@
             this.site.Caption = "Site";
             this.site.FieldName = "site";
             this.site.Name = "site";
+            this.site.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "site", "SUM={0:0.##}")});
             this.site.Visible = true;
             this.site.VisibleIndex = 0;
             // 
@@ -473,13 +476,13 @@
             this.process.Visible = true;
             this.process.VisibleIndex = 3;
             // 
-            // result
+            // result_
             // 
-            this.result.Caption = "Result";
-            this.result.FieldName = "result_";
-            this.result.Name = "result";
-            this.result.Visible = true;
-            this.result.VisibleIndex = 4;
+            this.result_.Caption = "Result";
+            this.result_.FieldName = "result_";
+            this.result_.Name = "result_";
+            this.result_.Visible = true;
+            this.result_.VisibleIndex = 4;
             // 
             // inspectdate
             // 
@@ -556,7 +559,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn factory;
         private DevExpress.XtraGrid.Columns.GridColumn serno;
         private DevExpress.XtraGrid.Columns.GridColumn process;
-        private DevExpress.XtraGrid.Columns.GridColumn result;
+        private DevExpress.XtraGrid.Columns.GridColumn result_;
         private DevExpress.XtraGrid.Columns.GridColumn inspectdate;
     }
 }

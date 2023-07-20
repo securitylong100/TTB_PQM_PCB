@@ -19,6 +19,7 @@ namespace IFM.Views.NIDEC.SMT
         string datetimePrevious_;
         string barcode_;
         bool layout = true;
+        int ok_ng = 0;
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
         public View_STM_Final_Check()
@@ -208,6 +209,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
+                ok_ng = 0;
                 if (checkcondition())
                 {
                     model_ = cbm_modelcd.Text;
@@ -220,6 +222,28 @@ namespace IFM.Views.NIDEC.SMT
                     }
                     barcode_ = txt_barcode.Text;
                     txt_barcode.Text = "";
+                    gv_data.Columns["result_"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                    ok_ng = int.Parse(gv_data.Columns["result_"].SummaryItem.SummaryValue.ToString());
+                    if(ok_ng ==0 && gv_data.RowCount ==0)
+                    {
+                        MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }   
+                    else if (ok_ng ==1 && gv_data.RowCount == 2)
+                    {
+                        MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }   
+                    else if (ok_ng ==2 && gv_data.RowCount == 2)
+                    {
+                        MessageBox.Show("Sản Phẩm có 2 công đoạn trước đó NG", "Lỗi 04", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if ( gv_data.RowCount == 1)
+                    {
+                        MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó chưa được test", "Lỗi 05", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Chưa xác nhận lỗi", "Lỗi 06", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }    
                 }
             }
             catch (Exception ex)
@@ -232,10 +256,6 @@ namespace IFM.Views.NIDEC.SMT
             try
             {
                 dt = new DataTable();
-                gc_data.DataSource = null;
-                gv_data.Columns.Clear();
-
-
 
                 //string sqlgetPQM = @"select a.site ,a.factory ,a.serno ,a.process , max(a.result) as result,max(a.inspectdate) as inspectdate  from 
                 //                    (
@@ -277,7 +297,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             if (txt_barcode.Text.Length < 5 || cbm_modelcd.Text == "")
             {
-                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Thông Báo Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Lỗi 01", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -286,9 +306,9 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result"));
+                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result_"));
 
-                if (result > 0 && gv_data.RowCount>0)
+                if (result > 0 && gv_data.RowCount > 0)
                 {
                     e.Appearance.BackColor = Color.Red;
                     foreach (var control in dynamicTableLayoutPanel.Controls)
@@ -312,7 +332,6 @@ namespace IFM.Views.NIDEC.SMT
                             btn.Text = "OK";
                         }
                     }
-
                     // if xanh bên này thì cho OK hết
                 }
                 else
