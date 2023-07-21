@@ -166,7 +166,7 @@ namespace SPI_PQM
                             lot = "_" + DateTime.Now.ToString("yyyyMMdd");
                             date = Convert.ToDateTime(row[0]).ToString("yyyy/MM/dd");
                             time = Convert.ToDateTime(row[0]).ToString("HH:mm:ss");
-                            judge = row[3].ToString() == "Good" ? "0" : "1";
+                            judge = row[3].ToString() == "NG" ? "1" : "0";
                             data = judge;
                             writePQMformat(pathfolderout + "\\SPI_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
                         }

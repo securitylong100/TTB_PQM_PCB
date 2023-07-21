@@ -57,7 +57,6 @@ namespace IFM.Views.NIDEC.SMT
                 MessageBox.Show("Error :" + ex.Message);
             }
             txt_barcode.Text = "";
-
         }
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
