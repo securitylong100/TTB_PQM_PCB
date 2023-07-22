@@ -39,8 +39,8 @@ namespace IFM.Views.NIDEC.SMT
         }
         protected override void OnLoad(EventArgs e)
         {
-            getassylist();
-            getlistpcb();
+           // getassylist();
+           // getlistpcb();
         }
         void getassylist()
         {
@@ -79,7 +79,7 @@ namespace IFM.Views.NIDEC.SMT
                 dt2 = new DataTable();
               
                 string sqlgetpcblist = @"SELECT * from (
-                 select l.c , l.factory, l.model, l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate
+                 select l.site , l.factory, l.model, l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate
                   from " + cbm_modelcd.Text + dtp_from.Value.ToString("yyyyMM") + @" l
                    left
                    join " + cbm_modelcd.Text + dtp_from.Value.ToString("yyyyMM") + "data" + @" ld
@@ -161,7 +161,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result"));
+                int result = Convert.ToInt32(gv_barcodepcb.GetRowCellValue(e.RowHandle, "result"));
                 //int result = ok_ng;
                 if (result > 0 && gv_barcodepcb.RowCount > 0)
                 {
