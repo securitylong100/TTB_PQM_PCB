@@ -45,6 +45,8 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_exportlink = new System.Windows.Forms.TextBox();
             this.nud_timerdelay = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.chk_cut = new System.Windows.Forms.CheckBox();
@@ -63,18 +65,19 @@
             this.txt_barcode = new System.Windows.Forms.TextBox();
             this.tlp_showdata = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.serialCom = new System.IO.Ports.SerialPort(this.components);
-            this.timerdelay = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.site = new DevExpress.XtraGrid.Columns.GridColumn();
             this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.model = new DevExpress.XtraGrid.Columns.GridColumn();
             this.serno = new DevExpress.XtraGrid.Columns.GridColumn();
             this.process = new DevExpress.XtraGrid.Columns.GridColumn();
             this.result_ = new DevExpress.XtraGrid.Columns.GridColumn();
             this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.serialCom = new System.IO.Ports.SerialPort(this.components);
+            this.timerdelay = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -192,17 +195,17 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1134, 79);
+            this.ribbonControl.Size = new System.Drawing.Size(1244, 79);
             this.ribbonControl.StatusBar = this.bar_status;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bar_status
             // 
             this.bar_status.ItemLinks.Add(this.bsiRecordsCount);
-            this.bar_status.Location = new System.Drawing.Point(0, 477);
+            this.bar_status.Location = new System.Drawing.Point(0, 598);
             this.bar_status.Name = "bar_status";
             this.bar_status.Ribbon = this.ribbonControl;
-            this.bar_status.Size = new System.Drawing.Size(1134, 31);
+            this.bar_status.Size = new System.Drawing.Size(1244, 31);
             // 
             // bsiRecordsCount
             // 
@@ -222,12 +225,14 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1134, 398);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1244, 519);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.label7);
+            this.pn_background.Controls.Add(this.txt_exportlink);
             this.pn_background.Controls.Add(this.nud_timerdelay);
             this.pn_background.Controls.Add(this.label4);
             this.pn_background.Controls.Add(this.chk_cut);
@@ -247,8 +252,25 @@
             this.pn_background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_background.Location = new System.Drawing.Point(3, 3);
             this.pn_background.Name = "pn_background";
-            this.pn_background.Size = new System.Drawing.Size(1128, 85);
+            this.pn_background.Size = new System.Drawing.Size(1238, 85);
             this.pn_background.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(921, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Link export:";
+            // 
+            // txt_exportlink
+            // 
+            this.txt_exportlink.Location = new System.Drawing.Point(991, 50);
+            this.txt_exportlink.Name = "txt_exportlink";
+            this.txt_exportlink.Size = new System.Drawing.Size(219, 21);
+            this.txt_exportlink.TabIndex = 26;
+            this.txt_exportlink.Text = "\\\\193.168.193.1\\fptin\\SMT\\PQM_SPI";
             // 
             // nud_timerdelay
             // 
@@ -349,9 +371,9 @@
             // 
             // nm_row
             // 
-            this.nm_row.Location = new System.Drawing.Point(991, 48);
+            this.nm_row.Location = new System.Drawing.Point(1117, 10);
             this.nm_row.Name = "nm_row";
-            this.nm_row.Size = new System.Drawing.Size(64, 21);
+            this.nm_row.Size = new System.Drawing.Size(37, 21);
             this.nm_row.TabIndex = 16;
             this.nm_row.Value = new decimal(new int[] {
             8,
@@ -363,7 +385,7 @@
             // 
             this.nm_column.Location = new System.Drawing.Point(991, 10);
             this.nm_column.Name = "nm_column";
-            this.nm_column.Size = new System.Drawing.Size(64, 21);
+            this.nm_column.Size = new System.Drawing.Size(37, 21);
             this.nm_column.TabIndex = 15;
             this.nm_column.Value = new decimal(new int[] {
             5,
@@ -374,7 +396,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(918, 51);
+            this.label5.Location = new System.Drawing.Point(1058, 13);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 14;
@@ -428,7 +450,7 @@
             this.tlp_showdata.Name = "tlp_showdata";
             this.tlp_showdata.RowCount = 1;
             this.tlp_showdata.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_showdata.Size = new System.Drawing.Size(1128, 301);
+            this.tlp_showdata.Size = new System.Drawing.Size(1238, 422);
             this.tlp_showdata.TabIndex = 4;
             // 
             // panel1
@@ -437,13 +459,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(777, 289);
+            this.panel1.Size = new System.Drawing.Size(854, 410);
             this.panel1.TabIndex = 1;
-            // 
-            // timerdelay
-            // 
-            this.timerdelay.Interval = 1000;
-            this.timerdelay.Tick += new System.EventHandler(this.timerdelay_Tick);
             // 
             // tableLayoutPanel2
             // 
@@ -457,10 +474,10 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 289);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(854, 410);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // gc_data
@@ -471,11 +488,10 @@
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(771, 21);
+            this.gc_data.Size = new System.Drawing.Size(848, 138);
             this.gc_data.TabIndex = 3;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
-            this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
             // gv_data
             // 
@@ -483,6 +499,7 @@
             this.gv_data.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.site,
             this.factory,
+            this.model,
             this.serno,
             this.process,
             this.result_,
@@ -494,6 +511,7 @@
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.OptionsView.ShowFooter = true;
+            this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
             // 
             // site
             // 
@@ -513,13 +531,21 @@
             this.factory.Visible = true;
             this.factory.VisibleIndex = 1;
             // 
+            // model
+            // 
+            this.model.Caption = "Model";
+            this.model.FieldName = "model";
+            this.model.Name = "model";
+            this.model.Visible = true;
+            this.model.VisibleIndex = 2;
+            // 
             // serno
             // 
             this.serno.Caption = "Serno";
             this.serno.FieldName = "serno";
             this.serno.Name = "serno";
             this.serno.Visible = true;
-            this.serno.VisibleIndex = 2;
+            this.serno.VisibleIndex = 3;
             // 
             // process
             // 
@@ -527,7 +553,7 @@
             this.process.FieldName = "process";
             this.process.Name = "process";
             this.process.Visible = true;
-            this.process.VisibleIndex = 3;
+            this.process.VisibleIndex = 4;
             // 
             // result_
             // 
@@ -535,7 +561,7 @@
             this.result_.FieldName = "result_";
             this.result_.Name = "result_";
             this.result_.Visible = true;
-            this.result_.VisibleIndex = 4;
+            this.result_.VisibleIndex = 5;
             // 
             // inspectdate
             // 
@@ -544,23 +570,28 @@
             this.inspectdate.FieldName = "inspectdate";
             this.inspectdate.Name = "inspectdate";
             this.inspectdate.Visible = true;
-            this.inspectdate.VisibleIndex = 5;
+            this.inspectdate.VisibleIndex = 6;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(91, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(130, 147);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(594, 244);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // timerdelay
+            // 
+            this.timerdelay.Interval = 1000;
+            this.timerdelay.Tick += new System.EventHandler(this.timerdelay_Tick);
+            // 
             // View_STM_Cutting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 508);
+            this.ClientSize = new System.Drawing.Size(1244, 629);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bar_status);
             this.Controls.Add(this.ribbonControl);
@@ -633,5 +664,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn result_;
         private DevExpress.XtraGrid.Columns.GridColumn inspectdate;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraGrid.Columns.GridColumn model;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_exportlink;
     }
 }

@@ -50,7 +50,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.txt_barcode = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -63,11 +62,13 @@
             this.create_time = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc_barcodepcb = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.site = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.model = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.serno = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.process = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.result = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -223,7 +224,6 @@
             this.pn_background.Controls.Add(this.label4);
             this.pn_background.Controls.Add(this.label3);
             this.pn_background.Controls.Add(this.label1);
-            this.pn_background.Controls.Add(this.dtp_to);
             this.pn_background.Controls.Add(this.dtp_from);
             this.pn_background.Controls.Add(this.txt_barcode);
             this.pn_background.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -285,15 +285,6 @@
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Barcode PCB:";
-            // 
-            // dtp_to
-            // 
-            this.dtp_to.CustomFormat = "yyyy/MM/dd";
-            this.dtp_to.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_to.Location = new System.Drawing.Point(752, 51);
-            this.dtp_to.Name = "dtp_to";
-            this.dtp_to.Size = new System.Drawing.Size(105, 21);
-            this.dtp_to.TabIndex = 3;
             // 
             // dtp_from
             // 
@@ -414,11 +405,13 @@
             // 
             this.gridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5});
+            this.site,
+            this.factory,
+            this.model,
+            this.serno,
+            this.process,
+            this.result,
+            this.inspectdate});
             this.gridView1.GridControl = this.gc_barcodepcb;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -427,46 +420,62 @@
             this.gridView1.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsView.ShowFooter = true;
             // 
-            // gridColumn1
+            // site
             // 
-            this.gridColumn1.Caption = "ID";
-            this.gridColumn1.FieldName = "id";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
+            this.site.Caption = "Site";
+            this.site.FieldName = "site";
+            this.site.Name = "site";
+            this.site.Visible = true;
+            this.site.VisibleIndex = 0;
             // 
-            // gridColumn2
+            // factory
             // 
-            this.gridColumn2.Caption = "Assy Barcode";
-            this.gridColumn2.FieldName = "assy_code";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
+            this.factory.Caption = "Factory";
+            this.factory.FieldName = "factory";
+            this.factory.Name = "factory";
+            this.factory.Visible = true;
+            this.factory.VisibleIndex = 1;
             // 
-            // gridColumn3
+            // model
             // 
-            this.gridColumn3.Caption = "Model Code";
-            this.gridColumn3.FieldName = "model_cd";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 2;
+            this.model.Caption = "Model";
+            this.model.FieldName = "model";
+            this.model.Name = "model";
+            this.model.Visible = true;
+            this.model.VisibleIndex = 2;
             // 
-            // gridColumn4
+            // serno
             // 
-            this.gridColumn4.Caption = "Creator";
-            this.gridColumn4.FieldName = "creator";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.serno.Caption = "Serno";
+            this.serno.FieldName = "serno";
+            this.serno.Name = "serno";
+            this.serno.Visible = true;
+            this.serno.VisibleIndex = 3;
             // 
-            // gridColumn5
+            // process
             // 
-            this.gridColumn5.Caption = "Create Time";
-            this.gridColumn5.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
-            this.gridColumn5.FieldName = "create_time";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
+            this.process.Caption = "Process";
+            this.process.FieldName = "process";
+            this.process.Name = "process";
+            this.process.Visible = true;
+            this.process.VisibleIndex = 4;
+            // 
+            // result
+            // 
+            this.result.Caption = "Result";
+            this.result.FieldName = "result";
+            this.result.Name = "result";
+            this.result.Visible = true;
+            this.result.VisibleIndex = 5;
+            // 
+            // inspectdate
+            // 
+            this.inspectdate.Caption = "Inspectdate";
+            this.inspectdate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.inspectdate.FieldName = "inspectdate";
+            this.inspectdate.Name = "inspectdate";
+            this.inspectdate.Visible = true;
+            this.inspectdate.VisibleIndex = 6;
             // 
             // View_STM_Assy_Viewer
             // 
@@ -513,7 +522,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtp_to;
         private System.Windows.Forms.DateTimePicker dtp_from;
         private System.Windows.Forms.TextBox txt_barcode;
         private System.Windows.Forms.Button btn_enter;
@@ -529,10 +537,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn create_time;
         private DevExpress.XtraGrid.GridControl gc_barcodepcb;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn site;
+        private DevExpress.XtraGrid.Columns.GridColumn factory;
+        private DevExpress.XtraGrid.Columns.GridColumn model;
+        private DevExpress.XtraGrid.Columns.GridColumn serno;
+        private DevExpress.XtraGrid.Columns.GridColumn process;
+        private DevExpress.XtraGrid.Columns.GridColumn result;
+        private DevExpress.XtraGrid.Columns.GridColumn inspectdate;
     }
 }

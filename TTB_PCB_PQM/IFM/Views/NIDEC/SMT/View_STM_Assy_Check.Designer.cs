@@ -60,6 +60,8 @@
             this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.txt_barcode = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_exportlink = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -276,6 +278,8 @@
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.label7);
+            this.pn_background.Controls.Add(this.txt_exportlink);
             this.pn_background.Controls.Add(this.cbm_modelcd);
             this.pn_background.Controls.Add(this.label6);
             this.pn_background.Controls.Add(this.btn_enter);
@@ -321,7 +325,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(692, 57);
+            this.label4.Location = new System.Drawing.Point(772, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 7;
@@ -330,7 +334,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(692, 20);
+            this.label3.Location = new System.Drawing.Point(772, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 6;
@@ -349,7 +353,7 @@
             // 
             this.dtp_to.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_to.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_to.Location = new System.Drawing.Point(752, 51);
+            this.dtp_to.Location = new System.Drawing.Point(832, 47);
             this.dtp_to.Name = "dtp_to";
             this.dtp_to.Size = new System.Drawing.Size(146, 21);
             this.dtp_to.TabIndex = 3;
@@ -358,7 +362,7 @@
             // 
             this.dtp_from.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_from.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_from.Location = new System.Drawing.Point(752, 14);
+            this.dtp_from.Location = new System.Drawing.Point(832, 10);
             this.dtp_from.Name = "dtp_from";
             this.dtp_from.Size = new System.Drawing.Size(146, 21);
             this.dtp_from.TabIndex = 2;
@@ -369,6 +373,23 @@
             this.txt_barcode.Name = "txt_barcode";
             this.txt_barcode.Size = new System.Drawing.Size(211, 21);
             this.txt_barcode.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(368, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Link export:";
+            // 
+            // txt_exportlink
+            // 
+            this.txt_exportlink.Location = new System.Drawing.Point(435, 11);
+            this.txt_exportlink.Name = "txt_exportlink";
+            this.txt_exportlink.Size = new System.Drawing.Size(219, 21);
+            this.txt_exportlink.TabIndex = 28;
+            this.txt_exportlink.Text = "\\\\193.168.193.1\\fptin\\SMT\\PQM_SPI";
             // 
             // View_STM_Assy_Check
             // 
@@ -425,5 +446,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn create_time;
         private System.Windows.Forms.ComboBox cbm_modelcd;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_exportlink;
     }
 }

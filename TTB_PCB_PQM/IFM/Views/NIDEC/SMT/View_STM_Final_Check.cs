@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using WMPLib;
 using System.Threading;
+using System.IO;
 
 namespace IFM.Views.NIDEC.SMT
 {
@@ -22,6 +23,25 @@ namespace IFM.Views.NIDEC.SMT
         string barcode_;
         bool layout = true;
         int ok_ng = 0;
+        //list convert data
+        bool statusPQM;
+        string barcode; //serno
+        string lot;
+        string modelPQM;
+        string sitePQM;
+        string factoryPQM;
+        string line;
+        string processPQM;
+        string inspect;
+        string date;
+        string time;
+        string data;
+        string judge;
+        string status;
+        string remark;
+        // string linkexport = @"\\193.168.193.1\fptin\SMT\PQM_SPI";
+        string linkexport = @"C:\PQM";
+        string pqmformat = @"C:\PQM\pqmformat.txt";
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
         public View_STM_Final_Check()
@@ -40,6 +60,8 @@ namespace IFM.Views.NIDEC.SMT
             try
             {
                 getsizelayout();
+                txt_exportlink.Text = linkexport;
+                readPQMformat(pqmformat);
 
             }
             catch (Exception ex)
@@ -161,6 +183,7 @@ namespace IFM.Views.NIDEC.SMT
         }
         void savedataonlayout()
         {
+            statusPQM = false;
             try
             {
                 List<object> lstItems = new List<object>();
@@ -189,8 +212,17 @@ namespace IFM.Views.NIDEC.SMT
                         sqlinsert.Append("CURRENT_TIMESTAMP");
                         sqlinsert.Append(")");
                         con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
+                        if (btn.Text == "NG") statusPQM = true;
                     }
                 }
+                modelPQM = cbm_modelcd.Text;
+                barcode = barcode_;
+                lot = "_" + DateTime.Now.ToString("yyyyMMdd");
+                date = DateTime.Now.ToString("yyyy/MM/dd");
+                time = DateTime.Now.ToString("HH:mm:ss");
+                judge = statusPQM == true ? "1" : "0";
+                data = judge;
+                writePQMformat(txt_exportlink.Text + "\\Final" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
                 MessageBox.Show("Save successful!", "Database Responce", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
@@ -233,39 +265,39 @@ namespace IFM.Views.NIDEC.SMT
                     if (ok_ng == 0 && gv_data.RowCount == 0)
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
+                        rd_NG_CheckedChanged(sender, e);
                         MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
-                    else if (ok_ng == 1 && gv_data.RowCount == 2)
+                    else if (ok_ng >= 1 && gv_data.RowCount >=2)
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
+                        rd_NG_CheckedChanged(sender, e);
                         MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
-                    else if (ok_ng == 2 && gv_data.RowCount == 2)
-                    {
-                        pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
-                        MessageBox.Show("Sản Phẩm có 2 công đoạn trước đó NG", "Lỗi 04", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
-                    }
+                  
                     else if (gv_data.RowCount == 1)
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
-                        MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó chưa được test", "Lỗi 05", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        rd_NG_CheckedChanged(sender, e);
+                        MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó chưa được test", "Lỗi 04", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
-                    else if (ok_ng == 0 && gv_data.RowCount == 2)
+                    else if (ok_ng == 0 && gv_data.RowCount >= 2)
                     {
+                        rd_ok_CheckedChanged(sender, e);
                         pictureBox1.Image = global::IFM.Properties.Resources.OK_LB;
                         System.Media.SystemSounds.Hand.Play();
                         savedataonlayout();
                         Timer_colorchange.Enabled = true;
-
+                       
                     }
                     else
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
-                        MessageBox.Show("Chưa xác nhận lỗi", "Lỗi 06", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        rd_NG_CheckedChanged(sender, e);
+                        MessageBox.Show("Chưa xác nhận lỗi", "Lỗi 99", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
                 }
@@ -298,14 +330,14 @@ namespace IFM.Views.NIDEC.SMT
                 //                    group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
                 //                    )a 
                 //                    group  by a.site ,a.factory ,a.serno ,a.process order by max(a.result) asc";
-                string sqlgetPQM = @" select a.site as site , a.factory as factory,a.serno as serno, a.process as process, a.result as result_, a.inspectdate as inspectdate from (
-                                 select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
+                string sqlgetPQM = @" select a.site as site , a.factory as factory,a.model as model,a.serno as serno, a.process as process, a.result as result_, a.inspectdate as inspectdate from (
+                                 select l.site , l.factory,l.model,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
                                  left join " + table + @"data ld 
                                 on l.serno  = ld.serno 
                                  where 1=1
                                 and l.inspectdate  = ld.inspectdate 
                                  and l.serno = '" + txt_barcode.Text + @"'
-                                 group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
+                                 group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate,l.model
                                  ) a where a.inspectdate in 
                                  (
                                  select b.date_  from 
@@ -313,7 +345,7 @@ namespace IFM.Views.NIDEC.SMT
                                  select max(inspectdate) as date_, inspect  from  " + table + @"data ld 
                                 where ld.serno = '" + txt_barcode.Text + @"'
                                 group  by inspect ) b
-                                ) order by a.result asc";
+                                ) order by a.inspectdate , a.result";
                 pgsqlconnection_NewDB conPQM = new pgsqlconnection_NewDB();
                 conPQM.sqlDataAdapterFillDatatableAuto(sqlgetPQM, ref dt);
                 gc_data.DataSource = dt;
@@ -336,32 +368,18 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result_"));
-
+                  int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result_"));
+                //int result = ok_ng;
                 if (result > 0 && gv_data.RowCount > 0)
                 {
                     e.Appearance.BackColor = Color.Red;
-                    foreach (var control in dynamicTableLayoutPanel.Controls)
-                    {
-                        if (control is System.Windows.Forms.Button btn)
-                        {
-                            btn.Image = global::IFM.Properties.Resources.NG;
-                            btn.Text = "NG";
-                        }
-                    }
+                    
                     //if đỏ bên này thì cho NG hết
                 }
                 else if (result == 0 && gv_data.RowCount > 0)
                 {
                     e.Appearance.BackColor = Color.LightGreen;
-                    foreach (var control in dynamicTableLayoutPanel.Controls)
-                    {
-                        if (control is System.Windows.Forms.Button btn)
-                        {
-                            btn.Image = global::IFM.Properties.Resources.OK;
-                            btn.Text = "OK";
-                        }
-                    }
+                   
                     // if xanh bên này thì cho OK hết
                 }
                 else
@@ -422,6 +440,59 @@ namespace IFM.Views.NIDEC.SMT
             }
         }
 
+        private void writePQMformat(string filePQM)
+        {
+            try
+            {
+                //  writePQMformat(pathfolderout + "\\SPI_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                //bool exists = System.IO.File.Exists(filePQMformat);
+                ////if (exists)
+                ////    System.IO.File.Delete(filePQMformat);
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"""" + barcode + @"""" + ",");
+                sb.Append(@"""" + lot + @"""" + ",");
+                sb.Append(@"""" + modelPQM + @"""" + ",");
+                sb.Append(sitePQM + ",");
+                sb.Append(factoryPQM + ",");
+                sb.Append(line + ",");
+                sb.Append(processPQM + ",");
+                sb.Append(inspect + ",");
+                sb.Append(@"""" + date + @"""" + ",");
+                sb.Append(@"""" + time + @"""" + ",");
+                sb.Append(@"""" + data + @"""" + ",");
+                sb.Append(@"""" + judge + @"""" + ",");
+                sb.Append(status + ",");
+                sb.Append(remark);
+                sb.Append("\n");
+                File.AppendAllText(filePQM, sb.ToString());
+                sb.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xuất file" + ex.Message.ToString(), "Lỗi 06", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void readPQMformat(string filePQMformat)
+        {
+            try
+            {
+                bool exists = System.IO.File.Exists(filePQMformat);
+                if (!exists) return;
+                string[] datarow = File.ReadAllLines(filePQMformat);
+                sitePQM = datarow[3];
+                factoryPQM = datarow[4];
+                line = datarow[5];
+                processPQM = datarow[6];
+                inspect = datarow[7];
+                status = datarow[12];
+                remark = datarow[13];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xuất file" + ex.Message.ToString(), "Lỗi 06", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
     }
 }

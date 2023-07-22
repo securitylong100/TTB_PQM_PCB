@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.IO.Ports;
 using System.Threading;
+using System.IO;
 
 namespace IFM.Views.NIDEC.SMT
 {
@@ -24,6 +25,24 @@ namespace IFM.Views.NIDEC.SMT
         bool cutting = false;
         bool layout = true;
         int timer_ = 0;
+      //  bool statusPQM;
+        string barcode; //serno
+        string lot;
+        string modelPQM;
+        string sitePQM;
+        string factoryPQM;
+        string line;
+        string processPQM;
+        string inspect;
+        string date;
+        string time;
+        string data;
+        string judge;
+        string status;
+        string remark;
+        // string linkexport = @"\\193.168.193.1\fptin\SMT\PQM_SPI";
+        string linkexport = @"C:\PQM";
+        string pqmformat = @"C:\PQM\pqmformat.txt";
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
         public View_STM_Cutting()
@@ -47,6 +66,8 @@ namespace IFM.Views.NIDEC.SMT
                 cmbSeriport.DataSource = SerialPort.GetPortNames();
                 chk_cut.Checked = true;
                  timer_ = int.Parse(nud_timerdelay.Value.ToString());
+                readPQMformat(pqmformat);
+                txt_exportlink.Text = linkexport;
             }
             catch (Exception ex)
             {
@@ -210,12 +231,14 @@ namespace IFM.Views.NIDEC.SMT
                 timerdelay.Enabled = true;
                 Thread.Sleep(500);
                 System.Media.SystemSounds.Hand.Play();
+                exportfile(false);
             }
             else if (cutting == false && gv_data.DataRowCount > 0)
             {
                 pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                 MessageBox.Show("Sản Phẩm có PCB bị NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
+                exportfile(true);
             }    
             else 
             {
@@ -233,14 +256,14 @@ namespace IFM.Views.NIDEC.SMT
                 dt = new DataTable();
                // gc_data.DataSource = null;
                // gv_data.Columns.Clear();
-                string sqlgetPQM = @" select  a.site as site , a.factory as factory,a.serno as serno, a.process as process, a.result as result_, a.inspectdate as inspectdate  from (
-                                     select l.site , l.factory ,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
+                string sqlgetPQM = @" select  a.site as site , a.factory as factory,a.model as model,a.serno as serno, a.process as process, a.result as result_, a.inspectdate as inspectdate  from (
+                                     select l.site , l.factory, l.model,l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate  from " + table + @" l 
                                      left join " + table + @"data ld 
                                     on l.serno  = ld.serno 
                                      where 1=1
                                     and l.inspectdate  = ld.inspectdate 
                                      and l.serno = '" + txt_barcode.Text + @"'
-                                     group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate
+                                     group  by l.site , l.factory ,l.serno ,l.process , l.inspectdate,l.model
                                      ) a where a.inspectdate in 
                                      (
                                      select b.date_  from 
@@ -405,7 +428,70 @@ namespace IFM.Views.NIDEC.SMT
             {
                 timer_ = timer_-1;
             }    
+        }
+        private void writePQMformat(string filePQM)
+        {
+            try
+            {
+                //  writePQMformat(pathfolderout + "\\SPI_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                //bool exists = System.IO.File.Exists(filePQMformat);
+                ////if (exists)
+                ////    System.IO.File.Delete(filePQMformat);
 
+                StringBuilder sb = new StringBuilder();
+                sb.Append(@"""" + barcode + @"""" + ",");
+                sb.Append(@"""" + lot + @"""" + ",");
+                sb.Append(@"""" + modelPQM + @"""" + ",");
+                sb.Append(sitePQM + ",");
+                sb.Append(factoryPQM + ",");
+                sb.Append(line + ",");
+                sb.Append(processPQM + ",");
+                sb.Append(inspect + ",");
+                sb.Append(@"""" + date + @"""" + ",");
+                sb.Append(@"""" + time + @"""" + ",");
+                sb.Append(@"""" + data + @"""" + ",");
+                sb.Append(@"""" + judge + @"""" + ",");
+                sb.Append(status + ",");
+                sb.Append(remark);
+                sb.Append("\n");
+                File.AppendAllText(filePQM, sb.ToString());
+                sb.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xuất file" + ex.Message.ToString(), "Lỗi 04", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void readPQMformat(string filePQMformat)
+        {
+            try
+            {
+                bool exists = System.IO.File.Exists(filePQMformat);
+                if (!exists) return;
+                string[] datarow = File.ReadAllLines(filePQMformat);
+                sitePQM = datarow[3];
+                factoryPQM = datarow[4];
+                line = datarow[5];
+                processPQM = datarow[6];
+                inspect = datarow[7];
+                status = datarow[12];
+                remark = datarow[13];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xuất file" + ex.Message.ToString(), "Lỗi 04", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        void exportfile(bool statusPQM)
+        {
+            modelPQM = cbm_modelcd.Text;
+            barcode = barcode_;
+            lot = "_" + DateTime.Now.ToString("yyyyMMdd");
+            date = DateTime.Now.ToString("yyyy/MM/dd");
+            time = DateTime.Now.ToString("HH:mm:ss");
+            judge = statusPQM == true ? "1" : "0";
+            data = judge;
+            writePQMformat(txt_exportlink.Text + "\\Cutting" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
         }
     }
 }

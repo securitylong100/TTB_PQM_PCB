@@ -19,12 +19,12 @@ namespace IFM.Views.NIDEC.SMT
     public partial class View_STM_Assy_Viewer : RibbonForm
     {
         DataTable dt;
-
+        DataTable dt2;
+        DateTimePicker dtp_to;
         public View_STM_Assy_Viewer()
         {
-            InitializeComponent();
-            dtp_from.Value = DateTime.Now.AddDays(-0).Date;
-            dtp_to.Value = DateTime.Now.AddDays(+1).Date;
+            InitializeComponent();           
+            dtp_from.Value = DateTime.Now.AddDays(-0).Date;          
             AcceptButton = btn_enter;
         }
 
@@ -38,16 +38,28 @@ namespace IFM.Views.NIDEC.SMT
         }
         protected override void OnLoad(EventArgs e)
         {
-            try
+            getassylist();
+            getlistpcb();
+        }
+        void getassylist()
+        {
+              try
             {
-
+                dtp_to = new DateTimePicker();
+                dtp_to.Value = dtp_from.Value.AddDays(+1).Date;
                 dt = new DataTable();
                 pgsqlconnection con = new pgsqlconnection();
-                string sql = @"select id, assy_code, model_cd  ,creator, create_time  from smt_m_assy_code                            
+                StringBuilder sqlgetassy = new StringBuilder();
+                sqlgetassy.Append(@"select id, assy_code, model_cd  ,creator, create_time  from smt_m_assy_code                            
                             where create_time <= '" + dtp_to.Value + @"'
                             and create_time >='" + dtp_from.Value + @"'                          
-                            order by id desc limit 100";
-                con.sqlDataAdapterFillDatatable(sql, ref dt);
+                            ");
+                if (txt_barcode.Text != "")
+                {
+                    sqlgetassy.Append(" and assy_code = '" + txt_barcode.Text + "' ");
+                }
+                sqlgetassy.Append("  order by id desc");
+                con.sqlDataAdapterFillDatatable(sqlgetassy.ToString(), ref dt);
                 gc_barcodeassy.DataSource = dt;
                 string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
                 con.getComboBoxData(sql_model, ref cbm_modelcd);
@@ -56,7 +68,44 @@ namespace IFM.Views.NIDEC.SMT
             {
                 MessageBox.Show("Error :" + ex.Message);
             }
-            txt_barcode.Text = "";
+}
+        void getlistpcb()
+        {
+            try
+            {
+                dtp_to = new DateTimePicker();
+                dtp_to.Value = dtp_from.Value.AddDays(+1).Date;
+                dt2 = new DataTable();
+              
+                string sqlgetpcblist = @"SELECT * from (
+                 select l.site , l.factory, l.model, l.serno, l.process, sum(CAST(ld.judge AS INTEGER)) as result  ,max(ld.inspectdate) as inspectdate
+                  from " + cbm_modelcd.Text + dtp_from.Value.ToString("yyyyMM") + @" l
+                   left
+                   join " + cbm_modelcd.Text + dtp_from.Value.ToString("yyyyMM") + "data" + @" ld
+                   on l.serno = ld.serno
+                   where 1 = 1
+                   and l.inspectdate = ld.inspectdate
+                   group by l.site , l.factory ,l.serno ,l.process , l.inspectdate, l.model
+                 ) a
+                          where inspectdate in 
+                		 (
+                                  select b.date_ from
+                                  (
+                                             select lot, serno, max(inspectdate) as date_, inspect from  " + cbm_modelcd.Text + dtp_from.Value.ToString("yyyyMM") + "data" + @" ld
+                                             where 1 = 1
+                                             and lot = '" + "_" + dtp_from.Value.ToString("yyyyMMdd") + @"'
+                                             group by inspect,serno,lot
+                                            order by serno
+                				 ) b
+                		 )";
+                pgsqlconnection_NewDB con = new pgsqlconnection_NewDB();
+                con.sqlDataAdapterFillDatatable(sqlgetpcblist, ref dt2);
+                gc_barcodepcb.DataSource = dt2;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -84,7 +133,7 @@ namespace IFM.Views.NIDEC.SMT
 
         bool checkcondition()
         {
-            if (txt_barcode.Text.Length < 5 || cbm_modelcd.Text == "")
+            if ( cbm_modelcd.Text == "")
             {
                 MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Mã Lỗi: 101", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -97,14 +146,15 @@ namespace IFM.Views.NIDEC.SMT
             {
                 try
                 {
-                    OnLoad(e);
+                    getassylist();
+                    getlistpcb();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error :" + ex.Message);
                 }
             }
-            OnLoad(e);
+            
         }
     }
 }

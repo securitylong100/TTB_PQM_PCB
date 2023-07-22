@@ -45,6 +45,8 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_exportlink = new System.Windows.Forms.TextBox();
             this.rd_NG = new System.Windows.Forms.RadioButton();
             this.rd_ok = new System.Windows.Forms.RadioButton();
             this.cbm_modelcd = new System.Windows.Forms.ComboBox();
@@ -67,6 +69,7 @@
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.site = new DevExpress.XtraGrid.Columns.GridColumn();
             this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.model = new DevExpress.XtraGrid.Columns.GridColumn();
             this.serno = new DevExpress.XtraGrid.Columns.GridColumn();
             this.process = new DevExpress.XtraGrid.Columns.GridColumn();
             this.result_ = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -189,17 +192,17 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1134, 79);
+            this.ribbonControl.Size = new System.Drawing.Size(1228, 79);
             this.ribbonControl.StatusBar = this.bar_status;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bar_status
             // 
             this.bar_status.ItemLinks.Add(this.bsiRecordsCount);
-            this.bar_status.Location = new System.Drawing.Point(0, 477);
+            this.bar_status.Location = new System.Drawing.Point(0, 572);
             this.bar_status.Name = "bar_status";
             this.bar_status.Ribbon = this.ribbonControl;
-            this.bar_status.Size = new System.Drawing.Size(1134, 31);
+            this.bar_status.Size = new System.Drawing.Size(1228, 31);
             // 
             // bsiRecordsCount
             // 
@@ -219,12 +222,14 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1134, 398);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1228, 493);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.label7);
+            this.pn_background.Controls.Add(this.txt_exportlink);
             this.pn_background.Controls.Add(this.rd_NG);
             this.pn_background.Controls.Add(this.rd_ok);
             this.pn_background.Controls.Add(this.cbm_modelcd);
@@ -243,13 +248,30 @@
             this.pn_background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_background.Location = new System.Drawing.Point(3, 3);
             this.pn_background.Name = "pn_background";
-            this.pn_background.Size = new System.Drawing.Size(1128, 85);
+            this.pn_background.Size = new System.Drawing.Size(1222, 85);
             this.pn_background.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(492, 56);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Link export:";
+            // 
+            // txt_exportlink
+            // 
+            this.txt_exportlink.Location = new System.Drawing.Point(562, 51);
+            this.txt_exportlink.Name = "txt_exportlink";
+            this.txt_exportlink.Size = new System.Drawing.Size(302, 21);
+            this.txt_exportlink.TabIndex = 21;
+            this.txt_exportlink.Text = "\\\\193.168.193.1\\fptin\\SMT\\PQM_SPI";
             // 
             // rd_NG
             // 
             this.rd_NG.AutoSize = true;
-            this.rd_NG.Location = new System.Drawing.Point(534, 53);
+            this.rd_NG.Location = new System.Drawing.Point(558, 17);
             this.rd_NG.Name = "rd_NG";
             this.rd_NG.Size = new System.Drawing.Size(59, 17);
             this.rd_NG.TabIndex = 20;
@@ -261,7 +283,7 @@
             // rd_ok
             // 
             this.rd_ok.AutoSize = true;
-            this.rd_ok.Location = new System.Drawing.Point(534, 18);
+            this.rd_ok.Location = new System.Drawing.Point(495, 17);
             this.rd_ok.Name = "rd_ok";
             this.rd_ok.Size = new System.Drawing.Size(59, 17);
             this.rd_ok.TabIndex = 19;
@@ -290,9 +312,9 @@
             // 
             // nm_row
             // 
-            this.nm_row.Location = new System.Drawing.Point(735, 50);
+            this.nm_row.Location = new System.Drawing.Point(829, 17);
             this.nm_row.Name = "nm_row";
-            this.nm_row.Size = new System.Drawing.Size(64, 21);
+            this.nm_row.Size = new System.Drawing.Size(35, 21);
             this.nm_row.TabIndex = 16;
             this.nm_row.Value = new decimal(new int[] {
             8,
@@ -302,9 +324,9 @@
             // 
             // nm_column
             // 
-            this.nm_column.Location = new System.Drawing.Point(735, 12);
+            this.nm_column.Location = new System.Drawing.Point(715, 16);
             this.nm_column.Name = "nm_column";
-            this.nm_column.Size = new System.Drawing.Size(64, 21);
+            this.nm_column.Size = new System.Drawing.Size(35, 21);
             this.nm_column.TabIndex = 15;
             this.nm_column.Value = new decimal(new int[] {
             5,
@@ -315,7 +337,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(662, 53);
+            this.label5.Location = new System.Drawing.Point(770, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 14;
@@ -324,7 +346,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(662, 15);
+            this.label2.Location = new System.Drawing.Point(642, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 12;
@@ -333,9 +355,9 @@
             // btn_enter
             // 
             this.btn_enter.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_enter.Location = new System.Drawing.Point(355, 32);
+            this.btn_enter.Location = new System.Drawing.Point(358, 13);
             this.btn_enter.Name = "btn_enter";
-            this.btn_enter.Size = new System.Drawing.Size(113, 23);
+            this.btn_enter.Size = new System.Drawing.Size(81, 25);
             this.btn_enter.TabIndex = 10;
             this.btn_enter.Text = "Enter";
             this.btn_enter.UseVisualStyleBackColor = true;
@@ -344,7 +366,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(873, 56);
+            this.label4.Location = new System.Drawing.Point(984, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 7;
@@ -353,7 +375,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(873, 19);
+            this.label3.Location = new System.Drawing.Point(984, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 6;
@@ -372,7 +394,7 @@
             // 
             this.dtp_to.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_to.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_to.Location = new System.Drawing.Point(933, 50);
+            this.dtp_to.Location = new System.Drawing.Point(1044, 45);
             this.dtp_to.Name = "dtp_to";
             this.dtp_to.Size = new System.Drawing.Size(146, 21);
             this.dtp_to.TabIndex = 3;
@@ -381,7 +403,7 @@
             // 
             this.dtp_from.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_from.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_from.Location = new System.Drawing.Point(933, 13);
+            this.dtp_from.Location = new System.Drawing.Point(1044, 8);
             this.dtp_from.Name = "dtp_from";
             this.dtp_from.Size = new System.Drawing.Size(146, 21);
             this.dtp_from.TabIndex = 2;
@@ -405,7 +427,7 @@
             this.tlp_showdata.Name = "tlp_showdata";
             this.tlp_showdata.RowCount = 1;
             this.tlp_showdata.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_showdata.Size = new System.Drawing.Size(1128, 301);
+            this.tlp_showdata.Size = new System.Drawing.Size(1222, 396);
             this.tlp_showdata.TabIndex = 4;
             // 
             // panel1
@@ -414,7 +436,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(777, 289);
+            this.panel1.Size = new System.Drawing.Size(843, 384);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -429,10 +451,10 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(777, 289);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(843, 384);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // gc_data
@@ -443,7 +465,7 @@
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(771, 21);
+            this.gc_data.Size = new System.Drawing.Size(837, 114);
             this.gc_data.TabIndex = 3;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
@@ -454,6 +476,7 @@
             this.gv_data.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.site,
             this.factory,
+            this.model,
             this.serno,
             this.process,
             this.result_,
@@ -485,13 +508,21 @@
             this.factory.Visible = true;
             this.factory.VisibleIndex = 1;
             // 
+            // model
+            // 
+            this.model.Caption = "Model";
+            this.model.FieldName = "model";
+            this.model.Name = "model";
+            this.model.Visible = true;
+            this.model.VisibleIndex = 2;
+            // 
             // serno
             // 
             this.serno.Caption = "Serno";
             this.serno.FieldName = "serno";
             this.serno.Name = "serno";
             this.serno.Visible = true;
-            this.serno.VisibleIndex = 2;
+            this.serno.VisibleIndex = 3;
             // 
             // process
             // 
@@ -499,7 +530,7 @@
             this.process.FieldName = "process";
             this.process.Name = "process";
             this.process.Visible = true;
-            this.process.VisibleIndex = 3;
+            this.process.VisibleIndex = 4;
             // 
             // result_
             // 
@@ -507,7 +538,7 @@
             this.result_.FieldName = "result_";
             this.result_.Name = "result_";
             this.result_.Visible = true;
-            this.result_.VisibleIndex = 4;
+            this.result_.VisibleIndex = 5;
             // 
             // inspectdate
             // 
@@ -516,13 +547,13 @@
             this.inspectdate.FieldName = "inspectdate";
             this.inspectdate.Name = "inspectdate";
             this.inspectdate.Visible = true;
-            this.inspectdate.VisibleIndex = 5;
+            this.inspectdate.VisibleIndex = 6;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(91, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(124, 123);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(594, 244);
             this.pictureBox1.TabIndex = 4;
@@ -537,7 +568,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 508);
+            this.ClientSize = new System.Drawing.Size(1228, 603);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bar_status);
             this.Controls.Add(this.ribbonControl);
@@ -606,5 +637,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer Timer_colorchange;
+        private DevExpress.XtraGrid.Columns.GridColumn model;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_exportlink;
     }
 }
