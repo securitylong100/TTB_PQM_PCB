@@ -61,7 +61,10 @@
             this.creator = new DevExpress.XtraGrid.Columns.GridColumn();
             this.create_time = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc_barcodepcb = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gv_barcodepcb = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.site = new DevExpress.XtraGrid.Columns.GridColumn();
             this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.model = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -76,7 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gc_barcodeassy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_barcodepcb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_barcodepcb)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage1
@@ -393,18 +396,18 @@
             // 
             this.gc_barcodepcb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gc_barcodepcb.Location = new System.Drawing.Point(504, 6);
-            this.gc_barcodepcb.MainView = this.gridView1;
+            this.gc_barcodepcb.MainView = this.gv_barcodepcb;
             this.gc_barcodepcb.MenuManager = this.ribbonControl;
             this.gc_barcodepcb.Name = "gc_barcodepcb";
             this.gc_barcodepcb.Size = new System.Drawing.Size(490, 266);
             this.gc_barcodepcb.TabIndex = 4;
             this.gc_barcodepcb.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gv_barcodepcb});
             // 
-            // gridView1
+            // gv_barcodepcb
             // 
-            this.gridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gv_barcodepcb.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gv_barcodepcb.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.site,
             this.factory,
             this.model,
@@ -412,13 +415,35 @@
             this.process,
             this.result,
             this.inspectdate});
-            this.gridView1.GridControl = this.gc_barcodepcb;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
-            this.gridView1.OptionsBehavior.ReadOnly = true;
-            this.gridView1.OptionsEditForm.EditFormColumnCount = 2;
-            this.gridView1.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
-            this.gridView1.OptionsView.ShowFooter = true;
+            this.gv_barcodepcb.GridControl = this.gc_barcodepcb;
+            this.gv_barcodepcb.Name = "gv_barcodepcb";
+            this.gv_barcodepcb.OptionsBehavior.Editable = false;
+            this.gv_barcodepcb.OptionsBehavior.ReadOnly = true;
+            this.gv_barcodepcb.OptionsEditForm.EditFormColumnCount = 2;
+            this.gv_barcodepcb.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
+            this.gv_barcodepcb.OptionsView.ShowFooter = true;
+            this.gv_barcodepcb.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_barcodepcb_RowStyle);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Print Preview";
+            this.barButtonItem1.Id = 14;
+            this.barButtonItem1.ImageOptions.ImageUri.Uri = "Preview";
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Print Preview";
+            this.barButtonItem2.Id = 14;
+            this.barButtonItem2.ImageOptions.ImageUri.Uri = "Preview";
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Print Preview";
+            this.barButtonItem3.Id = 14;
+            this.barButtonItem3.ImageOptions.ImageUri.Uri = "Preview";
+            this.barButtonItem3.Name = "barButtonItem3";
             // 
             // site
             // 
@@ -471,7 +496,6 @@
             // inspectdate
             // 
             this.inspectdate.Caption = "Inspectdate";
-            this.inspectdate.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
             this.inspectdate.FieldName = "inspectdate";
             this.inspectdate.Name = "inspectdate";
             this.inspectdate.Visible = true;
@@ -496,7 +520,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gc_barcodeassy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_barcodepcb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_barcodepcb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,7 +560,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn creator;
         private DevExpress.XtraGrid.Columns.GridColumn create_time;
         private DevExpress.XtraGrid.GridControl gc_barcodepcb;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gv_barcodepcb;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraGrid.Columns.GridColumn site;
         private DevExpress.XtraGrid.Columns.GridColumn factory;
         private DevExpress.XtraGrid.Columns.GridColumn model;
