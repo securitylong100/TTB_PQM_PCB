@@ -192,7 +192,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1228, 79);
+            this.ribbonControl.Size = new System.Drawing.Size(1147, 79);
             this.ribbonControl.StatusBar = this.bar_status;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -202,7 +202,7 @@
             this.bar_status.Location = new System.Drawing.Point(0, 572);
             this.bar_status.Name = "bar_status";
             this.bar_status.Ribbon = this.ribbonControl;
-            this.bar_status.Size = new System.Drawing.Size(1228, 31);
+            this.bar_status.Size = new System.Drawing.Size(1147, 31);
             // 
             // bsiRecordsCount
             // 
@@ -222,7 +222,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1228, 493);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1147, 493);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // pn_background
@@ -248,13 +248,13 @@
             this.pn_background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_background.Location = new System.Drawing.Point(3, 3);
             this.pn_background.Name = "pn_background";
-            this.pn_background.Size = new System.Drawing.Size(1222, 85);
+            this.pn_background.Size = new System.Drawing.Size(1141, 85);
             this.pn_background.TabIndex = 3;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(492, 56);
+            this.label7.Location = new System.Drawing.Point(458, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 13);
             this.label7.TabIndex = 22;
@@ -262,16 +262,16 @@
             // 
             // txt_exportlink
             // 
-            this.txt_exportlink.Location = new System.Drawing.Point(562, 51);
+            this.txt_exportlink.Location = new System.Drawing.Point(549, 51);
             this.txt_exportlink.Name = "txt_exportlink";
-            this.txt_exportlink.Size = new System.Drawing.Size(302, 21);
+            this.txt_exportlink.Size = new System.Drawing.Size(262, 21);
             this.txt_exportlink.TabIndex = 21;
             this.txt_exportlink.Text = "\\\\193.168.193.1\\fptin\\SMT\\PQM_SPI";
             // 
             // rd_NG
             // 
             this.rd_NG.AutoSize = true;
-            this.rd_NG.Location = new System.Drawing.Point(558, 17);
+            this.rd_NG.Location = new System.Drawing.Point(527, 17);
             this.rd_NG.Name = "rd_NG";
             this.rd_NG.Size = new System.Drawing.Size(59, 17);
             this.rd_NG.TabIndex = 20;
@@ -283,7 +283,7 @@
             // rd_ok
             // 
             this.rd_ok.AutoSize = true;
-            this.rd_ok.Location = new System.Drawing.Point(495, 17);
+            this.rd_ok.Location = new System.Drawing.Point(456, 17);
             this.rd_ok.Name = "rd_ok";
             this.rd_ok.Size = new System.Drawing.Size(59, 17);
             this.rd_ok.TabIndex = 19;
@@ -312,7 +312,7 @@
             // 
             // nm_row
             // 
-            this.nm_row.Location = new System.Drawing.Point(829, 17);
+            this.nm_row.Location = new System.Drawing.Point(776, 17);
             this.nm_row.Name = "nm_row";
             this.nm_row.Size = new System.Drawing.Size(35, 21);
             this.nm_row.TabIndex = 16;
@@ -324,7 +324,7 @@
             // 
             // nm_column
             // 
-            this.nm_column.Location = new System.Drawing.Point(715, 16);
+            this.nm_column.Location = new System.Drawing.Point(666, 16);
             this.nm_column.Name = "nm_column";
             this.nm_column.Size = new System.Drawing.Size(35, 21);
             this.nm_column.TabIndex = 15;
@@ -337,7 +337,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(770, 19);
+            this.label5.Location = new System.Drawing.Point(722, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 14;
@@ -346,7 +346,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(642, 19);
+            this.label2.Location = new System.Drawing.Point(594, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 12;
@@ -355,7 +355,7 @@
             // btn_enter
             // 
             this.btn_enter.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_enter.Location = new System.Drawing.Point(358, 13);
+            this.btn_enter.Location = new System.Drawing.Point(336, 13);
             this.btn_enter.Name = "btn_enter";
             this.btn_enter.Size = new System.Drawing.Size(81, 25);
             this.btn_enter.TabIndex = 10;
@@ -366,7 +366,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(984, 51);
+            this.label4.Location = new System.Drawing.Point(850, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 7;
@@ -375,7 +375,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(984, 14);
+            this.label3.Location = new System.Drawing.Point(850, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 6;
@@ -394,7 +394,7 @@
             // 
             this.dtp_to.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_to.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_to.Location = new System.Drawing.Point(1044, 45);
+            this.dtp_to.Location = new System.Drawing.Point(910, 45);
             this.dtp_to.Name = "dtp_to";
             this.dtp_to.Size = new System.Drawing.Size(146, 21);
             this.dtp_to.TabIndex = 3;
@@ -403,7 +403,7 @@
             // 
             this.dtp_from.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_from.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_from.Location = new System.Drawing.Point(1044, 8);
+            this.dtp_from.Location = new System.Drawing.Point(910, 8);
             this.dtp_from.Name = "dtp_from";
             this.dtp_from.Size = new System.Drawing.Size(146, 21);
             this.dtp_from.TabIndex = 2;
@@ -427,7 +427,7 @@
             this.tlp_showdata.Name = "tlp_showdata";
             this.tlp_showdata.RowCount = 1;
             this.tlp_showdata.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlp_showdata.Size = new System.Drawing.Size(1222, 396);
+            this.tlp_showdata.Size = new System.Drawing.Size(1141, 396);
             this.tlp_showdata.TabIndex = 4;
             // 
             // panel1
@@ -436,7 +436,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(843, 384);
+            this.panel1.Size = new System.Drawing.Size(786, 384);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -454,7 +454,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(843, 384);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(786, 384);
             this.tableLayoutPanel2.TabIndex = 4;
             // 
             // gc_data
@@ -465,7 +465,7 @@
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(837, 114);
+            this.gc_data.Size = new System.Drawing.Size(780, 114);
             this.gc_data.TabIndex = 3;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
@@ -553,7 +553,7 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(124, 123);
+            this.pictureBox1.Location = new System.Drawing.Point(96, 123);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(594, 244);
             this.pictureBox1.TabIndex = 4;
@@ -568,7 +568,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 603);
+            this.ClientSize = new System.Drawing.Size(1147, 603);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bar_status);
             this.Controls.Add(this.ribbonControl);

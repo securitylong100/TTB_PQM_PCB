@@ -39,8 +39,11 @@ namespace IFM.Views.NIDEC.SMT
         }
         protected override void OnLoad(EventArgs e)
         {
-           // getassylist();
-           // getlistpcb();
+            // getassylist();
+            // getlistpcb();
+            pgsqlconnection con = new pgsqlconnection();
+            string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
+            con.getComboBoxData(sql_model, ref cbm_modelcd);
         }
         void getassylist()
         {
@@ -53,7 +56,8 @@ namespace IFM.Views.NIDEC.SMT
                 StringBuilder sqlgetassy = new StringBuilder();
                 sqlgetassy.Append(@"select id, assy_code, model_cd  ,creator, create_time  from smt_m_assy_code                            
                             where create_time <= '" + dtp_to.Value + @"'
-                            and create_time >='" + dtp_from.Value + @"'                          
+                            and create_time >='" + dtp_from.Value + @"'
+                            and model_cd ='" + cbm_modelcd.Text + @"'  
                             ");
                 if (txt_barcode.Text != "")
                 {

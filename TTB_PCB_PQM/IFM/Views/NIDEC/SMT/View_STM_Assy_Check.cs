@@ -34,8 +34,8 @@ namespace IFM.Views.NIDEC.SMT
         string judge;
         string status;
         string remark;
-        // string linkexport = @"\\193.168.193.1\fptin\SMT\PQM_SPI";
-        string linkexport = @"C:\PQM";
+         string linkexport = @"\\192.168.193.1\fptin\SMT\PQM_SPI";
+       // string linkexport = @"C:\PQM";
         string pqmformat = @"C:\PQM\pqmformat.txt";
         public View_STM_Assy_Check()
         {
@@ -62,7 +62,8 @@ namespace IFM.Views.NIDEC.SMT
                 pgsqlconnection con = new pgsqlconnection();
                 string sql = @"select id, assy_code, model_cd  ,creator, create_time  from smt_m_assy_code                            
                             where create_time <= '" + dtp_to.Value + @"'
-                            and create_time >='" + dtp_from.Value + @"'                          
+                            and create_time >='" + dtp_from.Value + @"'    
+                            and model_cd ='" +cbm_modelcd.Text + @"'     
                             order by id desc limit 100";
                 con.sqlDataAdapterFillDatatable(sql, ref dt);
                 gc_data.DataSource = dt;

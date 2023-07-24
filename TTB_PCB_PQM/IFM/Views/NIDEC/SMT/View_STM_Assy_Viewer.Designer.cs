@@ -62,9 +62,6 @@
             this.create_time = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc_barcodepcb = new DevExpress.XtraGrid.GridControl();
             this.gv_barcodepcb = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.site = new DevExpress.XtraGrid.Columns.GridColumn();
             this.factory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.model = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -72,6 +69,9 @@
             this.process = new DevExpress.XtraGrid.Columns.GridColumn();
             this.result = new DevExpress.XtraGrid.Columns.GridColumn();
             this.inspectdate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
@@ -246,7 +246,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 50);
+            this.label6.Location = new System.Drawing.Point(32, 50);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 20;
@@ -283,11 +283,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 14);
+            this.label1.Location = new System.Drawing.Point(28, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Barcode PCB:";
+            this.label1.Text = "Barcode Housing:";
             // 
             // dtp_from
             // 
@@ -424,27 +424,6 @@
             this.gv_barcodepcb.OptionsView.ShowFooter = true;
             this.gv_barcodepcb.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_barcodepcb_RowStyle);
             // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Print Preview";
-            this.barButtonItem1.Id = 14;
-            this.barButtonItem1.ImageOptions.ImageUri.Uri = "Preview";
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Print Preview";
-            this.barButtonItem2.Id = 14;
-            this.barButtonItem2.ImageOptions.ImageUri.Uri = "Preview";
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Print Preview";
-            this.barButtonItem3.Id = 14;
-            this.barButtonItem3.ImageOptions.ImageUri.Uri = "Preview";
-            this.barButtonItem3.Name = "barButtonItem3";
-            // 
             // site
             // 
             this.site.Caption = "Site";
@@ -500,6 +479,27 @@
             this.inspectdate.Name = "inspectdate";
             this.inspectdate.Visible = true;
             this.inspectdate.VisibleIndex = 6;
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Print Preview";
+            this.barButtonItem1.Id = 14;
+            this.barButtonItem1.ImageOptions.ImageUri.Uri = "Preview";
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Print Preview";
+            this.barButtonItem2.Id = 14;
+            this.barButtonItem2.ImageOptions.ImageUri.Uri = "Preview";
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Print Preview";
+            this.barButtonItem3.Id = 14;
+            this.barButtonItem3.ImageOptions.ImageUri.Uri = "Preview";
+            this.barButtonItem3.Name = "barButtonItem3";
             // 
             // View_STM_Assy_Viewer
             // 

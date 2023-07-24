@@ -39,8 +39,8 @@ namespace IFM.Views.NIDEC.SMT
         string judge;
         string status;
         string remark;
-        // string linkexport = @"\\193.168.193.1\fptin\SMT\PQM_SPI";
-        string linkexport = @"C:\PQM";
+        string linkexport = @"\\192.168.193.1\fptin\SMT\PQM_SPI";
+        //string linkexport = @"C:\PQM";
         string pqmformat = @"C:\PQM\pqmformat.txt";
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
@@ -260,23 +260,31 @@ namespace IFM.Views.NIDEC.SMT
                     }
                     barcode_ = txt_barcode.Text;
                     txt_barcode.Text = "";
-                    gv_data.Columns["result_"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
-                    ok_ng = int.Parse(gv_data.Columns["result_"].SummaryItem.SummaryValue.ToString());
-                    if (ok_ng == 0 && gv_data.RowCount == 0)
+                    if (gv_data.RowCount > 0)
+                    {
+                        gv_data.Columns["result_"].SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                        ok_ng = int.Parse(gv_data.Columns["result_"].SummaryItem.SummaryValue.ToString());
+                    }
+                    else
+                    {
+                        ok_ng = 0;
+                    }
+
+                    if (ok_ng == 0 && gv_data.RowCount < 1)
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         rd_NG_CheckedChanged(sender, e);
                         MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
-                    else if (ok_ng >= 1 && gv_data.RowCount >=2)
+                    else if (ok_ng >= 1 && gv_data.RowCount >= 2)
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         rd_NG_CheckedChanged(sender, e);
                         MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
-                  
+
                     else if (gv_data.RowCount == 1)
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
@@ -291,7 +299,7 @@ namespace IFM.Views.NIDEC.SMT
                         System.Media.SystemSounds.Hand.Play();
                         savedataonlayout();
                         Timer_colorchange.Enabled = true;
-                       
+
                     }
                     else
                     {
@@ -368,23 +376,23 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-                  int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result_"));
+                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result_"));
                 //int result = ok_ng;
                 if (result > 0 && gv_data.RowCount > 0)
                 {
                     e.Appearance.BackColor = Color.Red;
-                    
+
                     //if đỏ bên này thì cho NG hết
                 }
                 else if (result == 0 && gv_data.RowCount > 0)
                 {
                     e.Appearance.BackColor = Color.LightGreen;
-                   
+
                     // if xanh bên này thì cho OK hết
                 }
                 else
                 {
-                    e.Appearance.BackColor = Color.White;
+                    // e.Appearance.BackColor = Color.White;
                     foreach (var control in dynamicTableLayoutPanel.Controls)
                     {
                         if (control is System.Windows.Forms.Button btn)

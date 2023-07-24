@@ -40,8 +40,8 @@ namespace IFM.Views.NIDEC.SMT
         string judge;
         string status;
         string remark;
-        // string linkexport = @"\\193.168.193.1\fptin\SMT\PQM_SPI";
-        string linkexport = @"C:\PQM";
+         string linkexport = @"\\192.168.193.1\fptin\SMT\PQM_SPI";
+        //string linkexport = @"C:\PQM";
         string pqmformat = @"C:\PQM\pqmformat.txt";
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
