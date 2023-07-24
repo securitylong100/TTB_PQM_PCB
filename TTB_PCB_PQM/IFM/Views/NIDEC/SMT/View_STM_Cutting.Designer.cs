@@ -268,9 +268,10 @@
             // 
             this.txt_exportlink.Location = new System.Drawing.Point(816, 50);
             this.txt_exportlink.Name = "txt_exportlink";
+            this.txt_exportlink.ReadOnly = true;
             this.txt_exportlink.Size = new System.Drawing.Size(219, 21);
             this.txt_exportlink.TabIndex = 26;
-            this.txt_exportlink.Text = "\\\\193.168.193.1\\fptin\\SMT\\PQM_SPI";
+            this.txt_exportlink.Text = "\\\\192.168.193.1\\ftpin\\SMT\\PQM_SPI";
             // 
             // nud_timerdelay
             // 
