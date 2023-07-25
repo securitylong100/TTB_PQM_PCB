@@ -29,7 +29,7 @@ namespace IFM.DataAccess.CQRS.Queries.NIDEC.SMT
 
         public override IEnumerable<m_smt_mounter> Handle(SMTMounter_GetMasterQuery query)
         {
-            string sql = @"SELECT ID,
+            string sql = @"SELECT id,
                                   model_cd,
                                   item_list,                                
                                   status,

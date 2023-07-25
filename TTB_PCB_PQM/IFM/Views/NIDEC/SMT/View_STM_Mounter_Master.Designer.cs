@@ -44,13 +44,13 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.model_cd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.item_list = new DevExpress.XtraGrid.Columns.GridColumn();
             this.status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.comments = new DevExpress.XtraGrid.Columns.GridColumn();
             this.creator = new DevExpress.XtraGrid.Columns.GridColumn();
             this.create_time = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc_data = new DevExpress.XtraGrid.GridControl();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -199,20 +199,9 @@
             this.id.Caption = "ID";
             this.id.FieldName = "id";
             this.id.Name = "id";
+            this.id.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.id.Visible = true;
             this.id.VisibleIndex = 0;
-            // 
-            // gc_data
-            // 
-            this.gc_data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gc_data.Location = new System.Drawing.Point(0, 79);
-            this.gc_data.MainView = this.gv_data;
-            this.gc_data.MenuManager = this.ribbonControl;
-            this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(917, 368);
-            this.gc_data.TabIndex = 2;
-            this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gv_data});
             // 
             // model_cd
             // 
@@ -251,16 +240,31 @@
             this.creator.Caption = "Creator";
             this.creator.FieldName = "creator";
             this.creator.Name = "creator";
+            this.creator.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.creator.Visible = true;
             this.creator.VisibleIndex = 5;
             // 
             // create_time
             // 
             this.create_time.Caption = "Create Time";
+            this.create_time.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
             this.create_time.FieldName = "create_time";
             this.create_time.Name = "create_time";
+            this.create_time.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.create_time.Visible = true;
             this.create_time.VisibleIndex = 6;
+            // 
+            // gc_data
+            // 
+            this.gc_data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gc_data.Location = new System.Drawing.Point(0, 79);
+            this.gc_data.MainView = this.gv_data;
+            this.gc_data.MenuManager = this.ribbonControl;
+            this.gc_data.Name = "gc_data";
+            this.gc_data.Size = new System.Drawing.Size(917, 368);
+            this.gc_data.TabIndex = 2;
+            this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gv_data});
             // 
             // View_STM_Mounter_Master
             // 
