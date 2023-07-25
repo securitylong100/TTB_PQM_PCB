@@ -43,15 +43,20 @@ namespace IFM.Views.NIDEC.SMT
 
                 dt = new DataTable();
                 pgsqlconnection con = new pgsqlconnection();
-                string sql = @"select a.id,b.model_cd , a.tool_cd, a.tool_station, a.tool_check, b.tool_name ,a.creator, a.create_time  from smt_m_tool_history a 
+                StringBuilder sqlget = new StringBuilder();
+                sqlget.Append(@"select a.id,b.model_cd , a.tool_cd, a.tool_station, a.tool_check, b.tool_name ,a.creator, a.create_time  from smt_m_tool_history a 
                             left join smt_m_tool_master b  
                             on a.tool_cd  = b.tool_cd 
                             where a.create_time <= '" + dtp_to.Value + @"'
-                            and a.create_time >='" + dtp_from.Value + @"'
-                            and a.tool_cd = '" + txt_barcode.Text + @"'
-                            order by a.id desc";
+                            and a.create_time >='" + dtp_from.Value + @"' ");
+                if(txt_barcode.Text !="")
+                {
+                    sqlget.Append("and a.tool_cd = '" + txt_barcode.Text + @"' ");
+                }
+
+                sqlget.Append("order by a.id desc "); 
                    
-                con.sqlDataAdapterFillDatatable(sql, ref dt);
+                con.sqlDataAdapterFillDatatable(sqlget.ToString(), ref dt);
                 gc_data.DataSource = dt;
 
                 //get station
