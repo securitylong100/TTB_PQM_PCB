@@ -34,6 +34,12 @@ namespace IFM.Business.Dispatchers.SYS
             Register(new SMTTool_UpdateMasterHandler(session));
             Register(new SMTTool_DeleteMasterHandler(session));
             Register(new SMTToolGetDistinctModelHandler(session));
+
+            //SMTMounter_DeleteMasterHandler
+            Register(new SMTMounter_GetMasterHandler(session));
+            Register(new SMTMounter_DeleteMasterHandler(session));
+            Register(new SMTMounter_UpdateMasterHandler(session));
+            //
         }
     }
 }
