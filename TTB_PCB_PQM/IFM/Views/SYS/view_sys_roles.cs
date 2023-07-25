@@ -74,7 +74,7 @@ namespace IFM.Views.SYS
             try
             {
                 var item = gv_data.GetRow(e.RowHandle) as m_user_role;
-                if (item.enum_status >= 0)
+                if (item != null)
                 {
                     switch (item.enum_status)
                     {
@@ -129,7 +129,7 @@ namespace IFM.Views.SYS
             {
                 foreach (var item in _gridData.LstModifired)
                 {
-                    if (item.enum_status >= 0)
+                    if (item !=null )
                     {
                         switch (item.enum_status)
                         {
