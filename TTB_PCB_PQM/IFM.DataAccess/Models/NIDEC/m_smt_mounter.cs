@@ -17,7 +17,7 @@ namespace IFM.DataAccess.Models.NIDEC
             ID = 0;
             item_list = string.Empty == "" ? "Null" : item_list;
             model_cd = string.Empty == "" ? "" : model_cd;
-            comments = string.Empty ==""?"Null":comments;
+           // comments = string.Empty ==""?"Null":comments;
             updater = string.Empty;
             update_time = DateTime.Now;
             creator = string.Empty;

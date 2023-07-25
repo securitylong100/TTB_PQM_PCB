@@ -29,12 +29,13 @@ namespace IFM.DataAccess.CQRS.Commands
             try
             {
                 string sql = $@"UPDATE smt_m_mounter_items SET 
-                                       {nameof(m_smt_mounter.model_cd)}=@{nameof(m_smt_mounter.model_cd)}
-                                      ,{nameof(m_smt_mounter.item_list)}=@{nameof(m_smt_mounter.item_list)}                                   
+                                      {nameof(m_smt_mounter.item_list)}=@{nameof(m_smt_mounter.item_list)}                                   
                                       ,{nameof(m_smt_mounter.status)}=@{nameof(m_smt_mounter.status)}
                                       ,{nameof(m_smt_mounter.comments)}=@{nameof(m_smt_mounter.comments)}     
                                       ,{nameof(m_smt_mounter.updater)}=@{nameof(m_smt_mounter.updater)}
-                                 WHERE {nameof(m_smt_mounter.model_cd)}=@{nameof(m_smt_mounter.model_cd)};
+                                 WHERE {nameof(m_smt_mounter.model_cd)}=@{nameof(m_smt_mounter.model_cd)}
+                                   and {nameof(m_smt_mounter.item_list)}=@{nameof(m_smt_mounter.item_list)};
+                                     
                                  INSERT INTO smt_m_mounter_items (
                                              {nameof(m_smt_mounter.model_cd)},
                                              {nameof(m_smt_mounter.item_list)},                                           
@@ -51,6 +52,7 @@ namespace IFM.DataAccess.CQRS.Commands
                                       WHERE NOT EXISTS(
                                          SELECT 1 FROM smt_m_mounter_items
                                          WHERE {nameof(m_smt_mounter.model_cd)}=@{nameof(m_smt_mounter.model_cd)}
+                                           and {nameof(m_smt_mounter.item_list)}=@{nameof(m_smt_mounter.item_list)}      
                                       );";
                 int result = 0;
                 foreach (var item in command.ToolMaster)
@@ -66,7 +68,7 @@ namespace IFM.DataAccess.CQRS.Commands
                         item.item_list,                 
                         item.comments,
                         item.status,
-                         item.creator,
+                        item.creator,
                         item.create_time,
                         item.updater,
                         item.update_time
