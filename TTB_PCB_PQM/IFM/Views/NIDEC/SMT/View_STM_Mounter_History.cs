@@ -21,6 +21,7 @@ namespace IFM.Views.NIDEC.SMT
     public partial class View_STM_Mounter_History : RibbonForm
     {
         DataTable dt;
+        DataTable dt2;
         List<object> lstItems;
         public View_STM_Mounter_History()
         {
@@ -28,9 +29,6 @@ namespace IFM.Views.NIDEC.SMT
             dtp_from.Value = DateTime.Now.AddDays(-2);
             dtp_to.Value = DateTime.Now.AddDays(+1);
             AcceptButton = btn_enter;
-            cbm_typeview.Text = "History";
-
-
         }
 
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
@@ -39,27 +37,14 @@ namespace IFM.Views.NIDEC.SMT
         }
         void BbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
-            gc_data.ShowRibbonPrintPreview();
+            gc_datamaster.ShowRibbonPrintPreview();
         }
         protected override void OnLoad(EventArgs e)
         {
             try
             {
-                dt = new DataTable();
+                getmasterlist();
                 pgsqlconnection con = new pgsqlconnection();
-                StringBuilder sqlget = new StringBuilder();
-                sqlget.Append(@"select id, lot_no, model_cd , item_list,creator, create_time  from smt_m_mounter_history 
-                             where create_time <= '" + dtp_to.Value + @"'
-                            and create_time >='" + dtp_from.Value + @"' ");
-                if (cbm_modelcd.Text != "")
-                {
-                    sqlget.Append("and model_cd = '" + cbm_modelcd.Text + @"' ");
-                }
-                sqlget.Append("order by id desc ");
-                con.sqlDataAdapterFillDatatable(sqlget.ToString(), ref dt);
-                gc_data.DataSource = dt;
-
-                //get station
                 string sql_cbm = "select distinct model_cd from smt_m_model order by model_cd ";
                 con.getComboBoxData(sql_cbm, ref cbm_modelcd);
 
@@ -69,6 +54,29 @@ namespace IFM.Views.NIDEC.SMT
                 MessageBox.Show("Error :" + ex.Message);
             }
             txt_barcode.Text = "";
+        }
+        void getmasterlist()
+        {
+            try
+            {
+                dt = new DataTable();
+                pgsqlconnection con = new pgsqlconnection();
+                StringBuilder sqlget = new StringBuilder();
+                sqlget.Append(@"select id,  model_cd , item_list, create_time  from smt_m_mounter_items 
+                             where create_time <= '" + dtp_to.Value + @"'
+                            and create_time >='" + dtp_from.Value + @"' ");
+                if (cbm_modelcd.Text != "")
+                {
+                    sqlget.Append("and model_cd = '" + cbm_modelcd.Text + @"' ");
+                }
+                sqlget.Append("order by  item_list ");
+                con.sqlDataAdapterFillDatatable(sqlget.ToString(), ref dt);
+                gc_datamaster.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
         }
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -84,18 +92,53 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            dt2 = new DataTable();
+            gc_datahistory.DataSource = dt2;
+            loadlotno();
         }
         private void BbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            OnLoad(e);
+            getmasterlist();
         }
 
         bool checkcondition()
         {
-            if (txt_barcode.Text.Length < 5 || cbm_modelcd.Text == "" || cbm_modelcd.SelectedItem == null || cbm_typeview.Text == "Check Code")
+            if (txt_barcode.Text.Length < 5 || cbm_modelcd.Text == "" || cbm_modelcd.SelectedItem == null)
             {
-                MessageBox.Show("Chưa chọn đầy đủ Thông Tin", "Mã Lỗi: 101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chưa chọn đầy đủ Thông Tin!", "Mã Lỗi: 101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            //kiểm tra xem có trong master ko
+            bool checkmaster = false;
+            if (dt.Rows.Count < 1)
+            {
+                MessageBox.Show(" Thông Tin List Linh Kiện Master Đang Trống!", "Mã Lỗi: 102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                var x = (from r in dt.AsEnumerable()
+                         select r["item_list"]).Distinct().ToList();
+                foreach (var x1 in x)
+                {
+                    if (txt_barcode.Text == x1.ToString())
+                    {
+                        checkmaster = true;
+                    }
+                }
+                if (checkmaster == false)
+                {
+                    MessageBox.Show(" Linh kiện này không có trong Master!", "Mã Lỗi: 103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            //kiểm tra có bị trùng 2 rows ko
+            pgsqlconnection con = new pgsqlconnection();
+            string sql = "select count(*)  from smt_m_mounter_history where model_cd  ='" + cbm_modelcd.Text + "' and lot_no  ='" + txt_lotno.Text + "' and item_list  ='" + txt_barcode.Text + "'";
+            if (int.Parse(con.sqlExecuteScalarString(sql)) != 0)
+            {
+                MessageBox.Show(" Linh kiện Này Đã Được Thêm Vào Trước Đó!", "Mã Lỗi: 103", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;
@@ -103,42 +146,26 @@ namespace IFM.Views.NIDEC.SMT
 
         private void btn_enter_Click(object sender, EventArgs e)
         {
-            addgridcontroll(txt_barcode.Text);
             insertdata();
-        }
-        void addgridcontroll(string itemnew)
-        {
-            if (dt.Rows.Count < 1) return;
-            var list = (from r in dt.AsEnumerable()
-                     select r["item_list"]).Distinct().ToList(); if (dt.Rows.Count < 1) return;
-       
-        }
-        private void gv_data_RowStyle(object sender, RowStyleEventArgs e)
-        {
-            try
+            gethistorylist();
+            if(gv_datahistory.RowCount == gv_datamaster.RowCount)
             {
-                int result = Convert.ToInt32(gv_data.GetRowCellValue(e.RowHandle, "result_"));
-
-                if (result > 0)
-                {
-                    e.Appearance.BackColor = Color.Red;
-                }
-                else if (result == 0)
-                {
-                    e.Appearance.BackColor = Color.LightGreen;
-                }
-                else
-                {
-                    e.Appearance.BackColor = Color.White;
-                }
-                e.HighPriority = true;
+                MessageBox.Show(" Kết Quả So Sánh Đã Đúng", "Thông Báo Thành Công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dt2 = new DataTable();
+                gc_datahistory.DataSource = dt2;
+                loadlotno();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error :" + ex.Message);
-            }
+            txt_barcode.Text = "";
         }
-
+        void gethistorylist()
+        {
+            dt2 = new DataTable();
+            pgsqlconnection con = new pgsqlconnection();
+            StringBuilder sqlgethistorylist = new StringBuilder();
+            sqlgethistorylist.Append(@"select * from smt_m_mounter_history where lot_no ='" + (int.Parse(txt_lotno.Text) - 0) + "' and model_cd ='" + cbm_modelcd.Text + "'");
+            con.sqlDataAdapterFillDatatable(sqlgethistorylist.ToString(), ref dt2);
+            gc_datahistory.DataSource = dt2;
+        }
         void insertdata()
         {
             if (checkcondition())
@@ -167,38 +194,14 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void cbm_modelcd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loaddatafrom();
-
+            loadlotno();
+            getmasterlist();
         }
-        void loaddatafrom()
+        void loadlotno()
         {
             pgsqlconnection con = new pgsqlconnection();
             string sql_model = "select coalesce(max(lot_no) + 1, 1) from smt_m_mounter_history where 1=1 and model_cd = '" + cbm_modelcd.Text + "' ";
             txt_lotno.Text = con.sqlExecuteScalarString(sql_model);
-            dt = new DataTable();
-            string sqlgetmasterlist = @"select a.model_cd, a.item_list,b.lot_no from smt_m_mounter_items a
-                                        left join 
-                                        (
-                                        select coalesce(max(lot_no) + 1, 1) as lot_no, model_cd  from smt_m_mounter_history 
-                                        where 1=1 
-                                        group by model_cd 
-                                        ) b
-                                        on a.model_cd  = b.model_cd
-                                        where a.model_cd ='" + cbm_modelcd.Text + "'";
-            con.sqlDataAdapterFillDatatable(sqlgetmasterlist, ref dt);
-            gc_data.DataSource = dt;
-        }
-        private void cbm_typeview_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbm_typeview.Text == "Check Code")
-            {
-                cbm_typeview.BackColor = Color.Green;
-            }
-            else
-            {
-                cbm_typeview.BackColor = Color.White;
-            }
-            loaddatafrom();
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View_STM_Mounter_History));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
@@ -42,16 +43,16 @@
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bar_status = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
-            this.gv_data = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gv_datamaster = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lot_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.model_cd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.item_list = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.creator = new DevExpress.XtraGrid.Columns.GridColumn();
             this.create_time = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gc_data = new DevExpress.XtraGrid.GridControl();
+            this.gc_datamaster = new DevExpress.XtraGrid.GridControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.txt_lotno = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.cbm_modelcd = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_enter = new System.Windows.Forms.Button();
@@ -61,15 +62,22 @@
             this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.txt_barcode = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_lotno = new System.Windows.Forms.TextBox();
-            this.cbm_typeview = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.gc_datahistory = new DevExpress.XtraGrid.GridControl();
+            this.gv_datahistory = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_datamaster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_datamaster)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.pn_background.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_datahistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_datahistory)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonPage1
@@ -193,23 +201,20 @@
             this.bsiRecordsCount.Id = 15;
             this.bsiRecordsCount.Name = "bsiRecordsCount";
             // 
-            // gv_data
+            // gv_datamaster
             // 
-            this.gv_data.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.gv_data.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gv_datamaster.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gv_datamaster.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.ID,
-            this.lot_no,
             this.model_cd,
             this.item_list,
-            this.creator,
             this.create_time});
-            this.gv_data.GridControl = this.gc_data;
-            this.gv_data.Name = "gv_data";
-            this.gv_data.OptionsBehavior.Editable = false;
-            this.gv_data.OptionsBehavior.ReadOnly = true;
-            this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
-            this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
-            this.gv_data.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gv_data_RowStyle);
+            this.gv_datamaster.GridControl = this.gc_datamaster;
+            this.gv_datamaster.Name = "gv_datamaster";
+            this.gv_datamaster.OptionsBehavior.Editable = false;
+            this.gv_datamaster.OptionsBehavior.ReadOnly = true;
+            this.gv_datamaster.OptionsEditForm.EditFormColumnCount = 2;
+            this.gv_datamaster.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
             // ID
             // 
@@ -219,21 +224,13 @@
             this.ID.Visible = true;
             this.ID.VisibleIndex = 0;
             // 
-            // lot_no
-            // 
-            this.lot_no.Caption = "Lot No";
-            this.lot_no.FieldName = "lot_no";
-            this.lot_no.Name = "lot_no";
-            this.lot_no.Visible = true;
-            this.lot_no.VisibleIndex = 1;
-            // 
             // model_cd
             // 
             this.model_cd.Caption = "Model Code";
             this.model_cd.FieldName = "model_cd";
             this.model_cd.Name = "model_cd";
             this.model_cd.Visible = true;
-            this.model_cd.VisibleIndex = 2;
+            this.model_cd.VisibleIndex = 1;
             // 
             // item_list
             // 
@@ -241,15 +238,7 @@
             this.item_list.FieldName = "item_list";
             this.item_list.Name = "item_list";
             this.item_list.Visible = true;
-            this.item_list.VisibleIndex = 3;
-            // 
-            // creator
-            // 
-            this.creator.Caption = "Creator";
-            this.creator.FieldName = "creator";
-            this.creator.Name = "creator";
-            this.creator.Visible = true;
-            this.creator.VisibleIndex = 4;
+            this.item_list.VisibleIndex = 2;
             // 
             // create_time
             // 
@@ -259,26 +248,29 @@
             this.create_time.FieldName = "create_time";
             this.create_time.Name = "create_time";
             this.create_time.Visible = true;
-            this.create_time.VisibleIndex = 5;
+            this.create_time.VisibleIndex = 3;
             // 
-            // gc_data
+            // gc_datamaster
             // 
-            this.gc_data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gc_data.Location = new System.Drawing.Point(3, 94);
-            this.gc_data.MainView = this.gv_data;
-            this.gc_data.MenuManager = this.ribbonControl;
-            this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(1000, 301);
-            this.gc_data.TabIndex = 2;
-            this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gv_data});
+            this.gc_datamaster.Dock = System.Windows.Forms.DockStyle.Fill;
+            gridLevelNode1.RelationName = "Level1";
+            this.gc_datamaster.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.gc_datamaster.Location = new System.Drawing.Point(3, 3);
+            this.gc_datamaster.MainView = this.gv_datamaster;
+            this.gc_datamaster.MenuManager = this.ribbonControl;
+            this.gc_datamaster.Name = "gc_datamaster";
+            this.gc_datamaster.Size = new System.Drawing.Size(494, 295);
+            this.gc_datamaster.TabIndex = 2;
+            this.gc_datamaster.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gv_datamaster});
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.gc_data, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.pn_background, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 79);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -291,8 +283,6 @@
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
-            this.pn_background.Controls.Add(this.cbm_typeview);
-            this.pn_background.Controls.Add(this.label5);
             this.pn_background.Controls.Add(this.txt_lotno);
             this.pn_background.Controls.Add(this.label2);
             this.pn_background.Controls.Add(this.cbm_modelcd);
@@ -309,6 +299,23 @@
             this.pn_background.Name = "pn_background";
             this.pn_background.Size = new System.Drawing.Size(1000, 85);
             this.pn_background.TabIndex = 3;
+            // 
+            // txt_lotno
+            // 
+            this.txt_lotno.Location = new System.Drawing.Point(459, 12);
+            this.txt_lotno.Name = "txt_lotno";
+            this.txt_lotno.ReadOnly = true;
+            this.txt_lotno.Size = new System.Drawing.Size(100, 21);
+            this.txt_lotno.TabIndex = 23;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(411, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Lot No:";
             // 
             // cbm_modelcd
             // 
@@ -390,42 +397,91 @@
             this.txt_barcode.Size = new System.Drawing.Size(226, 21);
             this.txt_barcode.TabIndex = 1;
             // 
-            // label2
+            // tableLayoutPanel2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(411, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Lot No:";
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.gc_datahistory, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.gc_datamaster, 0, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 94);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1000, 301);
+            this.tableLayoutPanel2.TabIndex = 4;
             // 
-            // txt_lotno
+            // gc_datahistory
             // 
-            this.txt_lotno.Location = new System.Drawing.Point(459, 12);
-            this.txt_lotno.Name = "txt_lotno";
-            this.txt_lotno.Size = new System.Drawing.Size(100, 21);
-            this.txt_lotno.TabIndex = 23;
+            this.gc_datahistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gc_datahistory.Location = new System.Drawing.Point(503, 3);
+            this.gc_datahistory.MainView = this.gv_datahistory;
+            this.gc_datahistory.MenuManager = this.ribbonControl;
+            this.gc_datahistory.Name = "gc_datahistory";
+            this.gc_datahistory.Size = new System.Drawing.Size(494, 295);
+            this.gc_datahistory.TabIndex = 3;
+            this.gc_datahistory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gv_datahistory});
             // 
-            // cbm_typeview
+            // gv_datahistory
             // 
-            this.cbm_typeview.FormattingEnabled = true;
-            this.cbm_typeview.Items.AddRange(new object[] {
-            "Check Code",
-            "History"});
-            this.cbm_typeview.Location = new System.Drawing.Point(459, 52);
-            this.cbm_typeview.Name = "cbm_typeview";
-            this.cbm_typeview.Size = new System.Drawing.Size(100, 21);
-            this.cbm_typeview.TabIndex = 25;
-            this.cbm_typeview.SelectedIndexChanged += new System.EventHandler(this.cbm_typeview_SelectedIndexChanged);
+            this.gv_datahistory.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gv_datahistory.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn1,
+            this.gridColumn2,
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn6});
+            this.gv_datahistory.GridControl = this.gc_datahistory;
+            this.gv_datahistory.Name = "gv_datahistory";
+            this.gv_datahistory.OptionsBehavior.Editable = false;
+            this.gv_datahistory.OptionsBehavior.ReadOnly = true;
+            this.gv_datahistory.OptionsEditForm.EditFormColumnCount = 2;
+            this.gv_datahistory.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
-            // label5
+            // gridColumn1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(393, 57);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "Type View:";
+            this.gridColumn1.Caption = "ID";
+            this.gridColumn1.FieldName = "id";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 0;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Lot No";
+            this.gridColumn2.FieldName = "lot_no";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Model Code";
+            this.gridColumn3.FieldName = "model_cd";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 2;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Item List";
+            this.gridColumn4.FieldName = "item_list";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 3;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Create Time";
+            this.gridColumn6.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn6.FieldName = "create_time";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 4;
             // 
             // View_STM_Mounter_History
             // 
@@ -439,11 +495,14 @@
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.bar_status;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_data)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gc_data)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_datamaster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_datamaster)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.pn_background.ResumeLayout(false);
             this.pn_background.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gc_datahistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_datahistory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,8 +523,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar bar_status;
         private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
-        private DevExpress.XtraGrid.Views.Grid.GridView gv_data;
-        private DevExpress.XtraGrid.GridControl gc_data;
+        private DevExpress.XtraGrid.Views.Grid.GridView gv_datamaster;
+        private DevExpress.XtraGrid.GridControl gc_datamaster;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel pn_background;
         private System.Windows.Forms.Label label4;
@@ -477,15 +536,19 @@
         private System.Windows.Forms.Button btn_enter;
         private DevExpress.XtraGrid.Columns.GridColumn ID;
         private DevExpress.XtraGrid.Columns.GridColumn item_list;
-        private DevExpress.XtraGrid.Columns.GridColumn creator;
         private DevExpress.XtraGrid.Columns.GridColumn create_time;
         private DevExpress.XtraGrid.Columns.GridColumn model_cd;
         private System.Windows.Forms.ComboBox cbm_modelcd;
         private System.Windows.Forms.Label label6;
-        private DevExpress.XtraGrid.Columns.GridColumn lot_no;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_lotno;
-        private System.Windows.Forms.ComboBox cbm_typeview;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private DevExpress.XtraGrid.GridControl gc_datahistory;
+        private DevExpress.XtraGrid.Views.Grid.GridView gv_datahistory;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

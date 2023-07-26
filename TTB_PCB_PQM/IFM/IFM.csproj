@@ -250,6 +250,18 @@
     <Compile Include="Views\NIDEC\SMT\View_STM_Master_Tool.Designer.cs">
       <DependentUpon>View_STM_Master_Tool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_Master.Designer.cs">
+      <DependentUpon>View_STM_Mounter_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_History.Designer.cs">
+      <DependentUpon>View_STM_Mounter_History.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\NIDEC\SMT\View_STM_Tool_Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -349,6 +361,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Master_Tool.resx">
       <DependentUpon>View_STM_Master_Tool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Mounter_Master.resx">
+      <DependentUpon>View_STM_Mounter_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Mounter_History.resx">
+      <DependentUpon>View_STM_Mounter_History.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Tool_Master.resx">
       <DependentUpon>View_STM_Tool_Master.cs</DependentUpon>
