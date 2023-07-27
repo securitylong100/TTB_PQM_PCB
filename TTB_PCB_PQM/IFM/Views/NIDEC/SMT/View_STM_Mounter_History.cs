@@ -63,8 +63,7 @@ namespace IFM.Views.NIDEC.SMT
                 pgsqlconnection con = new pgsqlconnection();
                 StringBuilder sqlget = new StringBuilder();
                 sqlget.Append(@"select id,  model_cd , item_list, create_time  from smt_m_mounter_items 
-                             where create_time <= '" + dtp_to.Value + @"'
-                            and create_time >='" + dtp_from.Value + @"' ");
+                             where 1=1 ");
                 if (cbm_modelcd.Text != "")
                 {
                     sqlget.Append("and model_cd = '" + cbm_modelcd.Text + @"' ");
