@@ -207,7 +207,7 @@ namespace IFM.Views.NIDEC.SMT
                     string result = Convert.ToString(gv_datamaster.GetRowCellValue(e.RowHandle, "item_list"));
                     if (item_ == result && gv_datamaster.RowCount>0 && gv_datahistory.RowCount>0)
                     {
-                        e.Appearance.BackColor = Color.Yellow;
+                        e.Appearance.BackColor = Color.Green;
                     }
                     else if(gv_datahistory.RowCount < 1)
                     {
