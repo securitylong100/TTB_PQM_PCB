@@ -51,6 +51,8 @@
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_exportlink = new System.Windows.Forms.TextBox();
             this.cbm_modelcd = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_enter = new System.Windows.Forms.Button();
@@ -60,8 +62,6 @@
             this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.txt_barcode = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_exportlink = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -295,6 +295,23 @@
             this.pn_background.Size = new System.Drawing.Size(1000, 85);
             this.pn_background.TabIndex = 3;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(368, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "Link export:";
+            // 
+            // txt_exportlink
+            // 
+            this.txt_exportlink.Location = new System.Drawing.Point(435, 11);
+            this.txt_exportlink.Name = "txt_exportlink";
+            this.txt_exportlink.Size = new System.Drawing.Size(219, 21);
+            this.txt_exportlink.TabIndex = 28;
+            this.txt_exportlink.Text = "\\\\193.168.193.1\\fptin\\SMT\\PQM_SPI";
+            // 
             // cbm_modelcd
             // 
             this.cbm_modelcd.FormattingEnabled = true;
@@ -306,7 +323,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 50);
+            this.label6.Location = new System.Drawing.Point(33, 50);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 20;
@@ -343,11 +360,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 14);
+            this.label1.Location = new System.Drawing.Point(30, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Barcode PCB:";
+            this.label1.Text = "Barcode Housing:";
             // 
             // dtp_to
             // 
@@ -373,23 +390,6 @@
             this.txt_barcode.Name = "txt_barcode";
             this.txt_barcode.Size = new System.Drawing.Size(211, 21);
             this.txt_barcode.TabIndex = 1;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(368, 14);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 13);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "Link export:";
-            // 
-            // txt_exportlink
-            // 
-            this.txt_exportlink.Location = new System.Drawing.Point(435, 11);
-            this.txt_exportlink.Name = "txt_exportlink";
-            this.txt_exportlink.Size = new System.Drawing.Size(219, 21);
-            this.txt_exportlink.TabIndex = 28;
-            this.txt_exportlink.Text = "\\\\193.168.193.1\\fptin\\SMT\\PQM_SPI";
             // 
             // View_STM_Assy_Check
             // 

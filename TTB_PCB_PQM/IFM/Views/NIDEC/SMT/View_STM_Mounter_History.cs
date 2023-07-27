@@ -137,7 +137,7 @@ namespace IFM.Views.NIDEC.SMT
             string sql = "select count(*)  from smt_m_mounter_history where model_cd  ='" + cbm_modelcd.Text + "' and lot_no  ='" + txt_lotno.Text + "' and item_list  ='" + txt_barcode.Text + "'";
             if (int.Parse(con.sqlExecuteScalarString(sql)) != 0)
             {
-                MessageBox.Show(" Linh kiện Này Đã Được Thêm Vào Trước Đó!", "Mã Lỗi: 103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" Linh kiện Này Đã Được Thêm Vào Trước Đó!", "Mã Lỗi: 104", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

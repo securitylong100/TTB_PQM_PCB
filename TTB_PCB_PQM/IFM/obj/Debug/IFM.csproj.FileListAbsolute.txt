@@ -111,10 +111,10 @@ E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.application
 E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.csproj.CopyComplete
 E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.exe
 E:\C#\Git\onlytest\IFM\IFM\obj\Debug\IFM.pdb
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.exe
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.exe.config
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.exe.manifest
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.application
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.exe
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\IFM.pdb
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Data.Desktop.v22.2.xml
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\bin\Debug\DevExpress.Data.v22.2.xml
@@ -158,6 +158,8 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SM
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Final_Check_BK.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Final_Check.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Master_Tool.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Mounter_Master.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Mounter_History.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Tool_Master.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Tool_History.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.SYS.view_sys_user.resources
@@ -181,5 +183,3 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.application
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.csproj.CopyComplete
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.exe
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.pdb
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Mounter_Master.resources
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM\obj\Debug\IFM.Views.NIDEC.SMT.View_STM_Mounter_History.resources

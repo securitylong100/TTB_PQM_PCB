@@ -40,7 +40,7 @@ namespace IFM.Views.NIDEC.SMT
         string status;
         string remark;
         string linkexport = @"\\192.168.193.1\ftpin\SMT\PQM_SPI";
-        //string linkexport = @"C:\PQM";
+       //string linkexport = @"C:\PQM";
         string pqmformat = @"C:\PQM\pqmformat.txt";
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
@@ -478,7 +478,7 @@ namespace IFM.Views.NIDEC.SMT
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi xuất file" + ex.Message.ToString(), "Lỗi 06", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi xuất file" + ex.Message.ToString(), "Lỗi 05", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void readPQMformat(string filePQMformat)
