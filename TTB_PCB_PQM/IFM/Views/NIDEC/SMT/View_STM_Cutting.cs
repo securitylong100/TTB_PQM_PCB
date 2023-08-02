@@ -12,6 +12,7 @@ using System.Linq;
 using System.IO.Ports;
 using System.Threading;
 using System.IO;
+using IFM.Common;
 
 namespace IFM.Views.NIDEC.SMT
 {
@@ -41,7 +42,7 @@ namespace IFM.Views.NIDEC.SMT
         string status;
         string remark;
         string linkexport = @"\\192.168.193.1\ftpin\SMT\PQM_SPI";
-       // string linkexport = @"C:\PQM";
+        //string linkexport = @"C:\PQM";
         string pqmformat = @"C:\PQM\pqmformat.txt";
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
@@ -236,6 +237,8 @@ namespace IFM.Views.NIDEC.SMT
             else if (cutting == false && gv_data.DataRowCount > 0)
             {
                 pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
+                IFM.Common.function soundAL = new function();
+                soundAL.soundAlarm();
                 MessageBox.Show("Sản Phẩm có PCB bị NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                 exportfile(true);
@@ -243,6 +246,8 @@ namespace IFM.Views.NIDEC.SMT
             else 
             {
                 pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
+                IFM.Common.function soundAL = new function();
+                soundAL.soundAlarm();
                 MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
             }

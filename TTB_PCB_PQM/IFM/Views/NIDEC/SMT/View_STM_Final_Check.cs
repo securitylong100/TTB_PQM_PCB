@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using WMPLib;
 using System.Threading;
 using System.IO;
+using IFM.Common;
 
 namespace IFM.Views.NIDEC.SMT
 {
@@ -39,8 +40,9 @@ namespace IFM.Views.NIDEC.SMT
         string judge;
         string status;
         string remark;
-        string linkexport = @"\\192.168.193.1\ftpin\SMT\PQM_SPI";
-       //string linkexport = @"C:\PQM";
+     
+         string linkexport = @"\\192.168.193.1\ftpin\SMT\PQM_SPI";
+        //string linkexport = @"C:\PQM";
         string pqmformat = @"C:\PQM\pqmformat.txt";
         TableLayoutPanel dynamicTableLayoutPanel = new TableLayoutPanel();
 
@@ -274,6 +276,8 @@ namespace IFM.Views.NIDEC.SMT
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         rd_NG_CheckedChanged(sender, e);
+                        IFM.Common.function soundAL = new function();
+                        soundAL.soundAlarm();
                         MessageBox.Show("Sản Phẩm Barcode không tồn tại", "Lỗi 02", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
@@ -281,6 +285,8 @@ namespace IFM.Views.NIDEC.SMT
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         rd_NG_CheckedChanged(sender, e);
+                        IFM.Common.function soundAL = new function();
+                        soundAL.soundAlarm();
                         MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó NG", "Lỗi 03", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
@@ -289,6 +295,8 @@ namespace IFM.Views.NIDEC.SMT
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         rd_NG_CheckedChanged(sender, e);
+                        IFM.Common.function soundAL = new function();
+                        soundAL.soundAlarm();
                         MessageBox.Show("Sản Phẩm có 1 công đoạn trước đó chưa được test", "Lỗi 04", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
@@ -305,6 +313,8 @@ namespace IFM.Views.NIDEC.SMT
                     {
                         pictureBox1.Image = global::IFM.Properties.Resources.NG_LB;
                         rd_NG_CheckedChanged(sender, e);
+                        IFM.Common.function soundAL = new function();
+                        soundAL.soundAlarm();
                         MessageBox.Show("Chưa xác nhận lỗi", "Lỗi 99", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         pictureBox1.Image = global::IFM.Properties.Resources.Waiting_LB;
                     }
@@ -501,6 +511,7 @@ namespace IFM.Views.NIDEC.SMT
                 MessageBox.Show("Lỗi xuất file" + ex.Message.ToString(), "Lỗi 06", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
     }
 }

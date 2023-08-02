@@ -202,6 +202,7 @@
   <ItemGroup>
     <Compile Include="ClsSession.cs" />
     <Compile Include="Common\DkGridView.cs" />
+    <Compile Include="Common\function.cs" />
     <Compile Include="Common\pgsqlconnection_NewDB.cs" />
     <Compile Include="Common\pgsqlconnection.cs" />
     <Compile Include="Common\mysqlconnection.cs" />
@@ -249,6 +250,12 @@
     </Compile>
     <Compile Include="Views\NIDEC\SMT\View_STM_Master_Tool.Designer.cs">
       <DependentUpon>View_STM_Master_Tool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_History_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_History_2.Designer.cs">
+      <DependentUpon>View_STM_Mounter_History_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_Master.cs">
       <SubType>Form</SubType>
@@ -361,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Master_Tool.resx">
       <DependentUpon>View_STM_Master_Tool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Mounter_History_2.resx">
+      <DependentUpon>View_STM_Mounter_History_2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Mounter_Master.resx">
       <DependentUpon>View_STM_Mounter_Master.cs</DependentUpon>

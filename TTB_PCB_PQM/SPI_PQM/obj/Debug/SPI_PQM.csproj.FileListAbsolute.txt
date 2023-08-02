@@ -31,3 +31,8 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\System.Runtime
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.roletest.resources
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.csproj.CopyComplete
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.csproj.AssemblyReference.cache
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\obj\Debug\SPI_PQM.frm_converdetails.resources
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\EPPlus.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\EPPlus.Interfaces.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\EPPlus.System.Drawing.dll
+E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\SPI_PQM\bin\Debug\EPPlus.xml
