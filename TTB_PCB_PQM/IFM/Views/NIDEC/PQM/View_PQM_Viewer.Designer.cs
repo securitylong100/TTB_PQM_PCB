@@ -31,14 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View_PQM_Viewer));
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSearch = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiLoad = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExportCSV = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bar_status = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -49,24 +50,24 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_gettreeview = new System.Windows.Forms.Button();
+            this.btn_clear = new System.Windows.Forms.Button();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cmbModel = new System.Windows.Forms.ComboBox();
+            this.txtBarcode = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.trInspect = new System.Windows.Forms.TreeView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnBrowser = new System.Windows.Forms.Button();
+            this.txtURL = new System.Windows.Forms.TextBox();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiExportCSV = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -98,14 +99,13 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
-            // bbiSave
+            // bbiSearch
             // 
-            this.bbiSave.Caption = "Save";
-            this.bbiSave.Id = 20;
-            this.bbiSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.Image")));
-            this.bbiSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.LargeImage")));
-            this.bbiSave.Name = "bbiSave";
-            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiSave_ItemClick);
+            this.bbiSearch.Caption = "Search";
+            this.bbiSearch.Id = 17;
+            this.bbiSearch.ImageOptions.ImageUri.Uri = "Edit";
+            this.bbiSearch.Name = "bbiSearch";
+            this.bbiSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSearch_ItemClick);
             // 
             // ribbonPageGroup1
             // 
@@ -115,37 +115,13 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
             // 
-            // bbiNew
-            // 
-            this.bbiNew.Caption = "New";
-            this.bbiNew.Id = 16;
-            this.bbiNew.ImageOptions.ImageUri.Uri = "New";
-            this.bbiNew.Name = "bbiNew";
-            this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNew_ItemClick);
-            // 
-            // bbiSearch
-            // 
-            this.bbiSearch.Caption = "Search";
-            this.bbiSearch.Id = 17;
-            this.bbiSearch.ImageOptions.ImageUri.Uri = "Edit";
-            this.bbiSearch.Name = "bbiSearch";
-            this.bbiSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiEdit_ItemClick);
-            // 
-            // bbiDelete
-            // 
-            this.bbiDelete.Caption = "Delete";
-            this.bbiDelete.Id = 18;
-            this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
-            this.bbiDelete.Name = "bbiDelete";
-            this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiDelete_ItemClick);
-            // 
             // bbiLoad
             // 
             this.bbiLoad.Caption = "Load";
             this.bbiLoad.Id = 19;
             this.bbiLoad.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiLoad.Name = "bbiLoad";
-            this.bbiLoad.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiRefresh_ItemClick);
+            this.bbiLoad.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLoad_ItemClick);
             // 
             // ribbonPageGroup2
             // 
@@ -163,6 +139,36 @@
             this.bbiPrintPreview.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiPrintPreview.Name = "bbiPrintPreview";
             this.bbiPrintPreview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiPrintPreview_ItemClick);
+            // 
+            // bbiExportCSV
+            // 
+            this.bbiExportCSV.Caption = "Export CSV";
+            this.bbiExportCSV.Id = 21;
+            this.bbiExportCSV.ImageOptions.Image = global::IFM.Properties.Resources.Excel;
+            this.bbiExportCSV.Name = "bbiExportCSV";
+            this.bbiExportCSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportCSV_ItemClick);
+            // 
+            // bbiSave
+            // 
+            this.bbiSave.Caption = "Save";
+            this.bbiSave.Id = 20;
+            this.bbiSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.Image")));
+            this.bbiSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.LargeImage")));
+            this.bbiSave.Name = "bbiSave";
+            // 
+            // bbiNew
+            // 
+            this.bbiNew.Caption = "New";
+            this.bbiNew.Id = 16;
+            this.bbiNew.ImageOptions.ImageUri.Uri = "New";
+            this.bbiNew.Name = "bbiNew";
+            // 
+            // bbiDelete
+            // 
+            this.bbiDelete.Caption = "Delete";
+            this.bbiDelete.Id = 18;
+            this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
+            this.bbiDelete.Name = "bbiDelete";
             // 
             // ribbonControl
             // 
@@ -206,9 +212,9 @@
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel1.Controls.Add(this.gc_data, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 2, 0);
@@ -224,14 +230,14 @@
             // 
             // gc_data
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.gc_data, 3);
+            this.tableLayoutPanel1.SetColumnSpan(this.gc_data, 2);
             this.gc_data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gc_data.Location = new System.Drawing.Point(6, 171);
             this.gc_data.MainView = this.gv_data;
             this.gc_data.Name = "gc_data";
             this.gc_data.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemToggleSwitch1});
-            this.gc_data.Size = new System.Drawing.Size(1242, 373);
+            this.gc_data.Size = new System.Drawing.Size(938, 373);
             this.gc_data.TabIndex = 6;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
@@ -254,9 +260,9 @@
             // 
             this.panel2.Controls.Add(this.tableLayoutPanel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(319, 6);
+            this.panel2.Location = new System.Drawing.Point(385, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(552, 156);
+            this.panel2.Size = new System.Drawing.Size(559, 156);
             this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -265,38 +271,51 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.textBox1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.txtBarcode, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(552, 156);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(559, 156);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btn_gettreeview);
+            this.panel3.Controls.Add(this.btn_clear);
             this.panel3.Controls.Add(this.radioButton2);
             this.panel3.Controls.Add(this.radioButton1);
             this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.cmbModel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(546, 72);
+            this.panel3.Size = new System.Drawing.Size(553, 72);
             this.panel3.TabIndex = 0;
             // 
-            // button1
+            // btn_gettreeview
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(452, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 31);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_gettreeview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_gettreeview.Location = new System.Drawing.Point(459, 41);
+            this.btn_gettreeview.Name = "btn_gettreeview";
+            this.btn_gettreeview.Size = new System.Drawing.Size(91, 31);
+            this.btn_gettreeview.TabIndex = 5;
+            this.btn_gettreeview.Text = "Get TreeView";
+            this.btn_gettreeview.UseVisualStyleBackColor = true;
+            this.btn_gettreeview.Click += new System.EventHandler(this.btn_gettreeview_Click);
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_clear.Location = new System.Drawing.Point(313, 41);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(119, 31);
+            this.btn_clear.TabIndex = 4;
+            this.btn_clear.Text = "Clear Barcode List";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
             // radioButton2
             // 
@@ -329,42 +348,47 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Model";
             // 
-            // comboBox1
+            // cmbModel
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(99, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(447, 21);
-            this.comboBox1.TabIndex = 0;
+            this.cmbModel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbModel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbModel.FormattingEnabled = true;
+            this.cmbModel.Location = new System.Drawing.Point(56, 3);
+            this.cmbModel.Name = "cmbModel";
+            this.cmbModel.Size = new System.Drawing.Size(497, 21);
+            this.cmbModel.TabIndex = 0;
+            this.cmbModel.SelectedIndexChanged += new System.EventHandler(this.cmbModel_SelectedIndexChanged);
             // 
-            // textBox1
+            // txtBarcode
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 81);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(546, 72);
-            this.textBox1.TabIndex = 1;
+            this.txtBarcode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBarcode.Location = new System.Drawing.Point(3, 81);
+            this.txtBarcode.Multiline = true;
+            this.txtBarcode.Name = "txtBarcode";
+            this.txtBarcode.Size = new System.Drawing.Size(553, 72);
+            this.txtBarcode.TabIndex = 1;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.treeView1);
+            this.groupBox1.Controls.Add(this.trInspect);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(880, 6);
+            this.groupBox1.Location = new System.Drawing.Point(953, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(368, 156);
+            this.tableLayoutPanel1.SetRowSpan(this.groupBox1, 2);
+            this.groupBox1.Size = new System.Drawing.Size(295, 538);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Inspect";
             // 
-            // treeView1
+            // trInspect
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(3, 17);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(362, 136);
-            this.treeView1.TabIndex = 0;
+            this.trInspect.CheckBoxes = true;
+            this.trInspect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trInspect.Location = new System.Drawing.Point(3, 17);
+            this.trInspect.Name = "trInspect";
+            this.trInspect.Size = new System.Drawing.Size(289, 518);
+            this.trInspect.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -381,7 +405,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(304, 156);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(370, 156);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // groupBox2
@@ -390,7 +414,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(298, 45);
+            this.groupBox2.Size = new System.Drawing.Size(364, 46);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FromDate";
@@ -402,16 +426,16 @@
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(3, 17);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(292, 21);
+            this.dateTimePicker1.Size = new System.Drawing.Size(358, 21);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dateTimePicker2);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(3, 54);
+            this.groupBox3.Location = new System.Drawing.Point(3, 55);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(298, 45);
+            this.groupBox3.Size = new System.Drawing.Size(364, 46);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ToDate";
@@ -423,40 +447,41 @@
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(3, 17);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(292, 21);
+            this.dateTimePicker2.Size = new System.Drawing.Size(358, 21);
             this.dateTimePicker2.TabIndex = 0;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.btnBrowser);
+            this.groupBox4.Controls.Add(this.txtURL);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 105);
+            this.groupBox4.Location = new System.Drawing.Point(3, 107);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(298, 48);
+            this.groupBox4.Size = new System.Drawing.Size(364, 46);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Serai From CSV";
             // 
-            // button2
+            // btnBrowser
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btnBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(220, 17);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 27);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Browser";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBrowser.Location = new System.Drawing.Point(286, 17);
+            this.btnBrowser.Name = "btnBrowser";
+            this.btnBrowser.Size = new System.Drawing.Size(75, 25);
+            this.btnBrowser.TabIndex = 1;
+            this.btnBrowser.Text = "Browser";
+            this.btnBrowser.UseVisualStyleBackColor = true;
+            this.btnBrowser.Click += new System.EventHandler(this.btnBrowser_Click);
             // 
-            // textBox2
+            // txtURL
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox2.Location = new System.Drawing.Point(6, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(193, 21);
-            this.textBox2.TabIndex = 0;
+            this.txtURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtURL.Location = new System.Drawing.Point(6, 20);
+            this.txtURL.Name = "txtURL";
+            this.txtURL.Size = new System.Drawing.Size(274, 21);
+            this.txtURL.TabIndex = 0;
             // 
             // barButtonItem1
             // 
@@ -464,13 +489,6 @@
             this.barButtonItem1.Id = 14;
             this.barButtonItem1.ImageOptions.ImageUri.Uri = "Preview";
             this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // bbiExportCSV
-            // 
-            this.bbiExportCSV.Caption = "Export CSV";
-            this.bbiExportCSV.Id = 21;
-            this.bbiExportCSV.ImageOptions.Image = global::IFM.Properties.Resources.Excel;
-            this.bbiExportCSV.Name = "bbiExportCSV";
             // 
             // View_PQM_Viewer
             // 
@@ -521,28 +539,29 @@
         private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TreeView treeView1;
         private DevExpress.XtraGrid.GridControl gc_data;
         private DevExpress.XtraGrid.Views.Grid.GridView gv_data;
         private DevExpress.XtraEditors.Repository.RepositoryItemToggleSwitch repositoryItemToggleSwitch1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_clear;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cmbModel;
+        private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnBrowser;
+        private System.Windows.Forms.TextBox txtURL;
         private DevExpress.XtraBars.BarButtonItem bbiExportCSV;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private System.Windows.Forms.Button btn_gettreeview;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TreeView trInspect;
     }
 }
