@@ -16,35 +16,27 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 
 namespace IFM.Views.NIDEC.PQM
 {
     public partial class View_PQM_Viewer : RibbonForm
     {
         DataTable dt;
-
+        List<object> sernolist;
         public View_PQM_Viewer()
         {
             InitializeComponent();
 
         }
 
-        private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        {
-
-        }
         void BbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
 
         }
         private void bbiSearch_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-        }
-
-        private void bbiLoad_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
+            GetDataTable();
         }
 
         private void bbiExportCSV_ItemClick(object sender, ItemClickEventArgs e)
@@ -135,16 +127,101 @@ namespace IFM.Views.NIDEC.PQM
         {
             txtBarcode.Text = "";
         }
-
+        //****************************************************************************************************************//
+        //                                            LOAD TXT BARCODE                                                    //
+        //****************************************************************************************************************//
         private void btnBrowser_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofCSV = new OpenFileDialog();
-            ofCSV.Title = "LOAD SERIAL NUMBER FROM CSV FILE";
-            ofCSV.Filter = "csv file(*.csv)|*.csv|text file(*.txt)|*.txt|All file(*.*)|*.*";
-            if (ofCSV.ShowDialog() == DialogResult.OK)
+            try
             {
-                txtURL.Text = ofCSV.FileName;
+                txtURL.Text = "";
+                txtBarcode.Text = "";
+                OpenFileDialog ofCSV = new OpenFileDialog();
+                ofCSV.Title = "LOAD SERIAL NUMBER FROM CSV FILE";
+                ofCSV.Filter = "csv file(*.csv)|*.csv|text file(*.txt)|*.txt|All file(*.*)|*.*";
+                if (ofCSV.ShowDialog() == DialogResult.OK)
+                {
+                    txtURL.Text = ofCSV.FileName;
+                }
+                if (txtURL.Text == "") return;
+                var sernolist = (from r in ConvertCSVtoDataTable(txtURL.Text).AsEnumerable()
+                                 select r[0]).Distinct().ToList();
+                foreach (var serno_cd in sernolist)
+                {
+                    txtBarcode.AppendText(serno_cd.ToString() + "\r\n");
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+        }
+        public static DataTable ConvertCSVtoDataTable(string strFilePath)
+        {
+
+            DataTable dtcsv = new DataTable();
+            try
+            {
+                using (StreamReader sr = new StreamReader(strFilePath))
+                {
+                    string[] headers = sr.ReadLine().Split(',');
+                    foreach (string header in headers)
+                    {
+                        dtcsv.Columns.Add(header);
+                    }
+                    while (!sr.EndOfStream)
+                    {
+                        string[] rows = sr.ReadLine().Split(',');
+                        DataRow dr = dtcsv.NewRow();
+                        for (int i = 0; i < headers.Length; i++)
+                        {
+                            dr[i] = rows[i];
+                        }
+                        dtcsv.Rows.Add(dr);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+            return dtcsv;
+        }
+        //****************************************************************************************************************//
+        //                                            GET TABLE GRIDCONTROL                                                  //
+        //****************************************************************************************************************//
+        private void GetDataTable()
+        {
+            dt = new DataTable();
+            DataTable InspectDataTable = new DataTable();
+            DataTable SernoDataTable = new DataTable();
+            StringBuilder SQLInspectDataTable = new StringBuilder();
+            StringBuilder SQLSernoDataTable = new StringBuilder();
+
+         
+            //SQLInspectDataTable.Append("select serno, inspectdate, inspect, inspectdata, judge from "
+            //+ table + "data where inspect in (" + InVo.InspectList.ToString() + ")");
+            //if (InVo.SernoList.Length > 0)
+            //{
+            //    if (InVo.CheckLot)
+            //        SQLInspectDataTable.Append(" and lot in (" + InVo.SernoList.ToString() + ")");
+            //    else
+            //        SQLInspectDataTable.Append(" and serno in (" + InVo.SernoList.ToString() + ")");
+            //}
+            //else
+            //{
+            //    SQLInspectDataTable.Append(" and inspectdate >= '" + InVo.DateTimeFrom.ToString("yyyy-MM-dd HH:mm:ss")
+            //        + "' and inspectdate <= '" + InVo.DateTimeTo.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+            //}
+            //SQLInspectDataTable.Append(" order by inspect asc, inspectdate asc");
+
+            SQLSernoDataTable.Append("select distinct model from procinsplink order by model asc");
+
+
+
+
+
+            pgsqlconnection_NewDB con = new pgsqlconnection_NewDB();
 
         }
     }
