@@ -32,10 +32,10 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiSearch = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiLoad = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bbiExportCSV = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiLoad = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
@@ -51,8 +51,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_gettreeview = new System.Windows.Forms.Button();
             this.btn_clear = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rad_serial = new System.Windows.Forms.RadioButton();
+            this.rad_lot = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbModel = new System.Windows.Forms.ComboBox();
             this.txtBarcode = new System.Windows.Forms.TextBox();
@@ -60,9 +60,9 @@
             this.trInspect = new System.Windows.Forms.TreeView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtDatef = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtDatet = new System.Windows.Forms.DateTimePicker();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnBrowser = new System.Windows.Forms.Button();
             this.txtURL = new System.Windows.Forms.TextBox();
@@ -105,14 +105,6 @@
             this.bbiSearch.Name = "bbiSearch";
             this.bbiSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSearch_ItemClick);
             // 
-            // bbiLoad
-            // 
-            this.bbiLoad.Caption = "Load";
-            this.bbiLoad.Id = 19;
-            this.bbiLoad.ImageOptions.ImageUri.Uri = "Refresh";
-            this.bbiLoad.Name = "bbiLoad";
-           
-            // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
@@ -137,6 +129,13 @@
             this.bbiExportCSV.ImageOptions.Image = global::IFM.Properties.Resources.Excel;
             this.bbiExportCSV.Name = "bbiExportCSV";
             this.bbiExportCSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportCSV_ItemClick);
+            // 
+            // bbiLoad
+            // 
+            this.bbiLoad.Caption = "Load";
+            this.bbiLoad.Id = 19;
+            this.bbiLoad.ImageOptions.ImageUri.Uri = "Refresh";
+            this.bbiLoad.Name = "bbiLoad";
             // 
             // bbiSave
             // 
@@ -275,8 +274,8 @@
             // 
             this.panel3.Controls.Add(this.btn_gettreeview);
             this.panel3.Controls.Add(this.btn_clear);
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Controls.Add(this.rad_serial);
+            this.panel3.Controls.Add(this.rad_lot);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.cmbModel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -307,27 +306,27 @@
             this.btn_clear.UseVisualStyleBackColor = true;
             this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
             // 
-            // radioButton2
+            // rad_serial
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(18, 47);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(106, 17);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "By Serial Number";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rad_serial.AutoSize = true;
+            this.rad_serial.Location = new System.Drawing.Point(18, 47);
+            this.rad_serial.Name = "rad_serial";
+            this.rad_serial.Size = new System.Drawing.Size(106, 17);
+            this.rad_serial.TabIndex = 3;
+            this.rad_serial.TabStop = true;
+            this.rad_serial.Text = "By Serial Number";
+            this.rad_serial.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rad_lot
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(18, 24);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(55, 17);
-            this.radioButton1.TabIndex = 2;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "By Lot";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rad_lot.AutoSize = true;
+            this.rad_lot.Location = new System.Drawing.Point(18, 24);
+            this.rad_lot.Name = "rad_lot";
+            this.rad_lot.Size = new System.Drawing.Size(55, 17);
+            this.rad_lot.TabIndex = 2;
+            this.rad_lot.TabStop = true;
+            this.rad_lot.Text = "By Lot";
+            this.rad_lot.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -400,7 +399,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dtDatef);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
@@ -409,19 +408,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FromDate";
             // 
-            // dateTimePicker1
+            // dtDatef
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd HH:mm:ss";
-            this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(358, 21);
-            this.dateTimePicker1.TabIndex = 0;
+            this.dtDatef.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            this.dtDatef.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtDatef.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtDatef.Location = new System.Drawing.Point(3, 17);
+            this.dtDatef.Name = "dtDatef";
+            this.dtDatef.Size = new System.Drawing.Size(358, 21);
+            this.dtDatef.TabIndex = 0;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dateTimePicker2);
+            this.groupBox3.Controls.Add(this.dtDatet);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 55);
             this.groupBox3.Name = "groupBox3";
@@ -430,15 +429,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ToDate";
             // 
-            // dateTimePicker2
+            // dtDatet
             // 
-            this.dateTimePicker2.CustomFormat = "yyyy/MM/dd HH:mm:ss";
-            this.dateTimePicker2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(3, 17);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(358, 21);
-            this.dateTimePicker2.TabIndex = 0;
+            this.dtDatet.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            this.dtDatet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dtDatet.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtDatet.Location = new System.Drawing.Point(3, 17);
+            this.dtDatet.Name = "dtDatet";
+            this.dtDatet.Size = new System.Drawing.Size(358, 21);
+            this.dtDatet.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -534,16 +533,16 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btn_clear;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rad_serial;
+        private System.Windows.Forms.RadioButton rad_lot;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbModel;
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtDatef;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtDatet;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnBrowser;
         private System.Windows.Forms.TextBox txtURL;
