@@ -59,22 +59,22 @@ namespace IFM.Views.NIDEC.SMT
                 dt = new DataTable();
                 pgsqlconnection con = new pgsqlconnection();
                 StringBuilder sql = new StringBuilder();
-                sql.Append(@"select id, assy_code, model_cd  ,creator, create_time,pcb_code  from smt_m_assy_code                            
+                sql.Append(@"select id, assy_code, model_cd  ,creator, create_time,pcb_code  from smt_m_assy_code                           
                             where 1=1 ");
-                if(cbm_modelcd.Text !="")
+                if (cbm_modelcd.Text != "")
                 {
                     sql.Append(" and model_cd ='" + cbm_modelcd.Text + @"' ");
-                }  
-                if(txt_pcbbarcode.Text !="")
+                }
+                if (txt_pcbbarcode.Text != "")
                 {
                     sql.Append(" and pcb_code ='" + txt_pcbbarcode.Text + @"' ");
-                }    
+                }
                 sql.Append("  order by id desc limit 200");
                 con.sqlDataAdapterFillDatatable(sql.ToString(), ref dt);
                 gc_data.DataSource = dt;
                 string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
                 con.getComboBoxData(sql_model, ref cbm_modelcd);
-                if (cbm_modelcd.Text != "" && txt_pcbbarcode.Text !="" )
+                if (cbm_modelcd.Text != "" && txt_pcbbarcode.Text != "")
                 {
                     string maxpcbsub = "select model_columns* model_rows  as total from smt_m_model  where model_cd = '" + cbm_modelcd.Text + @"' limit 1";
                     if (gv_data.RowCount > int.Parse(con.sqlExecuteScalarString(maxpcbsub)))
@@ -127,18 +127,39 @@ namespace IFM.Views.NIDEC.SMT
             {
                 MessageBox.Show("Barcode PCB Không Có Thông Tin Tại Công Đoạn Cắt", "Mã Lỗi: 102", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
-            }
-            if (result_ == "0")
-            {
-                //return ok, exit condition
-                return true;
-            }
+            }          
             if (result_ == "1")
             {
                 MessageBox.Show("Barcode PCB Bị NG ở Công Đoạn Cắt", "Mã Lỗi: 103", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            if (int.Parse(sernodualicate())>0)
+            {
+                MessageBox.Show("Barcode Housing Đã Được Test Trước Đó", "Mã Lỗi: 105", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }    
+            if (result_ == "0")
+            {
+                //return ok, exit condition
+                return true;
+            }
             return true;
+        }
+        string sernodualicate()
+        {
+            string result_ = "1";
+            try
+            {
+                pgsqlconnection con = new pgsqlconnection();
+                string sql = "select count(*) from smt_m_assy_code where 1=1 and assy_code = '"+txt_barcode.Text+"'";
+                result_ = con.sqlExecuteScalarString_Autosystem(sql);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
+            }
+            return result_;
+
         }
         string result(string table)
         {
@@ -255,7 +276,7 @@ namespace IFM.Views.NIDEC.SMT
             time = DateTime.Now.ToString("HH:mm:ss");
             judge = statusPQM == true ? "1" : "0";
             data = judge;
-           // writePQMformat(txt_exportlink.Text + "\\Assy" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+            // writePQMformat(txt_exportlink.Text + "\\Assy" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
         }
     }
 }
