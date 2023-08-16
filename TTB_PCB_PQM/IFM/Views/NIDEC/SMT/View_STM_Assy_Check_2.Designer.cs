@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(View_STM_Assy_Check_2));
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiSearch = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bar_status = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -52,6 +52,12 @@
             this.gc_data = new DevExpress.XtraGrid.GridControl();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pn_background = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtp_to = new System.Windows.Forms.DateTimePicker();
+            this.dtp_from = new System.Windows.Forms.DateTimePicker();
+            this.txt_counter = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_pcbbarcode = new System.Windows.Forms.TextBox();
             this.cbm_modelcd = new System.Windows.Forms.ComboBox();
@@ -78,45 +84,36 @@
             // 
             // ribbonPageGroup3
             // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.bbiSave, true);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiNew);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
-            // bbiSave
-            // 
-            this.bbiSave.Caption = "Save";
-            this.bbiSave.Id = 20;
-            this.bbiSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.Image")));
-            this.bbiSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.LargeImage")));
-            this.bbiSave.Name = "bbiSave";
-            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiSave_ItemClick);
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.AllowTextClipping = false;
-            this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Tasks";
-            // 
             // bbiNew
             // 
-            this.bbiNew.Caption = "New";
+            this.bbiNew.Caption = "Clear";
             this.bbiNew.Id = 16;
             this.bbiNew.ImageOptions.ImageUri.Uri = "New";
             this.bbiNew.Name = "bbiNew";
             this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNew_ItemClick);
             // 
-            // bbiEdit
+            // ribbonPageGroup1
             // 
-            this.bbiEdit.Caption = "Edit";
-            this.bbiEdit.Id = 17;
-            this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
-            this.bbiEdit.Name = "bbiEdit";
-            this.bbiEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiEdit_ItemClick);
+            this.ribbonPageGroup1.AllowTextClipping = false;
+            this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiSearch);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Tasks";
+            // 
+            // bbiSearch
+            // 
+            this.bbiSearch.Caption = "Search";
+            this.bbiSearch.Id = 17;
+            this.bbiSearch.ImageOptions.Image = global::IFM.Properties.Resources.Load;
+            this.bbiSearch.ImageOptions.ImageUri.Uri = "Edit";
+            this.bbiSearch.Name = "bbiSearch";
+            this.bbiSearch.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiEdit_ItemClick);
             // 
             // bbiDelete
             // 
@@ -150,6 +147,15 @@
             this.bbiPrintPreview.Name = "bbiPrintPreview";
             this.bbiPrintPreview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiPrintPreview_ItemClick);
             // 
+            // bbiSave
+            // 
+            this.bbiSave.Caption = "Save";
+            this.bbiSave.Id = 20;
+            this.bbiSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.Image")));
+            this.bbiSave.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSave.ImageOptions.LargeImage")));
+            this.bbiSave.Name = "bbiSave";
+            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiSave_ItemClick);
+            // 
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
@@ -158,7 +164,7 @@
             this.ribbonControl.SearchEditItem,
             this.bbiPrintPreview,
             this.bbiNew,
-            this.bbiEdit,
+            this.bbiSearch,
             this.bbiDelete,
             this.bbiRefresh,
             this.bbiSave});
@@ -204,6 +210,9 @@
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.OptionsView.ShowFooter = true;
+            this.gv_data.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gv_data_PopupMenuShowing);
+      
+          
             // 
             // ID
             // 
@@ -284,6 +293,12 @@
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.label4);
+            this.pn_background.Controls.Add(this.label5);
+            this.pn_background.Controls.Add(this.dtp_to);
+            this.pn_background.Controls.Add(this.dtp_from);
+            this.pn_background.Controls.Add(this.txt_counter);
+            this.pn_background.Controls.Add(this.label3);
             this.pn_background.Controls.Add(this.label2);
             this.pn_background.Controls.Add(this.txt_pcbbarcode);
             this.pn_background.Controls.Add(this.cbm_modelcd);
@@ -296,6 +311,59 @@
             this.pn_background.Name = "pn_background";
             this.pn_background.Size = new System.Drawing.Size(1000, 85);
             this.pn_background.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(762, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Date to:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(762, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "Date from:";
+            // 
+            // dtp_to
+            // 
+            this.dtp_to.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            this.dtp_to.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_to.Location = new System.Drawing.Point(822, 48);
+            this.dtp_to.Name = "dtp_to";
+            this.dtp_to.Size = new System.Drawing.Size(146, 21);
+            this.dtp_to.TabIndex = 35;
+            // 
+            // dtp_from
+            // 
+            this.dtp_from.CustomFormat = "yyyy/MM/dd HH:mm:ss";
+            this.dtp_from.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_from.Location = new System.Drawing.Point(822, 11);
+            this.dtp_from.Name = "dtp_from";
+            this.dtp_from.Size = new System.Drawing.Size(146, 21);
+            this.dtp_from.TabIndex = 34;
+            // 
+            // txt_counter
+            // 
+            this.txt_counter.Location = new System.Drawing.Point(483, 50);
+            this.txt_counter.Name = "txt_counter";
+            this.txt_counter.ReadOnly = true;
+            this.txt_counter.Size = new System.Drawing.Size(219, 21);
+            this.txt_counter.TabIndex = 33;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(405, 53);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Qty PCB Sub:";
             // 
             // label2
             // 
@@ -385,7 +453,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiSave;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem bbiNew;
-        private DevExpress.XtraBars.BarButtonItem bbiEdit;
+        private DevExpress.XtraBars.BarButtonItem bbiSearch;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
@@ -410,5 +478,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_pcbbarcode;
         private DevExpress.XtraGrid.Columns.GridColumn pcb_code;
+        private System.Windows.Forms.TextBox txt_counter;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dtp_to;
+        private System.Windows.Forms.DateTimePicker dtp_from;
     }
 }
