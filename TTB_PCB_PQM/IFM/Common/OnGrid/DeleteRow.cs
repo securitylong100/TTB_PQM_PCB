@@ -78,14 +78,14 @@ namespace IFM.Common.OnGrid
                     if (XtraMessageBox.Show(message + " ?", "Confirm operation", MessageBoxButtons.YesNo) != DialogResult.Yes)
                         return;
                     //key delete
-                    if (ri.View.GetRowCellValue(ri.View.FocusedRowHandle, "ID").ToString() != "")
+                    if (ri.View.GetRowCellValue(ri.View.FocusedRowHandle, "id").ToString() != "")
                     {
 
-                        int keyValue = (int)ri.View.GetRowCellValue(ri.View.FocusedRowHandle, "ID");
+                        int keyValue = (int)ri.View.GetRowCellValue(ri.View.FocusedRowHandle, "id");
                         ri.View.DeleteRow(ri.RowHandle);
                         //thuc hien delete ID
-                        mysqlconnection con = new mysqlconnection();
-                        con.sqlExecuteScalarString(sqldelete_ + "ID = " + keyValue);
+                        pgsqlconnection con = new pgsqlconnection();
+                        con.sqlExecuteScalarString(sqldelete_ + "id = " + keyValue);
                     }
                     else
                     {
