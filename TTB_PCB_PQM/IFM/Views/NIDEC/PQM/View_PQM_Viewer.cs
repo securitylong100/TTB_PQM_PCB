@@ -300,7 +300,7 @@ namespace IFM.Views.NIDEC.PQM
                                                     select b.date_ from
                                                     (select inspect, lot, max(inspectdate) as date_, inspect from "+ tablename + @"data 
                                                     where inspect in (" + inspectlist.ToString() + @")
-                                                    and serno in ("+ sernolist + @")
+                                                    and lot in ("+ sernolist + @")
                                                      group by inspect, lot
                                                     ) b
                                                     ) ");
