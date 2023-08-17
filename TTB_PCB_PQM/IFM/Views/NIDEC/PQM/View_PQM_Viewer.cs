@@ -35,7 +35,7 @@ namespace IFM.Views.NIDEC.PQM
 
         void BbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            gc_data.ShowRibbonPrintPreview();
         }
         private void bbiSearch_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -199,96 +199,180 @@ namespace IFM.Views.NIDEC.PQM
         //****************************************************************************************************************//
         private void GetSernoList()
         {
-            sernolist = "";
-            if (txtBarcode.Lines.Length > 0)
+            try
             {
-                sernolist = sernolist + "'" + txtBarcode.Lines[0] + "'";
-                foreach (string s in txtBarcode.Lines)
-                    if (s != "")
-                        sernolist = sernolist + ",'" + s + "'";
-                bsiRecordsCount.Caption = txtBarcode.Lines.Count().ToString() + " rows";
+                sernolist = "";
+                if (txtBarcode.Lines.Length > 0)
+                {
+                    sernolist = sernolist + "'" + txtBarcode.Lines[0] + "'";
+                    foreach (string s in txtBarcode.Lines)
+                        if (s != "")
+                            sernolist = sernolist + ",'" + s + "'";
+                    bsiRecordsCount.Caption = txtBarcode.Lines.Count().ToString() + " rows";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
             }
         }
         private void SelectedNode(TreeNodeCollection Root)
         {
-            foreach (TreeNode node in Root)
+            try
             {
-                if (node.Checked)
+                foreach (TreeNode node in Root)
                 {
-                    tem_inspectlist.Add("'" + node.Text.Substring(0, node.Text.IndexOf(":")) + "'");
+                    if (node.Checked)
+                    {
+                        if (node.Text.Contains(":") == true)
+                        {
+                            tem_inspectlist.Add("'" + node.Text.Substring(0, node.Text.IndexOf(":")) + "'");
+                        }
+                        else
+                        {
+                            tem_inspectlist.Add("'" + node.Text + "'");
+                        }
+
+                    }
+                    if (node.Nodes.Count > 0)
+                        SelectedNode(node.Nodes);
                 }
-                if (node.Nodes.Count > 0)
-                    SelectedNode(node.Nodes);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
             }
         }
 
         private void GetInspectList()
         {
-            inspectlist = "";
-            tem_inspectlist = new List<string>();
-            SelectedNode(trInspect.Nodes);
-            tem_inspectlist = tem_inspectlist.Distinct().ToList();
-            foreach (string i in tem_inspectlist)
+            try
             {
-                if (tem_inspectlist.IndexOf(i) == 0)
+                inspectlist = "";
+                tem_inspectlist = new List<string>();
+                SelectedNode(trInspect.Nodes);
+                tem_inspectlist = tem_inspectlist.Distinct().ToList();
+                foreach (string i in tem_inspectlist)
                 {
-                    inspectlist = inspectlist + i;
+                    if (tem_inspectlist.IndexOf(i) == 0)
+                    {
+                        inspectlist = inspectlist + i;
+                    }
+                    else
+                    {
+                        inspectlist = inspectlist + "," + i;
+                    }
                 }
-                else
-                {
-                    inspectlist = inspectlist + "," + i;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error :" + ex.Message);
             }
         }
         private void GetDataTable()
         {
-            string tablename = cmbModel.Text + dtDatef.Value.ToString("yyyyMM");
-            dt = new DataTable();
-            DataTable InspectDataTable = new DataTable();
-            DataTable SernoDataTable = new DataTable();
-            StringBuilder SQLInspectDataTable = new StringBuilder();
-            StringBuilder SQLSernoDataTable = new StringBuilder();
+            try
+            {
+                gc_data.Refresh();
+                gc_data.DataSource = null;
+                gv_data.Columns.Clear();
+                string tablename = cmbModel.Text + dtDatef.Value.ToString("yyyyMM");
+                dt = new DataTable();
+                DataTable pivot = new DataTable();
+                DataTable InspectDataTable = new DataTable();
+                DataTable SernoDataTable = new DataTable();
+                StringBuilder SQLInspectDataTable = new StringBuilder();
+                StringBuilder SQLSernoDataTable = new StringBuilder();
+                //pivot.Clear();
+                //dt.Clear();
 
-            //SQLInspectDataTable
-            SQLInspectDataTable.Append("select serno, inspectdate, inspect, inspectdata, judge from "
-            + tablename + "data where inspect in (" + inspectlist.ToString() + ")");
-            if (txtBarcode.Text != "")
-            {
-                if (rad_lot.Checked == true)
-                    SQLInspectDataTable.Append(" and lot in (" + sernolist + ")");
+                //SQLInspectDataTable
+                SQLInspectDataTable.Append(" select serno, inspectdate, inspect, inspectdata, judge ");
+                SQLInspectDataTable.Append("from " + tablename + "data where 1 = 1");
+                SQLInspectDataTable.Append(" and inspect in (" + inspectlist.ToString() + ")");
+                SQLInspectDataTable.Append("");
+                if (txtBarcode.Text != "")
+                {
+                    if (rad_lot.Checked == true)
+                        SQLInspectDataTable.Append(@"and lot in ("+ sernolist + @") 
+                                                    and inspectdate in
+                                                    (
+                                                    select b.date_ from
+                                                    (select inspect, lot, max(inspectdate) as date_, inspect from "+ tablename + @"data 
+                                                    where inspect in (" + inspectlist.ToString() + @")
+                                                    and serno in ("+ sernolist + @")
+                                                     group by inspect, lot
+                                                    ) b
+                                                    ) ");
+                    else
+                        SQLInspectDataTable.Append(@"and serno in (" + sernolist + @") 
+                                                    and inspectdate in
+                                                    (
+                                                    select b.date_ from
+                                                    (select inspect, serno, max(inspectdate) as date_, inspect from " + tablename + @"data 
+                                                    where inspect in (" + inspectlist.ToString() + @")
+                                                    and serno in (" + sernolist + @")
+                                                     group by inspect, serno
+                                                    ) b
+                                                    ) ");
+                }
                 else
-                    SQLInspectDataTable.Append(" and serno in (" + sernolist + ")");
-            }
-            else
-            {
-                SQLInspectDataTable.Append(" and inspectdate >= '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss")
-                    + "' and inspectdate <= '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'");
-            }
-            SQLInspectDataTable.Append(" order by inspect asc, inspectdate asc");
-            pgsqlconnection_NewDB con = new pgsqlconnection_NewDB();
-            con.sqlDataAdapterFillDatatable(SQLInspectDataTable.ToString(), ref InspectDataTable);
+                {
+                    SQLInspectDataTable.Append(" and inspectdate >= '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                        + "' and inspectdate <= '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                }
+                SQLInspectDataTable.Append(" order by inspect asc, inspectdate asc");
 
-            //SQLSernoDataTable
-            SQLSernoDataTable.Append("select serno, lot, model, site, factory, line, process, inspectdate, tjudge from "
-                + tablename + " where 1=1");
-            if (sernolist.Length > 0)
-            {
-                if (rad_lot.Checked == true)
-                    SQLSernoDataTable.Append("  and lot in (" + sernolist + ")");
+                //SQLInspectDataTable.Append("select serno, inspectdate, inspect, inspectdata, judge from "
+                //+ tablename + "data where inspect in (" + inspectlist.ToString() + ")");
+                //if (txtBarcode.Text != "")
+                //{
+                //    if (rad_lot.Checked == true)
+                //        SQLInspectDataTable.Append(" and lot in (" + sernolist + ")");
+                //    else
+                //        SQLInspectDataTable.Append(" and serno in (" + sernolist + ")");
+                //}
+                //else
+                //{
+                //    SQLInspectDataTable.Append(" and inspectdate >= '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                //        + "' and inspectdate <= '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                //}
+                //SQLInspectDataTable.Append(" order by inspect asc, inspectdate asc");
+
+                pgsqlconnection_NewDB con = new pgsqlconnection_NewDB();
+                con.sqlDataAdapterFillDatatable(SQLInspectDataTable.ToString(), ref InspectDataTable);
+
+                //SQLSernoDataTable
+                SQLSernoDataTable.Append("select serno, lot, model, site, factory, line, process, inspectdate, tjudge from "
+                    + tablename + " where 1=1");
+                if (sernolist.Length > 0)
+                {
+                    if (rad_lot.Checked == true)
+                        SQLSernoDataTable.Append("  and lot in (" + sernolist + ")");
+                    else
+                        SQLSernoDataTable.Append(" and serno in (" + sernolist + ")");
+                }
                 else
-                    SQLSernoDataTable.Append(" and serno in (" + sernolist + ")");
+                {
+                    SQLSernoDataTable.Append(" and inspectdate >=  '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                        + "' and inspectdate <= '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                }
+                //if (!string.IsNullOrEmpty(InVo.Process))
+                //{
+                //    SQLSernoDataTable.Append(" and process ='" + InVo.Process + "'");
+                //}
+                SQLSernoDataTable.Append("order by inspectdate asc");
+                con.sqlDataAdapterFillDatatable(SQLSernoDataTable.ToString(), ref SernoDataTable);
+                pivot = LinQ_Class.Pivot(InspectDataTable, InspectDataTable.Columns["inspect"]
+                       , InspectDataTable.Columns["inspectdata"], InspectDataTable.Columns["judge"]);
+                dt = LinQ_Class.Joined(SernoDataTable, pivot);
+                gc_data.DataSource = dt;
+
             }
-            else
+            catch (Exception ex)
             {
-                SQLSernoDataTable.Append(" and inspectdate >=  '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss")
-                    + "' and inspectdate <= '" + dtDatef.Value.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                MessageBox.Show("Error :" + ex.Message);
             }
-            //if (!string.IsNullOrEmpty(InVo.Process))
-            //{
-            //    SQLSernoDataTable.Append(" and process ='" + InVo.Process + "'");
-            //}
-            SQLSernoDataTable.Append("order by inspectdate asc");
-            con.sqlDataAdapterFillDatatable(SQLInspectDataTable.ToString(), ref InspectDataTable);
         }
     }
 

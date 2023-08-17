@@ -203,7 +203,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tableLayoutPanel1.Controls.Add(this.gc_data, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 2, 0);
@@ -226,7 +226,7 @@
             this.gc_data.Name = "gc_data";
             this.gc_data.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemToggleSwitch1});
-            this.gc_data.Size = new System.Drawing.Size(938, 373);
+            this.gc_data.Size = new System.Drawing.Size(988, 373);
             this.gc_data.TabIndex = 6;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
@@ -249,9 +249,9 @@
             // 
             this.panel2.Controls.Add(this.tableLayoutPanel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(385, 6);
+            this.panel2.Location = new System.Drawing.Point(405, 6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(559, 156);
+            this.panel2.Size = new System.Drawing.Size(589, 156);
             this.panel2.TabIndex = 1;
             // 
             // tableLayoutPanel3
@@ -267,7 +267,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(559, 156);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(589, 156);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // panel3
@@ -281,13 +281,13 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(553, 72);
+            this.panel3.Size = new System.Drawing.Size(583, 72);
             this.panel3.TabIndex = 0;
             // 
             // btn_gettreeview
             // 
             this.btn_gettreeview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gettreeview.Location = new System.Drawing.Point(459, 41);
+            this.btn_gettreeview.Location = new System.Drawing.Point(489, 41);
             this.btn_gettreeview.Name = "btn_gettreeview";
             this.btn_gettreeview.Size = new System.Drawing.Size(91, 31);
             this.btn_gettreeview.TabIndex = 5;
@@ -298,7 +298,7 @@
             // btn_clear
             // 
             this.btn_clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_clear.Location = new System.Drawing.Point(313, 41);
+            this.btn_clear.Location = new System.Drawing.Point(343, 41);
             this.btn_clear.Name = "btn_clear";
             this.btn_clear.Size = new System.Drawing.Size(119, 31);
             this.btn_clear.TabIndex = 4;
@@ -309,6 +309,7 @@
             // rad_serial
             // 
             this.rad_serial.AutoSize = true;
+            this.rad_serial.Checked = true;
             this.rad_serial.Location = new System.Drawing.Point(18, 47);
             this.rad_serial.Name = "rad_serial";
             this.rad_serial.Size = new System.Drawing.Size(106, 17);
@@ -324,7 +325,6 @@
             this.rad_lot.Name = "rad_lot";
             this.rad_lot.Size = new System.Drawing.Size(55, 17);
             this.rad_lot.TabIndex = 2;
-            this.rad_lot.TabStop = true;
             this.rad_lot.Text = "By Lot";
             this.rad_lot.UseVisualStyleBackColor = true;
             // 
@@ -345,7 +345,7 @@
             this.cmbModel.FormattingEnabled = true;
             this.cmbModel.Location = new System.Drawing.Point(56, 3);
             this.cmbModel.Name = "cmbModel";
-            this.cmbModel.Size = new System.Drawing.Size(497, 21);
+            this.cmbModel.Size = new System.Drawing.Size(527, 21);
             this.cmbModel.TabIndex = 0;
             this.cmbModel.SelectedIndexChanged += new System.EventHandler(this.cmbModel_SelectedIndexChanged);
             // 
@@ -355,17 +355,17 @@
             this.txtBarcode.Location = new System.Drawing.Point(3, 81);
             this.txtBarcode.Multiline = true;
             this.txtBarcode.Name = "txtBarcode";
-            this.txtBarcode.Size = new System.Drawing.Size(553, 72);
+            this.txtBarcode.Size = new System.Drawing.Size(583, 72);
             this.txtBarcode.TabIndex = 1;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.trInspect);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(953, 6);
+            this.groupBox1.Location = new System.Drawing.Point(1003, 6);
             this.groupBox1.Name = "groupBox1";
             this.tableLayoutPanel1.SetRowSpan(this.groupBox1, 2);
-            this.groupBox1.Size = new System.Drawing.Size(295, 538);
+            this.groupBox1.Size = new System.Drawing.Size(245, 538);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Inspect";
@@ -376,7 +376,7 @@
             this.trInspect.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trInspect.Location = new System.Drawing.Point(3, 17);
             this.trInspect.Name = "trInspect";
-            this.trInspect.Size = new System.Drawing.Size(289, 518);
+            this.trInspect.Size = new System.Drawing.Size(239, 518);
             this.trInspect.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -394,7 +394,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(370, 156);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(390, 156);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // groupBox2
@@ -403,7 +403,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(364, 46);
+            this.groupBox2.Size = new System.Drawing.Size(384, 46);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FromDate";
@@ -415,7 +415,7 @@
             this.dtDatef.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDatef.Location = new System.Drawing.Point(3, 17);
             this.dtDatef.Name = "dtDatef";
-            this.dtDatef.Size = new System.Drawing.Size(358, 21);
+            this.dtDatef.Size = new System.Drawing.Size(378, 21);
             this.dtDatef.TabIndex = 0;
             // 
             // groupBox3
@@ -424,7 +424,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 55);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(364, 46);
+            this.groupBox3.Size = new System.Drawing.Size(384, 46);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "ToDate";
@@ -436,7 +436,7 @@
             this.dtDatet.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtDatet.Location = new System.Drawing.Point(3, 17);
             this.dtDatet.Name = "dtDatet";
-            this.dtDatet.Size = new System.Drawing.Size(358, 21);
+            this.dtDatet.Size = new System.Drawing.Size(378, 21);
             this.dtDatet.TabIndex = 0;
             // 
             // groupBox4
@@ -446,7 +446,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 107);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(364, 46);
+            this.groupBox4.Size = new System.Drawing.Size(384, 46);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Serai From CSV";
@@ -455,7 +455,7 @@
             // 
             this.btnBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowser.Location = new System.Drawing.Point(286, 17);
+            this.btnBrowser.Location = new System.Drawing.Point(306, 17);
             this.btnBrowser.Name = "btnBrowser";
             this.btnBrowser.Size = new System.Drawing.Size(75, 25);
             this.btnBrowser.TabIndex = 1;
@@ -469,7 +469,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtURL.Location = new System.Drawing.Point(6, 20);
             this.txtURL.Name = "txtURL";
-            this.txtURL.Size = new System.Drawing.Size(274, 21);
+            this.txtURL.Size = new System.Drawing.Size(294, 21);
             this.txtURL.TabIndex = 0;
             // 
             // barButtonItem1
