@@ -36,8 +36,8 @@ namespace IFM.Views.NIDEC.SMT
         string judge;
         string status;
         string remark;
-        //string linkexport = @"\\192.168.193.1\fptin\SMT\PQM_SPI";
-         string linkexport = @"C:\PQM";
+        string linkexport = @"\\192.168.193.1\ftpin\SMT\PQM_SPI";
+        // string linkexport = @"C:\PQM";
         string pqmformat = @"C:\PQM\pqmformat.txt";
 
      
@@ -62,6 +62,7 @@ namespace IFM.Views.NIDEC.SMT
             try
             {
                 readPQMformat(pqmformat);
+                txt_exportlink.Text = linkexport;
                 dt = new DataTable();
                 pgsqlconnection con = new pgsqlconnection();
                 StringBuilder sql = new StringBuilder();
@@ -275,7 +276,7 @@ namespace IFM.Views.NIDEC.SMT
                     sqlinsert.Append("CURRENT_TIMESTAMP");
                     sqlinsert.Append(")");
                     con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
-                     exportfile(true);
+                     exportfile(false);
                 }
                 catch (Exception ex)
                 {
@@ -342,7 +343,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             modelPQM = cbm_modelcd.Text;
             barcode = txt_barcode.Text;
-            lot = "_" + DateTime.Now.ToString("yyyyMMdd");
+            lot = txt_pcbbarcode.Text; //"_" + DateTime.Now.ToString("yyyyMMdd");
             date = DateTime.Now.ToString("yyyy/MM/dd");
             time = DateTime.Now.ToString("HH:mm:ss");
             judge = statusPQM == true ? "1" : "0";
