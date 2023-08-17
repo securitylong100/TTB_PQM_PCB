@@ -65,6 +65,8 @@
             this.btn_enter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_barcode = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_exportlink = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -175,7 +177,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1006, 79);
+            this.ribbonControl.Size = new System.Drawing.Size(1186, 79);
             this.ribbonControl.StatusBar = this.bar_status;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -185,7 +187,7 @@
             this.bar_status.Location = new System.Drawing.Point(0, 477);
             this.bar_status.Name = "bar_status";
             this.bar_status.Ribbon = this.ribbonControl;
-            this.bar_status.Size = new System.Drawing.Size(1006, 31);
+            this.bar_status.Size = new System.Drawing.Size(1186, 31);
             // 
             // bsiRecordsCount
             // 
@@ -210,9 +212,6 @@
             this.gv_data.OptionsEditForm.EditFormColumnCount = 2;
             this.gv_data.OptionsEditForm.ShowOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             this.gv_data.OptionsView.ShowFooter = true;
-            this.gv_data.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gv_data_PopupMenuShowing);
-      
-          
             // 
             // ID
             // 
@@ -270,7 +269,7 @@
             this.gc_data.MainView = this.gv_data;
             this.gc_data.MenuManager = this.ribbonControl;
             this.gc_data.Name = "gc_data";
-            this.gc_data.Size = new System.Drawing.Size(1000, 301);
+            this.gc_data.Size = new System.Drawing.Size(1180, 301);
             this.gc_data.TabIndex = 2;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
@@ -287,12 +286,14 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1006, 398);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1186, 398);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // pn_background
             // 
             this.pn_background.BackColor = System.Drawing.Color.Silver;
+            this.pn_background.Controls.Add(this.label7);
+            this.pn_background.Controls.Add(this.txt_exportlink);
             this.pn_background.Controls.Add(this.label4);
             this.pn_background.Controls.Add(this.label5);
             this.pn_background.Controls.Add(this.dtp_to);
@@ -309,13 +310,13 @@
             this.pn_background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_background.Location = new System.Drawing.Point(3, 3);
             this.pn_background.Name = "pn_background";
-            this.pn_background.Size = new System.Drawing.Size(1000, 85);
+            this.pn_background.Size = new System.Drawing.Size(1180, 85);
             this.pn_background.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(762, 54);
+            this.label4.Location = new System.Drawing.Point(940, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 37;
@@ -324,7 +325,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(762, 17);
+            this.label5.Location = new System.Drawing.Point(940, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 36;
@@ -334,7 +335,7 @@
             // 
             this.dtp_to.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_to.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_to.Location = new System.Drawing.Point(822, 48);
+            this.dtp_to.Location = new System.Drawing.Point(1000, 45);
             this.dtp_to.Name = "dtp_to";
             this.dtp_to.Size = new System.Drawing.Size(146, 21);
             this.dtp_to.TabIndex = 35;
@@ -343,23 +344,23 @@
             // 
             this.dtp_from.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.dtp_from.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_from.Location = new System.Drawing.Point(822, 11);
+            this.dtp_from.Location = new System.Drawing.Point(1000, 8);
             this.dtp_from.Name = "dtp_from";
             this.dtp_from.Size = new System.Drawing.Size(146, 21);
             this.dtp_from.TabIndex = 34;
             // 
             // txt_counter
             // 
-            this.txt_counter.Location = new System.Drawing.Point(483, 50);
+            this.txt_counter.Location = new System.Drawing.Point(426, 45);
             this.txt_counter.Name = "txt_counter";
             this.txt_counter.ReadOnly = true;
-            this.txt_counter.Size = new System.Drawing.Size(219, 21);
+            this.txt_counter.Size = new System.Drawing.Size(160, 21);
             this.txt_counter.TabIndex = 33;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(405, 53);
+            this.label3.Location = new System.Drawing.Point(348, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 32;
@@ -368,7 +369,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(405, 17);
+            this.label2.Location = new System.Drawing.Point(348, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 13);
             this.label2.TabIndex = 31;
@@ -376,15 +377,15 @@
             // 
             // txt_pcbbarcode
             // 
-            this.txt_pcbbarcode.Location = new System.Drawing.Point(483, 14);
+            this.txt_pcbbarcode.Location = new System.Drawing.Point(426, 9);
             this.txt_pcbbarcode.Name = "txt_pcbbarcode";
-            this.txt_pcbbarcode.Size = new System.Drawing.Size(219, 21);
+            this.txt_pcbbarcode.Size = new System.Drawing.Size(160, 21);
             this.txt_pcbbarcode.TabIndex = 30;
             // 
             // cbm_modelcd
             // 
             this.cbm_modelcd.FormattingEnabled = true;
-            this.cbm_modelcd.Location = new System.Drawing.Point(121, 47);
+            this.cbm_modelcd.Location = new System.Drawing.Point(103, 45);
             this.cbm_modelcd.Name = "cbm_modelcd";
             this.cbm_modelcd.Size = new System.Drawing.Size(160, 21);
             this.cbm_modelcd.TabIndex = 21;
@@ -392,7 +393,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 50);
+            this.label6.Location = new System.Drawing.Point(15, 48);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 20;
@@ -400,7 +401,7 @@
             // 
             // btn_enter
             // 
-            this.btn_enter.Location = new System.Drawing.Point(282, 47);
+            this.btn_enter.Location = new System.Drawing.Point(264, 45);
             this.btn_enter.Name = "btn_enter";
             this.btn_enter.Size = new System.Drawing.Size(50, 23);
             this.btn_enter.TabIndex = 10;
@@ -411,7 +412,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 14);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 4;
@@ -419,16 +420,34 @@
             // 
             // txt_barcode
             // 
-            this.txt_barcode.Location = new System.Drawing.Point(121, 11);
+            this.txt_barcode.Location = new System.Drawing.Point(103, 9);
             this.txt_barcode.Name = "txt_barcode";
             this.txt_barcode.Size = new System.Drawing.Size(211, 21);
             this.txt_barcode.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(611, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Link export:";
+            // 
+            // txt_exportlink
+            // 
+            this.txt_exportlink.Location = new System.Drawing.Point(681, 9);
+            this.txt_exportlink.Name = "txt_exportlink";
+            this.txt_exportlink.ReadOnly = true;
+            this.txt_exportlink.Size = new System.Drawing.Size(219, 21);
+            this.txt_exportlink.TabIndex = 38;
+            this.txt_exportlink.Text = "\\\\192.168.193.1\\ftpin\\SMT\\PQM_SPI";
             // 
             // View_STM_Assy_Check_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 508);
+            this.ClientSize = new System.Drawing.Size(1186, 508);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.bar_status);
             this.Controls.Add(this.ribbonControl);
@@ -484,5 +503,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtp_to;
         private System.Windows.Forms.DateTimePicker dtp_from;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_exportlink;
     }
 }

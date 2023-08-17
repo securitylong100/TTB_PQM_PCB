@@ -36,8 +36,8 @@ namespace IFM.Views.NIDEC.SMT
         string judge;
         string status;
         string remark;
-        string linkexport = @"\\192.168.193.1\fptin\SMT\PQM_SPI";
-        // string linkexport = @"C:\PQM";
+        //string linkexport = @"\\192.168.193.1\fptin\SMT\PQM_SPI";
+         string linkexport = @"C:\PQM";
         string pqmformat = @"C:\PQM\pqmformat.txt";
 
      
@@ -61,7 +61,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-
+                readPQMformat(pqmformat);
                 dt = new DataTable();
                 pgsqlconnection con = new pgsqlconnection();
                 StringBuilder sql = new StringBuilder();
@@ -165,10 +165,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             OnLoad(e);
         }
-        private void cbm_status_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         bool checkcondition()
         {
@@ -278,7 +275,7 @@ namespace IFM.Views.NIDEC.SMT
                     sqlinsert.Append("CURRENT_TIMESTAMP");
                     sqlinsert.Append(")");
                     con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
-                    // exportfile(true);
+                     exportfile(true);
                 }
                 catch (Exception ex)
                 {
@@ -350,12 +347,9 @@ namespace IFM.Views.NIDEC.SMT
             time = DateTime.Now.ToString("HH:mm:ss");
             judge = statusPQM == true ? "1" : "0";
             data = judge;
-            // writePQMformat(txt_exportlink.Text + "\\Assy" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+             writePQMformat(txt_exportlink.Text + "\\housingassy" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
         }
-        private void gv_data_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-          
-        }
+       
 
       
     }
