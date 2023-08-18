@@ -258,33 +258,36 @@ namespace IFM.Views.NIDEC.SMT
         }
         private void btn_enter_Click(object sender, EventArgs e)
         {
-            OnLoad(e);
-            if (checkcondition())
+            if (txt_barcode.Text != "")
             {
-                try
+                OnLoad(e);
+                if (checkcondition())
                 {
-                    pgsqlconnection con = new pgsqlconnection();
-                    StringBuilder sqlinsert = new StringBuilder();
-                    sqlinsert.Append(@"INSERT INTO smt_m_assy_code
+                    try
+                    {
+                        pgsqlconnection con = new pgsqlconnection();
+                        StringBuilder sqlinsert = new StringBuilder();
+                        sqlinsert.Append(@"INSERT INTO smt_m_assy_code
                                     ( assy_code ,pcb_code, model_cd , creator ,create_time )
                                     VALUES("
-                                     );
-                    sqlinsert.Append("'" + txt_barcode.Text + "',");
-                    sqlinsert.Append("'" + txt_pcbbarcode.Text + "',");
-                    sqlinsert.Append("'" + cbm_modelcd.Text + "',");
-                    sqlinsert.Append("'" + ClsSession.App.UserName + "',");
-                    sqlinsert.Append("CURRENT_TIMESTAMP");
-                    sqlinsert.Append(")");
-                    con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
-                     exportfile(false);
+                                         );
+                        sqlinsert.Append("'" + txt_barcode.Text + "',");
+                        sqlinsert.Append("'" + txt_pcbbarcode.Text + "',");
+                        sqlinsert.Append("'" + cbm_modelcd.Text + "',");
+                        sqlinsert.Append("'" + ClsSession.App.UserName + "',");
+                        sqlinsert.Append("CURRENT_TIMESTAMP");
+                        sqlinsert.Append(")");
+                        con.sqlExecuteNonQuery_auto(sqlinsert.ToString());
+                        exportfile(false);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi kết nối" + ex.Message.ToString(), "Lỗi 01", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi kết nối" + ex.Message.ToString(), "Lỗi 01", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                txt_barcode.Text = "";
+                OnLoad(e);
             }
-            txt_barcode.Text = "";
-            OnLoad(e);
         }
         private void writePQMformat(string filePQM)
         {
