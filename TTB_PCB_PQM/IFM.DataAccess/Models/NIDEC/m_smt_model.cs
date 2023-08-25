@@ -20,7 +20,7 @@ namespace IFM.DataAccess.Models.NIDEC
         {
             ID = 0;    
             model_cd = string.Empty == "" ? "" : model_cd;
-            active_status = string.Empty == "" ? "0" : active_status;
+            active_status = string.Empty == "" ? "1" : active_status;
             updater = string.Empty;
             update_time = DateTime.Now;
             creator = string.Empty;

@@ -51,7 +51,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             RepositoryItemComboBox riComboBox;
        
-            var model_code = ClsSession.App.DbServices.Query(new SMTToolGetDistinctModelQuery());
+            var model_code = ClsSession.App.DbServices.Query(new SMTMounterGetDistinctModelQuery());
             riComboBox = new RepositoryItemComboBox();
             foreach (var model_ in model_code)
             {

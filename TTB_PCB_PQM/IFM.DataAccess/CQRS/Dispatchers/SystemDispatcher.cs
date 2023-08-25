@@ -45,6 +45,7 @@ namespace IFM.Business.Dispatchers.SYS
             Register(new SMTMounter_GetMasterHandler(session));
             Register(new SMTMounter_DeleteMasterHandler(session));
             Register(new SMTMounter_UpdateMasterHandler(session));
+            Register(new SMTMounterGetDistinctModelHandler(session));
             //
         }
     }
