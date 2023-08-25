@@ -26,8 +26,8 @@ namespace IFM.Views.NIDEC.SMT
         public View_STM_Mounter_History_2()
         {
             InitializeComponent();
-            dtp_from.Value = DateTime.Now.AddDays(-2);
-            dtp_to.Value = DateTime.Now.AddDays(+1);
+            dtp_from.Value = DateTime.Now.AddDays(-2).Date;
+            dtp_to.Value = DateTime.Now.AddDays(+1).Date.AddSeconds(-1);
             AcceptButton = btn_enter;
         }
 

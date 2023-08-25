@@ -45,8 +45,8 @@ namespace IFM.Views.NIDEC.SMT
         {
             InitializeComponent();
             AcceptButton = btn_enter;
-            dtp_from.Value = DateTime.Now.AddDays(-2);
-            dtp_to.Value = DateTime.Now.AddDays(+1);
+            dtp_from.Value = DateTime.Now.AddDays(-2).Date;
+            dtp_to.Value = DateTime.Now.AddDays(+1).Date.AddSeconds(-1);
         }
 
         private void Gv_data_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
