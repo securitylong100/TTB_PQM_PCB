@@ -35,6 +35,12 @@ namespace IFM.Business.Dispatchers.SYS
             Register(new SMTTool_DeleteMasterHandler(session));
             Register(new SMTToolGetDistinctModelHandler(session));
 
+            //NIDEC SMT TOOL
+            Register(new SMTModel_GetMasterHandler(session));
+            Register(new SMTModel_UpdateMasterHandler(session));
+            Register(new SMTModel_DeleteMasterHandler(session));
+
+
             //SMTMounter_DeleteMasterHandler
             Register(new SMTMounter_GetMasterHandler(session));
             Register(new SMTMounter_DeleteMasterHandler(session));
