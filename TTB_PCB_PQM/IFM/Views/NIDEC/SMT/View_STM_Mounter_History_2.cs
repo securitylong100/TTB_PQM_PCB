@@ -38,6 +38,7 @@ namespace IFM.Views.NIDEC.SMT
         void BbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
             gc_datamaster.ShowRibbonPrintPreview();
+            gc_datahistory.ShowRibbonPrintPreview();
         }
         protected override void OnLoad(EventArgs e)
         {
@@ -242,11 +243,11 @@ namespace IFM.Views.NIDEC.SMT
             sqlgethistorylist.Append(@"select * from smt_m_mounter_history where 1=1 ");
             if(cbm_modelcd.Text !="")
             {
-                sqlgethistorylist.Append(@" and model_cd ="+cbm_modelcd.Text+"");
+                sqlgethistorylist.Append(@" and model_cd = '"+cbm_modelcd.Text+"'");
             }
             if (txt_barcode.Text != "")
             {
-                sqlgethistorylist.Append(@" and item_list =" + txt_barcode.Text + "");
+                sqlgethistorylist.Append(@" and item_list ='" + txt_barcode.Text + "'");
             }
            else
             {
