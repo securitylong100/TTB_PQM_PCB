@@ -88,7 +88,7 @@ namespace IFM.Views.NIDEC.SMT
                     txt_counter.Text = "0";
                 }
 
-                string sql_model = "select distinct (model_cd) from smt_m_model order by model_cd ";
+                string sql_model = "select distinct (model_cd) from smt_m_model where active_status  = '0' order by model_cd ";
                 con.getComboBoxData(sql_model, ref cbm_modelcd);
 
             }

@@ -29,7 +29,7 @@ namespace IFM.DataAccess.CQRS.Queries.NIDEC.SMT
 
         public override IEnumerable<m_smt_tool> Handle(SMTToolGetDistinctModelQuery query)
         {
-            string sql = @"select distinct (model_cd) from smt_m_model";
+            string sql = @"select distinct (model_cd) from smt_m_model where active_status  = '0'";
             
             sql += $" ORDER BY {nameof(m_smt_tool.model_cd)};";
             try

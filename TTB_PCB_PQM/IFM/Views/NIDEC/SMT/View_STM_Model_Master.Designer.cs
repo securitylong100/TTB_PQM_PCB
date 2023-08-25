@@ -49,6 +49,7 @@
             this.model_rows = new DevExpress.XtraGrid.Columns.GridColumn();
             this.create_time = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc_data = new DevExpress.XtraGrid.GridControl();
+            this.active_status = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv_data)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_data)).BeginInit();
@@ -183,6 +184,7 @@
             this.model_cd,
             this.model_columns,
             this.model_rows,
+            this.active_status,
             this.create_time});
             this.gv_data.GridControl = this.gc_data;
             this.gv_data.Name = "gv_data";
@@ -231,7 +233,7 @@
             this.create_time.Name = "create_time";
             this.create_time.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.create_time.Visible = true;
-            this.create_time.VisibleIndex = 4;
+            this.create_time.VisibleIndex = 5;
             // 
             // gc_data
             // 
@@ -244,6 +246,14 @@
             this.gc_data.TabIndex = 2;
             this.gc_data.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gv_data});
+            // 
+            // active_status
+            // 
+            this.active_status.Caption = "Active Status";
+            this.active_status.FieldName = "active_status";
+            this.active_status.Name = "active_status";
+            this.active_status.Visible = true;
+            this.active_status.VisibleIndex = 4;
             // 
             // View_STM_Model_Master
             // 
@@ -286,5 +296,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn model_columns;
         private DevExpress.XtraGrid.Columns.GridColumn model_rows;
         private DevExpress.XtraGrid.Columns.GridColumn create_time;
+        private DevExpress.XtraGrid.Columns.GridColumn active_status;
     }
 }

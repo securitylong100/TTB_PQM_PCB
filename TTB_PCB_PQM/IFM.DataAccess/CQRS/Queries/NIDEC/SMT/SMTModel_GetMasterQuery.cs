@@ -32,7 +32,8 @@ namespace IFM.DataAccess.CQRS.Queries.NIDEC.SMT
             string sql = @"SELECT id as ID,
                                   model_cd,
                                   model_columns,                                
-                                  model_rows,                     
+                                  model_rows, 
+                                  active_status,                  
                                   create_time
                               FROM smt_m_model";
             if (!string.IsNullOrWhiteSpace(query.Filter))

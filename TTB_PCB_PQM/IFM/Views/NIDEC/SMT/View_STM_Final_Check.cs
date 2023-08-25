@@ -75,7 +75,7 @@ namespace IFM.Views.NIDEC.SMT
         {
             try
             {
-                string sql_model = "select distinct(model_cd)   from smt_m_model smm  order by model_cd";
+                string sql_model = "select distinct(model_cd)   from smt_m_model   where active_status  = '0' order by model_cd";
                 string sql_cl = "select model_columns  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
                 string sql_row = "select model_rows  from smt_m_model smm2  where 1=1 and model_cd  ='" + cbm_modelcd.Text + "' ";
                 pgsqlconnection con = new pgsqlconnection();
