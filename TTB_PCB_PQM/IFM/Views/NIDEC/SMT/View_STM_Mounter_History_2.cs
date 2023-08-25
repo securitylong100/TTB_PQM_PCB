@@ -233,5 +233,29 @@ namespace IFM.Views.NIDEC.SMT
             string sql_model = "select coalesce(max(lot_no) + 1, 1) from smt_m_mounter_history where 1=1 and model_cd = '" + cbm_modelcd.Text + "' ";
             txt_lotno.Text = con.sqlExecuteScalarString(sql_model);
         }
+
+        private void bbiSearch_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            dt2 = new DataTable();
+            pgsqlconnection con = new pgsqlconnection();
+            StringBuilder sqlgethistorylist = new StringBuilder();
+            sqlgethistorylist.Append(@"select * from smt_m_mounter_history where 1=1 ");
+            if(cbm_modelcd.Text !="")
+            {
+                sqlgethistorylist.Append(@" and model_cd ="+cbm_modelcd.Text+"");
+            }
+            if (txt_barcode.Text != "")
+            {
+                sqlgethistorylist.Append(@" and item_list =" + txt_barcode.Text + "");
+            }
+           else
+            {
+                sqlgethistorylist.Append(" and create_time >= '" + dtp_from.Value + "' ");
+                sqlgethistorylist.Append(" and create_time <= '" + dtp_to.Value + "' ");
+            }
+            sqlgethistorylist.Append(@" order by model_cd, item_list");
+            con.sqlDataAdapterFillDatatable(sqlgethistorylist.ToString(), ref dt2);
+            gc_datahistory.DataSource = dt2;
+        }
     }
 }
