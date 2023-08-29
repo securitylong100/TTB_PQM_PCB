@@ -215,6 +215,19 @@
     <Compile Include="Common\Views\DkWaitForm.Designer.cs">
       <DependentUpon>DkWaitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\NIDEC\PQM\LinQ_Class.cs" />
+    <Compile Include="Views\NIDEC\PQM\View_PQM_Viewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\PQM\View_PQM_Viewer.Designer.cs">
+      <DependentUpon>View_PQM_Viewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Assy_Check_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Assy_Check_2.Designer.cs">
+      <DependentUpon>View_STM_Assy_Check_2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\NIDEC\SMT\View_STM_Assy_Viewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,6 +269,12 @@
     </Compile>
     <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_History_2.Designer.cs">
       <DependentUpon>View_STM_Mounter_History_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Model_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NIDEC\SMT\View_STM_Model_Master.Designer.cs">
+      <DependentUpon>View_STM_Model_Master.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NIDEC\SMT\View_STM_Mounter_Master.cs">
       <SubType>Form</SubType>
@@ -351,6 +370,12 @@
     <EmbeddedResource Include="Common\Views\DkWaitForm.resx">
       <DependentUpon>DkWaitForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\PQM\View_PQM_Viewer.resx">
+      <DependentUpon>View_PQM_Viewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Assy_Check_2.resx">
+      <DependentUpon>View_STM_Assy_Check_2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Assy_Viewer.resx">
       <DependentUpon>View_STM_Assy_Viewer.cs</DependentUpon>
     </EmbeddedResource>
@@ -371,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Mounter_History_2.resx">
       <DependentUpon>View_STM_Mounter_History_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Model_Master.resx">
+      <DependentUpon>View_STM_Model_Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NIDEC\SMT\View_STM_Mounter_Master.resx">
       <DependentUpon>View_STM_Mounter_Master.cs</DependentUpon>

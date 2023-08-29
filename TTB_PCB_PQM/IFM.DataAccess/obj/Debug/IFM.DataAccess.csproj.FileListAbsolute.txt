@@ -52,4 +52,3 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.Dat
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.DataAccess.csproj.CopyComplete
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.DataAccess.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.DataAccess.pdb
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\IFM.DataAccess\obj\Debug\IFM.DataAccess.csproj.AssemblyReference.cache

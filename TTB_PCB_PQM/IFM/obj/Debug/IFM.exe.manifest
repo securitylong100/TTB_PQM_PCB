@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\ifm_vertical.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="IFM" version="23.7.27.1" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="IFM" version="23.8.25.3" language="neutral" processorArchitecture="msil" />
     <commandLine file="IFM.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -223,14 +223,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IFM.exe" size="53440480">
-      <assemblyIdentity name="IFM" version="23.7.27.1" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IFM.exe" size="53498848">
+      <assemblyIdentity name="IFM" version="23.8.25.3" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZQ/DAiGalAP7vmtaVZTkHguZgKEZ4x0FPgFqaqekWO0=</dsig:DigestValue>
+        <dsig:DigestValue>mEan5AQI0T68lHdxWCSAwfueySrtb2QaV2e5RDV9egk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
