@@ -104,4 +104,3 @@ E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\es\DevExpress.
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\ja\DevExpress.Office.v20.1.Core.resources.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\bin\Debug\ru\DevExpress.Office.v20.1.Core.resources.dll
 E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\obj\Debug\AOI_PQM.exe.licenses
-E:\C#\Git\PQM PCB NIDEC\TTB_PQM_PCB\TTB_PCB_PQM\AOI_PQM\obj\Debug\AOI_PQM.csproj.AssemblyReference.cache

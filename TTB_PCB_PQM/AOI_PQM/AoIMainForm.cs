@@ -40,6 +40,16 @@ namespace AOI_PQM
         string judge;
         string status;
         string remark;
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
         private void AoIMainForm_Load(object sender, EventArgs e)
         {
             try
@@ -55,6 +65,7 @@ namespace AOI_PQM
                 exists = System.IO.File.Exists(logerror);
                 if (exists) System.IO.File.Delete(logerror);
                 txt_logerror.Text = "";
+                btn_autoget_Click(sender, e);
             }
             catch
             {

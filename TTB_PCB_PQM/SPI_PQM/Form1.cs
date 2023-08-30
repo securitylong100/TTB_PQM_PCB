@@ -19,6 +19,7 @@ namespace SPI_PQM
             InitializeComponent();
         }
         string folderBK = "";
+        string folderBK_other = "";
         string folderlog = @"C:\PQM\";
         string logconfig = @"C:\PQM\configuration.txt";
         string logerror = @"C:\PQM\log.txt";
@@ -40,6 +41,16 @@ namespace SPI_PQM
         string judge;
         string status;
         string remark;
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -54,6 +65,7 @@ namespace SPI_PQM
                 exists = System.IO.File.Exists(logerror);
                 if (exists) System.IO.File.Delete(logerror);
                 txt_logerror.Text = "";
+                btn_autoget_Click(sender, e);
             }
             catch
             {
@@ -123,13 +135,15 @@ namespace SPI_PQM
             writelogfileconfig(logconfig); //save lại config đường dẫn
             readPQMformat(pqmformat); // đọc giá trị PQM format
             folderBK = txt_browserin.Text + "\\Backup\\" + DateTime.Now.ToString("yyyyMMdd");
+            folderBK_other = txt_browserin.Text + "\\Backup_Other\\" + DateTime.Now.ToString("yyyyMMdd");
             CheckExistsFolder(folderBK);  // tạo forder cho ngày hiện tại
+            CheckExistsFolder(folderBK_other);  // tạo forder cho ngày hiện tại
             CheckExistsFolder(txt_browserout.Text);  // tạo forder fptout
-            ConvertandMoveFile(txt_browserin.Text, txt_browserout.Text, folderBK); //conver và chuyển file đi,
+            ConvertandMoveFile(txt_browserin.Text, txt_browserout.Text, folderBK, folderBK_other); //conver và chuyển file đi,
             readlogfile(logerror);
 
         }
-        void ConvertandMoveFile(string pathfolderin, string pathfolderout, string pathfolderbackup)
+        void ConvertandMoveFile(string pathfolderin, string pathfolderout, string pathfolderbackup, string pathfolderbackupother)
         {
 
             DirectoryInfo d = new DirectoryInfo(pathfolderin);
@@ -139,45 +153,43 @@ namespace SPI_PQM
             {
                 try
                 {
-                    //string[] arrListStr = file.ToString().Split('_');
-                    //string model_ = "";
-                    //if(arrListStr.Length>0)
-                    //{
-                    //    string sub = arrListStr[arrListStr.Length - 2];
-                    //    int a = file.ToString().IndexOf(sub);
-                    //    //for(int i = 1; i < arrListStr.Length-2;i++)
-                    //    //{
-                    //    //    model = arrListStr[i].ToString() + "_"+arrListStr[i+1].ToString();
-                    //    //}                    
-                    //}
-                    int ps = file.ToString().IndexOf(DateTime.Now.ToString("yyyyMMdd"));
-                    if (file.ToString().Length > 33)
+
+                    if (file.ToString().Length > 33 && file.ToString().Substring(17, 18) == "BFB_0025_B3A502757")
                     {
-                        model = file.ToString().Substring(17, file.ToString().Length - ps - 1);
-                    }
-                    
-                    dt = new DataTable();
-                    dt = ConvertCSVtoDataTable(pathfolderin + "\\" + file);
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        if (row[0] != null)
+                        model = file.ToString().Substring(17, 18);
+
+                        dt = new DataTable();
+                        dt = ConvertCSVtoDataTable(pathfolderin + "\\" + file);
+                        foreach (DataRow row in dt.Rows)
                         {
-                            barcode = row[2].ToString();
-                            lot = "_" + DateTime.Now.ToString("yyyyMMdd");
-                            date = Convert.ToDateTime(row[0]).ToString("yyyy/MM/dd");
-                            time = Convert.ToDateTime(row[0]).ToString("HH:mm:ss");
-                            judge = row[3].ToString() == "NG" ? "1" : "0";
-                            data = judge;
-                            writePQMformat(pathfolderout + "\\SPI_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                            if (row[0] != null)
+                            {
+                                barcode = row[2].ToString();
+                                lot = "_" + DateTime.Now.ToString("yyyyMMdd");
+                                date = Convert.ToDateTime(row[0]).ToString("yyyy/MM/dd");
+                                time = Convert.ToDateTime(row[0]).ToString("HH:mm:ss");
+                                judge = row[3].ToString() == "NG" ? "1" : "0";
+                                data = judge;
+                                writePQMformat(pathfolderout + "\\SPI_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".csv");
+                            }
                         }
+                        //xuất file csv 
+
+                        if (File.Exists(pathfolderbackup + "\\" + file))
+                        {
+                            File.Delete(pathfolderbackup + "\\" + file);
+                        }
+                        File.Move(pathfolderin + "\\" + file, pathfolderbackup + "\\" + file);
                     }
-                    //xuất file csv 
-                   
-                    if (File.Exists(pathfolderbackup + "\\" + file))
+                    else
                     {
-                        File.Delete(pathfolderbackup + "\\" + file);
-                    }
-                    File.Move(pathfolderin + "\\" + file, pathfolderbackup + "\\" + file);
+                        if (File.Exists(pathfolderbackupother + "\\" + file))
+                        {
+                            File.Delete(pathfolderbackupother + "\\" + file);
+                        }
+                        File.Move(pathfolderin + "\\" + file, pathfolderbackupother + "\\" + file);
+
+                    }    
                 }
                 catch (Exception ex)
                 {
